@@ -299,6 +299,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Code\" />
+    <Folder Include="GUI\" />
     <Folder Include="Resources\Generated\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\Images\" />
