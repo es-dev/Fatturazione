@@ -60,14 +60,17 @@
     <Reference Include="Gizmox.WebGUI.Common, Version=4.5.15701.0, Culture=neutral, PublicKeyToken=263fa4ef694acff6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Gizmox.WebGUI.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Gizmox.WebGUI.Common.Design, Version=4.5.15701.0, Culture=neutral, PublicKeyToken=ea5dfe57c8eb7edd, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Gizmox.WebGUI.Common.Design.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Gizmox.WebGUI.Common.Design.Skins, Version=4.5.15701.0, Culture=neutral, PublicKeyToken=82814e180535b402, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Gizmox.WebGUI.Common.Design.Skins.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Gizmox.WebGUI.Converters, Version=4.5.15701.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -123,6 +126,7 @@
     <Reference Include="Gizmox.WebGUI.Forms.Office.Design, Version=4.5.15701.0, Culture=neutral, PublicKeyToken=e838c68aaf727726, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Gizmox.WebGUI.Forms.Office.Design.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Gizmox.WebGUI.Forms.Phonegap.Integration, Version=4.5.15701.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -135,6 +139,7 @@
     <Reference Include="Gizmox.WebGUI.Forms.Professional.Design, Version=4.5.15701.0, Culture=neutral, PublicKeyToken=fd7bc2dbb230d265, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Gizmox.WebGUI.Forms.Professional.Design.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Gizmox.WebGUI.Forms.resources">
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Gizmox.WebGUI.Forms.resources.dll</HintPath>
@@ -214,6 +219,7 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -223,22 +229,54 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\ZedGraph.dll</HintPath>
