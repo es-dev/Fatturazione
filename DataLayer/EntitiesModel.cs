@@ -18,6 +18,7 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using DataLayer;
 
 namespace DataLayer	
 {
@@ -49,6 +50,110 @@ namespace DataLayer
 			:base(connection, backendConfiguration, metadataSource)
 		{ }
 			
+		public IQueryable<StudioAzienda> StudioAziendas 
+		{
+			get
+			{
+				return this.GetAll<StudioAzienda>();
+			}
+		}
+		
+		public IQueryable<Cliente> Clientes 
+		{
+			get
+			{
+				return this.GetAll<Cliente>();
+			}
+		}
+		
+		public IQueryable<Fattura> Fatturas 
+		{
+			get
+			{
+				return this.GetAll<Fattura>();
+			}
+		}
+		
+		public IQueryable<Trasmissione> Trasmissiones 
+		{
+			get
+			{
+				return this.GetAll<Trasmissione>();
+			}
+		}
+		
+		public IQueryable<AnagraficaCliente> AnagraficaClientes 
+		{
+			get
+			{
+				return this.GetAll<AnagraficaCliente>();
+			}
+		}
+		
+		public IQueryable<Incasso> Incassos 
+		{
+			get
+			{
+				return this.GetAll<Incasso>();
+			}
+		}
+		
+		public IQueryable<Socio> Socios 
+		{
+			get
+			{
+				return this.GetAll<Socio>();
+			}
+		}
+		
+		public IQueryable<AnagraficaPA> AnagraficaPAs 
+		{
+			get
+			{
+				return this.GetAll<AnagraficaPA>();
+			}
+		}
+		
+		public IQueryable<FatturaElettronicaHeader> FatturaElettronicaHeaders 
+		{
+			get
+			{
+				return this.GetAll<FatturaElettronicaHeader>();
+			}
+		}
+		
+		public IQueryable<FatturaElettronicaBody> FatturaElettronicaBodies 
+		{
+			get
+			{
+				return this.GetAll<FatturaElettronicaBody>();
+			}
+		}
+		
+		public IQueryable<DatiTrasmissione> DatiTrasmissiones 
+		{
+			get
+			{
+				return this.GetAll<DatiTrasmissione>();
+			}
+		}
+		
+		public IQueryable<IdTrasmissione> IdTrasmissiones 
+		{
+			get
+			{
+				return this.GetAll<IdTrasmissione>();
+			}
+		}
+		
+		public IQueryable<ContattiTrasmittente> ContattiTrasmittentes 
+		{
+			get
+			{
+				return this.GetAll<ContattiTrasmittente>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -70,6 +175,58 @@ namespace DataLayer
 	
 	public interface IEntitiesModelUnitOfWork : IUnitOfWork
 	{
+		IQueryable<StudioAzienda> StudioAziendas
+		{
+			get;
+		}
+		IQueryable<Cliente> Clientes
+		{
+			get;
+		}
+		IQueryable<Fattura> Fatturas
+		{
+			get;
+		}
+		IQueryable<Trasmissione> Trasmissiones
+		{
+			get;
+		}
+		IQueryable<AnagraficaCliente> AnagraficaClientes
+		{
+			get;
+		}
+		IQueryable<Incasso> Incassos
+		{
+			get;
+		}
+		IQueryable<Socio> Socios
+		{
+			get;
+		}
+		IQueryable<AnagraficaPA> AnagraficaPAs
+		{
+			get;
+		}
+		IQueryable<FatturaElettronicaHeader> FatturaElettronicaHeaders
+		{
+			get;
+		}
+		IQueryable<FatturaElettronicaBody> FatturaElettronicaBodies
+		{
+			get;
+		}
+		IQueryable<DatiTrasmissione> DatiTrasmissiones
+		{
+			get;
+		}
+		IQueryable<IdTrasmissione> IdTrasmissiones
+		{
+			get;
+		}
+		IQueryable<ContattiTrasmittente> ContattiTrasmittentes
+		{
+			get;
+		}
 	}
 }
 #pragma warning restore 1591
