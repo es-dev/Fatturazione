@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class IdTrasmissione
+	public partial class IdFiscale
 	{
 		private int _id;
 		public virtual int Id
@@ -63,6 +63,32 @@ namespace DataLayer
 			}
 		}
 		
+		private int _idTrasmittente;
+		public virtual int IdTrasmittente
+		{
+			get
+			{
+				return this._idTrasmittente;
+			}
+			set
+			{
+				this._idTrasmittente = value;
+			}
+		}
+		
+		private int _idFiscaleIVA;
+		public virtual int IdFiscaleIVA
+		{
+			get
+			{
+				return this._idFiscaleIVA;
+			}
+			set
+			{
+				this._idFiscaleIVA = value;
+			}
+		}
+		
 		private DatiTrasmissione _datiTrasmissione;
 		public virtual DatiTrasmissione DatiTrasmissione
 		{
@@ -73,6 +99,19 @@ namespace DataLayer
 			set
 			{
 				this._datiTrasmissione = value;
+			}
+		}
+		
+		private DatiAnagraficiCedente _datiAnagraficiCedente;
+		public virtual DatiAnagraficiCedente DatiAnagraficiCedente
+		{
+			get
+			{
+				return this._datiAnagraficiCedente;
+			}
+			set
+			{
+				this._datiAnagraficiCedente = value;
 			}
 		}
 		

@@ -37,16 +37,16 @@ namespace DataLayer
 			}
 		}
 		
-		private int _studioAziendaId;
-		public virtual int StudioAziendaId
+		private int _aziendaId;
+		public virtual int AziendaId
 		{
 			get
 			{
-				return this._studioAziendaId;
+				return this._aziendaId;
 			}
 			set
 			{
-				this._studioAziendaId = value;
+				this._aziendaId = value;
 			}
 		}
 		
@@ -89,16 +89,16 @@ namespace DataLayer
 			}
 		}
 		
-		private StudioAzienda _studioAzienda;
-		public virtual StudioAzienda StudioAzienda
+		private Azienda _azienda;
+		public virtual Azienda Azienda
 		{
 			get
 			{
-				return this._studioAzienda;
+				return this._azienda;
 			}
 			set
 			{
-				this._studioAzienda = value;
+				this._azienda = value;
 			}
 		}
 		

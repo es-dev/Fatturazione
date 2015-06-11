@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class StudioAzienda
+	public partial class Azienda
 	{
 		private int _id;
 		public virtual int Id
@@ -189,21 +189,21 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<AnagraficaCliente> _anagraficaClientes = new List<AnagraficaCliente>();
-		public virtual IList<AnagraficaCliente> AnagraficaClientes
-		{
-			get
-			{
-				return this._anagraficaClientes;
-			}
-		}
-		
 		private IList<Socio> _socios = new List<Socio>();
 		public virtual IList<Socio> Socios
 		{
 			get
 			{
 				return this._socios;
+			}
+		}
+		
+		private IList<AnagraficaCliente> _anagraficaClientes = new List<AnagraficaCliente>();
+		public virtual IList<AnagraficaCliente> AnagraficaClientes
+		{
+			get
+			{
+				return this._anagraficaClientes;
 			}
 		}
 		

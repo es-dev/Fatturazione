@@ -18,11 +18,10 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class DatiTrasmissione
+	public partial class Sede
 	{
 		private int _id;
 		public virtual int Id
@@ -37,77 +36,81 @@ namespace DataLayer
 			}
 		}
 		
-		private string _progressivoInvio;
-		public virtual string ProgressivoInvio
+		private string _indirizzo;
+		public virtual string Indirizzo
 		{
 			get
 			{
-				return this._progressivoInvio;
+				return this._indirizzo;
 			}
 			set
 			{
-				this._progressivoInvio = value;
+				this._indirizzo = value;
 			}
 		}
 		
-		private string _formatoTrasmissione;
-		public virtual string FormatoTrasmissione
+		private string _numeroCivico;
+		public virtual string NumeroCivico
 		{
 			get
 			{
-				return this._formatoTrasmissione;
+				return this._numeroCivico;
 			}
 			set
 			{
-				this._formatoTrasmissione = value;
+				this._numeroCivico = value;
 			}
 		}
 		
-		private string _codiceDestinatario;
-		public virtual string CodiceDestinatario
+		private string _cAP;
+		public virtual string CAP
 		{
 			get
 			{
-				return this._codiceDestinatario;
+				return this._cAP;
 			}
 			set
 			{
-				this._codiceDestinatario = value;
+				this._cAP = value;
 			}
 		}
 		
-		private FatturaElettronicaHeader _fatturaElettronicaHeader;
-		public virtual FatturaElettronicaHeader FatturaElettronicaHeader
+		private string _comune;
+		public virtual string Comune
 		{
 			get
 			{
-				return this._fatturaElettronicaHeader;
+				return this._comune;
 			}
 			set
 			{
-				this._fatturaElettronicaHeader = value;
+				this._comune = value;
 			}
 		}
 		
-		private IList<IdFiscale> _idFiscales = new List<IdFiscale>();
-		public virtual IList<IdFiscale> IdFiscales
+		private string _provincia;
+		public virtual string Provincia
 		{
 			get
 			{
-				return this._idFiscales;
-			}
-		}
-		
-		private ContattiTrasmittente _contattiTrasmittente;
-		public virtual ContattiTrasmittente ContattiTrasmittente
-		{
-			get
-			{
-				return this._contattiTrasmittente;
+				return this._provincia;
 			}
 			set
 			{
-				this._contattiTrasmittente = value;
+				this._provincia = value;
+			}
+		}
+		
+		private string _nazione;
+		public virtual string Nazione
+		{
+			get
+			{
+				return this._nazione;
+			}
+			set
+			{
+				this._nazione = value;
 			}
 		}
 		

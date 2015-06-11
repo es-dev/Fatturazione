@@ -50,11 +50,11 @@ namespace DataLayer
 			:base(connection, backendConfiguration, metadataSource)
 		{ }
 			
-		public IQueryable<StudioAzienda> StudioAziendas 
+		public IQueryable<Azienda> Aziendas 
 		{
 			get
 			{
-				return this.GetAll<StudioAzienda>();
+				return this.GetAll<Azienda>();
 			}
 		}
 		
@@ -138,11 +138,11 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<IdTrasmissione> IdTrasmissiones 
+		public IQueryable<IdFiscale> IdFiscales 
 		{
 			get
 			{
-				return this.GetAll<IdTrasmissione>();
+				return this.GetAll<IdFiscale>();
 			}
 		}
 		
@@ -151,6 +151,46 @@ namespace DataLayer
 			get
 			{
 				return this.GetAll<ContattiTrasmittente>();
+			}
+		}
+		
+		public IQueryable<CedentePrestatore> CedentePrestatores 
+		{
+			get
+			{
+				return this.GetAll<CedentePrestatore>();
+			}
+		}
+		
+		public IQueryable<DatiAnagraficiCedente> DatiAnagraficiCedentes 
+		{
+			get
+			{
+				return this.GetAll<DatiAnagraficiCedente>();
+			}
+		}
+		
+		public IQueryable<Anagrafica> Anagraficas 
+		{
+			get
+			{
+				return this.GetAll<Anagrafica>();
+			}
+		}
+		
+		public IQueryable<Sede> Sedes 
+		{
+			get
+			{
+				return this.GetAll<Sede>();
+			}
+		}
+		
+		public IQueryable<IscrizioneREA> IscrizioneREAs 
+		{
+			get
+			{
+				return this.GetAll<IscrizioneREA>();
 			}
 		}
 		
@@ -175,7 +215,7 @@ namespace DataLayer
 	
 	public interface IEntitiesModelUnitOfWork : IUnitOfWork
 	{
-		IQueryable<StudioAzienda> StudioAziendas
+		IQueryable<Azienda> Aziendas
 		{
 			get;
 		}
@@ -219,11 +259,31 @@ namespace DataLayer
 		{
 			get;
 		}
-		IQueryable<IdTrasmissione> IdTrasmissiones
+		IQueryable<IdFiscale> IdFiscales
 		{
 			get;
 		}
 		IQueryable<ContattiTrasmittente> ContattiTrasmittentes
+		{
+			get;
+		}
+		IQueryable<CedentePrestatore> CedentePrestatores
+		{
+			get;
+		}
+		IQueryable<DatiAnagraficiCedente> DatiAnagraficiCedentes
+		{
+			get;
+		}
+		IQueryable<Anagrafica> Anagraficas
+		{
+			get;
+		}
+		IQueryable<Sede> Sedes
+		{
+			get;
+		}
+		IQueryable<IscrizioneREA> IscrizioneREAs
 		{
 			get;
 		}

@@ -18,6 +18,7 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using DataLayer;
 
 namespace DataLayer	
 {
@@ -59,6 +60,19 @@ namespace DataLayer
 			set
 			{
 				this._email = value;
+			}
+		}
+		
+		private DatiTrasmissione _datiTrasmissione;
+		public virtual DatiTrasmissione DatiTrasmissione
+		{
+			get
+			{
+				return this._datiTrasmissione;
+			}
+			set
+			{
+				this._datiTrasmissione = value;
 			}
 		}
 		
