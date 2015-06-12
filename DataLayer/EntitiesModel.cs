@@ -50,11 +50,11 @@ namespace DataLayer
 			:base(connection, backendConfiguration, metadataSource)
 		{ }
 			
-		public IQueryable<StudioAzienda> StudioAziendas 
+		public IQueryable<Azienda> Aziendas 
 		{
 			get
 			{
-				return this.GetAll<StudioAzienda>();
+				return this.GetAll<Azienda>();
 			}
 		}
 		
@@ -154,6 +154,14 @@ namespace DataLayer
 			}
 		}
 		
+		public IQueryable<Account> Accounts 
+		{
+			get
+			{
+				return this.GetAll<Account>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -175,7 +183,7 @@ namespace DataLayer
 	
 	public interface IEntitiesModelUnitOfWork : IUnitOfWork
 	{
-		IQueryable<StudioAzienda> StudioAziendas
+		IQueryable<Azienda> Aziendas
 		{
 			get;
 		}
@@ -224,6 +232,10 @@ namespace DataLayer
 			get;
 		}
 		IQueryable<ContattiTrasmittente> ContattiTrasmittentes
+		{
+			get;
+		}
+		IQueryable<Account> Accounts
 		{
 			get;
 		}
