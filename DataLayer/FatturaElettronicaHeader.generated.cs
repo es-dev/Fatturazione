@@ -63,6 +63,19 @@ namespace DataLayer
 			}
 		}
 		
+		private CedentePrestatore _cedentePrestatore;
+		public virtual CedentePrestatore CedentePrestatore
+		{
+			get
+			{
+				return this._cedentePrestatore;
+			}
+			set
+			{
+				this._cedentePrestatore = value;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

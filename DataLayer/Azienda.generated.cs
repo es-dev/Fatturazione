@@ -180,34 +180,12 @@ namespace DataLayer
 			}
 		}
 		
-		private string _codice;
-		public virtual string Codice
-		{
-			get
-			{
-				return this._codice;
-			}
-			set
-			{
-				this._codice = value;
-			}
-		}
-		
 		private IList<Cliente> _clientes = new List<Cliente>();
 		public virtual IList<Cliente> Clientes
 		{
 			get
 			{
 				return this._clientes;
-			}
-		}
-		
-		private IList<AnagraficaCliente> _anagraficaClientes = new List<AnagraficaCliente>();
-		public virtual IList<AnagraficaCliente> AnagraficaClientes
-		{
-			get
-			{
-				return this._anagraficaClientes;
 			}
 		}
 		
@@ -220,12 +198,12 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<Account> _accounts = new List<Account>();
-		public virtual IList<Account> Accounts
+		private IList<AnagraficaCliente> _anagraficaClientes = new List<AnagraficaCliente>();
+		public virtual IList<AnagraficaCliente> AnagraficaClientes
 		{
 			get
 			{
-				return this._accounts;
+				return this._anagraficaClientes;
 			}
 		}
 		

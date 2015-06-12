@@ -89,19 +89,6 @@ namespace DataLayer
 			}
 		}
 		
-		private Azienda _azienda;
-		public virtual Azienda Azienda
-		{
-			get
-			{
-				return this._azienda;
-			}
-			set
-			{
-				this._azienda = value;
-			}
-		}
-		
 		private AnagraficaCliente _anagraficaCliente;
 		public virtual AnagraficaCliente AnagraficaCliente
 		{
@@ -115,16 +102,29 @@ namespace DataLayer
 			}
 		}
 		
-		private AnagraficaPA _anagraficaPA;
-		public virtual AnagraficaPA AnagraficaPA
+		private AnagraficaPA _anagraficaPA1;
+		public virtual AnagraficaPA AnagraficaPA1
 		{
 			get
 			{
-				return this._anagraficaPA;
+				return this._anagraficaPA1;
 			}
 			set
 			{
-				this._anagraficaPA = value;
+				this._anagraficaPA1 = value;
+			}
+		}
+		
+		private Azienda _azienda;
+		public virtual Azienda Azienda
+		{
+			get
+			{
+				return this._azienda;
+			}
+			set
+			{
+				this._azienda = value;
 			}
 		}
 		

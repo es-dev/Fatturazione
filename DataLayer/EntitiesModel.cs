@@ -138,11 +138,11 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<IdTrasmissione> IdTrasmissiones 
+		public IQueryable<IdFiscale> IdFiscales 
 		{
 			get
 			{
-				return this.GetAll<IdTrasmissione>();
+				return this.GetAll<IdFiscale>();
 			}
 		}
 		
@@ -154,11 +154,43 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<Account> Accounts 
+		public IQueryable<CedentePrestatore> CedentePrestatores 
 		{
 			get
 			{
-				return this.GetAll<Account>();
+				return this.GetAll<CedentePrestatore>();
+			}
+		}
+		
+		public IQueryable<DatiAnagraficiCedente> DatiAnagraficiCedentes 
+		{
+			get
+			{
+				return this.GetAll<DatiAnagraficiCedente>();
+			}
+		}
+		
+		public IQueryable<Anagrafica> Anagraficas 
+		{
+			get
+			{
+				return this.GetAll<Anagrafica>();
+			}
+		}
+		
+		public IQueryable<Sede> Sedes 
+		{
+			get
+			{
+				return this.GetAll<Sede>();
+			}
+		}
+		
+		public IQueryable<IscrizioneREA> IscrizioneREAs 
+		{
+			get
+			{
+				return this.GetAll<IscrizioneREA>();
 			}
 		}
 		
@@ -227,7 +259,7 @@ namespace DataLayer
 		{
 			get;
 		}
-		IQueryable<IdTrasmissione> IdTrasmissiones
+		IQueryable<IdFiscale> IdFiscales
 		{
 			get;
 		}
@@ -235,7 +267,23 @@ namespace DataLayer
 		{
 			get;
 		}
-		IQueryable<Account> Accounts
+		IQueryable<CedentePrestatore> CedentePrestatores
+		{
+			get;
+		}
+		IQueryable<DatiAnagraficiCedente> DatiAnagraficiCedentes
+		{
+			get;
+		}
+		IQueryable<Anagrafica> Anagraficas
+		{
+			get;
+		}
+		IQueryable<Sede> Sedes
+		{
+			get;
+		}
+		IQueryable<IscrizioneREA> IscrizioneREAs
 		{
 			get;
 		}

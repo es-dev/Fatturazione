@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class DatiTrasmissione
+	public partial class IdFiscale
 	{
 		private int _id;
 		public virtual int Id
@@ -37,77 +37,81 @@ namespace DataLayer
 			}
 		}
 		
-		private string _progressivoInvio;
-		public virtual string ProgressivoInvio
+		private string _idPaese;
+		public virtual string IdPaese
 		{
 			get
 			{
-				return this._progressivoInvio;
+				return this._idPaese;
 			}
 			set
 			{
-				this._progressivoInvio = value;
+				this._idPaese = value;
 			}
 		}
 		
-		private string _formatoTrasmissione;
-		public virtual string FormatoTrasmissione
+		private string _idCodice;
+		public virtual string IdCodice
 		{
 			get
 			{
-				return this._formatoTrasmissione;
+				return this._idCodice;
 			}
 			set
 			{
-				this._formatoTrasmissione = value;
+				this._idCodice = value;
 			}
 		}
 		
-		private string _codiceDestinatario;
-		public virtual string CodiceDestinatario
+		private int _idTrasmittente;
+		public virtual int IdTrasmittente
 		{
 			get
 			{
-				return this._codiceDestinatario;
+				return this._idTrasmittente;
 			}
 			set
 			{
-				this._codiceDestinatario = value;
+				this._idTrasmittente = value;
 			}
 		}
 		
-		private FatturaElettronicaHeader _fatturaElettronicaHeader;
-		public virtual FatturaElettronicaHeader FatturaElettronicaHeader
+		private int _idFiscaleIVA;
+		public virtual int IdFiscaleIVA
 		{
 			get
 			{
-				return this._fatturaElettronicaHeader;
+				return this._idFiscaleIVA;
 			}
 			set
 			{
-				this._fatturaElettronicaHeader = value;
+				this._idFiscaleIVA = value;
 			}
 		}
 		
-		private IList<IdFiscale> _idFiscales = new List<IdFiscale>();
-		public virtual IList<IdFiscale> IdFiscales
+		private DatiTrasmissione _datiTrasmissione;
+		public virtual DatiTrasmissione DatiTrasmissione
 		{
 			get
 			{
-				return this._idFiscales;
-			}
-		}
-		
-		private ContattiTrasmittente _contattiTrasmittente;
-		public virtual ContattiTrasmittente ContattiTrasmittente
-		{
-			get
-			{
-				return this._contattiTrasmittente;
+				return this._datiTrasmissione;
 			}
 			set
 			{
-				this._contattiTrasmittente = value;
+				this._datiTrasmissione = value;
+			}
+		}
+		
+		private DatiAnagraficiCedente _datiAnagraficiCedente;
+		public virtual DatiAnagraficiCedente DatiAnagraficiCedente
+		{
+			get
+			{
+				return this._datiAnagraficiCedente;
+			}
+			set
+			{
+				this._datiAnagraficiCedente = value;
 			}
 		}
 		
