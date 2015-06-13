@@ -102,16 +102,16 @@ namespace DataLayer
 			}
 		}
 		
-		private AnagraficaPA _anagraficaPA1;
-		public virtual AnagraficaPA AnagraficaPA1
+		private AnagraficaPA _anagraficaPA;
+		public virtual AnagraficaPA AnagraficaPA
 		{
 			get
 			{
-				return this._anagraficaPA1;
+				return this._anagraficaPA;
 			}
 			set
 			{
-				this._anagraficaPA1 = value;
+				this._anagraficaPA = value;
 			}
 		}
 		

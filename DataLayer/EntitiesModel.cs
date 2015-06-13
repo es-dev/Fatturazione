@@ -194,6 +194,14 @@ namespace DataLayer
 			}
 		}
 		
+		public IQueryable<Account> Accounts 
+		{
+			get
+			{
+				return this.GetAll<Account>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -284,6 +292,10 @@ namespace DataLayer
 			get;
 		}
 		IQueryable<IscrizioneREA> IscrizioneREAs
+		{
+			get;
+		}
+		IQueryable<Account> Accounts
 		{
 			get;
 		}

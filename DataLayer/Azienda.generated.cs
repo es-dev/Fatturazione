@@ -180,6 +180,58 @@ namespace DataLayer
 			}
 		}
 		
+		private string _codice;
+		public virtual string Codice
+		{
+			get
+			{
+				return this._codice;
+			}
+			set
+			{
+				this._codice = value;
+			}
+		}
+		
+		private string _localita;
+		public virtual string Localita
+		{
+			get
+			{
+				return this._localita;
+			}
+			set
+			{
+				this._localita = value;
+			}
+		}
+		
+		private string _note;
+		public virtual string Note
+		{
+			get
+			{
+				return this._note;
+			}
+			set
+			{
+				this._note = value;
+			}
+		}
+		
+		private int? _dipendenti;
+		public virtual int? Dipendenti
+		{
+			get
+			{
+				return this._dipendenti;
+			}
+			set
+			{
+				this._dipendenti = value;
+			}
+		}
+		
 		private IList<Cliente> _clientes = new List<Cliente>();
 		public virtual IList<Cliente> Clientes
 		{
@@ -204,6 +256,15 @@ namespace DataLayer
 			get
 			{
 				return this._anagraficaClientes;
+			}
+		}
+		
+		private IList<Account> _accounts = new List<Account>();
+		public virtual IList<Account> Accounts
+		{
+			get
+			{
+				return this._accounts;
 			}
 		}
 		
