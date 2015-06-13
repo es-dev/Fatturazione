@@ -330,6 +330,7 @@
     <Content Include="Resources\Images\edit_black.png" />
     <Content Include="Resources\Images\edit_lightblue.png" />
     <Content Include="Resources\Images\edit_red.png" />
+    <Content Include="Resources\Images\es.fatturazione.png" />
     <Content Include="Resources\Images\find24.png" />
     <Content Include="Resources\Images\firefox.png" />
     <Content Include="Resources\Images\forgotpassword.png" />
@@ -342,7 +343,6 @@
     <Content Include="Resources\Images\left_arrow.png" />
     <Content Include="Resources\Images\locker.png" />
     <Content Include="Resources\Images\logoESD.png" />
-    <Content Include="Resources\Images\logoSoftware.png" />
     <Content Include="Resources\Images\messageAlert.png" />
     <Content Include="Resources\Images\messageConfirm.png" />
     <Content Include="Resources\Images\messageInfo.png" />

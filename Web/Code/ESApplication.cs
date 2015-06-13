@@ -14,8 +14,8 @@ namespace Web.Code
             try
             {
                 view.Title = "ES | FATTURAZIONE PA";
-                view.Version = "rev. beta1";
-                view.LogoSoftware = "Images.logoSoftware.png";
+                view.Version = "rev. beta 1";
+                view.LogoSoftware = "Images.es.fatturazione.png";
                 view.LogoESD = "Images.logoESD.png";
                 view.BackgroundImage = "Images.background.png";
                 view.UrlHomePortal = "http://www.studiolegaleferrari.net";
