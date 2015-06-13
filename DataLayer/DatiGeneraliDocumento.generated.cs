@@ -76,16 +76,16 @@ namespace DataLayer
 			}
 		}
 		
-		private string _nUmero;
-		public virtual string NUmero
+		private string _numero;
+		public virtual string Numero
 		{
 			get
 			{
-				return this._nUmero;
+				return this._numero;
 			}
 			set
 			{
-				this._nUmero = value;
+				this._numero = value;
 			}
 		}
 		

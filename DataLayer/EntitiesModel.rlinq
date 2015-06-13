@@ -477,7 +477,7 @@
         <orm:field name="_tipoDocumento" property="TipoDocumento" uniqueId="079bd38b-2528-4532-b473-5ffc15673991" type="System.String" />
         <orm:field name="_divisa" property="Divisa" uniqueId="27dd3dfe-d27f-4a88-989c-e303cb4fcf36" type="System.String" />
         <orm:field name="_data" property="Data" uniqueId="c8a6cac7-f117-4cd4-a548-6bb8f0042274" type="System.DateTime" />
-        <orm:field name="_nUmero" property="NUmero" uniqueId="9e546c45-3631-481f-b7be-7c0476c63199" type="System.String" />
+        <orm:field name="_numero" property="Numero" uniqueId="9e546c45-3631-481f-b7be-7c0476c63199" type="System.String" />
         <orm:field name="_importotTotaleDocumento" property="ImportotTotaleDocumento" uniqueId="0fc44041-e29d-49f7-bc85-9e953da956a1" type="System.String" />
         <orm:field name="_arrotondamento" property="Arrotondamento" uniqueId="23d5e431-6ab1-4187-b855-bed2f53e8ff9" type="System.String" />
         <orm:field name="_causale" property="Causale" uniqueId="5276e9e6-8140-46d5-aa25-d82f46da5189" type="System.String" />
@@ -1260,7 +1260,7 @@
       <Property Id="079bd38b-2528-4532-b473-5ffc15673991" name="TipoDocumento" label="TipoDocumento : String" fieldName="_tipoDocumento" />
       <Property Id="27dd3dfe-d27f-4a88-989c-e303cb4fcf36" name="Divisa" label="Divisa : String" fieldName="_divisa" />
       <Property Id="c8a6cac7-f117-4cd4-a548-6bb8f0042274" name="Data" type="DateTime" label="Data : DateTime" fieldName="_data" />
-      <Property Id="9e546c45-3631-481f-b7be-7c0476c63199" name="NUmero" label="NUmero : String" fieldName="_nUmero" />
+      <Property Id="9e546c45-3631-481f-b7be-7c0476c63199" name="Numero" label="Numero : String" fieldName="_numero" />
       <Property Id="0fc44041-e29d-49f7-bc85-9e953da956a1" name="ImportotTotaleDocumento" label="ImportotTotaleDocumento : String" fieldName="_importotTotaleDocumento" />
       <Property Id="23d5e431-6ab1-4187-b855-bed2f53e8ff9" name="Arrotondamento" label="Arrotondamento : String" fieldName="_arrotondamento" />
       <Property Id="5276e9e6-8140-46d5-aa25-d82f46da5189" name="Causale" label="Causale : String" fieldName="_causale" />
