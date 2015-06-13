@@ -1032,13 +1032,13 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public DatiGeneraliDocumentoDto(int _id, string _tipoDocumento, string _divisa, DateTime _data, string _nUmero, string _importotTotaleDocumento, string _arrotondamento, string _causale, DatiGeneraliDto _datiGenerali, DatiRitenutaDto _datiRitenuta)
+		public DatiGeneraliDocumentoDto(int _id, string _tipoDocumento, string _divisa, DateTime _data, string _numero, string _importotTotaleDocumento, string _arrotondamento, string _causale, DatiGeneraliDto _datiGenerali, DatiRitenutaDto _datiRitenuta)
 		{
 			this.Id = _id;
 			this.TipoDocumento = _tipoDocumento;
 			this.Divisa = _divisa;
 			this.Data = _data;
-			this.NUmero = _nUmero;
+			this.Numero = _numero;
 			this.ImportotTotaleDocumento = _importotTotaleDocumento;
 			this.Arrotondamento = _arrotondamento;
 			this.Causale = _causale;
@@ -1062,7 +1062,7 @@ namespace WcfService.Dto
 		public virtual DateTime Data { get;set; }
 
 		[DataMember]
-		public virtual string NUmero { get;set; }
+		public virtual string Numero { get;set; }
 
 		[DataMember]
 		public virtual string ImportotTotaleDocumento { get;set; }

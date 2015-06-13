@@ -1709,7 +1709,7 @@ namespace WcfService.Assemblers
 			entity.TipoDocumento = dto.TipoDocumento;
 			entity.Divisa = dto.Divisa;
 			entity.Data = dto.Data;
-			entity.NUmero = dto.NUmero;
+			entity.Numero = dto.Numero;
 			entity.ImportotTotaleDocumento = dto.ImportotTotaleDocumento;
 			entity.Arrotondamento = dto.Arrotondamento;
 			entity.Causale = dto.Causale;
@@ -1727,7 +1727,7 @@ namespace WcfService.Assemblers
 			dto.TipoDocumento = entity.TipoDocumento;
 			dto.Divisa = entity.Divisa;
 			dto.Data = entity.Data;
-			dto.NUmero = entity.NUmero;
+			dto.Numero = entity.Numero;
 			dto.ImportotTotaleDocumento = entity.ImportotTotaleDocumento;
 			dto.Arrotondamento = entity.Arrotondamento;
 			dto.Causale = entity.Causale;
