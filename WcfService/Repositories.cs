@@ -210,14 +210,14 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface IIdTrasmissioneRepository : IRepository<IdTrasmissione>
+	public partial interface IIdFiscaleRepository : IRepository<IdFiscale>
 	{ 
 	
 	}
 	
-	public partial class IdTrasmissioneRepository : Repository<IdTrasmissione>, IIdTrasmissioneRepository
+	public partial class IdFiscaleRepository : Repository<IdFiscale>, IIdFiscaleRepository
 	{
-	    public IdTrasmissioneRepository(IEntitiesModelUnitOfWork unitOfWork)
+	    public IdFiscaleRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }
@@ -231,6 +231,71 @@ namespace WcfService.Repositories
 	public partial class ContattiTrasmittenteRepository : Repository<ContattiTrasmittente>, IContattiTrasmittenteRepository
 	{
 	    public ContattiTrasmittenteRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface ICedentePrestatoreRepository : IRepository<CedentePrestatore>
+	{ 
+	
+	}
+	
+	public partial class CedentePrestatoreRepository : Repository<CedentePrestatore>, ICedentePrestatoreRepository
+	{
+	    public CedentePrestatoreRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiAnagraficiCedenteRepository : IRepository<DatiAnagraficiCedente>
+	{ 
+	
+	}
+	
+	public partial class DatiAnagraficiCedenteRepository : Repository<DatiAnagraficiCedente>, IDatiAnagraficiCedenteRepository
+	{
+	    public DatiAnagraficiCedenteRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IAnagraficaRepository : IRepository<Anagrafica>
+	{ 
+	
+	}
+	
+	public partial class AnagraficaRepository : Repository<Anagrafica>, IAnagraficaRepository
+	{
+	    public AnagraficaRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface ISedeRepository : IRepository<Sede>
+	{ 
+	
+	}
+	
+	public partial class SedeRepository : Repository<Sede>, ISedeRepository
+	{
+	    public SedeRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IIscrizioneREARepository : IRepository<IscrizioneREA>
+	{ 
+	
+	}
+	
+	public partial class IscrizioneREARepository : Repository<IscrizioneREA>, IIscrizioneREARepository
+	{
+	    public IscrizioneREARepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }

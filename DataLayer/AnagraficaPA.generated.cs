@@ -245,16 +245,16 @@ namespace DataLayer
 			}
 		}
 		
-		private string _email1;
-		public virtual string email1
+		private string _email;
+		public virtual string Email
 		{
 			get
 			{
-				return this._email1;
+				return this._email;
 			}
 			set
 			{
-				this._email1 = value;
+				this._email = value;
 			}
 		}
 		

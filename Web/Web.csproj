@@ -584,6 +584,25 @@
       <DependentUpon>AccountView.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Account\AccountViewModel.cs" />
+    <Compile Include="GUI\Azienda\AziendaItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Azienda\AziendaItem.designer.cs">
+      <DependentUpon>AziendaItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Azienda\AziendaModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Azienda\AziendaModel.designer.cs">
+      <DependentUpon>AziendaModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Azienda\AziendaView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Azienda\AziendaView.designer.cs">
+      <DependentUpon>AziendaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Azienda\AziendaViewModel.cs" />
     <Compile Include="GUI\Dashboard\DashboardItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -637,6 +656,15 @@
     <EmbeddedResource Include="GUI\Account\AccountView.resx">
       <DependentUpon>AccountView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Azienda\AziendaItem.resx">
+      <DependentUpon>AziendaItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Azienda\AziendaModel.resx">
+      <DependentUpon>AziendaModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Azienda\AziendaView.resx">
+      <DependentUpon>AziendaView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Dashboard\DashboardItem.resx">
       <DependentUpon>DashboardItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -663,6 +691,12 @@
       <Project>{2240d297-2634-4a9e-8075-c10b78777112}</Project>
       <Name>WcfService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomReference Include="Gizmox.WebGUI.Forms.Themes">
+      <HintPath>C:\Progetti\Progetti Web\ES.Fatturazione\Web\bin\Gizmox.WebGUI.Forms.Themes.dll</HintPath>
+      <Visible>false</Visible>
+    </CustomReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

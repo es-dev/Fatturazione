@@ -54,7 +54,7 @@ namespace Web
                 if (accountAuthenticated!=null)
                 {
                     SessionManager.Login(Context, accountAuthenticated);
-                    Context.Redirect("cantieri-homepage.aspx");
+                    Context.Redirect("fatturazione-homepage.aspx");
                 }
                 else
                 {

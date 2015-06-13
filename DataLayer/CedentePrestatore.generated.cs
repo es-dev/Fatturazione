@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class IdTrasmissione
+	public partial class CedentePrestatore
 	{
 		private int _id;
 		public virtual int Id
@@ -37,42 +37,55 @@ namespace DataLayer
 			}
 		}
 		
-		private string _idPaese;
-		public virtual string IdPaese
+		private string _riferimentoAmministrazione;
+		public virtual string RiferimentoAmministrazione
 		{
 			get
 			{
-				return this._idPaese;
+				return this._riferimentoAmministrazione;
 			}
 			set
 			{
-				this._idPaese = value;
+				this._riferimentoAmministrazione = value;
 			}
 		}
 		
-		private string _idCodice;
-		public virtual string IdCodice
+		private FatturaElettronicaHeader _fatturaElettronicaHeader;
+		public virtual FatturaElettronicaHeader FatturaElettronicaHeader
 		{
 			get
 			{
-				return this._idCodice;
+				return this._fatturaElettronicaHeader;
 			}
 			set
 			{
-				this._idCodice = value;
+				this._fatturaElettronicaHeader = value;
 			}
 		}
 		
-		private DatiTrasmissione _datiTrasmissione;
-		public virtual DatiTrasmissione DatiTrasmissione
+		private DatiAnagraficiCedente _datiAnagraficiCedente;
+		public virtual DatiAnagraficiCedente DatiAnagraficiCedente
 		{
 			get
 			{
-				return this._datiTrasmissione;
+				return this._datiAnagraficiCedente;
 			}
 			set
 			{
-				this._datiTrasmissione = value;
+				this._datiAnagraficiCedente = value;
+			}
+		}
+		
+		private IscrizioneREA _iscrizioneREA;
+		public virtual IscrizioneREA IscrizioneREA
+		{
+			get
+			{
+				return this._iscrizioneREA;
+			}
+			set
+			{
+				this._iscrizioneREA = value;
 			}
 		}
 		

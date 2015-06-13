@@ -328,14 +328,14 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IIdTrasmissioneService : IService<IdTrasmissioneDto, IdTrasmissione>
+	public partial interface IIdFiscaleService : IService<IdFiscaleDto, IdFiscale>
 	{
 	
 	}
 	
-	public partial class IdTrasmissioneService : Service<IdTrasmissioneDto, IdTrasmissione>, IIdTrasmissioneService
+	public partial class IdFiscaleService : Service<IdFiscaleDto, IdFiscale>, IIdFiscaleService
 	{
-	    public IdTrasmissioneService(IIdTrasmissioneAssembler assembler, IIdTrasmissioneRepository repository)
+	    public IdFiscaleService(IIdFiscaleAssembler assembler, IIdFiscaleRepository repository)
 	        : base(assembler, repository)
 	    {
 	
@@ -350,6 +350,76 @@ namespace WcfService.Services
 	public partial class ContattiTrasmittenteService : Service<ContattiTrasmittenteDto, ContattiTrasmittente>, IContattiTrasmittenteService
 	{
 	    public ContattiTrasmittenteService(IContattiTrasmittenteAssembler assembler, IContattiTrasmittenteRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface ICedentePrestatoreService : IService<CedentePrestatoreDto, CedentePrestatore>
+	{
+	
+	}
+	
+	public partial class CedentePrestatoreService : Service<CedentePrestatoreDto, CedentePrestatore>, ICedentePrestatoreService
+	{
+	    public CedentePrestatoreService(ICedentePrestatoreAssembler assembler, ICedentePrestatoreRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiAnagraficiCedenteService : IService<DatiAnagraficiCedenteDto, DatiAnagraficiCedente>
+	{
+	
+	}
+	
+	public partial class DatiAnagraficiCedenteService : Service<DatiAnagraficiCedenteDto, DatiAnagraficiCedente>, IDatiAnagraficiCedenteService
+	{
+	    public DatiAnagraficiCedenteService(IDatiAnagraficiCedenteAssembler assembler, IDatiAnagraficiCedenteRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IAnagraficaService : IService<AnagraficaDto, Anagrafica>
+	{
+	
+	}
+	
+	public partial class AnagraficaService : Service<AnagraficaDto, Anagrafica>, IAnagraficaService
+	{
+	    public AnagraficaService(IAnagraficaAssembler assembler, IAnagraficaRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface ISedeService : IService<SedeDto, Sede>
+	{
+	
+	}
+	
+	public partial class SedeService : Service<SedeDto, Sede>, ISedeService
+	{
+	    public SedeService(ISedeAssembler assembler, ISedeRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IIscrizioneREAService : IService<IscrizioneREADto, IscrizioneREA>
+	{
+	
+	}
+	
+	public partial class IscrizioneREAService : Service<IscrizioneREADto, IscrizioneREA>, IIscrizioneREAService
+	{
+	    public IscrizioneREAService(IIscrizioneREAAssembler assembler, IIscrizioneREARepository repository)
 	        : base(assembler, repository)
 	    {
 	
