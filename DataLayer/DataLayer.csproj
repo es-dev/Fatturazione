@@ -110,10 +110,19 @@
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DatiBeniServizi.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="DatiGenerali.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
     <Compile Include="DatiGeneraliDocumento.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DatiPagamento.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DatiRiepilogo.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
     <Compile Include="DatiRitenuta.generated.cs">
@@ -122,6 +131,9 @@
     <Compile Include="DatiTrasmissione.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DettaglioLinee.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
     <Compile Include="EntitiesModel.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>

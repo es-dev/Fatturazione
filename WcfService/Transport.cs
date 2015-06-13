@@ -995,18 +995,22 @@ namespace WcfService.Dto
 	
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(FatturaElettronicaBodyDto))]
+	[KnownType(typeof(DatiPagamentoDto))]
 	[KnownType(typeof(DatiGeneraliDocumentoDto))]
+	[KnownType(typeof(DatiBeniServiziDto))]
 	public partial class DatiGeneraliDto : IDtoWithKey
 	{
 		public DatiGeneraliDto()
 		{
 		}
 		
-		public DatiGeneraliDto(int _id, FatturaElettronicaBodyDto _fatturaElettronicaBody, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
+		public DatiGeneraliDto(int _id, FatturaElettronicaBodyDto _fatturaElettronicaBody, IList<DatiPagamentoDto> _datiPagamentos, DatiGeneraliDocumentoDto _datiGeneraliDocumento, DatiBeniServiziDto _datiBeniServizi)
 		{
 			this.Id = _id;
 			this.FatturaElettronicaBody = _fatturaElettronicaBody;
+			this.DatiPagamentos = _datiPagamentos;
 			this.DatiGeneraliDocumento = _datiGeneraliDocumento;
+			this.DatiBeniServizi = _datiBeniServizi;
 		}
 		
 		[DataMember]
@@ -1019,7 +1023,13 @@ namespace WcfService.Dto
 		public virtual FatturaElettronicaBodyDto FatturaElettronicaBody { get;set; }
 
 		[DataMember]
+		public virtual IList<DatiPagamentoDto> DatiPagamentos { get;set; }
+
+		[DataMember]
 		public virtual DatiGeneraliDocumentoDto DatiGeneraliDocumento { get;set; }
+
+		[DataMember]
+		public virtual DatiBeniServiziDto DatiBeniServizi { get;set; }
 
 	}
 	
@@ -1032,7 +1042,7 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public DatiGeneraliDocumentoDto(int _id, string _tipoDocumento, string _divisa, DateTime _data, string _numero, string _importotTotaleDocumento, string _arrotondamento, string _causale, DatiGeneraliDto _datiGenerali, DatiRitenutaDto _datiRitenuta)
+		public DatiGeneraliDocumentoDto(int _id, string _tipoDocumento, string _divisa, DateTime _data, string _numero, decimal _importotTotaleDocumento, decimal _arrotondamento, string _causale, DatiGeneraliDto _datiGenerali, DatiRitenutaDto _datiRitenuta)
 		{
 			this.Id = _id;
 			this.TipoDocumento = _tipoDocumento;
@@ -1065,10 +1075,10 @@ namespace WcfService.Dto
 		public virtual string Numero { get;set; }
 
 		[DataMember]
-		public virtual string ImportotTotaleDocumento { get;set; }
+		public virtual decimal ImportotTotaleDocumento { get;set; }
 
 		[DataMember]
-		public virtual string Arrotondamento { get;set; }
+		public virtual decimal Arrotondamento { get;set; }
 
 		[DataMember]
 		public virtual string Causale { get;set; }
@@ -1089,9 +1099,13 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public DatiRitenutaDto(int _id, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
+		public DatiRitenutaDto(int _id, string _tipoRitenuta, decimal _importoRitenuta, decimal _aliquotaRitenuta, string _causalePAgamento, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
 		{
 			this.Id = _id;
+			this.TipoRitenuta = _tipoRitenuta;
+			this.ImportoRitenuta = _importoRitenuta;
+			this.AliquotaRitenuta = _aliquotaRitenuta;
+			this.CausalePAgamento = _causalePAgamento;
 			this.DatiGeneraliDocumento = _datiGeneraliDocumento;
 		}
 		
@@ -1102,7 +1116,141 @@ namespace WcfService.Dto
 		public virtual int Id { get;set; }
 
 		[DataMember]
+		public virtual string TipoRitenuta { get;set; }
+
+		[DataMember]
+		public virtual decimal ImportoRitenuta { get;set; }
+
+		[DataMember]
+		public virtual decimal AliquotaRitenuta { get;set; }
+
+		[DataMember]
+		public virtual string CausalePAgamento { get;set; }
+
+		[DataMember]
 		public virtual DatiGeneraliDocumentoDto DatiGeneraliDocumento { get;set; }
+
+	}
+	
+	[DataContract(IsReference = true)]
+	[KnownType(typeof(DatiGeneraliDto))]
+	[KnownType(typeof(DettaglioLineeDto))]
+	[KnownType(typeof(DatiRiepilogoDto))]
+	public partial class DatiBeniServiziDto : IDtoWithKey
+	{
+		public DatiBeniServiziDto()
+		{
+		}
+		
+		public DatiBeniServiziDto(int _id, DatiGeneraliDto _datiGenerali, IList<DettaglioLineeDto> _dettaglioLinees, IList<DatiRiepilogoDto> _datiRiepilogos)
+		{
+			this.Id = _id;
+			this.DatiGenerali = _datiGenerali;
+			this.DettaglioLinees = _dettaglioLinees;
+			this.DatiRiepilogos = _datiRiepilogos;
+		}
+		
+		[DataMember]
+		public virtual string DtoKey { get; set; }
+		
+		[DataMember]
+		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual DatiGeneraliDto DatiGenerali { get;set; }
+
+		[DataMember]
+		public virtual IList<DettaglioLineeDto> DettaglioLinees { get;set; }
+
+		[DataMember]
+		public virtual IList<DatiRiepilogoDto> DatiRiepilogos { get;set; }
+
+	}
+	
+	[DataContract(IsReference = true)]
+	[KnownType(typeof(DatiBeniServiziDto))]
+	public partial class DettaglioLineeDto : IDtoWithKey
+	{
+		public DettaglioLineeDto()
+		{
+		}
+		
+		public DettaglioLineeDto(int _id, int _datiBeniServiziId, DatiBeniServiziDto _datiBeniServizi)
+		{
+			this.Id = _id;
+			this.DatiBeniServiziId = _datiBeniServiziId;
+			this.DatiBeniServizi = _datiBeniServizi;
+		}
+		
+		[DataMember]
+		public virtual string DtoKey { get; set; }
+		
+		[DataMember]
+		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual int DatiBeniServiziId { get;set; }
+
+		[DataMember]
+		public virtual DatiBeniServiziDto DatiBeniServizi { get;set; }
+
+	}
+	
+	[DataContract(IsReference = true)]
+	[KnownType(typeof(DatiBeniServiziDto))]
+	public partial class DatiRiepilogoDto : IDtoWithKey
+	{
+		public DatiRiepilogoDto()
+		{
+		}
+		
+		public DatiRiepilogoDto(int _id, int _datiBeniServiziId, DatiBeniServiziDto _datiBeniServizi)
+		{
+			this.Id = _id;
+			this.DatiBeniServiziId = _datiBeniServiziId;
+			this.DatiBeniServizi = _datiBeniServizi;
+		}
+		
+		[DataMember]
+		public virtual string DtoKey { get; set; }
+		
+		[DataMember]
+		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual int DatiBeniServiziId { get;set; }
+
+		[DataMember]
+		public virtual DatiBeniServiziDto DatiBeniServizi { get;set; }
+
+	}
+	
+	[DataContract(IsReference = true)]
+	[KnownType(typeof(DatiGeneraliDto))]
+	public partial class DatiPagamentoDto : IDtoWithKey
+	{
+		public DatiPagamentoDto()
+		{
+		}
+		
+		public DatiPagamentoDto(int _id, int _datiGeneraliId, DatiGeneraliDto _datiGenerali)
+		{
+			this.Id = _id;
+			this.DatiGeneraliId = _datiGeneraliId;
+			this.DatiGenerali = _datiGenerali;
+		}
+		
+		[DataMember]
+		public virtual string DtoKey { get; set; }
+		
+		[DataMember]
+		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual int DatiGeneraliId { get;set; }
+
+		[DataMember]
+		public virtual DatiGeneraliDto DatiGenerali { get;set; }
 
 	}
 	

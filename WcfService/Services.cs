@@ -481,5 +481,61 @@ namespace WcfService.Services
 	
 	    }
 	}
+	
+	public partial interface IDatiBeniServiziService : IService<DatiBeniServiziDto, DatiBeniServizi>
+	{
+	
+	}
+	
+	public partial class DatiBeniServiziService : Service<DatiBeniServiziDto, DatiBeniServizi>, IDatiBeniServiziService
+	{
+	    public DatiBeniServiziService(IDatiBeniServiziAssembler assembler, IDatiBeniServiziRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDettaglioLineeService : IService<DettaglioLineeDto, DettaglioLinee>
+	{
+	
+	}
+	
+	public partial class DettaglioLineeService : Service<DettaglioLineeDto, DettaglioLinee>, IDettaglioLineeService
+	{
+	    public DettaglioLineeService(IDettaglioLineeAssembler assembler, IDettaglioLineeRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiRiepilogoService : IService<DatiRiepilogoDto, DatiRiepilogo>
+	{
+	
+	}
+	
+	public partial class DatiRiepilogoService : Service<DatiRiepilogoDto, DatiRiepilogo>, IDatiRiepilogoService
+	{
+	    public DatiRiepilogoService(IDatiRiepilogoAssembler assembler, IDatiRiepilogoRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiPagamentoService : IService<DatiPagamentoDto, DatiPagamento>
+	{
+	
+	}
+	
+	public partial class DatiPagamentoService : Service<DatiPagamentoDto, DatiPagamento>, IDatiPagamentoService
+	{
+	    public DatiPagamentoService(IDatiPagamentoAssembler assembler, IDatiPagamentoRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
 }
 #pragma warning restore 1591

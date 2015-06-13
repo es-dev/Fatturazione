@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class DatiRitenuta
+	public partial class DatiBeniServizi
 	{
 		private int _id;
 		public virtual int Id
@@ -37,68 +37,34 @@ namespace DataLayer
 			}
 		}
 		
-		private string _tipoRitenuta;
-		public virtual string TipoRitenuta
+		private DatiGenerali _datiGenerali;
+		public virtual DatiGenerali DatiGenerali
 		{
 			get
 			{
-				return this._tipoRitenuta;
+				return this._datiGenerali;
 			}
 			set
 			{
-				this._tipoRitenuta = value;
+				this._datiGenerali = value;
 			}
 		}
 		
-		private decimal _importoRitenuta;
-		public virtual decimal ImportoRitenuta
+		private IList<DettaglioLinee> _dettaglioLinees = new List<DettaglioLinee>();
+		public virtual IList<DettaglioLinee> DettaglioLinees
 		{
 			get
 			{
-				return this._importoRitenuta;
-			}
-			set
-			{
-				this._importoRitenuta = value;
+				return this._dettaglioLinees;
 			}
 		}
 		
-		private decimal _aliquotaRitenuta;
-		public virtual decimal AliquotaRitenuta
+		private IList<DatiRiepilogo> _datiRiepilogos = new List<DatiRiepilogo>();
+		public virtual IList<DatiRiepilogo> DatiRiepilogos
 		{
 			get
 			{
-				return this._aliquotaRitenuta;
-			}
-			set
-			{
-				this._aliquotaRitenuta = value;
-			}
-		}
-		
-		private string _causalePAgamento;
-		public virtual string CausalePAgamento
-		{
-			get
-			{
-				return this._causalePAgamento;
-			}
-			set
-			{
-				this._causalePAgamento = value;
-			}
-		}
-		
-		private DatiGeneraliDocumento _datiGeneraliDocumento;
-		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
-		{
-			get
-			{
-				return this._datiGeneraliDocumento;
-			}
-			set
-			{
-				this._datiGeneraliDocumento = value;
+				return this._datiRiepilogos;
 			}
 		}
 		

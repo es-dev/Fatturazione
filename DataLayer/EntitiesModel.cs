@@ -226,6 +226,38 @@ namespace DataLayer
 			}
 		}
 		
+		public IQueryable<DatiBeniServizi> DatiBeniServizis 
+		{
+			get
+			{
+				return this.GetAll<DatiBeniServizi>();
+			}
+		}
+		
+		public IQueryable<DettaglioLinee> DettaglioLinees 
+		{
+			get
+			{
+				return this.GetAll<DettaglioLinee>();
+			}
+		}
+		
+		public IQueryable<DatiRiepilogo> DatiRiepilogos 
+		{
+			get
+			{
+				return this.GetAll<DatiRiepilogo>();
+			}
+		}
+		
+		public IQueryable<DatiPagamento> DatiPagamentos 
+		{
+			get
+			{
+				return this.GetAll<DatiPagamento>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -332,6 +364,22 @@ namespace DataLayer
 			get;
 		}
 		IQueryable<DatiRitenuta> DatiRitenutas
+		{
+			get;
+		}
+		IQueryable<DatiBeniServizi> DatiBeniServizis
+		{
+			get;
+		}
+		IQueryable<DettaglioLinee> DettaglioLinees
+		{
+			get;
+		}
+		IQueryable<DatiRiepilogo> DatiRiepilogos
+		{
+			get;
+		}
+		IQueryable<DatiPagamento> DatiPagamentos
 		{
 			get;
 		}

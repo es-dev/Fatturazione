@@ -1665,10 +1665,23 @@ namespace WcfService.Assemblers
 			DatiGeneraliDocumentoAssembler datiGeneraliDocumentoAssembler = new DatiGeneraliDocumentoAssembler();
 			dto.DatiGeneraliDocumento = datiGeneraliDocumentoAssembler.Assemble(entity.DatiGeneraliDocumento);
 
+			DatiBeniServiziAssembler datiBeniServiziAssembler = new DatiBeniServiziAssembler();
+			dto.DatiBeniServizi = datiBeniServiziAssembler.Assemble(entity.DatiBeniServizi);
+
 	    }
 	
 	    public override void AssembleCollections(DatiGenerali entity, DatiGeneraliDto dto)
 	    {
+			DatiPagamentoAssembler datiPagamentoAssembler = new DatiPagamentoAssembler();
+
+			dto.DatiPagamentos = new List<DatiPagamentoDto>();
+			foreach (DatiPagamento item in entity.DatiPagamentos)
+			{
+				var dtoItem = datiPagamentoAssembler.Assemble(item);
+				dtoItem.DatiGenerali = dto;
+				dto.DatiPagamentos.Add(dtoItem);
+			}
+
 	    }
 	
 	}
@@ -1784,6 +1797,10 @@ namespace WcfService.Assemblers
 	        }
 			
 			entity.Id = dto.Id;
+			entity.TipoRitenuta = dto.TipoRitenuta;
+			entity.ImportoRitenuta = dto.ImportoRitenuta;
+			entity.AliquotaRitenuta = dto.AliquotaRitenuta;
+			entity.CausalePAgamento = dto.CausalePAgamento;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -1795,6 +1812,10 @@ namespace WcfService.Assemblers
 			ObjectKey key = KeyUtility.Instance.Create(entity);
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
+			dto.TipoRitenuta = entity.TipoRitenuta;
+			dto.ImportoRitenuta = entity.ImportoRitenuta;
+			dto.AliquotaRitenuta = entity.AliquotaRitenuta;
+			dto.CausalePAgamento = entity.CausalePAgamento;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -1814,6 +1835,276 @@ namespace WcfService.Assemblers
 	
 	
 	public partial class DatiRitenutaAssembler : DatiRitenutaAssemblerBase, IDatiRitenutaAssembler
+	{
+	    
+	}
+	
+	public partial interface IDatiBeniServiziAssembler : IAssembler<DatiBeniServiziDto, DatiBeniServizi>
+	{ 
+	
+	}
+	
+	public partial class DatiBeniServiziAssemblerBase : Assembler<DatiBeniServiziDto, DatiBeniServizi>
+	{
+		/// <summary>
+	    /// Invoked after the DatiBeniServiziDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="DatiBeniServiziDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(DatiBeniServiziDto dto);
+	
+		/// <summary>
+	    /// Invoked after the DatiBeniServizi instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="DatiBeniServizi"/> instance.</param>
+		partial void OnEntityAssembled(DatiBeniServizi entity);
+		
+	    public override DatiBeniServizi Assemble(DatiBeniServizi entity, DatiBeniServiziDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new DatiBeniServizi();
+	        }
+			
+			entity.Id = dto.Id;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override DatiBeniServiziDto Assemble(DatiBeniServizi entity)
+	    {
+	        DatiBeniServiziDto dto = new DatiBeniServiziDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(DatiBeniServizi entity, DatiBeniServiziDto dto)
+	    {
+			DatiGeneraliAssembler datiGeneraliAssembler = new DatiGeneraliAssembler();
+			dto.DatiGenerali = datiGeneraliAssembler.Assemble(entity.DatiGenerali);
+
+	    }
+	
+	    public override void AssembleCollections(DatiBeniServizi entity, DatiBeniServiziDto dto)
+	    {
+			DettaglioLineeAssembler dettaglioLineeAssembler = new DettaglioLineeAssembler();
+
+			dto.DettaglioLinees = new List<DettaglioLineeDto>();
+			foreach (DettaglioLinee item in entity.DettaglioLinees)
+			{
+				var dtoItem = dettaglioLineeAssembler.Assemble(item);
+				dtoItem.DatiBeniServizi = dto;
+				dto.DettaglioLinees.Add(dtoItem);
+			}
+
+			DatiRiepilogoAssembler datiRiepilogoAssembler = new DatiRiepilogoAssembler();
+
+			dto.DatiRiepilogos = new List<DatiRiepilogoDto>();
+			foreach (DatiRiepilogo item in entity.DatiRiepilogos)
+			{
+				var dtoItem = datiRiepilogoAssembler.Assemble(item);
+				dtoItem.DatiBeniServizi = dto;
+				dto.DatiRiepilogos.Add(dtoItem);
+			}
+
+	    }
+	
+	}
+	
+	
+	public partial class DatiBeniServiziAssembler : DatiBeniServiziAssemblerBase, IDatiBeniServiziAssembler
+	{
+	    
+	}
+	
+	public partial interface IDettaglioLineeAssembler : IAssembler<DettaglioLineeDto, DettaglioLinee>
+	{ 
+	
+	}
+	
+	public partial class DettaglioLineeAssemblerBase : Assembler<DettaglioLineeDto, DettaglioLinee>
+	{
+		/// <summary>
+	    /// Invoked after the DettaglioLineeDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="DettaglioLineeDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(DettaglioLineeDto dto);
+	
+		/// <summary>
+	    /// Invoked after the DettaglioLinee instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="DettaglioLinee"/> instance.</param>
+		partial void OnEntityAssembled(DettaglioLinee entity);
+		
+	    public override DettaglioLinee Assemble(DettaglioLinee entity, DettaglioLineeDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new DettaglioLinee();
+	        }
+			
+			entity.Id = dto.Id;
+			entity.DatiBeniServiziId = dto.DatiBeniServiziId;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override DettaglioLineeDto Assemble(DettaglioLinee entity)
+	    {
+	        DettaglioLineeDto dto = new DettaglioLineeDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			dto.DatiBeniServiziId = entity.DatiBeniServiziId;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(DettaglioLinee entity, DettaglioLineeDto dto)
+	    {
+			DatiBeniServiziAssembler datiBeniServiziAssembler = new DatiBeniServiziAssembler();
+			dto.DatiBeniServizi = datiBeniServiziAssembler.Assemble(entity.DatiBeniServizi);
+
+	    }
+	
+	    public override void AssembleCollections(DettaglioLinee entity, DettaglioLineeDto dto)
+	    {
+	    }
+	
+	}
+	
+	
+	public partial class DettaglioLineeAssembler : DettaglioLineeAssemblerBase, IDettaglioLineeAssembler
+	{
+	    
+	}
+	
+	public partial interface IDatiRiepilogoAssembler : IAssembler<DatiRiepilogoDto, DatiRiepilogo>
+	{ 
+	
+	}
+	
+	public partial class DatiRiepilogoAssemblerBase : Assembler<DatiRiepilogoDto, DatiRiepilogo>
+	{
+		/// <summary>
+	    /// Invoked after the DatiRiepilogoDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="DatiRiepilogoDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(DatiRiepilogoDto dto);
+	
+		/// <summary>
+	    /// Invoked after the DatiRiepilogo instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="DatiRiepilogo"/> instance.</param>
+		partial void OnEntityAssembled(DatiRiepilogo entity);
+		
+	    public override DatiRiepilogo Assemble(DatiRiepilogo entity, DatiRiepilogoDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new DatiRiepilogo();
+	        }
+			
+			entity.Id = dto.Id;
+			entity.DatiBeniServiziId = dto.DatiBeniServiziId;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override DatiRiepilogoDto Assemble(DatiRiepilogo entity)
+	    {
+	        DatiRiepilogoDto dto = new DatiRiepilogoDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			dto.DatiBeniServiziId = entity.DatiBeniServiziId;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(DatiRiepilogo entity, DatiRiepilogoDto dto)
+	    {
+			DatiBeniServiziAssembler datiBeniServiziAssembler = new DatiBeniServiziAssembler();
+			dto.DatiBeniServizi = datiBeniServiziAssembler.Assemble(entity.DatiBeniServizi);
+
+	    }
+	
+	    public override void AssembleCollections(DatiRiepilogo entity, DatiRiepilogoDto dto)
+	    {
+	    }
+	
+	}
+	
+	
+	public partial class DatiRiepilogoAssembler : DatiRiepilogoAssemblerBase, IDatiRiepilogoAssembler
+	{
+	    
+	}
+	
+	public partial interface IDatiPagamentoAssembler : IAssembler<DatiPagamentoDto, DatiPagamento>
+	{ 
+	
+	}
+	
+	public partial class DatiPagamentoAssemblerBase : Assembler<DatiPagamentoDto, DatiPagamento>
+	{
+		/// <summary>
+	    /// Invoked after the DatiPagamentoDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="DatiPagamentoDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(DatiPagamentoDto dto);
+	
+		/// <summary>
+	    /// Invoked after the DatiPagamento instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="DatiPagamento"/> instance.</param>
+		partial void OnEntityAssembled(DatiPagamento entity);
+		
+	    public override DatiPagamento Assemble(DatiPagamento entity, DatiPagamentoDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new DatiPagamento();
+	        }
+			
+			entity.Id = dto.Id;
+			entity.DatiGeneraliId = dto.DatiGeneraliId;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override DatiPagamentoDto Assemble(DatiPagamento entity)
+	    {
+	        DatiPagamentoDto dto = new DatiPagamentoDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			dto.DatiGeneraliId = entity.DatiGeneraliId;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(DatiPagamento entity, DatiPagamentoDto dto)
+	    {
+			DatiGeneraliAssembler datiGeneraliAssembler = new DatiGeneraliAssembler();
+			dto.DatiGenerali = datiGeneraliAssembler.Assemble(entity.DatiGenerali);
+
+	    }
+	
+	    public override void AssembleCollections(DatiPagamento entity, DatiPagamentoDto dto)
+	    {
+	    }
+	
+	}
+	
+	
+	public partial class DatiPagamentoAssembler : DatiPagamentoAssemblerBase, IDatiPagamentoAssembler
 	{
 	    
 	}

@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class DatiRitenuta
+	public partial class DatiPagamento
 	{
 		private int _id;
 		public virtual int Id
@@ -37,68 +37,29 @@ namespace DataLayer
 			}
 		}
 		
-		private string _tipoRitenuta;
-		public virtual string TipoRitenuta
+		private int _datiGeneraliId;
+		public virtual int DatiGeneraliId
 		{
 			get
 			{
-				return this._tipoRitenuta;
+				return this._datiGeneraliId;
 			}
 			set
 			{
-				this._tipoRitenuta = value;
+				this._datiGeneraliId = value;
 			}
 		}
 		
-		private decimal _importoRitenuta;
-		public virtual decimal ImportoRitenuta
+		private DatiGenerali _datiGenerali;
+		public virtual DatiGenerali DatiGenerali
 		{
 			get
 			{
-				return this._importoRitenuta;
+				return this._datiGenerali;
 			}
 			set
 			{
-				this._importoRitenuta = value;
-			}
-		}
-		
-		private decimal _aliquotaRitenuta;
-		public virtual decimal AliquotaRitenuta
-		{
-			get
-			{
-				return this._aliquotaRitenuta;
-			}
-			set
-			{
-				this._aliquotaRitenuta = value;
-			}
-		}
-		
-		private string _causalePAgamento;
-		public virtual string CausalePAgamento
-		{
-			get
-			{
-				return this._causalePAgamento;
-			}
-			set
-			{
-				this._causalePAgamento = value;
-			}
-		}
-		
-		private DatiGeneraliDocumento _datiGeneraliDocumento;
-		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
-		{
-			get
-			{
-				return this._datiGeneraliDocumento;
-			}
-			set
-			{
-				this._datiGeneraliDocumento = value;
+				this._datiGenerali = value;
 			}
 		}
 		

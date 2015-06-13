@@ -468,6 +468,12 @@
         <orm:field name="_datiGeneraliDocumento" property="DatiGeneraliDocumento" behavior="readwrite" uniqueId="0b347dda-22fc-4775-99a4-f2ddf91a8f27" type="DataLayer.DatiGeneraliDocumento">
           <orm:inversereference inverse-field="_datiGenerali" uniqueId="12a62baf-8c26-4b80-b4dd-1d62e210f811" />
         </orm:field>
+        <orm:field name="_datiBeniServizi" property="DatiBeniServizi" behavior="readwrite" uniqueId="977f4f17-5781-49ad-a62b-bf1bd8e99c7f" type="DataLayer.DatiBeniServizi">
+          <orm:inversereference inverse-field="_datiGenerali" uniqueId="5105e165-11d4-4c5b-b10a-a342cf5acea4" />
+        </orm:field>
+        <orm:field name="_datiPagamentos" property="DatiPagamentos" behavior="readwrite" uniqueId="897e570b-6982-424f-9a73-77dc12b6db76" type="DataLayer.DatiPagamento">
+          <orm:collection element-class="DataLayer.DatiPagamento" inverse-field="_datiGenerali" order-by="" uniqueId="97896834-ae3b-47f2-a15c-a962175702e7" />
+        </orm:field>
       </orm:class>
       <orm:class name="DatiGeneraliDocumento" uniqueId="a1cd7655-e52a-45fa-bffd-a39241387add">
         <orm:identity>
@@ -478,8 +484,8 @@
         <orm:field name="_divisa" property="Divisa" uniqueId="27dd3dfe-d27f-4a88-989c-e303cb4fcf36" type="System.String" />
         <orm:field name="_data" property="Data" uniqueId="c8a6cac7-f117-4cd4-a548-6bb8f0042274" type="System.DateTime" />
         <orm:field name="_numero" property="Numero" uniqueId="9e546c45-3631-481f-b7be-7c0476c63199" type="System.String" />
-        <orm:field name="_importotTotaleDocumento" property="ImportotTotaleDocumento" uniqueId="0fc44041-e29d-49f7-bc85-9e953da956a1" type="System.String" />
-        <orm:field name="_arrotondamento" property="Arrotondamento" uniqueId="23d5e431-6ab1-4187-b855-bed2f53e8ff9" type="System.String" />
+        <orm:field name="_importotTotaleDocumento" property="ImportotTotaleDocumento" uniqueId="0fc44041-e29d-49f7-bc85-9e953da956a1" type="System.Decimal" />
+        <orm:field name="_arrotondamento" property="Arrotondamento" uniqueId="23d5e431-6ab1-4187-b855-bed2f53e8ff9" type="System.Decimal" />
         <orm:field name="_causale" property="Causale" uniqueId="5276e9e6-8140-46d5-aa25-d82f46da5189" type="System.String" />
         <orm:field name="_datiGenerali" property="DatiGenerali" behavior="readwrite" uniqueId="11cbed73-18ae-4e3a-80c8-10d427fdc466" type="DataLayer.DatiGenerali">
           <orm:reference uniqueId="12a62baf-8c26-4b80-b4dd-1d62e210f811" association-name="DatiGeneraliDocumentoHasDatiGenerali">
@@ -495,9 +501,66 @@
           <orm:single-field field-name="_id" />
         </orm:identity>
         <orm:field name="_id" property="Id" uniqueId="8c5ed7e3-e038-44f1-8fa7-7d1d9e68a394" type="System.Int32" />
+        <orm:field name="_tipoRitenuta" property="TipoRitenuta" uniqueId="9021eaaf-c5c8-4b18-83c3-1bb48e233cd7" type="System.String" />
+        <orm:field name="_importoRitenuta" property="ImportoRitenuta" uniqueId="5cafcdd9-34fc-4ab7-870e-777182b9ca5c" type="System.Decimal" />
+        <orm:field name="_aliquotaRitenuta" property="AliquotaRitenuta" uniqueId="6c736db4-563c-4430-a671-c3aa4d7d2080" type="System.Decimal" />
+        <orm:field name="_causalePAgamento" property="CausalePAgamento" uniqueId="fc4fef5b-53ac-4006-9785-d78db54115c9" type="System.String" />
         <orm:field name="_datiGeneraliDocumento" property="DatiGeneraliDocumento" behavior="readwrite" uniqueId="382cd5ef-66d2-4b8c-ac80-00f6aa48773e" type="DataLayer.DatiGeneraliDocumento">
           <orm:reference uniqueId="daf13a2d-c1a8-4444-af8f-4f6dd75f84e6" association-name="DatiRitenutaHasDatiGeneraliDocumento">
             <orm:sharedfield name="_id" target-class="DataLayer.DatiGeneraliDocumento" target-field="_id" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="DatiBeniServizi" uniqueId="281f0983-4ee0-431c-b35a-6424eb77e566">
+        <orm:identity>
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:field name="_id" property="Id" uniqueId="44446b8b-db81-4c07-9639-1f554cf26927" type="System.Int32" />
+        <orm:field name="_dettaglioLinees" property="DettaglioLinees" behavior="readwrite" uniqueId="2b9a8a5f-2a34-4fd3-837f-f353f78c5531" type="DataLayer.DettaglioLinee">
+          <orm:collection element-class="DataLayer.DettaglioLinee" inverse-field="_datiBeniServizi" order-by="" uniqueId="f6f9a759-c065-45d9-984e-bfa5ef711717" />
+        </orm:field>
+        <orm:field name="_datiRiepilogos" property="DatiRiepilogos" behavior="readwrite" uniqueId="79c49f24-684b-44b0-b785-bfadbde09add" type="DataLayer.DatiRiepilogo">
+          <orm:collection element-class="DataLayer.DatiRiepilogo" inverse-field="_datiBeniServizi" order-by="" uniqueId="d868f9c4-9253-4cfd-b7bc-cf14fac6584f" />
+        </orm:field>
+        <orm:field name="_datiGenerali" property="DatiGenerali" behavior="readwrite" uniqueId="bcd0333a-24c9-453a-ba3d-22a0ebad0b26" type="DataLayer.DatiGenerali">
+          <orm:reference uniqueId="5105e165-11d4-4c5b-b10a-a342cf5acea4" association-name="DatiBeniServiziHasDatiGenerali">
+            <orm:sharedfield name="_id" target-class="DataLayer.DatiGenerali" target-field="_id" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="DettaglioLinee" uniqueId="e991cb3f-2e92-4883-854f-dae451210492">
+        <orm:identity>
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:field name="_id" property="Id" uniqueId="12586648-b621-4a02-9fc7-80815eb16e54" type="System.Int32" />
+        <orm:field name="_datiBeniServiziId" property="DatiBeniServiziId" uniqueId="34793cc2-77df-46a9-8522-b039fcf29410" type="System.Int32" />
+        <orm:field name="_datiBeniServizi" property="DatiBeniServizi" behavior="readwrite" uniqueId="ee5a5a74-6fdc-4ab6-a98e-46aeb21cf3f2" type="DataLayer.DatiBeniServizi">
+          <orm:reference uniqueId="f6f9a759-c065-45d9-984e-bfa5ef711717" association-name="DettaglioLineeHasDatiBeniServizi">
+            <orm:sharedfield name="_datiBeniServiziId" target-class="DataLayer.DatiBeniServizi" target-field="_id" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="DatiRiepilogo" uniqueId="98571f29-61c6-4668-97ce-278ba509e630">
+        <orm:identity>
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:field name="_id" property="Id" uniqueId="b5518336-688b-4294-9b6f-2ecd6cd892aa" type="System.Int32" />
+        <orm:field name="_datiBeniServiziId" property="DatiBeniServiziId" uniqueId="7240f630-e455-4d7a-8c49-7dcd267b9af4" type="System.Int32" />
+        <orm:field name="_datiBeniServizi" property="DatiBeniServizi" behavior="readwrite" uniqueId="07e8b911-4627-4cb8-90f2-6f4778418b43" type="DataLayer.DatiBeniServizi">
+          <orm:reference uniqueId="d868f9c4-9253-4cfd-b7bc-cf14fac6584f" association-name="DatiRiepilogoHasDatiBeniServizi">
+            <orm:sharedfield name="_datiBeniServiziId" target-class="DataLayer.DatiBeniServizi" target-field="_id" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="DatiPagamento" uniqueId="b086eed2-f68b-40e5-afcd-298f357049bb">
+        <orm:identity>
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:field name="_id" property="Id" uniqueId="fb509513-658d-4bf4-b187-2d61be41613e" type="System.Int32" />
+        <orm:field name="_datiGeneraliId" property="DatiGeneraliId" uniqueId="18d491d7-ec10-46a3-9796-cda02606b084" type="System.Int32" />
+        <orm:field name="_datiGenerali" property="DatiGenerali" behavior="readwrite" uniqueId="33a3a45e-08df-45d7-8031-f5a9e2b97fc7" type="DataLayer.DatiGenerali">
+          <orm:reference uniqueId="97896834-ae3b-47f2-a15c-a962175702e7" association-name="DatiPagamentoHasDatiGenerali">
+            <orm:sharedfield name="_datiGeneraliId" target-class="DataLayer.DatiGenerali" target-field="_id" />
           </orm:reference>
         </orm:field>
       </orm:class>
@@ -1253,6 +1316,12 @@
         <classHasNavigationalProperties Id="09018d4a-dcfa-40f2-948e-4b949b8cbe57">
           <NavigationalProperty Id="0b347dda-22fc-4775-99a4-f2ddf91a8f27" name="DatiGeneraliDocumento" type="DatiGeneraliDocumento" label="DatiGeneraliDocumento : DatiGeneraliDocumento" nullable="true" kind="Persistent" fieldName="_datiGeneraliDocumento" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e2ee2394-456a-455a-90cc-d0ab7c076f30">
+          <NavigationalProperty Id="977f4f17-5781-49ad-a62b-bf1bd8e99c7f" name="DatiBeniServizi" type="DatiBeniServizi" label="DatiBeniServizi : DatiBeniServizi" nullable="true" kind="Persistent" fieldName="_datiBeniServizi" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="4addb6a4-bab8-4b94-a6d6-d2a473eea751">
+          <NavigationalProperty Id="897e570b-6982-424f-9a73-77dc12b6db76" name="DatiPagamentos" type="IList&lt;DatiPagamento&gt;" label="DatiPagamentos : IList&lt;DatiPagamento&gt;" nullable="true" kind="Persistent" fieldName="_datiPagamentos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="a1cd7655-e52a-45fa-bffd-a39241387add" name="DatiGeneraliDocumento" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -1261,8 +1330,8 @@
       <Property Id="27dd3dfe-d27f-4a88-989c-e303cb4fcf36" name="Divisa" label="Divisa : String" fieldName="_divisa" />
       <Property Id="c8a6cac7-f117-4cd4-a548-6bb8f0042274" name="Data" type="DateTime" label="Data : DateTime" fieldName="_data" />
       <Property Id="9e546c45-3631-481f-b7be-7c0476c63199" name="Numero" label="Numero : String" fieldName="_numero" />
-      <Property Id="0fc44041-e29d-49f7-bc85-9e953da956a1" name="ImportotTotaleDocumento" label="ImportotTotaleDocumento : String" fieldName="_importotTotaleDocumento" />
-      <Property Id="23d5e431-6ab1-4187-b855-bed2f53e8ff9" name="Arrotondamento" label="Arrotondamento : String" fieldName="_arrotondamento" />
+      <Property Id="0fc44041-e29d-49f7-bc85-9e953da956a1" name="ImportotTotaleDocumento" type="Decimal" label="ImportotTotaleDocumento : Decimal" fieldName="_importotTotaleDocumento" />
+      <Property Id="23d5e431-6ab1-4187-b855-bed2f53e8ff9" name="Arrotondamento" type="Decimal" label="Arrotondamento : Decimal" fieldName="_arrotondamento" />
       <Property Id="5276e9e6-8140-46d5-aa25-d82f46da5189" name="Causale" label="Causale : String" fieldName="_causale" />
       <AssociationTargets>
         <Association Id="12a62baf-8c26-4b80-b4dd-1d62e210f811" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="DatiGeneraliDocumentoHasDatiGenerali">
@@ -1290,6 +1359,10 @@
     </DomainClass>
     <DomainClass Id="f2dbbb09-8707-4bac-a0f9-d73e086ea634" name="DatiRitenuta" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="8c5ed7e3-e038-44f1-8fa7-7d1d9e68a394" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" fieldName="_id" />
+      <Property Id="9021eaaf-c5c8-4b18-83c3-1bb48e233cd7" name="TipoRitenuta" label="TipoRitenuta : String" fieldName="_tipoRitenuta" />
+      <Property Id="5cafcdd9-34fc-4ab7-870e-777182b9ca5c" name="ImportoRitenuta" type="Decimal" label="ImportoRitenuta : Decimal" fieldName="_importoRitenuta" />
+      <Property Id="6c736db4-563c-4430-a671-c3aa4d7d2080" name="AliquotaRitenuta" type="Decimal" label="AliquotaRitenuta : Decimal" fieldName="_aliquotaRitenuta" />
+      <Property Id="fc4fef5b-53ac-4006-9785-d78db54115c9" name="CausalePAgamento" label="CausalePAgamento : String" fieldName="_causalePAgamento" />
       <AssociationTargets>
         <Association Id="daf13a2d-c1a8-4444-af8f-4f6dd75f84e6" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="DatiRitenutaHasDatiGeneraliDocumento">
           <DomainClassMoniker name="/EntitiesModel/DatiGeneraliDocumento" />
@@ -1308,6 +1381,107 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="365d27a9-db99-4010-848a-b3302b559446">
           <NavigationalProperty Id="382cd5ef-66d2-4b8c-ac80-00f6aa48773e" name="DatiGeneraliDocumento" type="DatiGeneraliDocumento" label="DatiGeneraliDocumento : DatiGeneraliDocumento" nullable="true" kind="Persistent" fieldName="_datiGeneraliDocumento" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="281f0983-4ee0-431c-b35a-6424eb77e566" name="DatiBeniServizi" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="44446b8b-db81-4c07-9639-1f554cf26927" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" fieldName="_id" />
+      <AssociationTargets>
+        <Association Id="5105e165-11d4-4c5b-b10a-a342cf5acea4" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="DatiBeniServiziHasDatiGenerali">
+          <DomainClassMoniker name="/EntitiesModel/DatiGenerali" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="fe9e5408-3218-48f8-a48c-4955a8a09071">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiGenerali/DatiBeniServizi" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="d355197e-d319-4c94-a074-46dd9b89d0f2">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiBeniServizi/DatiGenerali" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="ffaa1fe6-bf60-4f32-a9ae-33d005bd18c0">
+          <NavigationalProperty Id="2b9a8a5f-2a34-4fd3-837f-f353f78c5531" name="DettaglioLinees" type="IList&lt;DettaglioLinee&gt;" label="DettaglioLinees : IList&lt;DettaglioLinee&gt;" nullable="true" kind="Persistent" fieldName="_dettaglioLinees" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="9103ab77-36f1-4fd2-ba4e-acb62e8620a1">
+          <NavigationalProperty Id="79c49f24-684b-44b0-b785-bfadbde09add" name="DatiRiepilogos" type="IList&lt;DatiRiepilogo&gt;" label="DatiRiepilogos : IList&lt;DatiRiepilogo&gt;" nullable="true" kind="Persistent" fieldName="_datiRiepilogos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e02ac36e-c074-45c4-9204-cea53acbfeb1">
+          <NavigationalProperty Id="bcd0333a-24c9-453a-ba3d-22a0ebad0b26" name="DatiGenerali" type="DatiGenerali" label="DatiGenerali : DatiGenerali" nullable="true" kind="Persistent" fieldName="_datiGenerali" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="e991cb3f-2e92-4883-854f-dae451210492" name="DettaglioLinee" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="12586648-b621-4a02-9fc7-80815eb16e54" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" fieldName="_id" />
+      <Property Id="34793cc2-77df-46a9-8522-b039fcf29410" name="DatiBeniServiziId" type="Int32" label="DatiBeniServiziId : Int32" fieldName="_datiBeniServiziId" />
+      <AssociationTargets>
+        <Association Id="f6f9a759-c065-45d9-984e-bfa5ef711717" SourceMultiplicity="ZeroOne" name="DettaglioLineeHasDatiBeniServizi">
+          <DomainClassMoniker name="/EntitiesModel/DatiBeniServizi" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="8cdfd421-3e77-437c-8abc-d268f3c7e0c8">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiBeniServizi/DettaglioLinees" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="a6106947-9e8d-4bb3-9fbf-b347234a32e5">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DettaglioLinee/DatiBeniServizi" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="1a6a7de0-97a8-49b6-aaf8-2ceba3fa5a93">
+          <NavigationalProperty Id="ee5a5a74-6fdc-4ab6-a98e-46aeb21cf3f2" name="DatiBeniServizi" type="DatiBeniServizi" label="DatiBeniServizi : DatiBeniServizi" nullable="true" kind="Persistent" fieldName="_datiBeniServizi" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="98571f29-61c6-4668-97ce-278ba509e630" name="DatiRiepilogo" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="b5518336-688b-4294-9b6f-2ecd6cd892aa" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" fieldName="_id" />
+      <Property Id="7240f630-e455-4d7a-8c49-7dcd267b9af4" name="DatiBeniServiziId" type="Int32" label="DatiBeniServiziId : Int32" fieldName="_datiBeniServiziId" />
+      <AssociationTargets>
+        <Association Id="d868f9c4-9253-4cfd-b7bc-cf14fac6584f" SourceMultiplicity="ZeroOne" name="DatiRiepilogoHasDatiBeniServizi">
+          <DomainClassMoniker name="/EntitiesModel/DatiBeniServizi" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="589f80ee-db5a-43f4-be34-eb2e3a29e860">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiBeniServizi/DatiRiepilogos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4c813ca3-1a7c-4492-bba7-8f01d98cb2e5">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiRiepilogo/DatiBeniServizi" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="5d3a6a88-ffbf-47f1-960d-e9b0392899b4">
+          <NavigationalProperty Id="07e8b911-4627-4cb8-90f2-6f4778418b43" name="DatiBeniServizi" type="DatiBeniServizi" label="DatiBeniServizi : DatiBeniServizi" nullable="true" kind="Persistent" fieldName="_datiBeniServizi" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="b086eed2-f68b-40e5-afcd-298f357049bb" name="DatiPagamento" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="fb509513-658d-4bf4-b187-2d61be41613e" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" fieldName="_id" />
+      <Property Id="18d491d7-ec10-46a3-9796-cda02606b084" name="DatiGeneraliId" type="Int32" label="DatiGeneraliId : Int32" fieldName="_datiGeneraliId" />
+      <AssociationTargets>
+        <Association Id="97896834-ae3b-47f2-a15c-a962175702e7" SourceMultiplicity="ZeroOne" name="DatiPagamentoHasDatiGenerali">
+          <DomainClassMoniker name="/EntitiesModel/DatiGenerali" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="21a9224d-da1a-4ca9-8be1-1b4a688c42e2">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiGenerali/DatiPagamentos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="502fded7-9d3e-465e-b8a0-9fef833327b9">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiPagamento/DatiGenerali" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="13f23048-a328-4666-809c-d94b3d69dada">
+          <NavigationalProperty Id="33a3a45e-08df-45d7-8031-f5a9e2b97fc7" name="DatiGenerali" type="DatiGenerali" label="DatiGenerali : DatiGenerali" nullable="true" kind="Persistent" fieldName="_datiGenerali" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1337,6 +1511,10 @@
         <entitySetProperty name="DatiGeneralis" namespace="DataLayer" type="DatiGenerali" label="DatiGeneralis : IQueryable&lt;DataLayer.DatiGenerali&gt;" />
         <entitySetProperty name="DatiGeneraliDocumentos" namespace="DataLayer" type="DatiGeneraliDocumento" label="DatiGeneraliDocumentos : IQueryable&lt;DataLayer.DatiGeneraliDocumento&gt;" />
         <entitySetProperty name="DatiRitenutas" namespace="DataLayer" type="DatiRitenuta" label="DatiRitenutas : IQueryable&lt;DataLayer.DatiRitenuta&gt;" />
+        <entitySetProperty name="DatiBeniServizis" namespace="DataLayer" type="DatiBeniServizi" label="DatiBeniServizis : IQueryable&lt;DataLayer.DatiBeniServizi&gt;" />
+        <entitySetProperty name="DettaglioLinees" namespace="DataLayer" type="DettaglioLinee" label="DettaglioLinees : IQueryable&lt;DataLayer.DettaglioLinee&gt;" />
+        <entitySetProperty name="DatiRiepilogos" namespace="DataLayer" type="DatiRiepilogo" label="DatiRiepilogos : IQueryable&lt;DataLayer.DatiRiepilogo&gt;" />
+        <entitySetProperty name="DatiPagamentos" namespace="DataLayer" type="DatiPagamento" label="DatiPagamentos : IQueryable&lt;DataLayer.DatiPagamento&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

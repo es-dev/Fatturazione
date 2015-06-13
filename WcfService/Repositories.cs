@@ -352,5 +352,57 @@ namespace WcfService.Repositories
 	    {
 	    }
 	}
+	
+	public partial interface IDatiBeniServiziRepository : IRepository<DatiBeniServizi>
+	{ 
+	
+	}
+	
+	public partial class DatiBeniServiziRepository : Repository<DatiBeniServizi>, IDatiBeniServiziRepository
+	{
+	    public DatiBeniServiziRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDettaglioLineeRepository : IRepository<DettaglioLinee>
+	{ 
+	
+	}
+	
+	public partial class DettaglioLineeRepository : Repository<DettaglioLinee>, IDettaglioLineeRepository
+	{
+	    public DettaglioLineeRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiRiepilogoRepository : IRepository<DatiRiepilogo>
+	{ 
+	
+	}
+	
+	public partial class DatiRiepilogoRepository : Repository<DatiRiepilogo>, IDatiRiepilogoRepository
+	{
+	    public DatiRiepilogoRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiPagamentoRepository : IRepository<DatiPagamento>
+	{ 
+	
+	}
+	
+	public partial class DatiPagamentoRepository : Repository<DatiPagamento>, IDatiPagamentoRepository
+	{
+	    public DatiPagamentoRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
 }
 #pragma warning restore 1591

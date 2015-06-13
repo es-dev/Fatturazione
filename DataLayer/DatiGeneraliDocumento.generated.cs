@@ -89,8 +89,8 @@ namespace DataLayer
 			}
 		}
 		
-		private string _importotTotaleDocumento;
-		public virtual string ImportotTotaleDocumento
+		private decimal _importotTotaleDocumento;
+		public virtual decimal ImportotTotaleDocumento
 		{
 			get
 			{
@@ -102,8 +102,8 @@ namespace DataLayer
 			}
 		}
 		
-		private string _arrotondamento;
-		public virtual string Arrotondamento
+		private decimal _arrotondamento;
+		public virtual decimal Arrotondamento
 		{
 			get
 			{
