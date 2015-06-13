@@ -72,66 +72,95 @@
   <ItemGroup>
     <Compile Include="Account.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Anagrafica.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="AnagraficaCliente.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="AnagraficaPA.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Azienda.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="CedentePrestatore.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CessionarioCommittente.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cliente.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ContattiTrasmittente.generated.cs">
+    <Compile Include="Contatti.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatiAnagraficiCedente.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatiGenerali.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DatiGeneraliDocumento.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DatiRitenuta.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
     <Compile Include="DatiTrasmissione.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="EntitiesModel.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Fattura.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="FatturaElettronicaBody.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="FatturaElettronicaHeader.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="IdFiscale.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Incasso.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IscrizioneREA.generated.cs">
+    <Compile Include="Indirizzo.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sede.generated.cs">
-      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
-    </Compile>
     <Compile Include="Socio.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Trasmissione.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

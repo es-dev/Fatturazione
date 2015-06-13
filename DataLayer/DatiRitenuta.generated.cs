@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class ContattiTrasmittente
+	public partial class DatiRitenuta
 	{
 		private int _id;
 		public virtual int Id
@@ -37,42 +37,16 @@ namespace DataLayer
 			}
 		}
 		
-		private string _telefono;
-		public virtual string Telefono
+		private DatiGeneraliDocumento _datiGeneraliDocumento;
+		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
 		{
 			get
 			{
-				return this._telefono;
+				return this._datiGeneraliDocumento;
 			}
 			set
 			{
-				this._telefono = value;
-			}
-		}
-		
-		private string _email;
-		public virtual string Email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				this._email = value;
-			}
-		}
-		
-		private DatiTrasmissione _datiTrasmissione;
-		public virtual DatiTrasmissione DatiTrasmissione
-		{
-			get
-			{
-				return this._datiTrasmissione;
-			}
-			set
-			{
-				this._datiTrasmissione = value;
+				this._datiGeneraliDocumento = value;
 			}
 		}
 		

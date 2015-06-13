@@ -115,6 +115,32 @@ namespace DataLayer
 			}
 		}
 		
+		private int _cedentePrestatoreId;
+		public virtual int CedentePrestatoreId
+		{
+			get
+			{
+				return this._cedentePrestatoreId;
+			}
+			set
+			{
+				this._cedentePrestatoreId = value;
+			}
+		}
+		
+		private int _cessionarioCommittenteId;
+		public virtual int CessionarioCommittenteId
+		{
+			get
+			{
+				return this._cessionarioCommittenteId;
+			}
+			set
+			{
+				this._cessionarioCommittenteId = value;
+			}
+		}
+		
 		private CedentePrestatore _cedentePrestatore;
 		public virtual CedentePrestatore CedentePrestatore
 		{
@@ -125,6 +151,19 @@ namespace DataLayer
 			set
 			{
 				this._cedentePrestatore = value;
+			}
+		}
+		
+		private CessionarioCommittente _cessionarioCommittente;
+		public virtual CessionarioCommittente CessionarioCommittente
+		{
+			get
+			{
+				return this._cessionarioCommittente;
+			}
+			set
+			{
+				this._cessionarioCommittente = value;
 			}
 		}
 		

@@ -37,6 +37,19 @@ namespace DataLayer
 			}
 		}
 		
+		private int _fatturaId;
+		public virtual int FatturaId
+		{
+			get
+			{
+				return this._fatturaId;
+			}
+			set
+			{
+				this._fatturaId = value;
+			}
+		}
+		
 		private Fattura _fattura;
 		public virtual Fattura Fattura
 		{
@@ -47,6 +60,19 @@ namespace DataLayer
 			set
 			{
 				this._fattura = value;
+			}
+		}
+		
+		private DatiGenerali _datiGenerali;
+		public virtual DatiGenerali DatiGenerali
+		{
+			get
+			{
+				return this._datiGenerali;
+			}
+			set
+			{
+				this._datiGenerali = value;
 			}
 		}
 		

@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class FatturaElettronicaHeader
+	public partial class CessionarioCommittente
 	{
 		private int _id;
 		public virtual int Id
@@ -37,55 +37,34 @@ namespace DataLayer
 			}
 		}
 		
-		private Fattura _fattura;
-		public virtual Fattura Fattura
+		private FatturaElettronicaHeader _fatturaElettronicaHeader;
+		public virtual FatturaElettronicaHeader FatturaElettronicaHeader
 		{
 			get
 			{
-				return this._fattura;
+				return this._fatturaElettronicaHeader;
 			}
 			set
 			{
-				this._fattura = value;
+				this._fatturaElettronicaHeader = value;
 			}
 		}
 		
-		private DatiTrasmissione _datiTrasmissione;
-		public virtual DatiTrasmissione DatiTrasmissione
+		private IList<DatiAnagraficiCedente> _datiAnagraficiCedentes = new List<DatiAnagraficiCedente>();
+		public virtual IList<DatiAnagraficiCedente> DatiAnagraficiCedentes
 		{
 			get
 			{
-				return this._datiTrasmissione;
-			}
-			set
-			{
-				this._datiTrasmissione = value;
+				return this._datiAnagraficiCedentes;
 			}
 		}
 		
-		private CedentePrestatore _cedentePrestatore;
-		public virtual CedentePrestatore CedentePrestatore
+		private IList<Indirizzo> _indirizzos = new List<Indirizzo>();
+		public virtual IList<Indirizzo> Indirizzos
 		{
 			get
 			{
-				return this._cedentePrestatore;
-			}
-			set
-			{
-				this._cedentePrestatore = value;
-			}
-		}
-		
-		private CessionarioCommittente _cessionarioCommittente;
-		public virtual CessionarioCommittente CessionarioCommittente
-		{
-			get
-			{
-				return this._cessionarioCommittente;
-			}
-			set
-			{
-				this._cessionarioCommittente = value;
+				return this._indirizzos;
 			}
 		}
 		

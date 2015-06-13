@@ -81,6 +81,15 @@ namespace DataLayer
 			}
 		}
 		
+		private IList<FatturaElettronicaBody> _fatturaElettronicaBodies = new List<FatturaElettronicaBody>();
+		public virtual IList<FatturaElettronicaBody> FatturaElettronicaBodies
+		{
+			get
+			{
+				return this._fatturaElettronicaBodies;
+			}
+		}
+		
 		private FatturaElettronicaHeader _fatturaElettronicaHeader;
 		public virtual FatturaElettronicaHeader FatturaElettronicaHeader
 		{
@@ -91,19 +100,6 @@ namespace DataLayer
 			set
 			{
 				this._fatturaElettronicaHeader = value;
-			}
-		}
-		
-		private FatturaElettronicaBody _fatturaElettronicaBody;
-		public virtual FatturaElettronicaBody FatturaElettronicaBody
-		{
-			get
-			{
-				return this._fatturaElettronicaBody;
-			}
-			set
-			{
-				this._fatturaElettronicaBody = value;
 			}
 		}
 		
