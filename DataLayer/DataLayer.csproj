@@ -98,9 +98,9 @@
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
     <Compile Include="EntitiesModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Fattura.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
@@ -132,12 +132,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <OpenAccessDeploy Include="EntitiesModel.rlinq">
-      <Generator>MetaModelCodeGenerator</Generator>
-      <LastGenOutput>EntitiesModel.cs</LastGenOutput>
-    </OpenAccessDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="EntitiesModel.rlinq.diagram">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
@@ -152,6 +146,12 @@
       <Project>{67131adf-23de-46cf-888b-9afd6f648405}</Project>
       <Name>ES.Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <OpenAccessDeploy Include="EntitiesModel.rlinq">
+      <Generator>MetaModelCodeGenerator</Generator>
+      <LastGenOutput>EntitiesModel.cs</LastGenOutput>
+    </OpenAccessDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
