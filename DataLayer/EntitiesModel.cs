@@ -146,11 +146,11 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<ContattiTrasmittente> ContattiTrasmittentes 
+		public IQueryable<Contatti> Contattis 
 		{
 			get
 			{
-				return this.GetAll<ContattiTrasmittente>();
+				return this.GetAll<Contatti>();
 			}
 		}
 		
@@ -178,19 +178,11 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<Sede> Sedes 
+		public IQueryable<Indirizzo> Indirizzos 
 		{
 			get
 			{
-				return this.GetAll<Sede>();
-			}
-		}
-		
-		public IQueryable<IscrizioneREA> IscrizioneREAs 
-		{
-			get
-			{
-				return this.GetAll<IscrizioneREA>();
+				return this.GetAll<Indirizzo>();
 			}
 		}
 		
@@ -199,6 +191,38 @@ namespace DataLayer
 			get
 			{
 				return this.GetAll<Account>();
+			}
+		}
+		
+		public IQueryable<CessionarioCommittente> CessionarioCommittentes 
+		{
+			get
+			{
+				return this.GetAll<CessionarioCommittente>();
+			}
+		}
+		
+		public IQueryable<DatiGenerali> DatiGeneralis 
+		{
+			get
+			{
+				return this.GetAll<DatiGenerali>();
+			}
+		}
+		
+		public IQueryable<DatiGeneraliDocumento> DatiGeneraliDocumentos 
+		{
+			get
+			{
+				return this.GetAll<DatiGeneraliDocumento>();
+			}
+		}
+		
+		public IQueryable<DatiRitenuta> DatiRitenutas 
+		{
+			get
+			{
+				return this.GetAll<DatiRitenuta>();
 			}
 		}
 		
@@ -271,7 +295,7 @@ namespace DataLayer
 		{
 			get;
 		}
-		IQueryable<ContattiTrasmittente> ContattiTrasmittentes
+		IQueryable<Contatti> Contattis
 		{
 			get;
 		}
@@ -287,15 +311,27 @@ namespace DataLayer
 		{
 			get;
 		}
-		IQueryable<Sede> Sedes
-		{
-			get;
-		}
-		IQueryable<IscrizioneREA> IscrizioneREAs
+		IQueryable<Indirizzo> Indirizzos
 		{
 			get;
 		}
 		IQueryable<Account> Accounts
+		{
+			get;
+		}
+		IQueryable<CessionarioCommittente> CessionarioCommittentes
+		{
+			get;
+		}
+		IQueryable<DatiGenerali> DatiGeneralis
+		{
+			get;
+		}
+		IQueryable<DatiGeneraliDocumento> DatiGeneraliDocumentos
+		{
+			get;
+		}
+		IQueryable<DatiRitenuta> DatiRitenutas
 		{
 			get;
 		}

@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class IscrizioneREA
+	public partial class Contatti
 	{
 		private int _id;
 		public virtual int Id
@@ -37,68 +37,68 @@ namespace DataLayer
 			}
 		}
 		
-		private string _ufficio;
-		public virtual string Ufficio
+		private string _telefono;
+		public virtual string Telefono
 		{
 			get
 			{
-				return this._ufficio;
+				return this._telefono;
 			}
 			set
 			{
-				this._ufficio = value;
+				this._telefono = value;
 			}
 		}
 		
-		private string _numeroREA;
-		public virtual string NumeroREA
+		private string _email;
+		public virtual string Email
 		{
 			get
 			{
-				return this._numeroREA;
+				return this._email;
 			}
 			set
 			{
-				this._numeroREA = value;
+				this._email = value;
 			}
 		}
 		
-		private string _capitaleSociale;
-		public virtual string CapitaleSociale
+		private int _trasmittenteId;
+		public virtual int TrasmittenteId
 		{
 			get
 			{
-				return this._capitaleSociale;
+				return this._trasmittenteId;
 			}
 			set
 			{
-				this._capitaleSociale = value;
+				this._trasmittenteId = value;
 			}
 		}
 		
-		private string _socioUnico;
-		public virtual string SocioUnico
+		private int _cedentePrestatoreId;
+		public virtual int CedentePrestatoreId
 		{
 			get
 			{
-				return this._socioUnico;
+				return this._cedentePrestatoreId;
 			}
 			set
 			{
-				this._socioUnico = value;
+				this._cedentePrestatoreId = value;
 			}
 		}
 		
-		private string _statoLiquidazione;
-		public virtual string StatoLiquidazione
+		private DatiTrasmissione _datiTrasmissione;
+		public virtual DatiTrasmissione DatiTrasmissione
 		{
 			get
 			{
-				return this._statoLiquidazione;
+				return this._datiTrasmissione;
 			}
 			set
 			{
-				this._statoLiquidazione = value;
+				this._datiTrasmissione = value;
 			}
 		}
 		

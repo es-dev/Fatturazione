@@ -342,14 +342,14 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IContattiTrasmittenteService : IService<ContattiTrasmittenteDto, ContattiTrasmittente>
+	public partial interface IContattiService : IService<ContattiDto, Contatti>
 	{
 	
 	}
 	
-	public partial class ContattiTrasmittenteService : Service<ContattiTrasmittenteDto, ContattiTrasmittente>, IContattiTrasmittenteService
+	public partial class ContattiService : Service<ContattiDto, Contatti>, IContattiService
 	{
-	    public ContattiTrasmittenteService(IContattiTrasmittenteAssembler assembler, IContattiTrasmittenteRepository repository)
+	    public ContattiService(IContattiAssembler assembler, IContattiRepository repository)
 	        : base(assembler, repository)
 	    {
 	
@@ -398,28 +398,14 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface ISedeService : IService<SedeDto, Sede>
+	public partial interface IIndirizzoService : IService<IndirizzoDto, Indirizzo>
 	{
 	
 	}
 	
-	public partial class SedeService : Service<SedeDto, Sede>, ISedeService
+	public partial class IndirizzoService : Service<IndirizzoDto, Indirizzo>, IIndirizzoService
 	{
-	    public SedeService(ISedeAssembler assembler, ISedeRepository repository)
-	        : base(assembler, repository)
-	    {
-	
-	    }
-	}
-	
-	public partial interface IIscrizioneREAService : IService<IscrizioneREADto, IscrizioneREA>
-	{
-	
-	}
-	
-	public partial class IscrizioneREAService : Service<IscrizioneREADto, IscrizioneREA>, IIscrizioneREAService
-	{
-	    public IscrizioneREAService(IIscrizioneREAAssembler assembler, IIscrizioneREARepository repository)
+	    public IndirizzoService(IIndirizzoAssembler assembler, IIndirizzoRepository repository)
 	        : base(assembler, repository)
 	    {
 	
@@ -434,6 +420,62 @@ namespace WcfService.Services
 	public partial class AccountService : Service<AccountDto, Account>, IAccountService
 	{
 	    public AccountService(IAccountAssembler assembler, IAccountRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface ICessionarioCommittenteService : IService<CessionarioCommittenteDto, CessionarioCommittente>
+	{
+	
+	}
+	
+	public partial class CessionarioCommittenteService : Service<CessionarioCommittenteDto, CessionarioCommittente>, ICessionarioCommittenteService
+	{
+	    public CessionarioCommittenteService(ICessionarioCommittenteAssembler assembler, ICessionarioCommittenteRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiGeneraliService : IService<DatiGeneraliDto, DatiGenerali>
+	{
+	
+	}
+	
+	public partial class DatiGeneraliService : Service<DatiGeneraliDto, DatiGenerali>, IDatiGeneraliService
+	{
+	    public DatiGeneraliService(IDatiGeneraliAssembler assembler, IDatiGeneraliRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiGeneraliDocumentoService : IService<DatiGeneraliDocumentoDto, DatiGeneraliDocumento>
+	{
+	
+	}
+	
+	public partial class DatiGeneraliDocumentoService : Service<DatiGeneraliDocumentoDto, DatiGeneraliDocumento>, IDatiGeneraliDocumentoService
+	{
+	    public DatiGeneraliDocumentoService(IDatiGeneraliDocumentoAssembler assembler, IDatiGeneraliDocumentoRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiRitenutaService : IService<DatiRitenutaDto, DatiRitenuta>
+	{
+	
+	}
+	
+	public partial class DatiRitenutaService : Service<DatiRitenutaDto, DatiRitenuta>, IDatiRitenutaService
+	{
+	    public DatiRitenutaService(IDatiRitenutaAssembler assembler, IDatiRitenutaRepository repository)
 	        : base(assembler, repository)
 	    {
 	

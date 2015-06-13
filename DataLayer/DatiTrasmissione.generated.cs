@@ -98,16 +98,12 @@ namespace DataLayer
 			}
 		}
 		
-		private ContattiTrasmittente _contattiTrasmittente;
-		public virtual ContattiTrasmittente ContattiTrasmittente
+		private IList<Contatti> _contattis = new List<Contatti>();
+		public virtual IList<Contatti> Contattis
 		{
 			get
 			{
-				return this._contattiTrasmittente;
-			}
-			set
-			{
-				this._contattiTrasmittente = value;
+				return this._contattis;
 			}
 		}
 		

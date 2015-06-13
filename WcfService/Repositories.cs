@@ -223,14 +223,14 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface IContattiTrasmittenteRepository : IRepository<ContattiTrasmittente>
+	public partial interface IContattiRepository : IRepository<Contatti>
 	{ 
 	
 	}
 	
-	public partial class ContattiTrasmittenteRepository : Repository<ContattiTrasmittente>, IContattiTrasmittenteRepository
+	public partial class ContattiRepository : Repository<Contatti>, IContattiRepository
 	{
-	    public ContattiTrasmittenteRepository(IEntitiesModelUnitOfWork unitOfWork)
+	    public ContattiRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }
@@ -275,27 +275,14 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface ISedeRepository : IRepository<Sede>
+	public partial interface IIndirizzoRepository : IRepository<Indirizzo>
 	{ 
 	
 	}
 	
-	public partial class SedeRepository : Repository<Sede>, ISedeRepository
+	public partial class IndirizzoRepository : Repository<Indirizzo>, IIndirizzoRepository
 	{
-	    public SedeRepository(IEntitiesModelUnitOfWork unitOfWork)
-	        : base(unitOfWork)
-	    {
-	    }
-	}
-	
-	public partial interface IIscrizioneREARepository : IRepository<IscrizioneREA>
-	{ 
-	
-	}
-	
-	public partial class IscrizioneREARepository : Repository<IscrizioneREA>, IIscrizioneREARepository
-	{
-	    public IscrizioneREARepository(IEntitiesModelUnitOfWork unitOfWork)
+	    public IndirizzoRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }
@@ -309,6 +296,58 @@ namespace WcfService.Repositories
 	public partial class AccountRepository : Repository<Account>, IAccountRepository
 	{
 	    public AccountRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface ICessionarioCommittenteRepository : IRepository<CessionarioCommittente>
+	{ 
+	
+	}
+	
+	public partial class CessionarioCommittenteRepository : Repository<CessionarioCommittente>, ICessionarioCommittenteRepository
+	{
+	    public CessionarioCommittenteRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiGeneraliRepository : IRepository<DatiGenerali>
+	{ 
+	
+	}
+	
+	public partial class DatiGeneraliRepository : Repository<DatiGenerali>, IDatiGeneraliRepository
+	{
+	    public DatiGeneraliRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiGeneraliDocumentoRepository : IRepository<DatiGeneraliDocumento>
+	{ 
+	
+	}
+	
+	public partial class DatiGeneraliDocumentoRepository : Repository<DatiGeneraliDocumento>, IDatiGeneraliDocumentoRepository
+	{
+	    public DatiGeneraliDocumentoRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiRitenutaRepository : IRepository<DatiRitenuta>
+	{ 
+	
+	}
+	
+	public partial class DatiRitenutaRepository : Repository<DatiRitenuta>, IDatiRitenutaRepository
+	{
+	    public DatiRitenutaRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }
