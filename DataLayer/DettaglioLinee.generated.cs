@@ -50,6 +50,110 @@ namespace DataLayer
 			}
 		}
 		
+		private string _numeroLinea;
+		public virtual string NumeroLinea
+		{
+			get
+			{
+				return this._numeroLinea;
+			}
+			set
+			{
+				this._numeroLinea = value;
+			}
+		}
+		
+		private string _descrizione;
+		public virtual string Descrizione
+		{
+			get
+			{
+				return this._descrizione;
+			}
+			set
+			{
+				this._descrizione = value;
+			}
+		}
+		
+		private decimal _prezzoUnitario;
+		public virtual decimal PrezzoUnitario
+		{
+			get
+			{
+				return this._prezzoUnitario;
+			}
+			set
+			{
+				this._prezzoUnitario = value;
+			}
+		}
+		
+		private decimal _prezzoTotale;
+		public virtual decimal PrezzoTotale
+		{
+			get
+			{
+				return this._prezzoTotale;
+			}
+			set
+			{
+				this._prezzoTotale = value;
+			}
+		}
+		
+		private decimal _aliquotaIVA;
+		public virtual decimal AliquotaIVA
+		{
+			get
+			{
+				return this._aliquotaIVA;
+			}
+			set
+			{
+				this._aliquotaIVA = value;
+			}
+		}
+		
+		private string _ritenuta;
+		public virtual string Ritenuta
+		{
+			get
+			{
+				return this._ritenuta;
+			}
+			set
+			{
+				this._ritenuta = value;
+			}
+		}
+		
+		private DateTime _dataInizioPeriodo;
+		public virtual DateTime DataInizioPeriodo
+		{
+			get
+			{
+				return this._dataInizioPeriodo;
+			}
+			set
+			{
+				this._dataInizioPeriodo = value;
+			}
+		}
+		
+		private DateTime _dataFinePeriodo;
+		public virtual DateTime DataFinePeriodo
+		{
+			get
+			{
+				return this._dataFinePeriodo;
+			}
+			set
+			{
+				this._dataFinePeriodo = value;
+			}
+		}
+		
 		private DatiBeniServizi _datiBeniServizi;
 		public virtual DatiBeniServizi DatiBeniServizi
 		{

@@ -37,29 +37,51 @@ namespace DataLayer
 			}
 		}
 		
-		private int _datiGeneraliId;
-		public virtual int DatiGeneraliId
+		private int _fatturaElettronicaBodyId;
+		public virtual int FatturaElettronicaBodyId
 		{
 			get
 			{
-				return this._datiGeneraliId;
+				return this._fatturaElettronicaBodyId;
 			}
 			set
 			{
-				this._datiGeneraliId = value;
+				this._fatturaElettronicaBodyId = value;
 			}
 		}
 		
-		private DatiGenerali _datiGenerali;
-		public virtual DatiGenerali DatiGenerali
+		private string _condizioniPagamento;
+		public virtual string CondizioniPagamento
 		{
 			get
 			{
-				return this._datiGenerali;
+				return this._condizioniPagamento;
 			}
 			set
 			{
-				this._datiGenerali = value;
+				this._condizioniPagamento = value;
+			}
+		}
+		
+		private FatturaElettronicaBody _fatturaElettronicaBody;
+		public virtual FatturaElettronicaBody FatturaElettronicaBody
+		{
+			get
+			{
+				return this._fatturaElettronicaBody;
+			}
+			set
+			{
+				this._fatturaElettronicaBody = value;
+			}
+		}
+		
+		private IList<DettaglioPagamento> _dettaglioPagamentos = new List<DettaglioPagamento>();
+		public virtual IList<DettaglioPagamento> DettaglioPagamentos
+		{
+			get
+			{
+				return this._dettaglioPagamentos;
 			}
 		}
 		

@@ -50,6 +50,45 @@ namespace DataLayer
 			}
 		}
 		
+		private decimal _aliquotaIVA;
+		public virtual decimal AliquotaIVA
+		{
+			get
+			{
+				return this._aliquotaIVA;
+			}
+			set
+			{
+				this._aliquotaIVA = value;
+			}
+		}
+		
+		private decimal _imponibileImporto;
+		public virtual decimal ImponibileImporto
+		{
+			get
+			{
+				return this._imponibileImporto;
+			}
+			set
+			{
+				this._imponibileImporto = value;
+			}
+		}
+		
+		private decimal _imposta;
+		public virtual decimal Imposta
+		{
+			get
+			{
+				return this._imposta;
+			}
+			set
+			{
+				this._imposta = value;
+			}
+		}
+		
 		private DatiBeniServizi _datiBeniServizi;
 		public virtual DatiBeniServizi DatiBeniServizi
 		{

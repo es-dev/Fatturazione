@@ -404,5 +404,31 @@ namespace WcfService.Repositories
 	    {
 	    }
 	}
+	
+	public partial interface IDettaglioPagamentoRepository : IRepository<DettaglioPagamento>
+	{ 
+	
+	}
+	
+	public partial class DettaglioPagamentoRepository : Repository<DettaglioPagamento>, IDettaglioPagamentoRepository
+	{
+	    public DettaglioPagamentoRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IAllegatiRepository : IRepository<Allegati>
+	{ 
+	
+	}
+	
+	public partial class AllegatiRepository : Repository<Allegati>, IAllegatiRepository
+	{
+	    public AllegatiRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
 }
 #pragma warning restore 1591

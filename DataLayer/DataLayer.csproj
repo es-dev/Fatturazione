@@ -74,6 +74,9 @@
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Allegati.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Anagrafica.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
@@ -133,6 +136,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DettaglioLinee.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DettaglioPagamento.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
     <Compile Include="EntitiesModel.cs">

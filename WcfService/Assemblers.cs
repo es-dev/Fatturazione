@@ -879,6 +879,26 @@ namespace WcfService.Assemblers
 	
 	    public override void AssembleCollections(FatturaElettronicaBody entity, FatturaElettronicaBodyDto dto)
 	    {
+			DatiPagamentoAssembler datiPagamentoAssembler = new DatiPagamentoAssembler();
+
+			dto.DatiPagamentos = new List<DatiPagamentoDto>();
+			foreach (DatiPagamento item in entity.DatiPagamentos)
+			{
+				var dtoItem = datiPagamentoAssembler.Assemble(item);
+				dtoItem.FatturaElettronicaBody = dto;
+				dto.DatiPagamentos.Add(dtoItem);
+			}
+
+			AllegatiAssembler allegatiAssembler = new AllegatiAssembler();
+
+			dto.Allegatis = new List<AllegatiDto>();
+			foreach (Allegati item in entity.Allegatis)
+			{
+				var dtoItem = allegatiAssembler.Assemble(item);
+				dtoItem.FatturaElettronicaBody = dto;
+				dto.Allegatis.Add(dtoItem);
+			}
+
 	    }
 	
 	}
@@ -1672,16 +1692,6 @@ namespace WcfService.Assemblers
 	
 	    public override void AssembleCollections(DatiGenerali entity, DatiGeneraliDto dto)
 	    {
-			DatiPagamentoAssembler datiPagamentoAssembler = new DatiPagamentoAssembler();
-
-			dto.DatiPagamentos = new List<DatiPagamentoDto>();
-			foreach (DatiPagamento item in entity.DatiPagamentos)
-			{
-				var dtoItem = datiPagamentoAssembler.Assemble(item);
-				dtoItem.DatiGenerali = dto;
-				dto.DatiPagamentos.Add(dtoItem);
-			}
-
 	    }
 	
 	}
@@ -1948,6 +1958,14 @@ namespace WcfService.Assemblers
 			
 			entity.Id = dto.Id;
 			entity.DatiBeniServiziId = dto.DatiBeniServiziId;
+			entity.NumeroLinea = dto.NumeroLinea;
+			entity.Descrizione = dto.Descrizione;
+			entity.PrezzoUnitario = dto.PrezzoUnitario;
+			entity.PrezzoTotale = dto.PrezzoTotale;
+			entity.AliquotaIVA = dto.AliquotaIVA;
+			entity.Ritenuta = dto.Ritenuta;
+			entity.DataInizioPeriodo = dto.DataInizioPeriodo;
+			entity.DataFinePeriodo = dto.DataFinePeriodo;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -1960,6 +1978,14 @@ namespace WcfService.Assemblers
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
 			dto.DatiBeniServiziId = entity.DatiBeniServiziId;
+			dto.NumeroLinea = entity.NumeroLinea;
+			dto.Descrizione = entity.Descrizione;
+			dto.PrezzoUnitario = entity.PrezzoUnitario;
+			dto.PrezzoTotale = entity.PrezzoTotale;
+			dto.AliquotaIVA = entity.AliquotaIVA;
+			dto.Ritenuta = entity.Ritenuta;
+			dto.DataInizioPeriodo = entity.DataInizioPeriodo;
+			dto.DataFinePeriodo = entity.DataFinePeriodo;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -2011,6 +2037,9 @@ namespace WcfService.Assemblers
 			
 			entity.Id = dto.Id;
 			entity.DatiBeniServiziId = dto.DatiBeniServiziId;
+			entity.AliquotaIVA = dto.AliquotaIVA;
+			entity.ImponibileImporto = dto.ImponibileImporto;
+			entity.Imposta = dto.Imposta;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -2023,6 +2052,9 @@ namespace WcfService.Assemblers
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
 			dto.DatiBeniServiziId = entity.DatiBeniServiziId;
+			dto.AliquotaIVA = entity.AliquotaIVA;
+			dto.ImponibileImporto = entity.ImponibileImporto;
+			dto.Imposta = entity.Imposta;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -2073,7 +2105,8 @@ namespace WcfService.Assemblers
 	        }
 			
 			entity.Id = dto.Id;
-			entity.DatiGeneraliId = dto.DatiGeneraliId;
+			entity.FatturaElettronicaBodyId = dto.FatturaElettronicaBodyId;
+			entity.CondizioniPagamento = dto.CondizioniPagamento;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -2085,26 +2118,215 @@ namespace WcfService.Assemblers
 			ObjectKey key = KeyUtility.Instance.Create(entity);
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
-			dto.DatiGeneraliId = entity.DatiGeneraliId;
+			dto.FatturaElettronicaBodyId = entity.FatturaElettronicaBodyId;
+			dto.CondizioniPagamento = entity.CondizioniPagamento;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
 	
 	    public override void AssembleReferences(DatiPagamento entity, DatiPagamentoDto dto)
 	    {
-			DatiGeneraliAssembler datiGeneraliAssembler = new DatiGeneraliAssembler();
-			dto.DatiGenerali = datiGeneraliAssembler.Assemble(entity.DatiGenerali);
+			FatturaElettronicaBodyAssembler fatturaElettronicaBodyAssembler = new FatturaElettronicaBodyAssembler();
+			dto.FatturaElettronicaBody = fatturaElettronicaBodyAssembler.Assemble(entity.FatturaElettronicaBody);
 
 	    }
 	
 	    public override void AssembleCollections(DatiPagamento entity, DatiPagamentoDto dto)
 	    {
+			DettaglioPagamentoAssembler dettaglioPagamentoAssembler = new DettaglioPagamentoAssembler();
+
+			dto.DettaglioPagamentos = new List<DettaglioPagamentoDto>();
+			foreach (DettaglioPagamento item in entity.DettaglioPagamentos)
+			{
+				var dtoItem = dettaglioPagamentoAssembler.Assemble(item);
+				dtoItem.DatiPagamento = dto;
+				dto.DettaglioPagamentos.Add(dtoItem);
+			}
+
 	    }
 	
 	}
 	
 	
 	public partial class DatiPagamentoAssembler : DatiPagamentoAssemblerBase, IDatiPagamentoAssembler
+	{
+	    
+	}
+	
+	public partial interface IDettaglioPagamentoAssembler : IAssembler<DettaglioPagamentoDto, DettaglioPagamento>
+	{ 
+	
+	}
+	
+	public partial class DettaglioPagamentoAssemblerBase : Assembler<DettaglioPagamentoDto, DettaglioPagamento>
+	{
+		/// <summary>
+	    /// Invoked after the DettaglioPagamentoDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="DettaglioPagamentoDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(DettaglioPagamentoDto dto);
+	
+		/// <summary>
+	    /// Invoked after the DettaglioPagamento instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="DettaglioPagamento"/> instance.</param>
+		partial void OnEntityAssembled(DettaglioPagamento entity);
+		
+	    public override DettaglioPagamento Assemble(DettaglioPagamento entity, DettaglioPagamentoDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new DettaglioPagamento();
+	        }
+			
+			entity.Id = dto.Id;
+			entity.DatiPagamentoId = dto.DatiPagamentoId;
+			entity.Beneficiario = dto.Beneficiario;
+			entity.ModalitaPagamento = dto.ModalitaPagamento;
+			entity.DataRiferimentoTerminiPagamento = dto.DataRiferimentoTerminiPagamento;
+			entity.GiorniTerminiPagamento = dto.GiorniTerminiPagamento;
+			entity.DataScadenzaPagamento = dto.DataScadenzaPagamento;
+			entity.ImportoPagamento = dto.ImportoPagamento;
+			entity.IstitutoFinanziario = dto.IstitutoFinanziario;
+			entity.IBAN = dto.IBAN;
+			entity.ABI = dto.ABI;
+			entity.CAB = dto.CAB;
+			entity.BIC = dto.BIC;
+			entity.DataDecorrenzaPenale = dto.DataDecorrenzaPenale;
+			entity.CodUfficioPostale = dto.CodUfficioPostale;
+			entity.CognomeQuietanzante = dto.CognomeQuietanzante;
+			entity.NomeQuietanzante = dto.NomeQuietanzante;
+			entity.CFQuietanzante = dto.CFQuietanzante;
+			entity.TitoloQuietanzante = dto.TitoloQuietanzante;
+			entity.ScontoPagamentoAnticipato = dto.ScontoPagamentoAnticipato;
+			entity.DataLimitePagamentoAnticipato = dto.DataLimitePagamentoAnticipato;
+			entity.PenalitaPagamentiRitardati = dto.PenalitaPagamentiRitardati;
+			entity.CodicePagamento = dto.CodicePagamento;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override DettaglioPagamentoDto Assemble(DettaglioPagamento entity)
+	    {
+	        DettaglioPagamentoDto dto = new DettaglioPagamentoDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			dto.DatiPagamentoId = entity.DatiPagamentoId;
+			dto.Beneficiario = entity.Beneficiario;
+			dto.ModalitaPagamento = entity.ModalitaPagamento;
+			dto.DataRiferimentoTerminiPagamento = entity.DataRiferimentoTerminiPagamento;
+			dto.GiorniTerminiPagamento = entity.GiorniTerminiPagamento;
+			dto.DataScadenzaPagamento = entity.DataScadenzaPagamento;
+			dto.ImportoPagamento = entity.ImportoPagamento;
+			dto.IstitutoFinanziario = entity.IstitutoFinanziario;
+			dto.IBAN = entity.IBAN;
+			dto.ABI = entity.ABI;
+			dto.CAB = entity.CAB;
+			dto.BIC = entity.BIC;
+			dto.DataDecorrenzaPenale = entity.DataDecorrenzaPenale;
+			dto.CodUfficioPostale = entity.CodUfficioPostale;
+			dto.CognomeQuietanzante = entity.CognomeQuietanzante;
+			dto.NomeQuietanzante = entity.NomeQuietanzante;
+			dto.CFQuietanzante = entity.CFQuietanzante;
+			dto.TitoloQuietanzante = entity.TitoloQuietanzante;
+			dto.ScontoPagamentoAnticipato = entity.ScontoPagamentoAnticipato;
+			dto.DataLimitePagamentoAnticipato = entity.DataLimitePagamentoAnticipato;
+			dto.PenalitaPagamentiRitardati = entity.PenalitaPagamentiRitardati;
+			dto.CodicePagamento = entity.CodicePagamento;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(DettaglioPagamento entity, DettaglioPagamentoDto dto)
+	    {
+			DatiPagamentoAssembler datiPagamentoAssembler = new DatiPagamentoAssembler();
+			dto.DatiPagamento = datiPagamentoAssembler.Assemble(entity.DatiPagamento);
+
+	    }
+	
+	    public override void AssembleCollections(DettaglioPagamento entity, DettaglioPagamentoDto dto)
+	    {
+	    }
+	
+	}
+	
+	
+	public partial class DettaglioPagamentoAssembler : DettaglioPagamentoAssemblerBase, IDettaglioPagamentoAssembler
+	{
+	    
+	}
+	
+	public partial interface IAllegatiAssembler : IAssembler<AllegatiDto, Allegati>
+	{ 
+	
+	}
+	
+	public partial class AllegatiAssemblerBase : Assembler<AllegatiDto, Allegati>
+	{
+		/// <summary>
+	    /// Invoked after the AllegatiDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="AllegatiDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(AllegatiDto dto);
+	
+		/// <summary>
+	    /// Invoked after the Allegati instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="Allegati"/> instance.</param>
+		partial void OnEntityAssembled(Allegati entity);
+		
+	    public override Allegati Assemble(Allegati entity, AllegatiDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new Allegati();
+	        }
+			
+			entity.Id = dto.Id;
+			entity.NomeAttachment = dto.NomeAttachment;
+			entity.AlgoritmoCompressione = dto.AlgoritmoCompressione;
+			entity.FormatoAttachment = dto.FormatoAttachment;
+			entity.DescrizioneAttachment = dto.DescrizioneAttachment;
+			entity.Attachment = dto.Attachment;
+			entity.FatturaElettronicaBodyId = dto.FatturaElettronicaBodyId;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override AllegatiDto Assemble(Allegati entity)
+	    {
+	        AllegatiDto dto = new AllegatiDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			dto.NomeAttachment = entity.NomeAttachment;
+			dto.AlgoritmoCompressione = entity.AlgoritmoCompressione;
+			dto.FormatoAttachment = entity.FormatoAttachment;
+			dto.DescrizioneAttachment = entity.DescrizioneAttachment;
+			dto.Attachment = entity.Attachment;
+			dto.FatturaElettronicaBodyId = entity.FatturaElettronicaBodyId;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(Allegati entity, AllegatiDto dto)
+	    {
+			FatturaElettronicaBodyAssembler fatturaElettronicaBodyAssembler = new FatturaElettronicaBodyAssembler();
+			dto.FatturaElettronicaBody = fatturaElettronicaBodyAssembler.Assemble(entity.FatturaElettronicaBody);
+
+	    }
+	
+	    public override void AssembleCollections(Allegati entity, AllegatiDto dto)
+	    {
+	    }
+	
+	}
+	
+	
+	public partial class AllegatiAssembler : AllegatiAssemblerBase, IAllegatiAssembler
 	{
 	    
 	}

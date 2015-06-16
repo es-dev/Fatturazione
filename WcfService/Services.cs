@@ -537,5 +537,33 @@ namespace WcfService.Services
 	
 	    }
 	}
+	
+	public partial interface IDettaglioPagamentoService : IService<DettaglioPagamentoDto, DettaglioPagamento>
+	{
+	
+	}
+	
+	public partial class DettaglioPagamentoService : Service<DettaglioPagamentoDto, DettaglioPagamento>, IDettaglioPagamentoService
+	{
+	    public DettaglioPagamentoService(IDettaglioPagamentoAssembler assembler, IDettaglioPagamentoRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IAllegatiService : IService<AllegatiDto, Allegati>
+	{
+	
+	}
+	
+	public partial class AllegatiService : Service<AllegatiDto, Allegati>, IAllegatiService
+	{
+	    public AllegatiService(IAllegatiAssembler assembler, IAllegatiRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
 }
 #pragma warning restore 1591

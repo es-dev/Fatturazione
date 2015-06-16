@@ -63,6 +63,24 @@ namespace DataLayer
 			}
 		}
 		
+		private IList<DatiPagamento> _datiPagamentos = new List<DatiPagamento>();
+		public virtual IList<DatiPagamento> DatiPagamentos
+		{
+			get
+			{
+				return this._datiPagamentos;
+			}
+		}
+		
+		private IList<Allegati> _allegatis = new List<Allegati>();
+		public virtual IList<Allegati> Allegatis
+		{
+			get
+			{
+				return this._allegatis;
+			}
+		}
+		
 		private DatiGenerali _datiGenerali;
 		public virtual DatiGenerali DatiGenerali
 		{

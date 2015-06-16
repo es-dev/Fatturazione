@@ -50,15 +50,6 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<DatiPagamento> _datiPagamentos = new List<DatiPagamento>();
-		public virtual IList<DatiPagamento> DatiPagamentos
-		{
-			get
-			{
-				return this._datiPagamentos;
-			}
-		}
-		
 		private DatiGeneraliDocumento _datiGeneraliDocumento;
 		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
 		{

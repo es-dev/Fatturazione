@@ -258,6 +258,22 @@ namespace DataLayer
 			}
 		}
 		
+		public IQueryable<DettaglioPagamento> DettaglioPagamentos 
+		{
+			get
+			{
+				return this.GetAll<DettaglioPagamento>();
+			}
+		}
+		
+		public IQueryable<Allegati> Allegatis 
+		{
+			get
+			{
+				return this.GetAll<Allegati>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -380,6 +396,14 @@ namespace DataLayer
 			get;
 		}
 		IQueryable<DatiPagamento> DatiPagamentos
+		{
+			get;
+		}
+		IQueryable<DettaglioPagamento> DettaglioPagamentos
+		{
+			get;
+		}
+		IQueryable<Allegati> Allegatis
 		{
 			get;
 		}
