@@ -342,20 +342,6 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IContattiService : IService<ContattiDto, Contatti>
-	{
-	
-	}
-	
-	public partial class ContattiService : Service<ContattiDto, Contatti>, IContattiService
-	{
-	    public ContattiService(IContattiAssembler assembler, IContattiRepository repository)
-	        : base(assembler, repository)
-	    {
-	
-	    }
-	}
-	
 	public partial interface ICedentePrestatoreService : IService<CedentePrestatoreDto, CedentePrestatore>
 	{
 	
@@ -552,20 +538,6 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IAllegatiService : IService<AllegatiDto, Allegati>
-	{
-	
-	}
-	
-	public partial class AllegatiService : Service<AllegatiDto, Allegati>, IAllegatiService
-	{
-	    public AllegatiService(IAllegatiAssembler assembler, IAllegatiRepository repository)
-	        : base(assembler, repository)
-	    {
-	
-	    }
-	}
-	
 	public partial interface ISedeService : IService<SedeDto, Sede>
 	{
 	
@@ -588,6 +560,48 @@ namespace WcfService.Services
 	public partial class DatiAnagraficiCessionarioService : Service<DatiAnagraficiCessionarioDto, DatiAnagraficiCessionario>, IDatiAnagraficiCessionarioService
 	{
 	    public DatiAnagraficiCessionarioService(IDatiAnagraficiCessionarioAssembler assembler, IDatiAnagraficiCessionarioRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiBolloService : IService<DatiBolloDto, DatiBollo>
+	{
+	
+	}
+	
+	public partial class DatiBolloService : Service<DatiBolloDto, DatiBollo>, IDatiBolloService
+	{
+	    public DatiBolloService(IDatiBolloAssembler assembler, IDatiBolloRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiCassaPrevidenzialeService : IService<DatiCassaPrevidenzialeDto, DatiCassaPrevidenziale>
+	{
+	
+	}
+	
+	public partial class DatiCassaPrevidenzialeService : Service<DatiCassaPrevidenzialeDto, DatiCassaPrevidenziale>, IDatiCassaPrevidenzialeService
+	{
+	    public DatiCassaPrevidenzialeService(IDatiCassaPrevidenzialeAssembler assembler, IDatiCassaPrevidenzialeRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IScontoMaggiorazioneService : IService<ScontoMaggiorazioneDto, ScontoMaggiorazione>
+	{
+	
+	}
+	
+	public partial class ScontoMaggiorazioneService : Service<ScontoMaggiorazioneDto, ScontoMaggiorazione>, IScontoMaggiorazioneService
+	{
+	    public ScontoMaggiorazioneService(IScontoMaggiorazioneAssembler assembler, IScontoMaggiorazioneRepository repository)
 	        : base(assembler, repository)
 	    {
 	
