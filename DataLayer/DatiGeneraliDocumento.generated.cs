@@ -89,16 +89,16 @@ namespace DataLayer
 			}
 		}
 		
-		private decimal _importotTotaleDocumento;
-		public virtual decimal ImportotTotaleDocumento
+		private decimal _importoTotaleDocumento;
+		public virtual decimal ImportoTotaleDocumento
 		{
 			get
 			{
-				return this._importotTotaleDocumento;
+				return this._importoTotaleDocumento;
 			}
 			set
 			{
-				this._importotTotaleDocumento = value;
+				this._importoTotaleDocumento = value;
 			}
 		}
 		

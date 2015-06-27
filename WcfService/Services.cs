@@ -384,20 +384,6 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IIndirizzoService : IService<IndirizzoDto, Indirizzo>
-	{
-	
-	}
-	
-	public partial class IndirizzoService : Service<IndirizzoDto, Indirizzo>, IIndirizzoService
-	{
-	    public IndirizzoService(IIndirizzoAssembler assembler, IIndirizzoRepository repository)
-	        : base(assembler, repository)
-	    {
-	
-	    }
-	}
-	
 	public partial interface IAccountService : IService<AccountDto, Account>
 	{
 	

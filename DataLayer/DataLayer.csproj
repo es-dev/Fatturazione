@@ -180,10 +180,6 @@
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Indirizzo.generated.cs">
-      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScontoMaggiorazione.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>

@@ -262,19 +262,6 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface IIndirizzoRepository : IRepository<Indirizzo>
-	{ 
-	
-	}
-	
-	public partial class IndirizzoRepository : Repository<Indirizzo>, IIndirizzoRepository
-	{
-	    public IndirizzoRepository(IEntitiesModelUnitOfWork unitOfWork)
-	        : base(unitOfWork)
-	    {
-	    }
-	}
-	
 	public partial interface IAccountRepository : IRepository<Account>
 	{ 
 	

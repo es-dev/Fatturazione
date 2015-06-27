@@ -76,19 +76,6 @@ namespace DataLayer
 			}
 		}
 		
-		private int _idFiscaleIVA;
-		public virtual int IdFiscaleIVA
-		{
-			get
-			{
-				return this._idFiscaleIVA;
-			}
-			set
-			{
-				this._idFiscaleIVA = value;
-			}
-		}
-		
 		private int _datiAnagraficiCedenteId;
 		public virtual int DatiAnagraficiCedenteId
 		{

@@ -170,14 +170,6 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<Indirizzo> Indirizzos 
-		{
-			get
-			{
-				return this.GetAll<Indirizzo>();
-			}
-		}
-		
 		public IQueryable<Account> Accounts 
 		{
 			get
@@ -376,10 +368,6 @@ namespace DataLayer
 			get;
 		}
 		IQueryable<Anagrafica> Anagraficas
-		{
-			get;
-		}
-		IQueryable<Indirizzo> Indirizzos
 		{
 			get;
 		}

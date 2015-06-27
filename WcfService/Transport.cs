@@ -845,50 +845,6 @@ namespace WcfService.Dto
 	}
 	
 	[DataContract(IsReference = true)]
-	public partial class IndirizzoDto : IDtoWithKey
-	{
-		public IndirizzoDto()
-		{
-		}
-		
-		public IndirizzoDto(int _id, string __indirizzo, string _numeroCivico, string _cAP, string _comune, string _provincia, string _nazione)
-		{
-			this.Id = _id;
-			this._Indirizzo = __indirizzo;
-			this.NumeroCivico = _numeroCivico;
-			this.CAP = _cAP;
-			this.Comune = _comune;
-			this.Provincia = _provincia;
-			this.Nazione = _nazione;
-		}
-		
-		[DataMember]
-		public virtual string DtoKey { get; set; }
-		
-		[DataMember]
-		public virtual int Id { get;set; }
-
-		[DataMember]
-		public virtual string _Indirizzo { get;set; }
-
-		[DataMember]
-		public virtual string NumeroCivico { get;set; }
-
-		[DataMember]
-		public virtual string CAP { get;set; }
-
-		[DataMember]
-		public virtual string Comune { get;set; }
-
-		[DataMember]
-		public virtual string Provincia { get;set; }
-
-		[DataMember]
-		public virtual string Nazione { get;set; }
-
-	}
-	
-	[DataContract(IsReference = true)]
 	[KnownType(typeof(AziendaDto))]
 	public partial class AccountDto : IDtoWithKey
 	{
@@ -1357,11 +1313,17 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public SedeDto(int _id, int _cedentePrestatoreId, int _cessionarioCommittenteId, CedentePrestatoreDto _cedentePrestatore, CessionarioCommittenteDto _cessionarioCommittente)
+		public SedeDto(int _id, int _cedentePrestatoreId, int _cessionarioCommittenteId, string _indirizzo, string _numeroCivico, string _cAP, string _comune, string _provincia, string _nazione, CedentePrestatoreDto _cedentePrestatore, CessionarioCommittenteDto _cessionarioCommittente)
 		{
 			this.Id = _id;
 			this.CedentePrestatoreId = _cedentePrestatoreId;
 			this.CessionarioCommittenteId = _cessionarioCommittenteId;
+			this.Indirizzo = _indirizzo;
+			this.NumeroCivico = _numeroCivico;
+			this.CAP = _cAP;
+			this.Comune = _comune;
+			this.Provincia = _provincia;
+			this.Nazione = _nazione;
 			this.CedentePrestatore = _cedentePrestatore;
 			this.CessionarioCommittente = _cessionarioCommittente;
 		}
@@ -1377,6 +1339,24 @@ namespace WcfService.Dto
 
 		[DataMember]
 		public virtual int CessionarioCommittenteId { get;set; }
+
+		[DataMember]
+		public virtual string Indirizzo { get;set; }
+
+		[DataMember]
+		public virtual string NumeroCivico { get;set; }
+
+		[DataMember]
+		public virtual string CAP { get;set; }
+
+		[DataMember]
+		public virtual string Comune { get;set; }
+
+		[DataMember]
+		public virtual string Provincia { get;set; }
+
+		[DataMember]
+		public virtual string Nazione { get;set; }
 
 		[DataMember]
 		public virtual CedentePrestatoreDto CedentePrestatore { get;set; }

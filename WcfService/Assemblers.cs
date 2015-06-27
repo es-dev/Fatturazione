@@ -1332,76 +1332,6 @@ namespace WcfService.Assemblers
 	    
 	}
 	
-	public partial interface IIndirizzoAssembler : IAssembler<IndirizzoDto, Indirizzo>
-	{ 
-	
-	}
-	
-	public partial class IndirizzoAssemblerBase : Assembler<IndirizzoDto, Indirizzo>
-	{
-		/// <summary>
-	    /// Invoked after the IndirizzoDto instance is assembled.
-	    /// </summary>
-	    /// <param name="dto"><see cref="IndirizzoDto"/> The Dto instance.</param>
-		partial void OnDTOAssembled(IndirizzoDto dto);
-	
-		/// <summary>
-	    /// Invoked after the Indirizzo instance is assembled.
-	    /// </summary>
-	    /// <param name="entity">The <see cref="Indirizzo"/> instance.</param>
-		partial void OnEntityAssembled(Indirizzo entity);
-		
-	    public override Indirizzo Assemble(Indirizzo entity, IndirizzoDto dto)
-	    {
-	        if (entity == null)
-	        {
-	            entity = new Indirizzo();
-	        }
-			
-			entity.Id = dto.Id;
-			entity._Indirizzo = dto._Indirizzo;
-			entity.NumeroCivico = dto.NumeroCivico;
-			entity.CAP = dto.CAP;
-			entity.Comune = dto.Comune;
-			entity.Provincia = dto.Provincia;
-			entity.Nazione = dto.Nazione;
-	        this.OnEntityAssembled(entity);
-	        return entity;
-	    }
-	
-	    public override IndirizzoDto Assemble(Indirizzo entity)
-	    {
-	        IndirizzoDto dto = new IndirizzoDto();
-	        
-			ObjectKey key = KeyUtility.Instance.Create(entity);
-			dto.DtoKey = KeyUtility.Instance.Convert(key);
-			dto.Id = entity.Id;
-			dto._Indirizzo = entity._Indirizzo;
-			dto.NumeroCivico = entity.NumeroCivico;
-			dto.CAP = entity.CAP;
-			dto.Comune = entity.Comune;
-			dto.Provincia = entity.Provincia;
-			dto.Nazione = entity.Nazione;
-			this.OnDTOAssembled(dto); 
-	        return dto;
-	    }
-	
-	    public override void AssembleReferences(Indirizzo entity, IndirizzoDto dto)
-	    {
-	    }
-	
-	    public override void AssembleCollections(Indirizzo entity, IndirizzoDto dto)
-	    {
-	    }
-	
-	}
-	
-	
-	public partial class IndirizzoAssembler : IndirizzoAssemblerBase, IIndirizzoAssembler
-	{
-	    
-	}
-	
 	public partial interface IAccountAssembler : IAssembler<AccountDto, Account>
 	{ 
 	
@@ -2193,6 +2123,12 @@ namespace WcfService.Assemblers
 			entity.Id = dto.Id;
 			entity.CedentePrestatoreId = dto.CedentePrestatoreId;
 			entity.CessionarioCommittenteId = dto.CessionarioCommittenteId;
+			entity.Indirizzo = dto.Indirizzo;
+			entity.NumeroCivico = dto.NumeroCivico;
+			entity.CAP = dto.CAP;
+			entity.Comune = dto.Comune;
+			entity.Provincia = dto.Provincia;
+			entity.Nazione = dto.Nazione;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -2206,6 +2142,12 @@ namespace WcfService.Assemblers
 			dto.Id = entity.Id;
 			dto.CedentePrestatoreId = entity.CedentePrestatoreId;
 			dto.CessionarioCommittenteId = entity.CessionarioCommittenteId;
+			dto.Indirizzo = entity.Indirizzo;
+			dto.NumeroCivico = entity.NumeroCivico;
+			dto.CAP = entity.CAP;
+			dto.Comune = entity.Comune;
+			dto.Provincia = entity.Provincia;
+			dto.Nazione = entity.Nazione;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
