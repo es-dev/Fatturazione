@@ -18,7 +18,6 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using DataLayer;
 
 namespace DataLayer	
 {
@@ -112,58 +111,6 @@ namespace DataLayer
 			set
 			{
 				this._nazione = value;
-			}
-		}
-		
-		private int _cedentePrestatoreId;
-		public virtual int CedentePrestatoreId
-		{
-			get
-			{
-				return this._cedentePrestatoreId;
-			}
-			set
-			{
-				this._cedentePrestatoreId = value;
-			}
-		}
-		
-		private int _cessionarioCommittenteId;
-		public virtual int CessionarioCommittenteId
-		{
-			get
-			{
-				return this._cessionarioCommittenteId;
-			}
-			set
-			{
-				this._cessionarioCommittenteId = value;
-			}
-		}
-		
-		private CedentePrestatore _cedentePrestatore;
-		public virtual CedentePrestatore CedentePrestatore
-		{
-			get
-			{
-				return this._cedentePrestatore;
-			}
-			set
-			{
-				this._cedentePrestatore = value;
-			}
-		}
-		
-		private CessionarioCommittente _cessionarioCommittente;
-		public virtual CessionarioCommittente CessionarioCommittente
-		{
-			get
-			{
-				return this._cessionarioCommittente;
-			}
-			set
-			{
-				this._cessionarioCommittente = value;
 			}
 		}
 		

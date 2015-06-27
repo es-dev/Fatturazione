@@ -50,21 +50,25 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<DatiAnagraficiCedente> _datiAnagraficiCedentes = new List<DatiAnagraficiCedente>();
-		public virtual IList<DatiAnagraficiCedente> DatiAnagraficiCedentes
+		private IList<Sede> _sedes = new List<Sede>();
+		public virtual IList<Sede> Sedes
 		{
 			get
 			{
-				return this._datiAnagraficiCedentes;
+				return this._sedes;
 			}
 		}
 		
-		private IList<Indirizzo> _indirizzos = new List<Indirizzo>();
-		public virtual IList<Indirizzo> Indirizzos
+		private DatiAnagraficiCessionario _datiAnagraficiCessionario;
+		public virtual DatiAnagraficiCessionario DatiAnagraficiCessionario
 		{
 			get
 			{
-				return this._indirizzos;
+				return this._datiAnagraficiCessionario;
+			}
+			set
+			{
+				this._datiAnagraficiCessionario = value;
 			}
 		}
 		

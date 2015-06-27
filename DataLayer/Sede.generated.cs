@@ -22,10 +22,10 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class CedentePrestatore
+	public partial class Sede : Indirizzo
 	{
 		private int _id;
-		public virtual int Id
+		public override int Id
 		{
 			get
 			{
@@ -37,60 +37,55 @@ namespace DataLayer
 			}
 		}
 		
-		private string _riferimentoAmministrazione;
-		public virtual string RiferimentoAmministrazione
+		private int _cedentePrestatoreId;
+		public virtual int CedentePrestatoreId
 		{
 			get
 			{
-				return this._riferimentoAmministrazione;
+				return this._cedentePrestatoreId;
 			}
 			set
 			{
-				this._riferimentoAmministrazione = value;
+				this._cedentePrestatoreId = value;
 			}
 		}
 		
-		private FatturaElettronicaHeader _fatturaElettronicaHeader;
-		public virtual FatturaElettronicaHeader FatturaElettronicaHeader
+		private int _cessionarioCommittenteId;
+		public virtual int CessionarioCommittenteId
 		{
 			get
 			{
-				return this._fatturaElettronicaHeader;
+				return this._cessionarioCommittenteId;
 			}
 			set
 			{
-				this._fatturaElettronicaHeader = value;
+				this._cessionarioCommittenteId = value;
 			}
 		}
 		
-		private IList<Contatti> _contattis = new List<Contatti>();
-		public virtual IList<Contatti> Contattis
+		private CedentePrestatore _cedentePrestatore;
+		public virtual CedentePrestatore CedentePrestatore
 		{
 			get
 			{
-				return this._contattis;
-			}
-		}
-		
-		private IList<Sede> _sedes = new List<Sede>();
-		public virtual IList<Sede> Sedes
-		{
-			get
-			{
-				return this._sedes;
-			}
-		}
-		
-		private DatiAnagraficiCedente _datiAnagraficiCedente;
-		public virtual DatiAnagraficiCedente DatiAnagraficiCedente
-		{
-			get
-			{
-				return this._datiAnagraficiCedente;
+				return this._cedentePrestatore;
 			}
 			set
 			{
-				this._datiAnagraficiCedente = value;
+				this._cedentePrestatore = value;
+			}
+		}
+		
+		private CessionarioCommittente _cessionarioCommittente;
+		public virtual CessionarioCommittente CessionarioCommittente
+		{
+			get
+			{
+				return this._cessionarioCommittente;
+			}
+			set
+			{
+				this._cessionarioCommittente = value;
 			}
 		}
 		

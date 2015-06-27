@@ -565,5 +565,33 @@ namespace WcfService.Services
 	
 	    }
 	}
+	
+	public partial interface ISedeService : IService<SedeDto, Sede>
+	{
+	
+	}
+	
+	public partial class SedeService : Service<SedeDto, Sede>, ISedeService
+	{
+	    public SedeService(ISedeAssembler assembler, ISedeRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiAnagraficiCessionarioService : IService<DatiAnagraficiCessionarioDto, DatiAnagraficiCessionario>
+	{
+	
+	}
+	
+	public partial class DatiAnagraficiCessionarioService : Service<DatiAnagraficiCessionarioDto, DatiAnagraficiCessionario>, IDatiAnagraficiCessionarioService
+	{
+	    public DatiAnagraficiCessionarioService(IDatiAnagraficiCessionarioAssembler assembler, IDatiAnagraficiCessionarioRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
 }
 #pragma warning restore 1591

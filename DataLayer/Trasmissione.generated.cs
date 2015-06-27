@@ -50,6 +50,58 @@ namespace DataLayer
 			}
 		}
 		
+		private int _aziendaId;
+		public virtual int AziendaId
+		{
+			get
+			{
+				return this._aziendaId;
+			}
+			set
+			{
+				this._aziendaId = value;
+			}
+		}
+		
+		private string _stato;
+		public virtual string Stato
+		{
+			get
+			{
+				return this._stato;
+			}
+			set
+			{
+				this._stato = value;
+			}
+		}
+		
+		private DateTime _trasmessa;
+		public virtual DateTime Trasmessa
+		{
+			get
+			{
+				return this._trasmessa;
+			}
+			set
+			{
+				this._trasmessa = value;
+			}
+		}
+		
+		private string _xmlFile;
+		public virtual string XmlFile
+		{
+			get
+			{
+				return this._xmlFile;
+			}
+			set
+			{
+				this._xmlFile = value;
+			}
+		}
+		
 		private Fattura _fattura;
 		public virtual Fattura Fattura
 		{
@@ -60,6 +112,19 @@ namespace DataLayer
 			set
 			{
 				this._fattura = value;
+			}
+		}
+		
+		private Azienda _azienda;
+		public virtual Azienda Azienda
+		{
+			get
+			{
+				return this._azienda;
+			}
+			set
+			{
+				this._azienda = value;
 			}
 		}
 		

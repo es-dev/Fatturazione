@@ -430,5 +430,31 @@ namespace WcfService.Repositories
 	    {
 	    }
 	}
+	
+	public partial interface ISedeRepository : IRepository<Sede>
+	{ 
+	
+	}
+	
+	public partial class SedeRepository : Repository<Sede>, ISedeRepository
+	{
+	    public SedeRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiAnagraficiCessionarioRepository : IRepository<DatiAnagraficiCessionario>
+	{ 
+	
+	}
+	
+	public partial class DatiAnagraficiCessionarioRepository : Repository<DatiAnagraficiCessionario>, IDatiAnagraficiCessionarioRepository
+	{
+	    public DatiAnagraficiCessionarioRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
 }
 #pragma warning restore 1591

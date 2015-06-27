@@ -102,6 +102,32 @@ namespace DataLayer
 			}
 		}
 		
+		private int _datiAnagraficiCedenteId;
+		public virtual int DatiAnagraficiCedenteId
+		{
+			get
+			{
+				return this._datiAnagraficiCedenteId;
+			}
+			set
+			{
+				this._datiAnagraficiCedenteId = value;
+			}
+		}
+		
+		private int _datiAnagraficiCessionarioId;
+		public virtual int DatiAnagraficiCessionarioId
+		{
+			get
+			{
+				return this._datiAnagraficiCessionarioId;
+			}
+			set
+			{
+				this._datiAnagraficiCessionarioId = value;
+			}
+		}
+		
 		private DatiAnagraficiCedente _datiAnagraficiCedente;
 		public virtual DatiAnagraficiCedente DatiAnagraficiCedente
 		{
@@ -112,6 +138,19 @@ namespace DataLayer
 			set
 			{
 				this._datiAnagraficiCedente = value;
+			}
+		}
+		
+		private DatiAnagraficiCessionario _datiAnagraficiCessionario;
+		public virtual DatiAnagraficiCessionario DatiAnagraficiCessionario
+		{
+			get
+			{
+				return this._datiAnagraficiCessionario;
+			}
+			set
+			{
+				this._datiAnagraficiCessionario = value;
 			}
 		}
 		

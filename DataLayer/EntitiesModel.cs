@@ -274,6 +274,22 @@ namespace DataLayer
 			}
 		}
 		
+		public IQueryable<Sede> Sedes 
+		{
+			get
+			{
+				return this.GetAll<Sede>();
+			}
+		}
+		
+		public IQueryable<DatiAnagraficiCessionario> DatiAnagraficiCessionarios 
+		{
+			get
+			{
+				return this.GetAll<DatiAnagraficiCessionario>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -404,6 +420,14 @@ namespace DataLayer
 			get;
 		}
 		IQueryable<Allegati> Allegatis
+		{
+			get;
+		}
+		IQueryable<Sede> Sedes
+		{
+			get;
+		}
+		IQueryable<DatiAnagraficiCessionario> DatiAnagraficiCessionarios
 		{
 			get;
 		}

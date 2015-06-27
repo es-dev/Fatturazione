@@ -186,6 +186,16 @@ namespace WcfService.Assemblers
 				dto.Accounts.Add(dtoItem);
 			}
 
+			TrasmissioneAssembler trasmissioneAssembler = new TrasmissioneAssembler();
+
+			dto.Trasmissiones = new List<TrasmissioneDto>();
+			foreach (Trasmissione item in entity.Trasmissiones)
+			{
+				var dtoItem = trasmissioneAssembler.Assemble(item);
+				dtoItem.Azienda = dto;
+				dto.Trasmissiones.Add(dtoItem);
+			}
+
 	    }
 	
 	}
@@ -405,6 +415,10 @@ namespace WcfService.Assemblers
 			
 			entity.Id = dto.Id;
 			entity.FatturaId = dto.FatturaId;
+			entity.AziendaId = dto.AziendaId;
+			entity.Stato = dto.Stato;
+			entity.Trasmessa = dto.Trasmessa;
+			entity.XmlFile = dto.XmlFile;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -417,6 +431,10 @@ namespace WcfService.Assemblers
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
 			dto.FatturaId = entity.FatturaId;
+			dto.AziendaId = entity.AziendaId;
+			dto.Stato = entity.Stato;
+			dto.Trasmessa = entity.Trasmessa;
+			dto.XmlFile = entity.XmlFile;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -425,6 +443,9 @@ namespace WcfService.Assemblers
 	    {
 			FatturaAssembler fatturaAssembler = new FatturaAssembler();
 			dto.Fattura = fatturaAssembler.Assemble(entity.Fattura);
+
+			AziendaAssembler aziendaAssembler = new AziendaAssembler();
+			dto.Azienda = aziendaAssembler.Assemble(entity.Azienda);
 
 	    }
 	
@@ -1027,6 +1048,8 @@ namespace WcfService.Assemblers
 			entity.IdCodice = dto.IdCodice;
 			entity.IdTrasmittente = dto.IdTrasmittente;
 			entity.IdFiscaleIVA = dto.IdFiscaleIVA;
+			entity.DatiAnagraficiCedenteId = dto.DatiAnagraficiCedenteId;
+			entity.DatiAnagraficiCessionarioId = dto.DatiAnagraficiCessionarioId;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -1042,6 +1065,8 @@ namespace WcfService.Assemblers
 			dto.IdCodice = entity.IdCodice;
 			dto.IdTrasmittente = entity.IdTrasmittente;
 			dto.IdFiscaleIVA = entity.IdFiscaleIVA;
+			dto.DatiAnagraficiCedenteId = entity.DatiAnagraficiCedenteId;
+			dto.DatiAnagraficiCessionarioId = entity.DatiAnagraficiCessionarioId;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -1053,6 +1078,9 @@ namespace WcfService.Assemblers
 
 			DatiAnagraficiCedenteAssembler datiAnagraficiCedenteAssembler = new DatiAnagraficiCedenteAssembler();
 			dto.DatiAnagraficiCedente = datiAnagraficiCedenteAssembler.Assemble(entity.DatiAnagraficiCedente);
+
+			DatiAnagraficiCessionarioAssembler datiAnagraficiCessionarioAssembler = new DatiAnagraficiCessionarioAssembler();
+			dto.DatiAnagraficiCessionario = datiAnagraficiCessionarioAssembler.Assemble(entity.DatiAnagraficiCessionario);
 
 	    }
 	
@@ -1189,20 +1217,13 @@ namespace WcfService.Assemblers
 			FatturaElettronicaHeaderAssembler fatturaElettronicaHeaderAssembler = new FatturaElettronicaHeaderAssembler();
 			dto.FatturaElettronicaHeader = fatturaElettronicaHeaderAssembler.Assemble(entity.FatturaElettronicaHeader);
 
+			DatiAnagraficiCedenteAssembler datiAnagraficiCedenteAssembler = new DatiAnagraficiCedenteAssembler();
+			dto.DatiAnagraficiCedente = datiAnagraficiCedenteAssembler.Assemble(entity.DatiAnagraficiCedente);
+
 	    }
 	
 	    public override void AssembleCollections(CedentePrestatore entity, CedentePrestatoreDto dto)
 	    {
-			IndirizzoAssembler indirizzoAssembler = new IndirizzoAssembler();
-
-			dto.Indirizzos = new List<IndirizzoDto>();
-			foreach (Indirizzo item in entity.Indirizzos)
-			{
-				var dtoItem = indirizzoAssembler.Assemble(item);
-				dtoItem.CedentePrestatore = dto;
-				dto.Indirizzos.Add(dtoItem);
-			}
-
 			ContattiAssembler contattiAssembler = new ContattiAssembler();
 
 			dto.Contattis = new List<ContattiDto>();
@@ -1213,14 +1234,14 @@ namespace WcfService.Assemblers
 				dto.Contattis.Add(dtoItem);
 			}
 
-			DatiAnagraficiCedenteAssembler datiAnagraficiCedenteAssembler = new DatiAnagraficiCedenteAssembler();
+			SedeAssembler sedeAssembler = new SedeAssembler();
 
-			dto.DatiAnagraficiCedentes = new List<DatiAnagraficiCedenteDto>();
-			foreach (DatiAnagraficiCedente item in entity.DatiAnagraficiCedentes)
+			dto.Sedes = new List<SedeDto>();
+			foreach (Sede item in entity.Sedes)
 			{
-				var dtoItem = datiAnagraficiCedenteAssembler.Assemble(item);
+				var dtoItem = sedeAssembler.Assemble(item);
 				dtoItem.CedentePrestatore = dto;
-				dto.DatiAnagraficiCedentes.Add(dtoItem);
+				dto.Sedes.Add(dtoItem);
 			}
 
 	    }
@@ -1266,8 +1287,6 @@ namespace WcfService.Assemblers
 			entity.NumeroIscrizioneAlbo = dto.NumeroIscrizioneAlbo;
 			entity.DataIscrizioneAlbo = dto.DataIscrizioneAlbo;
 			entity.RegimeFiscale = dto.RegimeFiscale;
-			entity.CedentePrestatoreId = dto.CedentePrestatoreId;
-			entity.CessionarioCommittenteId = dto.CessionarioCommittenteId;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -1285,8 +1304,6 @@ namespace WcfService.Assemblers
 			dto.NumeroIscrizioneAlbo = entity.NumeroIscrizioneAlbo;
 			dto.DataIscrizioneAlbo = entity.DataIscrizioneAlbo;
 			dto.RegimeFiscale = entity.RegimeFiscale;
-			dto.CedentePrestatoreId = entity.CedentePrestatoreId;
-			dto.CessionarioCommittenteId = entity.CessionarioCommittenteId;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -1295,12 +1312,6 @@ namespace WcfService.Assemblers
 	    {
 			CedentePrestatoreAssembler cedentePrestatoreAssembler = new CedentePrestatoreAssembler();
 			dto.CedentePrestatore = cedentePrestatoreAssembler.Assemble(entity.CedentePrestatore);
-
-			CessionarioCommittenteAssembler cessionarioCommittenteAssembler = new CessionarioCommittenteAssembler();
-			dto.CessionarioCommittente = cessionarioCommittenteAssembler.Assemble(entity.CessionarioCommittente);
-
-			AnagraficaAssembler anagraficaAssembler = new AnagraficaAssembler();
-			dto.Anagrafica = anagraficaAssembler.Assemble(entity.Anagrafica);
 
 	    }
 	
@@ -1314,6 +1325,16 @@ namespace WcfService.Assemblers
 				var dtoItem = idFiscaleAssembler.Assemble(item);
 				dtoItem.DatiAnagraficiCedente = dto;
 				dto.IdFiscales.Add(dtoItem);
+			}
+
+			AnagraficaAssembler anagraficaAssembler = new AnagraficaAssembler();
+
+			dto.Anagraficas = new List<AnagraficaDto>();
+			foreach (Anagrafica item in entity.Anagraficas)
+			{
+				var dtoItem = anagraficaAssembler.Assemble(item);
+				dtoItem.DatiAnagraficiCedente = dto;
+				dto.Anagraficas.Add(dtoItem);
 			}
 
 	    }
@@ -1358,6 +1379,8 @@ namespace WcfService.Assemblers
 			entity.Cognome = dto.Cognome;
 			entity.Titolo = dto.Titolo;
 			entity.CodEORI = dto.CodEORI;
+			entity.DatiAnagraficiCedenteId = dto.DatiAnagraficiCedenteId;
+			entity.DatiAnagraficiCessionarioId = dto.DatiAnagraficiCessionarioId;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -1374,6 +1397,8 @@ namespace WcfService.Assemblers
 			dto.Cognome = entity.Cognome;
 			dto.Titolo = entity.Titolo;
 			dto.CodEORI = entity.CodEORI;
+			dto.DatiAnagraficiCedenteId = entity.DatiAnagraficiCedenteId;
+			dto.DatiAnagraficiCessionarioId = entity.DatiAnagraficiCessionarioId;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -1382,6 +1407,9 @@ namespace WcfService.Assemblers
 	    {
 			DatiAnagraficiCedenteAssembler datiAnagraficiCedenteAssembler = new DatiAnagraficiCedenteAssembler();
 			dto.DatiAnagraficiCedente = datiAnagraficiCedenteAssembler.Assemble(entity.DatiAnagraficiCedente);
+
+			DatiAnagraficiCessionarioAssembler datiAnagraficiCessionarioAssembler = new DatiAnagraficiCessionarioAssembler();
+			dto.DatiAnagraficiCessionario = datiAnagraficiCessionarioAssembler.Assemble(entity.DatiAnagraficiCessionario);
 
 	    }
 	
@@ -1430,8 +1458,6 @@ namespace WcfService.Assemblers
 			entity.Comune = dto.Comune;
 			entity.Provincia = dto.Provincia;
 			entity.Nazione = dto.Nazione;
-			entity.CedentePrestatoreId = dto.CedentePrestatoreId;
-			entity.CessionarioCommittenteId = dto.CessionarioCommittenteId;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -1449,20 +1475,12 @@ namespace WcfService.Assemblers
 			dto.Comune = entity.Comune;
 			dto.Provincia = entity.Provincia;
 			dto.Nazione = entity.Nazione;
-			dto.CedentePrestatoreId = entity.CedentePrestatoreId;
-			dto.CessionarioCommittenteId = entity.CessionarioCommittenteId;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
 	
 	    public override void AssembleReferences(Indirizzo entity, IndirizzoDto dto)
 	    {
-			CedentePrestatoreAssembler cedentePrestatoreAssembler = new CedentePrestatoreAssembler();
-			dto.CedentePrestatore = cedentePrestatoreAssembler.Assemble(entity.CedentePrestatore);
-
-			CessionarioCommittenteAssembler cessionarioCommittenteAssembler = new CessionarioCommittenteAssembler();
-			dto.CessionarioCommittente = cessionarioCommittenteAssembler.Assemble(entity.CessionarioCommittente);
-
 	    }
 	
 	    public override void AssembleCollections(Indirizzo entity, IndirizzoDto dto)
@@ -1601,28 +1619,21 @@ namespace WcfService.Assemblers
 			FatturaElettronicaHeaderAssembler fatturaElettronicaHeaderAssembler = new FatturaElettronicaHeaderAssembler();
 			dto.FatturaElettronicaHeader = fatturaElettronicaHeaderAssembler.Assemble(entity.FatturaElettronicaHeader);
 
+			DatiAnagraficiCessionarioAssembler datiAnagraficiCessionarioAssembler = new DatiAnagraficiCessionarioAssembler();
+			dto.DatiAnagraficiCessionario = datiAnagraficiCessionarioAssembler.Assemble(entity.DatiAnagraficiCessionario);
+
 	    }
 	
 	    public override void AssembleCollections(CessionarioCommittente entity, CessionarioCommittenteDto dto)
 	    {
-			DatiAnagraficiCedenteAssembler datiAnagraficiCedenteAssembler = new DatiAnagraficiCedenteAssembler();
+			SedeAssembler sedeAssembler = new SedeAssembler();
 
-			dto.DatiAnagraficiCedentes = new List<DatiAnagraficiCedenteDto>();
-			foreach (DatiAnagraficiCedente item in entity.DatiAnagraficiCedentes)
+			dto.Sedes = new List<SedeDto>();
+			foreach (Sede item in entity.Sedes)
 			{
-				var dtoItem = datiAnagraficiCedenteAssembler.Assemble(item);
+				var dtoItem = sedeAssembler.Assemble(item);
 				dtoItem.CessionarioCommittente = dto;
-				dto.DatiAnagraficiCedentes.Add(dtoItem);
-			}
-
-			IndirizzoAssembler indirizzoAssembler = new IndirizzoAssembler();
-
-			dto.Indirizzos = new List<IndirizzoDto>();
-			foreach (Indirizzo item in entity.Indirizzos)
-			{
-				var dtoItem = indirizzoAssembler.Assemble(item);
-				dtoItem.CessionarioCommittente = dto;
-				dto.Indirizzos.Add(dtoItem);
+				dto.Sedes.Add(dtoItem);
 			}
 
 	    }
@@ -2327,6 +2338,157 @@ namespace WcfService.Assemblers
 	
 	
 	public partial class AllegatiAssembler : AllegatiAssemblerBase, IAllegatiAssembler
+	{
+	    
+	}
+	
+	public partial interface ISedeAssembler : IAssembler<SedeDto, Sede>
+	{ 
+	
+	}
+	
+	public partial class SedeAssemblerBase : Assembler<SedeDto, Sede>
+	{
+		/// <summary>
+	    /// Invoked after the SedeDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="SedeDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(SedeDto dto);
+	
+		/// <summary>
+	    /// Invoked after the Sede instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="Sede"/> instance.</param>
+		partial void OnEntityAssembled(Sede entity);
+		
+	    public override Sede Assemble(Sede entity, SedeDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new Sede();
+	        }
+			
+			entity.Id = dto.Id;
+			entity.CedentePrestatoreId = dto.CedentePrestatoreId;
+			entity.CessionarioCommittenteId = dto.CessionarioCommittenteId;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override SedeDto Assemble(Sede entity)
+	    {
+	        SedeDto dto = new SedeDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			dto.CedentePrestatoreId = entity.CedentePrestatoreId;
+			dto.CessionarioCommittenteId = entity.CessionarioCommittenteId;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(Sede entity, SedeDto dto)
+	    {
+			CedentePrestatoreAssembler cedentePrestatoreAssembler = new CedentePrestatoreAssembler();
+			dto.CedentePrestatore = cedentePrestatoreAssembler.Assemble(entity.CedentePrestatore);
+
+			CessionarioCommittenteAssembler cessionarioCommittenteAssembler = new CessionarioCommittenteAssembler();
+			dto.CessionarioCommittente = cessionarioCommittenteAssembler.Assemble(entity.CessionarioCommittente);
+
+	    }
+	
+	    public override void AssembleCollections(Sede entity, SedeDto dto)
+	    {
+	    }
+	
+	}
+	
+	
+	public partial class SedeAssembler : SedeAssemblerBase, ISedeAssembler
+	{
+	    
+	}
+	
+	public partial interface IDatiAnagraficiCessionarioAssembler : IAssembler<DatiAnagraficiCessionarioDto, DatiAnagraficiCessionario>
+	{ 
+	
+	}
+	
+	public partial class DatiAnagraficiCessionarioAssemblerBase : Assembler<DatiAnagraficiCessionarioDto, DatiAnagraficiCessionario>
+	{
+		/// <summary>
+	    /// Invoked after the DatiAnagraficiCessionarioDto instance is assembled.
+	    /// </summary>
+	    /// <param name="dto"><see cref="DatiAnagraficiCessionarioDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(DatiAnagraficiCessionarioDto dto);
+	
+		/// <summary>
+	    /// Invoked after the DatiAnagraficiCessionario instance is assembled.
+	    /// </summary>
+	    /// <param name="entity">The <see cref="DatiAnagraficiCessionario"/> instance.</param>
+		partial void OnEntityAssembled(DatiAnagraficiCessionario entity);
+		
+	    public override DatiAnagraficiCessionario Assemble(DatiAnagraficiCessionario entity, DatiAnagraficiCessionarioDto dto)
+	    {
+	        if (entity == null)
+	        {
+	            entity = new DatiAnagraficiCessionario();
+	        }
+			
+			entity.Id = dto.Id;
+			entity.CodiceFiscale = dto.CodiceFiscale;
+	        this.OnEntityAssembled(entity);
+	        return entity;
+	    }
+	
+	    public override DatiAnagraficiCessionarioDto Assemble(DatiAnagraficiCessionario entity)
+	    {
+	        DatiAnagraficiCessionarioDto dto = new DatiAnagraficiCessionarioDto();
+	        
+			ObjectKey key = KeyUtility.Instance.Create(entity);
+			dto.DtoKey = KeyUtility.Instance.Convert(key);
+			dto.Id = entity.Id;
+			dto.CodiceFiscale = entity.CodiceFiscale;
+			this.OnDTOAssembled(dto); 
+	        return dto;
+	    }
+	
+	    public override void AssembleReferences(DatiAnagraficiCessionario entity, DatiAnagraficiCessionarioDto dto)
+	    {
+			CessionarioCommittenteAssembler cessionarioCommittenteAssembler = new CessionarioCommittenteAssembler();
+			dto.CessionarioCommittente = cessionarioCommittenteAssembler.Assemble(entity.CessionarioCommittente);
+
+	    }
+	
+	    public override void AssembleCollections(DatiAnagraficiCessionario entity, DatiAnagraficiCessionarioDto dto)
+	    {
+			IdFiscaleAssembler idFiscaleAssembler = new IdFiscaleAssembler();
+
+			dto.IdFiscales = new List<IdFiscaleDto>();
+			foreach (IdFiscale item in entity.IdFiscales)
+			{
+				var dtoItem = idFiscaleAssembler.Assemble(item);
+				dtoItem.DatiAnagraficiCessionario = dto;
+				dto.IdFiscales.Add(dtoItem);
+			}
+
+			AnagraficaAssembler anagraficaAssembler = new AnagraficaAssembler();
+
+			dto.Anagraficas = new List<AnagraficaDto>();
+			foreach (Anagrafica item in entity.Anagraficas)
+			{
+				var dtoItem = anagraficaAssembler.Assemble(item);
+				dtoItem.DatiAnagraficiCessionario = dto;
+				dto.Anagraficas.Add(dtoItem);
+			}
+
+	    }
+	
+	}
+	
+	
+	public partial class DatiAnagraficiCessionarioAssembler : DatiAnagraficiCessionarioAssemblerBase, IDatiAnagraficiCessionarioAssembler
 	{
 	    
 	}

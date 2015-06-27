@@ -268,6 +268,15 @@ namespace DataLayer
 			}
 		}
 		
+		private IList<Trasmissione> _trasmissiones = new List<Trasmissione>();
+		public virtual IList<Trasmissione> Trasmissiones
+		{
+			get
+			{
+				return this._trasmissiones;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

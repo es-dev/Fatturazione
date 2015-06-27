@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class DatiAnagraficiCedente
+	public partial class DatiAnagraficiCessionario
 	{
 		private int _id;
 		public virtual int Id
@@ -50,81 +50,16 @@ namespace DataLayer
 			}
 		}
 		
-		private string _alboProfessionale;
-		public virtual string AlboProfessionale
+		private CessionarioCommittente _cessionarioCommittente;
+		public virtual CessionarioCommittente CessionarioCommittente
 		{
 			get
 			{
-				return this._alboProfessionale;
+				return this._cessionarioCommittente;
 			}
 			set
 			{
-				this._alboProfessionale = value;
-			}
-		}
-		
-		private string _provinciaAlbo;
-		public virtual string ProvinciaAlbo
-		{
-			get
-			{
-				return this._provinciaAlbo;
-			}
-			set
-			{
-				this._provinciaAlbo = value;
-			}
-		}
-		
-		private string _numeroIscrizioneAlbo;
-		public virtual string NumeroIscrizioneAlbo
-		{
-			get
-			{
-				return this._numeroIscrizioneAlbo;
-			}
-			set
-			{
-				this._numeroIscrizioneAlbo = value;
-			}
-		}
-		
-		private DateTime _dataIscrizioneAlbo;
-		public virtual DateTime DataIscrizioneAlbo
-		{
-			get
-			{
-				return this._dataIscrizioneAlbo;
-			}
-			set
-			{
-				this._dataIscrizioneAlbo = value;
-			}
-		}
-		
-		private string _regimeFiscale;
-		public virtual string RegimeFiscale
-		{
-			get
-			{
-				return this._regimeFiscale;
-			}
-			set
-			{
-				this._regimeFiscale = value;
-			}
-		}
-		
-		private CedentePrestatore _cedentePrestatore;
-		public virtual CedentePrestatore CedentePrestatore
-		{
-			get
-			{
-				return this._cedentePrestatore;
-			}
-			set
-			{
-				this._cedentePrestatore = value;
+				this._cessionarioCommittente = value;
 			}
 		}
 		
