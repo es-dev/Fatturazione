@@ -37,16 +37,16 @@ namespace DataLayer
 			}
 		}
 		
-		private DatiGenerali _datiGenerali;
-		public virtual DatiGenerali DatiGenerali
+		private FatturaElettronicaBody _fatturaElettronicaBody;
+		public virtual FatturaElettronicaBody FatturaElettronicaBody
 		{
 			get
 			{
-				return this._datiGenerali;
+				return this._fatturaElettronicaBody;
 			}
 			set
 			{
-				this._datiGenerali = value;
+				this._fatturaElettronicaBody = value;
 			}
 		}
 		

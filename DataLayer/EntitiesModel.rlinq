@@ -108,6 +108,8 @@
         </orm:identity>
         <orm:field name="_id" property="Id" uniqueId="2039f5d5-1398-444c-9236-7fe99b67a88f" type="System.Int32" />
         <orm:field name="_clienteId" property="ClienteId" uniqueId="ab7d5337-d99c-4d88-9793-77ca6488bd60" type="System.Int32" />
+        <orm:field name="_versione" property="Versione" uniqueId="9e279339-737e-4806-85c5-50d7e4afb652" type="System.String" />
+        <orm:field name="_signature" property="Signature" uniqueId="2669d4c2-76bc-4255-ba56-86663d0a5262" type="System.String" />
         <orm:field name="_cliente" property="Cliente" behavior="readwrite" uniqueId="a75e098c-78ed-417e-b72b-ff1591ea48e8" type="DataLayer.Cliente">
           <orm:reference uniqueId="a8dd6cbd-2a28-4c50-965f-5565ab80a725" association-name="FatturaHasCliente">
             <orm:sharedfield name="_clienteId" target-class="DataLayer.Cliente" target-field="_id" />
@@ -223,6 +225,7 @@
           <orm:single-field field-name="_id" />
         </orm:identity>
         <orm:field name="_id" property="Id" uniqueId="b7fd8535-a692-4333-a2ff-1b9f52be4499" type="System.Int32" />
+        <orm:field name="_soggettoEmittente" property="SoggettoEmittente" uniqueId="d3eafac7-8e7b-4a12-8924-9def05bbb168" type="System.String" />
         <orm:field name="_fattura" property="Fattura" behavior="readwrite" uniqueId="7d81c867-6fcb-4ba1-9372-775a9def6bf9" type="DataLayer.Fattura">
           <orm:reference uniqueId="6203c982-e700-473a-91f9-88d2af0b61af" association-name="FatturaElettronicaHeaderHasFattura">
             <orm:sharedfield name="_id" target-class="DataLayer.Fattura" target-field="_id" />
@@ -252,11 +255,11 @@
         <orm:field name="_datiPagamentos" property="DatiPagamentos" behavior="readwrite" uniqueId="ef35326c-579d-4b82-b0c1-ab8418f88404" type="DataLayer.DatiPagamento">
           <orm:collection element-class="DataLayer.DatiPagamento" inverse-field="_fatturaElettronicaBody" order-by="" uniqueId="be5da2ca-088d-44c0-a8d8-b1ac7dec8dc6" />
         </orm:field>
-        <orm:field name="_allegatis" property="Allegatis" behavior="readwrite" uniqueId="8b8fd7e4-87b4-4614-86f8-070b47e2252b" type="DataLayer.Allegati">
-          <orm:collection element-class="DataLayer.Allegati" inverse-field="_fatturaElettronicaBody" order-by="" uniqueId="6e40bcef-67aa-4163-80b4-23af26889258" />
-        </orm:field>
         <orm:field name="_datiGenerali" property="DatiGenerali" behavior="readwrite" uniqueId="3684e563-37bf-4232-b00e-7fcf14f680ee" type="DataLayer.DatiGenerali">
           <orm:inversereference inverse-field="_fatturaElettronicaBody" uniqueId="d58296ce-db99-4d4c-8ad8-6a9f963f1a2c" />
+        </orm:field>
+        <orm:field name="_datiBeniServizi" property="DatiBeniServizi" behavior="readwrite" uniqueId="4c2b20c2-d08c-47a3-b16f-a5d07d69824a" type="DataLayer.DatiBeniServizi">
+          <orm:inversereference inverse-field="_fatturaElettronicaBody" uniqueId="2b7c831f-113d-48ab-b192-85bd0255aacf" />
         </orm:field>
       </orm:class>
       <orm:class name="DatiTrasmissione" uniqueId="5ec4b2fc-e04c-44b4-a5ba-73e9922c7017">
@@ -274,9 +277,6 @@
         </orm:field>
         <orm:field name="_idFiscales" property="IdFiscales" behavior="readwrite" uniqueId="a2552961-9e58-46a9-9044-61bde5fd22ed" type="DataLayer.IdFiscale">
           <orm:collection element-class="DataLayer.IdFiscale" inverse-field="_datiTrasmissione" order-by="" uniqueId="91b936e9-f8e3-458e-b38f-48ae39f0ea85" />
-        </orm:field>
-        <orm:field name="_contattis" property="Contattis" behavior="readwrite" uniqueId="16516b79-cd16-4780-b6cc-dcd298f42b6b" type="DataLayer.Contatti">
-          <orm:collection element-class="DataLayer.Contatti" inverse-field="_datiTrasmissione" order-by="" uniqueId="7a46698c-ee56-4069-b330-293a8a85b6d5" />
         </orm:field>
       </orm:class>
       <orm:class name="IdFiscale" uniqueId="9ed85b60-7bbe-4990-b6fe-f9616bee3023">
@@ -306,26 +306,6 @@
           </orm:reference>
         </orm:field>
       </orm:class>
-      <orm:class name="Contatti" uniqueId="c4127664-030d-491f-b618-1ab30cd3b5d1">
-        <orm:identity>
-          <orm:single-field field-name="_id" />
-        </orm:identity>
-        <orm:field name="_id" property="Id" uniqueId="7eb52e53-95ee-4f94-b443-dbb83ddbd465" type="System.Int32" />
-        <orm:field name="_telefono" property="Telefono" uniqueId="fbeca5c5-da2d-4d7c-adb7-27d6a8b19cf1" type="System.String" />
-        <orm:field name="_email" property="Email" uniqueId="8f181365-7d94-47ce-8cf6-c8ab63e26369" type="System.String" />
-        <orm:field name="_trasmittenteId" property="TrasmittenteId" uniqueId="df0854a9-5a5f-42c7-9713-0dd4e5247dd5" type="System.Int32" />
-        <orm:field name="_cedentePrestatoreId" property="CedentePrestatoreId" uniqueId="27295f7b-f65c-46e9-97e9-fdac501e21e1" type="System.Int32" />
-        <orm:field name="_datiTrasmissione" property="DatiTrasmissione" behavior="readwrite" uniqueId="bd64ec25-1a31-4b10-88d2-e0aa78b0f054" type="DataLayer.DatiTrasmissione">
-          <orm:reference uniqueId="7a46698c-ee56-4069-b330-293a8a85b6d5" association-name="ContattiHasDatiTrasmissione">
-            <orm:sharedfield name="_trasmittenteId" target-class="DataLayer.DatiTrasmissione" target-field="_id" />
-          </orm:reference>
-        </orm:field>
-        <orm:field name="_cedentePrestatore" property="CedentePrestatore" behavior="readwrite" uniqueId="b2671aae-19ad-446e-a681-a86d34c37b48" type="DataLayer.CedentePrestatore">
-          <orm:reference uniqueId="e7022dbb-c4e8-43d9-8165-7af549a04cfb" association-name="ContattiHasCedentePrestatore">
-            <orm:sharedfield name="_cedentePrestatoreId" target-class="DataLayer.CedentePrestatore" target-field="_id" />
-          </orm:reference>
-        </orm:field>
-      </orm:class>
       <orm:class name="CedentePrestatore" uniqueId="e79ea234-dcfe-473e-a411-d66ac967ce8a">
         <orm:identity>
           <orm:single-field field-name="_id" />
@@ -336,9 +316,6 @@
           <orm:reference uniqueId="d940c806-4506-46f7-8796-c06f21d508bf" association-name="CedentePrestatoreHasFatturaElettronicaHeader">
             <orm:sharedfield name="_id" target-class="DataLayer.FatturaElettronicaHeader" target-field="_id" />
           </orm:reference>
-        </orm:field>
-        <orm:field name="_contattis" property="Contattis" behavior="readwrite" uniqueId="38c52711-224b-4d7b-89d8-07f302aa939b" type="DataLayer.Contatti">
-          <orm:collection element-class="DataLayer.Contatti" inverse-field="_cedentePrestatore" order-by="" uniqueId="e7022dbb-c4e8-43d9-8165-7af549a04cfb" />
         </orm:field>
         <orm:field name="_sedes" property="Sedes" behavior="readwrite" uniqueId="1c353f5a-83c5-43e3-953c-b9bca5f754a4" type="DataLayer.Sede">
           <orm:collection element-class="DataLayer.Sede" inverse-field="_cedentePrestatore" order-by="" uniqueId="91fb0552-1136-4497-831f-4aadc3666941" />
@@ -481,9 +458,6 @@
         <orm:field name="_datiGeneraliDocumento" property="DatiGeneraliDocumento" behavior="readwrite" uniqueId="0b347dda-22fc-4775-99a4-f2ddf91a8f27" type="DataLayer.DatiGeneraliDocumento">
           <orm:inversereference inverse-field="_datiGenerali" uniqueId="12a62baf-8c26-4b80-b4dd-1d62e210f811" />
         </orm:field>
-        <orm:field name="_datiBeniServizi" property="DatiBeniServizi" behavior="readwrite" uniqueId="977f4f17-5781-49ad-a62b-bf1bd8e99c7f" type="DataLayer.DatiBeniServizi">
-          <orm:inversereference inverse-field="_datiGenerali" uniqueId="5105e165-11d4-4c5b-b10a-a342cf5acea4" />
-        </orm:field>
       </orm:class>
       <orm:class name="DatiGeneraliDocumento" uniqueId="a1cd7655-e52a-45fa-bffd-a39241387add">
         <orm:identity>
@@ -504,6 +478,15 @@
         </orm:field>
         <orm:field name="_datiRitenuta" property="DatiRitenuta" behavior="readwrite" uniqueId="5e2d4ff5-9eb2-4b6a-b5ac-a3548ba91b85" type="DataLayer.DatiRitenuta">
           <orm:inversereference inverse-field="_datiGeneraliDocumento" uniqueId="daf13a2d-c1a8-4444-af8f-4f6dd75f84e6" />
+        </orm:field>
+        <orm:field name="_datiBollo" property="DatiBollo" behavior="readwrite" uniqueId="6804c520-9fb8-4a47-b864-23a88d79ed5c" type="DataLayer.DatiBollo">
+          <orm:inversereference inverse-field="_datiGeneraliDocumento" uniqueId="5874efb2-7217-4997-b577-deb29eb89cc1" />
+        </orm:field>
+        <orm:field name="_datiCassaPrevidenziales" property="DatiCassaPrevidenziales" behavior="readwrite" uniqueId="1eb25f93-12df-45a0-9efd-3a928bce504d" type="DataLayer.DatiCassaPrevidenziale">
+          <orm:collection element-class="DataLayer.DatiCassaPrevidenziale" inverse-field="_datiGeneraliDocumento" order-by="" uniqueId="38c9d80c-f5d9-4ca6-99a4-811b900adb7e" />
+        </orm:field>
+        <orm:field name="_scontoMaggioraziones" property="ScontoMaggioraziones" behavior="readwrite" uniqueId="09386609-cc38-4e6b-aaa7-f11bf63cf3ef" type="DataLayer.ScontoMaggiorazione">
+          <orm:collection element-class="DataLayer.ScontoMaggiorazione" inverse-field="_datiGeneraliDocumento" order-by="" uniqueId="0f7a2cae-b698-4ad7-886a-7153e14e0d87" />
         </orm:field>
       </orm:class>
       <orm:class name="DatiRitenuta" uniqueId="f2dbbb09-8707-4bac-a0f9-d73e086ea634">
@@ -526,16 +509,16 @@
           <orm:single-field field-name="_id" />
         </orm:identity>
         <orm:field name="_id" property="Id" uniqueId="44446b8b-db81-4c07-9639-1f554cf26927" type="System.Int32" />
-        <orm:field name="_datiGenerali" property="DatiGenerali" behavior="readwrite" uniqueId="bcd0333a-24c9-453a-ba3d-22a0ebad0b26" type="DataLayer.DatiGenerali">
-          <orm:reference uniqueId="5105e165-11d4-4c5b-b10a-a342cf5acea4" association-name="DatiBeniServiziHasDatiGenerali">
-            <orm:sharedfield name="_id" target-class="DataLayer.DatiGenerali" target-field="_id" />
-          </orm:reference>
-        </orm:field>
         <orm:field name="_dettaglioLinees" property="DettaglioLinees" behavior="readwrite" uniqueId="2b9a8a5f-2a34-4fd3-837f-f353f78c5531" type="DataLayer.DettaglioLinee">
           <orm:collection element-class="DataLayer.DettaglioLinee" inverse-field="_datiBeniServizi" order-by="" uniqueId="f6f9a759-c065-45d9-984e-bfa5ef711717" />
         </orm:field>
         <orm:field name="_datiRiepilogos" property="DatiRiepilogos" behavior="readwrite" uniqueId="79c49f24-684b-44b0-b785-bfadbde09add" type="DataLayer.DatiRiepilogo">
           <orm:collection element-class="DataLayer.DatiRiepilogo" inverse-field="_datiBeniServizi" order-by="" uniqueId="d868f9c4-9253-4cfd-b7bc-cf14fac6584f" />
+        </orm:field>
+        <orm:field name="_fatturaElettronicaBody" property="FatturaElettronicaBody" behavior="readwrite" uniqueId="b89213cc-67cb-4aa1-bc69-6ab02ca48a76" type="DataLayer.FatturaElettronicaBody">
+          <orm:reference uniqueId="2b7c831f-113d-48ab-b192-85bd0255aacf" association-name="DatiBeniServiziHasFatturaElettronicaBody">
+            <orm:sharedfield name="_id" target-class="DataLayer.FatturaElettronicaBody" target-field="_id" />
+          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="DettaglioLinee" uniqueId="e991cb3f-2e92-4883-854f-dae451210492">
@@ -550,8 +533,6 @@
         <orm:field name="_prezzoTotale" property="PrezzoTotale" uniqueId="86784d34-ee1e-47a5-9533-8a73c5798e07" type="System.Decimal" />
         <orm:field name="_aliquotaIVA" property="AliquotaIVA" uniqueId="62b2a56a-2774-4562-bdce-09039fc06728" type="System.Decimal" />
         <orm:field name="_ritenuta" property="Ritenuta" uniqueId="170e1e60-da54-4ce2-8ece-53aed262309f" type="System.String" />
-        <orm:field name="_dataInizioPeriodo" property="DataInizioPeriodo" uniqueId="da0f1641-cdc5-44a9-987e-3945941c0050" type="System.DateTime" />
-        <orm:field name="_dataFinePeriodo" property="DataFinePeriodo" uniqueId="1ef9fc16-c99b-41e6-a3f9-edd00a0631d5" type="System.DateTime" />
         <orm:field name="_datiBeniServizi" property="DatiBeniServizi" behavior="readwrite" uniqueId="ee5a5a74-6fdc-4ab6-a98e-46aeb21cf3f2" type="DataLayer.DatiBeniServizi">
           <orm:reference uniqueId="f6f9a759-c065-45d9-984e-bfa5ef711717" association-name="DettaglioLineeHasDatiBeniServizi">
             <orm:sharedfield name="_datiBeniServiziId" target-class="DataLayer.DatiBeniServizi" target-field="_id" />
@@ -601,41 +582,10 @@
         <orm:field name="_giorniTerminiPagamento" property="GiorniTerminiPagamento" uniqueId="5afbd06a-d6a8-4c81-860e-bd88d2343558" type="System.Int32" />
         <orm:field name="_dataScadenzaPagamento" property="DataScadenzaPagamento" uniqueId="3f8d218c-0019-4931-ac7c-d7aaf3831801" type="System.Decimal" />
         <orm:field name="_importoPagamento" property="ImportoPagamento" uniqueId="45a534da-7c42-4372-a8bf-7f572594b621" type="System.String" />
-        <orm:field name="_istitutoFinanziario" property="IstitutoFinanziario" uniqueId="d1b37336-38e6-4ba4-b429-9b2a3514592f" type="System.String" />
         <orm:field name="_iBAN" property="IBAN" uniqueId="ee1c17f5-aee8-41de-bd29-d7b13bdd283a" type="System.String" />
-        <orm:field name="_aBI" property="ABI" uniqueId="4e2c98b4-787b-4b1b-b39d-0cbffaf65094" type="System.String" />
-        <orm:field name="_cAB" property="CAB" uniqueId="5aa84cc5-ab5e-4bc7-ad5a-a5f83122adee" type="System.String" />
-        <orm:field name="_bIC" property="BIC" uniqueId="6b3e49ff-b8ba-46c6-8ea6-2208d094d346" type="System.String" />
-        <orm:field name="_dataDecorrenzaPenale" property="DataDecorrenzaPenale" uniqueId="34d33c28-22ae-4de7-bdc1-cf956d136eea" type="System.DateTime" />
-        <orm:field name="_codUfficioPostale" property="CodUfficioPostale" uniqueId="8159e97c-74e6-4bcb-82e1-e75c06bc46ee" type="System.String" />
-        <orm:field name="_cognomeQuietanzante" property="CognomeQuietanzante" uniqueId="8623f1d7-b04f-438a-9dff-f249cd7f601b" type="System.String" />
-        <orm:field name="_nomeQuietanzante" property="NomeQuietanzante" uniqueId="7e42ec72-e8a4-4ad2-925c-afcbdbd50c9e" type="System.String" />
-        <orm:field name="_cFQuietanzante" property="CFQuietanzante" uniqueId="8e9684fa-f7f3-4bca-9a4f-bebc83b8049e" type="System.String" />
-        <orm:field name="_titoloQuietanzante" property="TitoloQuietanzante" uniqueId="0a24d457-d588-47c9-b39c-567a91ac6af6" type="System.String" />
-        <orm:field name="_scontoPagamentoAnticipato" property="ScontoPagamentoAnticipato" uniqueId="c4bed27e-5db8-40c1-97eb-bf5d88dd0b35" type="System.Decimal" />
-        <orm:field name="_dataLimitePagamentoAnticipato" property="DataLimitePagamentoAnticipato" uniqueId="012a8f1f-fc4f-41d6-8781-f389b1500993" type="System.DateTime" />
-        <orm:field name="_penalitaPagamentiRitardati" property="PenalitaPagamentiRitardati" uniqueId="fff5266d-cfc6-4931-bf5d-fc18a2286bb6" type="System.Decimal" />
-        <orm:field name="_codicePagamento" property="CodicePagamento" uniqueId="88d68b8d-3c68-40c2-a714-b14f936a8615" type="System.String" />
         <orm:field name="_datiPagamento" property="DatiPagamento" behavior="readwrite" uniqueId="3325e477-07b1-4173-9419-d8d388dae094" type="DataLayer.DatiPagamento">
           <orm:reference uniqueId="bf3b56ba-884d-4323-a995-87e271cc130a" association-name="DettaglioPagamentoHasDatiPagamento">
             <orm:sharedfield name="_datiPagamentoId" target-class="DataLayer.DatiPagamento" target-field="_id" />
-          </orm:reference>
-        </orm:field>
-      </orm:class>
-      <orm:class name="Allegati" uniqueId="d04624fb-b3ca-4006-b149-de5640db7286">
-        <orm:identity>
-          <orm:single-field field-name="_id" />
-        </orm:identity>
-        <orm:field name="_id" property="Id" uniqueId="6315761c-23ea-443b-a02e-65ae71a45f7f" type="System.Int32" />
-        <orm:field name="_nomeAttachment" property="NomeAttachment" uniqueId="3766e0ab-5a42-4630-97a5-d82c9c857e17" type="System.String" />
-        <orm:field name="_algoritmoCompressione" property="AlgoritmoCompressione" uniqueId="c56ffaea-4136-411b-9c0f-cf660bbf5cf2" type="System.String" />
-        <orm:field name="_formatoAttachment" property="FormatoAttachment" uniqueId="90cd7602-d67a-4055-81d7-7379207cf39a" type="System.String" />
-        <orm:field name="_descrizioneAttachment" property="DescrizioneAttachment" uniqueId="0d6e27a3-386b-429c-bad7-20be11b2e376" type="System.String" />
-        <orm:field name="_attachment" property="Attachment" uniqueId="52b2bb6e-ab8d-4a28-888d-efdf25fba84c" type="System.Object" />
-        <orm:field name="_fatturaElettronicaBodyId" property="FatturaElettronicaBodyId" uniqueId="a48f6d6f-fcd6-44de-bbe9-fcf616ba51af" type="System.Int32" />
-        <orm:field name="_fatturaElettronicaBody" property="FatturaElettronicaBody" behavior="readwrite" uniqueId="8aedb4e4-7ae6-4ddd-a591-feba1b03b316" type="DataLayer.FatturaElettronicaBody">
-          <orm:reference uniqueId="6e40bcef-67aa-4163-80b4-23af26889258" association-name="AllegatiHasFatturaElettronicaBody">
-            <orm:sharedfield name="_fatturaElettronicaBodyId" target-class="DataLayer.FatturaElettronicaBody" target-field="_id" />
           </orm:reference>
         </orm:field>
       </orm:class>
@@ -671,6 +621,54 @@
         </orm:field>
         <orm:field name="_anagraficas" property="Anagraficas" behavior="readwrite" uniqueId="c72071f1-285f-4bdb-945d-4d4fc401d010" type="DataLayer.Anagrafica">
           <orm:collection element-class="DataLayer.Anagrafica" inverse-field="_datiAnagraficiCessionario" order-by="" uniqueId="eef6c5d9-5f6b-4229-86e5-70c52400261f" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="DatiBollo" uniqueId="35d99145-8cb1-43fa-b1cf-910f7622f450">
+        <orm:identity>
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:field name="_id" property="Id" uniqueId="5cbc10da-258e-4cfc-b540-e2c5976e31ca" type="System.Int32" />
+        <orm:field name="_bolloVirtuale" property="BolloVirtuale" uniqueId="33a4ebb7-2e46-44a5-95ea-c9d37e224628" type="System.String" />
+        <orm:field name="_importoBollo" property="ImportoBollo" uniqueId="72100c98-adb3-4227-b993-e710d0e8fc26" type="System.Decimal" />
+        <orm:field name="_datiGeneraliDocumento" property="DatiGeneraliDocumento" behavior="readwrite" uniqueId="d36e84c4-170a-4b2f-8c39-0684bf321e6d" type="DataLayer.DatiGeneraliDocumento">
+          <orm:reference uniqueId="5874efb2-7217-4997-b577-deb29eb89cc1" association-name="DatiBolloHasDatiGeneraliDocumento">
+            <orm:sharedfield name="_id" target-class="DataLayer.DatiGeneraliDocumento" target-field="_id" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="DatiCassaPrevidenziale" uniqueId="a405ec4e-8561-48df-bd69-a9f50695fa2f">
+        <orm:identity>
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:field name="_id" property="Id" uniqueId="4afa1c7b-cfe7-4961-8118-b8b723144a43" type="System.Int32" />
+        <orm:field name="_datiGeneraliDocumentoId" property="DatiGeneraliDocumentoId" uniqueId="2cd7f282-8dc3-4e4e-94c4-68c830c9c235" type="System.Int32" />
+        <orm:field name="_tipoCassa" property="TipoCassa" uniqueId="56aeaec3-7544-496d-8314-ecba346b9464" type="System.String" />
+        <orm:field name="_alCassa" property="AlCassa" uniqueId="2dccc729-2852-4afd-8cc5-2d500832d40a" type="System.Decimal" />
+        <orm:field name="_importoContributoCassa" property="ImportoContributoCassa" uniqueId="80400144-5ef7-4ece-aa98-d8ca3ab9159f" type="System.Decimal" />
+        <orm:field name="_imponibileCassa" property="ImponibileCassa" uniqueId="cc09bae3-5dd5-4890-a902-5203a561a7af" type="System.Decimal" />
+        <orm:field name="_aliquotaIVA" property="AliquotaIVA" uniqueId="b0d45dac-f349-418c-97b6-98359418c749" type="System.Decimal" />
+        <orm:field name="_ritenuta" property="Ritenuta" uniqueId="165d0ea9-444a-45a8-8cee-f6c2a4c05538" type="System.String" />
+        <orm:field name="_natura" property="Natura" uniqueId="d64ee131-751e-48d2-9a01-16728b208bca" type="System.String" />
+        <orm:field name="_riferimentoAmministrazione" property="RiferimentoAmministrazione" uniqueId="79b9de04-e1b7-4fd5-b74f-99d454134819" type="System.String" />
+        <orm:field name="_datiGeneraliDocumento" property="DatiGeneraliDocumento" behavior="readwrite" uniqueId="e8250420-64b6-4d01-a1ec-ebb4b84cde17" type="DataLayer.DatiGeneraliDocumento">
+          <orm:reference uniqueId="38c9d80c-f5d9-4ca6-99a4-811b900adb7e" association-name="DatiCassaPrevidenzialeHasDatiGeneraliDocumento">
+            <orm:sharedfield name="_datiGeneraliDocumentoId" target-class="DataLayer.DatiGeneraliDocumento" target-field="_id" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="ScontoMaggiorazione" uniqueId="59bd53c3-a3ca-480c-8b5a-8502a2ceab0c">
+        <orm:identity>
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:field name="_id" property="Id" uniqueId="cf9b6e83-26b1-4dd0-a954-73da4f188938" type="System.Int32" />
+        <orm:field name="_datiGeneraliDocumentoId" property="DatiGeneraliDocumentoId" uniqueId="231fee9c-80a6-4046-909a-f9f54c0790a5" type="System.Int32" />
+        <orm:field name="_tipo" property="Tipo" uniqueId="a40e56da-d7cf-48ba-b76c-ec79d5397606" type="System.String" />
+        <orm:field name="_percentuale" property="Percentuale" uniqueId="b3d458d3-18c8-4f7f-a0d7-86d885a039dd" type="System.Decimal" />
+        <orm:field name="_importo" property="Importo" uniqueId="cd1f1365-4c6e-4020-a501-1db9ba536a94" type="System.Decimal" />
+        <orm:field name="_datiGeneraliDocumento" property="DatiGeneraliDocumento" behavior="readwrite" uniqueId="5ef1e293-40cd-4a6b-8923-1088ab180fa5" type="DataLayer.DatiGeneraliDocumento">
+          <orm:reference uniqueId="0f7a2cae-b698-4ad7-886a-7153e14e0d87" association-name="ScontoMaggiorazioneHasDatiGeneraliDocumento">
+            <orm:sharedfield name="_datiGeneraliDocumentoId" target-class="DataLayer.DatiGeneraliDocumento" target-field="_id" />
+          </orm:reference>
         </orm:field>
       </orm:class>
     </orm:namespace>
@@ -843,6 +841,8 @@
     <DomainClass Id="ac458a07-586b-4e53-a686-852ea848f7c3" name="Fattura" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="2039f5d5-1398-444c-9236-7fe99b67a88f" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
       <Property Id="ab7d5337-d99c-4d88-9793-77ca6488bd60" name="ClienteId" type="Int32" label="ClienteId : Int32" fieldName="_clienteId" />
+      <Property Id="9e279339-737e-4806-85c5-50d7e4afb652" name="Versione" label="Versione : String" fieldName="_versione" />
+      <Property Id="2669d4c2-76bc-4255-ba56-86663d0a5262" name="Signature" label="Signature : String" fieldName="_signature" />
       <AssociationTargets>
         <Association Id="a8dd6cbd-2a28-4c50-965f-5565ab80a725" SourceMultiplicity="ZeroOne" name="FatturaHasCliente">
           <DomainClassMoniker name="/EntitiesModel/Cliente" />
@@ -1028,6 +1028,7 @@
     </DomainClass>
     <DomainClass Id="462fc527-9d55-4f76-ba94-e853d6251e72" name="FatturaElettronicaHeader" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="b7fd8535-a692-4333-a2ff-1b9f52be4499" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
+      <Property Id="d3eafac7-8e7b-4a12-8924-9def05bbb168" name="SoggettoEmittente" label="SoggettoEmittente : String" fieldName="_soggettoEmittente" />
       <AssociationTargets>
         <Association Id="6203c982-e700-473a-91f9-88d2af0b61af" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="FatturaElettronicaHeaderHasFattura">
           <DomainClassMoniker name="/EntitiesModel/Fattura" />
@@ -1086,8 +1087,8 @@
         <classHasNavigationalProperties Id="c9e297ef-5a55-410c-a4c2-5dafb5755773">
           <NavigationalProperty Id="ef35326c-579d-4b82-b0c1-ab8418f88404" name="DatiPagamentos" type="IList&lt;DatiPagamento&gt;" label="DatiPagamentos : IList&lt;DatiPagamento&gt;" nullable="true" kind="Persistent" fieldName="_datiPagamentos" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="c6f6f41c-812d-4ba1-a1e9-80c9b74a0adb">
-          <NavigationalProperty Id="8b8fd7e4-87b4-4614-86f8-070b47e2252b" name="Allegatis" type="IList&lt;Allegati&gt;" label="Allegatis : IList&lt;Allegati&gt;" nullable="true" kind="Persistent" fieldName="_allegatis" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="66bd8852-55b2-4e27-8625-5cf246ea6cca">
+          <NavigationalProperty Id="4c2b20c2-d08c-47a3-b16f-a5d07d69824a" name="DatiBeniServizi" type="DatiBeniServizi" label="DatiBeniServizi : DatiBeniServizi" nullable="true" kind="Persistent" fieldName="_datiBeniServizi" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1117,9 +1118,6 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="0631f9bf-fa5a-468e-ac39-620d09dee965">
           <NavigationalProperty Id="a2552961-9e58-46a9-9044-61bde5fd22ed" name="IdFiscales" type="IList&lt;IdFiscale&gt;" label="IdFiscales : IList&lt;IdFiscale&gt;" nullable="true" kind="Persistent" fieldName="_idFiscales" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="5d72f054-3d6a-4366-b6bf-faa198113cb7">
-          <NavigationalProperty Id="16516b79-cd16-4780-b6cc-dcd298f42b6b" name="Contattis" type="IList&lt;Contatti&gt;" label="Contattis : IList&lt;Contatti&gt;" nullable="true" kind="Persistent" fieldName="_contattis" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1184,49 +1182,6 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
-    <DomainClass Id="c4127664-030d-491f-b618-1ab30cd3b5d1" name="Contatti" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
-      <Property Id="7eb52e53-95ee-4f94-b443-dbb83ddbd465" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
-      <Property Id="fbeca5c5-da2d-4d7c-adb7-27d6a8b19cf1" name="Telefono" label="Telefono : String" fieldName="_telefono" />
-      <Property Id="8f181365-7d94-47ce-8cf6-c8ab63e26369" name="Email" label="Email : String" fieldName="_email" />
-      <Property Id="df0854a9-5a5f-42c7-9713-0dd4e5247dd5" name="TrasmittenteId" type="Int32" label="TrasmittenteId : Int32" fieldName="_trasmittenteId" />
-      <Property Id="27295f7b-f65c-46e9-97e9-fdac501e21e1" name="CedentePrestatoreId" type="Int32" label="CedentePrestatoreId : Int32" fieldName="_cedentePrestatoreId" />
-      <AssociationTargets>
-        <Association Id="7a46698c-ee56-4069-b330-293a8a85b6d5" SourceMultiplicity="ZeroOne" name="ContattiHasDatiTrasmissione">
-          <DomainClassMoniker name="/EntitiesModel/DatiTrasmissione" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="4fcd1dab-2b66-46ad-9492-176844b34cc4">
-              <NavigationalPropertyMoniker name="/EntitiesModel/DatiTrasmissione/Contattis" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="497b5325-802d-47da-af83-790bb6918fe0">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Contatti/DatiTrasmissione" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
-        <Association Id="e7022dbb-c4e8-43d9-8165-7af549a04cfb" SourceMultiplicity="ZeroOne" name="ContattiHasCedentePrestatore">
-          <DomainClassMoniker name="/EntitiesModel/CedentePrestatore" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="dc86aacc-582d-4fb3-8348-2b7913fcb37d">
-              <NavigationalPropertyMoniker name="/EntitiesModel/CedentePrestatore/Contattis" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="14802a25-0f3f-4c50-ad4e-b7c716d05850">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Contatti/CedentePrestatore" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
-      </AssociationTargets>
-      <navigationalProperties>
-        <classHasNavigationalProperties Id="4a0b962a-73b7-4b96-8654-147e0f41875f">
-          <NavigationalProperty Id="bd64ec25-1a31-4b10-88d2-e0aa78b0f054" name="DatiTrasmissione" type="DatiTrasmissione" label="DatiTrasmissione : DatiTrasmissione" nullable="true" kind="Persistent" fieldName="_datiTrasmissione" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="dd16db70-0aa8-4808-b44a-346cd3829d41">
-          <NavigationalProperty Id="b2671aae-19ad-446e-a681-a86d34c37b48" name="CedentePrestatore" type="CedentePrestatore" label="CedentePrestatore : CedentePrestatore" nullable="true" kind="Persistent" fieldName="_cedentePrestatore" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-      </navigationalProperties>
-    </DomainClass>
     <DomainClass Id="e79ea234-dcfe-473e-a411-d66ac967ce8a" name="CedentePrestatore" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="fbb61f13-0581-4633-b88f-dd530b8cd1ef" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
       <Property Id="daa224e5-e915-41d7-a35a-fff9169ad1ce" name="RiferimentoAmministrazione" label="RiferimentoAmministrazione : String" fieldName="_riferimentoAmministrazione" />
@@ -1248,9 +1203,6 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="dc153638-1d73-498e-b1f1-d6460f828805">
           <NavigationalProperty Id="6068c152-e81f-4316-8fec-c524b5066423" name="FatturaElettronicaHeader" type="FatturaElettronicaHeader" label="FatturaElettronicaHeader : FatturaElettronicaHeader" nullable="true" kind="Persistent" fieldName="_fatturaElettronicaHeader" isDependent="false" isManaged="true" />
-        </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="4c3b0004-9eee-4191-912a-a75a3e1c96d7">
-          <NavigationalProperty Id="38c52711-224b-4d7b-89d8-07f302aa939b" name="Contattis" type="IList&lt;Contatti&gt;" label="Contattis : IList&lt;Contatti&gt;" nullable="true" kind="Persistent" fieldName="_contattis" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="fe259555-96c0-4d5b-9153-aa3e93f7e383">
           <NavigationalProperty Id="1c353f5a-83c5-43e3-953c-b9bca5f754a4" name="Sedes" type="IList&lt;Sede&gt;" label="Sedes : IList&lt;Sede&gt;" nullable="true" kind="Persistent" fieldName="_sedes" isDependent="false" isManaged="false" />
@@ -1439,9 +1391,6 @@
         <classHasNavigationalProperties Id="09018d4a-dcfa-40f2-948e-4b949b8cbe57">
           <NavigationalProperty Id="0b347dda-22fc-4775-99a4-f2ddf91a8f27" name="DatiGeneraliDocumento" type="DatiGeneraliDocumento" label="DatiGeneraliDocumento : DatiGeneraliDocumento" nullable="true" kind="Persistent" fieldName="_datiGeneraliDocumento" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="e2ee2394-456a-455a-90cc-d0ab7c076f30">
-          <NavigationalProperty Id="977f4f17-5781-49ad-a62b-bf1bd8e99c7f" name="DatiBeniServizi" type="DatiBeniServizi" label="DatiBeniServizi : DatiBeniServizi" nullable="true" kind="Persistent" fieldName="_datiBeniServizi" isDependent="false" isManaged="true" />
-        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="a1cd7655-e52a-45fa-bffd-a39241387add" name="DatiGeneraliDocumento" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -1475,6 +1424,15 @@
         <classHasNavigationalProperties Id="9efdf3b8-4025-4055-b9fd-b89420af799f">
           <NavigationalProperty Id="5e2d4ff5-9eb2-4b6a-b5ac-a3548ba91b85" name="DatiRitenuta" type="DatiRitenuta" label="DatiRitenuta : DatiRitenuta" nullable="true" kind="Persistent" fieldName="_datiRitenuta" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a2c5155e-7b2c-4d61-8df4-6d38d1029435">
+          <NavigationalProperty Id="6804c520-9fb8-4a47-b864-23a88d79ed5c" name="DatiBollo" type="DatiBollo" label="DatiBollo : DatiBollo" nullable="true" kind="Persistent" fieldName="_datiBollo" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="efc155b6-4ea4-4f76-a059-ee407165fa13">
+          <NavigationalProperty Id="1eb25f93-12df-45a0-9efd-3a928bce504d" name="DatiCassaPrevidenziales" type="IList&lt;DatiCassaPrevidenziale&gt;" label="DatiCassaPrevidenziales : IList&lt;DatiCassaPrevidenziale&gt;" nullable="true" kind="Persistent" fieldName="_datiCassaPrevidenziales" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="3338661a-e404-41ed-a4ad-bf1cf761d77f">
+          <NavigationalProperty Id="09386609-cc38-4e6b-aaa7-f11bf63cf3ef" name="ScontoMaggioraziones" type="IList&lt;ScontoMaggiorazione&gt;" label="ScontoMaggioraziones : IList&lt;ScontoMaggiorazione&gt;" nullable="true" kind="Persistent" fieldName="_scontoMaggioraziones" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="f2dbbb09-8707-4bac-a0f9-d73e086ea634" name="DatiRitenuta" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -1507,16 +1465,16 @@
     <DomainClass Id="281f0983-4ee0-431c-b35a-6424eb77e566" name="DatiBeniServizi" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="44446b8b-db81-4c07-9639-1f554cf26927" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
       <AssociationTargets>
-        <Association Id="5105e165-11d4-4c5b-b10a-a342cf5acea4" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="DatiBeniServiziHasDatiGenerali">
-          <DomainClassMoniker name="/EntitiesModel/DatiGenerali" />
+        <Association Id="2b7c831f-113d-48ab-b192-85bd0255aacf" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="DatiBeniServiziHasFatturaElettronicaBody">
+          <DomainClassMoniker name="/EntitiesModel/FatturaElettronicaBody" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="fe9e5408-3218-48f8-a48c-4955a8a09071">
-              <NavigationalPropertyMoniker name="/EntitiesModel/DatiGenerali/DatiBeniServizi" />
+            <associationDefinesTargetProperty Id="e6ebad01-f505-4a1c-b156-032008cc8dda">
+              <NavigationalPropertyMoniker name="/EntitiesModel/FatturaElettronicaBody/DatiBeniServizi" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="d355197e-d319-4c94-a074-46dd9b89d0f2">
-              <NavigationalPropertyMoniker name="/EntitiesModel/DatiBeniServizi/DatiGenerali" />
+            <associationDefinesSourceProperty Id="cd2805e9-51d1-4eef-8fb4-690d746d224b">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiBeniServizi/FatturaElettronicaBody" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -1528,8 +1486,8 @@
         <classHasNavigationalProperties Id="9103ab77-36f1-4fd2-ba4e-acb62e8620a1">
           <NavigationalProperty Id="79c49f24-684b-44b0-b785-bfadbde09add" name="DatiRiepilogos" type="IList&lt;DatiRiepilogo&gt;" label="DatiRiepilogos : IList&lt;DatiRiepilogo&gt;" nullable="true" kind="Persistent" fieldName="_datiRiepilogos" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="e02ac36e-c074-45c4-9204-cea53acbfeb1">
-          <NavigationalProperty Id="bcd0333a-24c9-453a-ba3d-22a0ebad0b26" name="DatiGenerali" type="DatiGenerali" label="DatiGenerali : DatiGenerali" nullable="true" kind="Persistent" fieldName="_datiGenerali" isDependent="false" isManaged="true" />
+        <classHasNavigationalProperties Id="b419f23a-d64e-47c7-8504-71b5842c42dc">
+          <NavigationalProperty Id="b89213cc-67cb-4aa1-bc69-6ab02ca48a76" name="FatturaElettronicaBody" type="FatturaElettronicaBody" label="FatturaElettronicaBody : FatturaElettronicaBody" nullable="true" kind="Persistent" fieldName="_fatturaElettronicaBody" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1542,8 +1500,6 @@
       <Property Id="86784d34-ee1e-47a5-9533-8a73c5798e07" name="PrezzoTotale" type="Decimal" label="PrezzoTotale : Decimal" fieldName="_prezzoTotale" />
       <Property Id="62b2a56a-2774-4562-bdce-09039fc06728" name="AliquotaIVA" type="Decimal" label="AliquotaIVA : Decimal" fieldName="_aliquotaIVA" />
       <Property Id="170e1e60-da54-4ce2-8ece-53aed262309f" name="Ritenuta" label="Ritenuta : String" fieldName="_ritenuta" />
-      <Property Id="da0f1641-cdc5-44a9-987e-3945941c0050" name="DataInizioPeriodo" type="DateTime" label="DataInizioPeriodo : DateTime" fieldName="_dataInizioPeriodo" />
-      <Property Id="1ef9fc16-c99b-41e6-a3f9-edd00a0631d5" name="DataFinePeriodo" type="DateTime" label="DataFinePeriodo : DateTime" fieldName="_dataFinePeriodo" />
       <AssociationTargets>
         <Association Id="f6f9a759-c065-45d9-984e-bfa5ef711717" SourceMultiplicity="ZeroOne" name="DettaglioLineeHasDatiBeniServizi">
           <DomainClassMoniker name="/EntitiesModel/DatiBeniServizi" />
@@ -1629,21 +1585,7 @@
       <Property Id="5afbd06a-d6a8-4c81-860e-bd88d2343558" name="GiorniTerminiPagamento" type="Int32" label="GiorniTerminiPagamento : Int32" fieldName="_giorniTerminiPagamento" />
       <Property Id="3f8d218c-0019-4931-ac7c-d7aaf3831801" name="DataScadenzaPagamento" type="Decimal" label="DataScadenzaPagamento : Decimal" fieldName="_dataScadenzaPagamento" />
       <Property Id="45a534da-7c42-4372-a8bf-7f572594b621" name="ImportoPagamento" label="ImportoPagamento : String" fieldName="_importoPagamento" />
-      <Property Id="8159e97c-74e6-4bcb-82e1-e75c06bc46ee" name="CodUfficioPostale" label="CodUfficioPostale : String" fieldName="_codUfficioPostale" />
-      <Property Id="d1b37336-38e6-4ba4-b429-9b2a3514592f" name="IstitutoFinanziario" label="IstitutoFinanziario : String" fieldName="_istitutoFinanziario" />
       <Property Id="ee1c17f5-aee8-41de-bd29-d7b13bdd283a" name="IBAN" label="IBAN : String" fieldName="_iBAN" />
-      <Property Id="4e2c98b4-787b-4b1b-b39d-0cbffaf65094" name="ABI" label="ABI : String" fieldName="_aBI" />
-      <Property Id="5aa84cc5-ab5e-4bc7-ad5a-a5f83122adee" name="CAB" label="CAB : String" fieldName="_cAB" />
-      <Property Id="6b3e49ff-b8ba-46c6-8ea6-2208d094d346" name="BIC" label="BIC : String" fieldName="_bIC" />
-      <Property Id="34d33c28-22ae-4de7-bdc1-cf956d136eea" name="DataDecorrenzaPenale" type="DateTime" label="DataDecorrenzaPenale : DateTime" fieldName="_dataDecorrenzaPenale" />
-      <Property Id="8623f1d7-b04f-438a-9dff-f249cd7f601b" name="CognomeQuietanzante" label="CognomeQuietanzante : String" fieldName="_cognomeQuietanzante" />
-      <Property Id="7e42ec72-e8a4-4ad2-925c-afcbdbd50c9e" name="NomeQuietanzante" label="NomeQuietanzante : String" fieldName="_nomeQuietanzante" />
-      <Property Id="8e9684fa-f7f3-4bca-9a4f-bebc83b8049e" name="CFQuietanzante" label="CFQuietanzante : String" fieldName="_cFQuietanzante" />
-      <Property Id="0a24d457-d588-47c9-b39c-567a91ac6af6" name="TitoloQuietanzante" label="TitoloQuietanzante : String" fieldName="_titoloQuietanzante" />
-      <Property Id="c4bed27e-5db8-40c1-97eb-bf5d88dd0b35" name="ScontoPagamentoAnticipato" type="Decimal" label="ScontoPagamentoAnticipato : Decimal" fieldName="_scontoPagamentoAnticipato" />
-      <Property Id="012a8f1f-fc4f-41d6-8781-f389b1500993" name="DataLimitePagamentoAnticipato" type="DateTime" label="DataLimitePagamentoAnticipato : DateTime" fieldName="_dataLimitePagamentoAnticipato" />
-      <Property Id="fff5266d-cfc6-4931-bf5d-fc18a2286bb6" name="PenalitaPagamentiRitardati" type="Decimal" label="PenalitaPagamentiRitardati : Decimal" fieldName="_penalitaPagamentiRitardati" />
-      <Property Id="88d68b8d-3c68-40c2-a714-b14f936a8615" name="CodicePagamento" label="CodicePagamento : String" fieldName="_codicePagamento" />
       <AssociationTargets>
         <Association Id="bf3b56ba-884d-4323-a995-87e271cc130a" SourceMultiplicity="ZeroOne" name="DettaglioPagamentoHasDatiPagamento">
           <DomainClassMoniker name="/EntitiesModel/DatiPagamento" />
@@ -1662,35 +1604,6 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="7f961022-61b4-4838-baf2-e3c0138a1150">
           <NavigationalProperty Id="3325e477-07b1-4173-9419-d8d388dae094" name="DatiPagamento" type="DatiPagamento" label="DatiPagamento : DatiPagamento" nullable="true" kind="Persistent" fieldName="_datiPagamento" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-      </navigationalProperties>
-    </DomainClass>
-    <DomainClass Id="d04624fb-b3ca-4006-b149-de5640db7286" name="Allegati" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
-      <Property Id="6315761c-23ea-443b-a02e-65ae71a45f7f" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
-      <Property Id="3766e0ab-5a42-4630-97a5-d82c9c857e17" name="NomeAttachment" label="NomeAttachment : String" fieldName="_nomeAttachment" />
-      <Property Id="c56ffaea-4136-411b-9c0f-cf660bbf5cf2" name="AlgoritmoCompressione" label="AlgoritmoCompressione : String" fieldName="_algoritmoCompressione" />
-      <Property Id="90cd7602-d67a-4055-81d7-7379207cf39a" name="FormatoAttachment" label="FormatoAttachment : String" fieldName="_formatoAttachment" />
-      <Property Id="0d6e27a3-386b-429c-bad7-20be11b2e376" name="DescrizioneAttachment" label="DescrizioneAttachment : String" fieldName="_descrizioneAttachment" />
-      <Property Id="52b2bb6e-ab8d-4a28-888d-efdf25fba84c" name="Attachment" type="Object" label="Attachment : Object" fieldName="_attachment" />
-      <Property Id="a48f6d6f-fcd6-44de-bbe9-fcf616ba51af" name="FatturaElettronicaBodyId" type="Int32" label="FatturaElettronicaBodyId : Int32" fieldName="_fatturaElettronicaBodyId" />
-      <AssociationTargets>
-        <Association Id="6e40bcef-67aa-4163-80b4-23af26889258" SourceMultiplicity="ZeroOne" name="AllegatiHasFatturaElettronicaBody">
-          <DomainClassMoniker name="/EntitiesModel/FatturaElettronicaBody" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="63a1a1a1-ada7-4f65-be4b-b35d60f10c02">
-              <NavigationalPropertyMoniker name="/EntitiesModel/FatturaElettronicaBody/Allegatis" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="d085dde1-dc77-4564-ad37-25c8c9a593c2">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Allegati/FatturaElettronicaBody" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
-      </AssociationTargets>
-      <navigationalProperties>
-        <classHasNavigationalProperties Id="884c9e05-a3d4-4b13-ae05-f619d4b79378">
-          <NavigationalProperty Id="8aedb4e4-7ae6-4ddd-a591-feba1b03b316" name="FatturaElettronicaBody" type="FatturaElettronicaBody" label="FatturaElettronicaBody : FatturaElettronicaBody" nullable="true" kind="Persistent" fieldName="_fatturaElettronicaBody" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1765,6 +1678,90 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="35d99145-8cb1-43fa-b1cf-910f7622f450" name="DatiBollo" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="5cbc10da-258e-4cfc-b540-e2c5976e31ca" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
+      <Property Id="33a4ebb7-2e46-44a5-95ea-c9d37e224628" name="BolloVirtuale" label="BolloVirtuale : String" fieldName="_bolloVirtuale" />
+      <Property Id="72100c98-adb3-4227-b993-e710d0e8fc26" name="ImportoBollo" type="Decimal" label="ImportoBollo : Decimal" fieldName="_importoBollo" />
+      <AssociationTargets>
+        <Association Id="5874efb2-7217-4997-b577-deb29eb89cc1" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="DatiBolloHasDatiGeneraliDocumento">
+          <DomainClassMoniker name="/EntitiesModel/DatiGeneraliDocumento" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="3500195a-2564-47a0-a31d-5afba5eb573c">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiGeneraliDocumento/DatiBollo" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="5fba9668-7631-46e6-aa25-6ec1deb1522d">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiBollo/DatiGeneraliDocumento" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="77487da6-c667-4cca-b4f4-4da8f0faaea6">
+          <NavigationalProperty Id="d36e84c4-170a-4b2f-8c39-0684bf321e6d" name="DatiGeneraliDocumento" type="DatiGeneraliDocumento" label="DatiGeneraliDocumento : DatiGeneraliDocumento" nullable="true" kind="Persistent" fieldName="_datiGeneraliDocumento" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="a405ec4e-8561-48df-bd69-a9f50695fa2f" name="DatiCassaPrevidenziale" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="4afa1c7b-cfe7-4961-8118-b8b723144a43" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
+      <Property Id="2cd7f282-8dc3-4e4e-94c4-68c830c9c235" name="DatiGeneraliDocumentoId" type="Int32" label="DatiGeneraliDocumentoId : Int32" fieldName="_datiGeneraliDocumentoId" />
+      <Property Id="56aeaec3-7544-496d-8314-ecba346b9464" name="TipoCassa" label="TipoCassa : String" fieldName="_tipoCassa" />
+      <Property Id="2dccc729-2852-4afd-8cc5-2d500832d40a" name="AlCassa" type="Decimal" label="AlCassa : Decimal" fieldName="_alCassa" />
+      <Property Id="80400144-5ef7-4ece-aa98-d8ca3ab9159f" name="ImportoContributoCassa" type="Decimal" label="ImportoContributoCassa : Decimal" fieldName="_importoContributoCassa" />
+      <Property Id="cc09bae3-5dd5-4890-a902-5203a561a7af" name="ImponibileCassa" type="Decimal" label="ImponibileCassa : Decimal" fieldName="_imponibileCassa" />
+      <Property Id="b0d45dac-f349-418c-97b6-98359418c749" name="AliquotaIVA" type="Decimal" label="AliquotaIVA : Decimal" fieldName="_aliquotaIVA" />
+      <Property Id="165d0ea9-444a-45a8-8cee-f6c2a4c05538" name="Ritenuta" label="Ritenuta : String" fieldName="_ritenuta" />
+      <Property Id="d64ee131-751e-48d2-9a01-16728b208bca" name="Natura" label="Natura : String" fieldName="_natura" />
+      <Property Id="79b9de04-e1b7-4fd5-b74f-99d454134819" name="RiferimentoAmministrazione" label="RiferimentoAmministrazione : String" fieldName="_riferimentoAmministrazione" />
+      <AssociationTargets>
+        <Association Id="38c9d80c-f5d9-4ca6-99a4-811b900adb7e" SourceMultiplicity="ZeroOne" name="DatiCassaPrevidenzialeHasDatiGeneraliDocumento">
+          <DomainClassMoniker name="/EntitiesModel/DatiGeneraliDocumento" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="86971f93-028d-4d98-aa19-fbc8b624c0ca">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiGeneraliDocumento/DatiCassaPrevidenziales" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="36c186c1-4e92-4fb6-82ee-c6590cda3a76">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiCassaPrevidenziale/DatiGeneraliDocumento" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="55a82dd3-d55a-4d6b-8aec-53f6d81633e0">
+          <NavigationalProperty Id="e8250420-64b6-4d01-a1ec-ebb4b84cde17" name="DatiGeneraliDocumento" type="DatiGeneraliDocumento" label="DatiGeneraliDocumento : DatiGeneraliDocumento" nullable="true" kind="Persistent" fieldName="_datiGeneraliDocumento" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="59bd53c3-a3ca-480c-8b5a-8502a2ceab0c" name="ScontoMaggiorazione" namespace="DataLayer" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="cf9b6e83-26b1-4dd0-a954-73da4f188938" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
+      <Property Id="231fee9c-80a6-4046-909a-f9f54c0790a5" name="DatiGeneraliDocumentoId" type="Int32" label="DatiGeneraliDocumentoId : Int32" fieldName="_datiGeneraliDocumentoId" />
+      <Property Id="a40e56da-d7cf-48ba-b76c-ec79d5397606" name="Tipo" label="Tipo : String" fieldName="_tipo" />
+      <Property Id="b3d458d3-18c8-4f7f-a0d7-86d885a039dd" name="Percentuale" type="Decimal" label="Percentuale : Decimal" fieldName="_percentuale" />
+      <Property Id="cd1f1365-4c6e-4020-a501-1db9ba536a94" name="Importo" type="Decimal" label="Importo : Decimal" fieldName="_importo" />
+      <AssociationTargets>
+        <Association Id="0f7a2cae-b698-4ad7-886a-7153e14e0d87" SourceMultiplicity="ZeroOne" name="ScontoMaggiorazioneHasDatiGeneraliDocumento">
+          <DomainClassMoniker name="/EntitiesModel/DatiGeneraliDocumento" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="328d3ad8-070b-4231-8974-fcbd02f5b2c1">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiGeneraliDocumento/ScontoMaggioraziones" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="146b986b-13fd-49d6-a507-35164e26048d">
+              <NavigationalPropertyMoniker name="/EntitiesModel/ScontoMaggiorazione/DatiGeneraliDocumento" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="599bae67-ed01-4fd4-bc33-86f3d658a0f3">
+          <NavigationalProperty Id="5ef1e293-40cd-4a6b-8923-1088ab180fa5" name="DatiGeneraliDocumento" type="DatiGeneraliDocumento" label="DatiGeneraliDocumento : DatiGeneraliDocumento" nullable="true" kind="Persistent" fieldName="_datiGeneraliDocumento" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="11c55413-37d1-400c-bfdf-67304997ec7f">
@@ -1781,7 +1778,6 @@
         <entitySetProperty name="FatturaElettronicaBodies" namespace="DataLayer" type="FatturaElettronicaBody" label="FatturaElettronicaBodies : IQueryable&lt;DataLayer.FatturaElettronicaBody&gt;" />
         <entitySetProperty name="DatiTrasmissiones" namespace="DataLayer" type="DatiTrasmissione" label="DatiTrasmissiones : IQueryable&lt;DataLayer.DatiTrasmissione&gt;" />
         <entitySetProperty name="IdFiscales" namespace="DataLayer" type="IdFiscale" label="IdFiscales : IQueryable&lt;DataLayer.IdFiscale&gt;" />
-        <entitySetProperty name="Contattis" namespace="DataLayer" type="Contatti" label="Contattis : IQueryable&lt;DataLayer.Contatti&gt;" />
         <entitySetProperty name="CedentePrestatores" namespace="DataLayer" type="CedentePrestatore" label="CedentePrestatores : IQueryable&lt;DataLayer.CedentePrestatore&gt;" />
         <entitySetProperty name="DatiAnagraficiCedentes" namespace="DataLayer" type="DatiAnagraficiCedente" label="DatiAnagraficiCedentes : IQueryable&lt;DataLayer.DatiAnagraficiCedente&gt;" />
         <entitySetProperty name="Anagraficas" namespace="DataLayer" type="Anagrafica" label="Anagraficas : IQueryable&lt;DataLayer.Anagrafica&gt;" />
@@ -1796,9 +1792,11 @@
         <entitySetProperty name="DatiRiepilogos" namespace="DataLayer" type="DatiRiepilogo" label="DatiRiepilogos : IQueryable&lt;DataLayer.DatiRiepilogo&gt;" />
         <entitySetProperty name="DatiPagamentos" namespace="DataLayer" type="DatiPagamento" label="DatiPagamentos : IQueryable&lt;DataLayer.DatiPagamento&gt;" />
         <entitySetProperty name="DettaglioPagamentos" namespace="DataLayer" type="DettaglioPagamento" label="DettaglioPagamentos : IQueryable&lt;DataLayer.DettaglioPagamento&gt;" />
-        <entitySetProperty name="Allegatis" namespace="DataLayer" type="Allegati" label="Allegatis : IQueryable&lt;DataLayer.Allegati&gt;" />
         <entitySetProperty name="Sedes" namespace="DataLayer" type="Sede" label="Sedes : IQueryable&lt;DataLayer.Sede&gt;" />
         <entitySetProperty name="DatiAnagraficiCessionarios" namespace="DataLayer" type="DatiAnagraficiCessionario" label="DatiAnagraficiCessionarios : IQueryable&lt;DataLayer.DatiAnagraficiCessionario&gt;" />
+        <entitySetProperty name="DatiBollos" namespace="DataLayer" type="DatiBollo" label="DatiBollos : IQueryable&lt;DataLayer.DatiBollo&gt;" />
+        <entitySetProperty name="DatiCassaPrevidenziales" namespace="DataLayer" type="DatiCassaPrevidenziale" label="DatiCassaPrevidenziales : IQueryable&lt;DataLayer.DatiCassaPrevidenziale&gt;" />
+        <entitySetProperty name="ScontoMaggioraziones" namespace="DataLayer" type="ScontoMaggiorazione" label="ScontoMaggioraziones : IQueryable&lt;DataLayer.ScontoMaggiorazione&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

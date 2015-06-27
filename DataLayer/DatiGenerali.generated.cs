@@ -63,19 +63,6 @@ namespace DataLayer
 			}
 		}
 		
-		private DatiBeniServizi _datiBeniServizi;
-		public virtual DatiBeniServizi DatiBeniServizi
-		{
-			get
-			{
-				return this._datiBeniServizi;
-			}
-			set
-			{
-				this._datiBeniServizi = value;
-			}
-		}
-		
 	}
 }
 #pragma warning restore 1591

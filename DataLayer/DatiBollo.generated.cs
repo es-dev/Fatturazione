@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class Contatti
+	public partial class DatiBollo
 	{
 		private int _id;
 		public virtual int Id
@@ -37,81 +37,42 @@ namespace DataLayer
 			}
 		}
 		
-		private string _telefono;
-		public virtual string Telefono
+		private string _bolloVirtuale;
+		public virtual string BolloVirtuale
 		{
 			get
 			{
-				return this._telefono;
+				return this._bolloVirtuale;
 			}
 			set
 			{
-				this._telefono = value;
+				this._bolloVirtuale = value;
 			}
 		}
 		
-		private string _email;
-		public virtual string Email
+		private decimal _importoBollo;
+		public virtual decimal ImportoBollo
 		{
 			get
 			{
-				return this._email;
+				return this._importoBollo;
 			}
 			set
 			{
-				this._email = value;
+				this._importoBollo = value;
 			}
 		}
 		
-		private int _trasmittenteId;
-		public virtual int TrasmittenteId
+		private DatiGeneraliDocumento _datiGeneraliDocumento;
+		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
 		{
 			get
 			{
-				return this._trasmittenteId;
+				return this._datiGeneraliDocumento;
 			}
 			set
 			{
-				this._trasmittenteId = value;
-			}
-		}
-		
-		private int _cedentePrestatoreId;
-		public virtual int CedentePrestatoreId
-		{
-			get
-			{
-				return this._cedentePrestatoreId;
-			}
-			set
-			{
-				this._cedentePrestatoreId = value;
-			}
-		}
-		
-		private DatiTrasmissione _datiTrasmissione;
-		public virtual DatiTrasmissione DatiTrasmissione
-		{
-			get
-			{
-				return this._datiTrasmissione;
-			}
-			set
-			{
-				this._datiTrasmissione = value;
-			}
-		}
-		
-		private CedentePrestatore _cedentePrestatore;
-		public virtual CedentePrestatore CedentePrestatore
-		{
-			get
-			{
-				return this._cedentePrestatore;
-			}
-			set
-			{
-				this._cedentePrestatore = value;
+				this._datiGeneraliDocumento = value;
 			}
 		}
 		

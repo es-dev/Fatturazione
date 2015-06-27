@@ -37,6 +37,19 @@ namespace DataLayer
 			}
 		}
 		
+		private string _soggettoEmittente;
+		public virtual string SoggettoEmittente
+		{
+			get
+			{
+				return this._soggettoEmittente;
+			}
+			set
+			{
+				this._soggettoEmittente = value;
+			}
+		}
+		
 		private Fattura _fattura;
 		public virtual Fattura Fattura
 		{

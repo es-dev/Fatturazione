@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class FatturaElettronicaBody
+	public partial class ScontoMaggiorazione
 	{
 		private int _id;
 		public virtual int Id
@@ -37,64 +37,68 @@ namespace DataLayer
 			}
 		}
 		
-		private int _fatturaId;
-		public virtual int FatturaId
+		private int _datiGeneraliDocumentoId;
+		public virtual int DatiGeneraliDocumentoId
 		{
 			get
 			{
-				return this._fatturaId;
+				return this._datiGeneraliDocumentoId;
 			}
 			set
 			{
-				this._fatturaId = value;
+				this._datiGeneraliDocumentoId = value;
 			}
 		}
 		
-		private Fattura _fattura;
-		public virtual Fattura Fattura
+		private string _tipo;
+		public virtual string Tipo
 		{
 			get
 			{
-				return this._fattura;
+				return this._tipo;
 			}
 			set
 			{
-				this._fattura = value;
+				this._tipo = value;
 			}
 		}
 		
-		private IList<DatiPagamento> _datiPagamentos = new List<DatiPagamento>();
-		public virtual IList<DatiPagamento> DatiPagamentos
+		private decimal _percentuale;
+		public virtual decimal Percentuale
 		{
 			get
 			{
-				return this._datiPagamentos;
-			}
-		}
-		
-		private DatiGenerali _datiGenerali;
-		public virtual DatiGenerali DatiGenerali
-		{
-			get
-			{
-				return this._datiGenerali;
+				return this._percentuale;
 			}
 			set
 			{
-				this._datiGenerali = value;
+				this._percentuale = value;
 			}
 		}
 		
-		private DatiBeniServizi _datiBeniServizi;
-		public virtual DatiBeniServizi DatiBeniServizi
+		private decimal _importo;
+		public virtual decimal Importo
 		{
 			get
 			{
-				return this._datiBeniServizi;
+				return this._importo;
 			}
 			set
 			{
-				this._datiBeniServizi = value;
+				this._importo = value;
+			}
+		}
+		
+		private DatiGeneraliDocumento _datiGeneraliDocumento;
+		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
+		{
+			get
+			{
+				return this._datiGeneraliDocumento;
+			}
+			set
+			{
+				this._datiGeneraliDocumento = value;
 			}
 		}
 		

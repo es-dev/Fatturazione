@@ -141,6 +141,24 @@ namespace DataLayer
 			}
 		}
 		
+		private IList<DatiCassaPrevidenziale> _datiCassaPrevidenziales = new List<DatiCassaPrevidenziale>();
+		public virtual IList<DatiCassaPrevidenziale> DatiCassaPrevidenziales
+		{
+			get
+			{
+				return this._datiCassaPrevidenziales;
+			}
+		}
+		
+		private IList<ScontoMaggiorazione> _scontoMaggioraziones = new List<ScontoMaggiorazione>();
+		public virtual IList<ScontoMaggiorazione> ScontoMaggioraziones
+		{
+			get
+			{
+				return this._scontoMaggioraziones;
+			}
+		}
+		
 		private DatiRitenuta _datiRitenuta;
 		public virtual DatiRitenuta DatiRitenuta
 		{
@@ -151,6 +169,19 @@ namespace DataLayer
 			set
 			{
 				this._datiRitenuta = value;
+			}
+		}
+		
+		private DatiBollo _datiBollo;
+		public virtual DatiBollo DatiBollo
+		{
+			get
+			{
+				return this._datiBollo;
+			}
+			set
+			{
+				this._datiBollo = value;
 			}
 		}
 		

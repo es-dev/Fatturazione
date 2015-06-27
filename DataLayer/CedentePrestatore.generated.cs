@@ -63,15 +63,6 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<Contatti> _contattis = new List<Contatti>();
-		public virtual IList<Contatti> Contattis
-		{
-			get
-			{
-				return this._contattis;
-			}
-		}
-		
 		private IList<Sede> _sedes = new List<Sede>();
 		public virtual IList<Sede> Sedes
 		{
