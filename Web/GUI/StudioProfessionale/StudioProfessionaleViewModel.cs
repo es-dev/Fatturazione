@@ -6,12 +6,12 @@ using System.Linq;
 using System.Web;
 using WcfService.Dto;
 
-namespace Web.GUI.Azienda
+namespace Web.GUI.StudioProfessionale
 {
-    public class AziendaViewModel : Library.Template.MVVM.TemplateViewModel<AziendaView, AziendaItem, AziendaModel, AziendaDto>
+    public class StudioProfessionaleViewModel : Library.Template.MVVM.TemplateViewModel<StudioProfessionaleView, StudioProfessionaleItem, StudioProfessionaleModel, StudioProfessionaleDto>
     {
 
-        public AziendaViewModel()
+        public StudioProfessionaleViewModel()
             : base() 
         {
             try
@@ -29,7 +29,7 @@ namespace Web.GUI.Azienda
             try
             {
                 var wcf = new WcfService.Service();
-                var objs = wcf.LoadAziende(skip, take, search,advancedSearch, orderBy);
+                var objs = wcf.LoadStudiProfessionali(skip, take, search, advancedSearch, orderBy);
                 Load(objs);
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace Web.GUI.Azienda
             try
             {
                 var wcf = new WcfService.Service();
-                var count = wcf.CountAziende(search, advancedSearch);
+                var count = wcf.CountStudiProfessionali(search, advancedSearch);
                 return count;
             }
             catch (Exception ex)
@@ -60,17 +60,17 @@ namespace Web.GUI.Azienda
                 if (model != null)
                 {
                     var wcf = new WcfService.Service();
-                    var obj = (AziendaDto)model;
+                    var obj = (StudioProfessionaleDto)model;
                     bool performed = false;
                     if (creating)
                     {
-                        var newObj = wcf.CreateAzienda(obj);
+                        var newObj = wcf.CreateStudioProfessionale(obj);
                         performed = (newObj != null);
                         if (performed)
                             Update(obj, newObj);
                     }
                     else //updating
-                        performed = wcf.UpdateAzienda(obj);
+                        performed = wcf.UpdateStudioProfessionale(obj);
                     return performed;
                 }
             }
@@ -88,8 +88,8 @@ namespace Web.GUI.Azienda
                 if (model != null)
                 {
                     var wcf = new WcfService.Service();
-                    var obj = (AziendaDto)model;
-                    bool performed = wcf.DeleteAzienda(obj);
+                    var obj = (StudioProfessionaleDto)model;
+                    bool performed = wcf.DeleteStudioProfessionale(obj);
                     return performed;
                 }
             }
@@ -105,7 +105,7 @@ namespace Web.GUI.Azienda
             try
             {
                 var wcf = new WcfService.Service();
-                var obj = wcf.ReadAzienda(id);
+                var obj = wcf.ReadStudioProfessionale(id);
                 return obj;
             }
             catch (Exception ex)
@@ -115,12 +115,12 @@ namespace Web.GUI.Azienda
             return null;
         }
 
-        internal IEnumerable<AziendaDto> ReadAziende()
+        internal IEnumerable<StudioProfessionaleDto> ReadStudiProfessionali()
         {
             try
             {
                 var wcf = new WcfService.Service();
-                var objs = wcf.ReadAziende();
+                var objs = wcf.ReadStudiProfessionali();
                 return objs;
             }
             catch (Exception ex)
@@ -130,15 +130,15 @@ namespace Web.GUI.Azienda
             return null;
         }
 
-        internal AziendaDto ReadAzienda(AccountDto account)
+        internal StudioProfessionaleDto ReadAStudioProfessionale(AccountDto account)
         {
             try
             {
                 if (account != null)
                 {
-                    int aziendaId = account.AziendaId;
+                    int studioProfessionaleId = account.StudioProfessionaleId;
                     var wcf = new WcfService.Service();
-                    var obj = wcf.ReadAzienda(aziendaId);
+                    var obj = wcf.ReadStudioProfessionale(studioProfessionaleId);
                     return obj;
                 }
             }

@@ -63,16 +63,16 @@ namespace DataLayer
 			}
 		}
 		
-		private int _idTrasmittente;
-		public virtual int IdTrasmittente
+		private int _datiTrasmissioneId;
+		public virtual int DatiTrasmissioneId
 		{
 			get
 			{
-				return this._idTrasmittente;
+				return this._datiTrasmissioneId;
 			}
 			set
 			{
-				this._idTrasmittente = value;
+				this._datiTrasmissioneId = value;
 			}
 		}
 		
@@ -102,19 +102,6 @@ namespace DataLayer
 			}
 		}
 		
-		private DatiTrasmissione _datiTrasmissione;
-		public virtual DatiTrasmissione DatiTrasmissione
-		{
-			get
-			{
-				return this._datiTrasmissione;
-			}
-			set
-			{
-				this._datiTrasmissione = value;
-			}
-		}
-		
 		private DatiAnagraficiCedente _datiAnagraficiCedente;
 		public virtual DatiAnagraficiCedente DatiAnagraficiCedente
 		{
@@ -138,6 +125,19 @@ namespace DataLayer
 			set
 			{
 				this._datiAnagraficiCessionario = value;
+			}
+		}
+		
+		private DatiTrasmissione _datiTrasmissione;
+		public virtual DatiTrasmissione DatiTrasmissione
+		{
+			get
+			{
+				return this._datiTrasmissione;
+			}
+			set
+			{
+				this._datiTrasmissione = value;
 			}
 		}
 		

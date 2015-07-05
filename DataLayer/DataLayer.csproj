@@ -86,10 +86,6 @@
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Azienda.generated.cs">
-      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CedentePrestatore.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
@@ -192,6 +188,9 @@
     <Compile Include="Socio.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StudioProfessionale.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
     <Compile Include="Trasmissione.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>

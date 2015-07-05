@@ -2,7 +2,7 @@
 <DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="EntitiesModel" namespace="DataLayer" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
   <orm:orm name="EntitiesModel" backend="mssql" xmlns:orm="http://tempuri.org/ORM">
     <orm:namespace name="DataLayer" default="true">
-      <orm:class name="Azienda" uniqueId="039a05e9-ed33-4e26-8108-d5ed9513953a">
+      <orm:class name="StudioProfessionale" uniqueId="039a05e9-ed33-4e26-8108-d5ed9513953a">
         <orm:table name="Azienda" />
         <orm:identity>
           <orm:key-generator name="autoinc">
@@ -58,20 +58,20 @@
         <orm:field name="_dipendenti" property="Dipendenti" behavior="readwrite" uniqueId="8e38c325-9c4f-4b16-9a5c-a4eb4823a34b" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="Dipendenti" sql-type="int" nullable="true" length="0" scale="0" ado-type="" />
         </orm:field>
-        <orm:field name="_clientes" property="Clientes" behavior="readwrite" uniqueId="99d19aab-3c55-4545-a80b-7b5ec0479639" type="DataLayer.Cliente">
-          <orm:collection element-class="DataLayer.Cliente" inverse-field="_azienda" order-by="" uniqueId="6b5de2f6-570d-49ce-9fda-5b11da9d6bc6" />
+        <orm:field name="_accounts" property="Accounts" behavior="readwrite" uniqueId="e6daa91b-c106-43a0-88e4-5370589d208a" type="DataLayer.Account">
+          <orm:collection element-class="DataLayer.Account" inverse-field="_studioProfessionale" order-by="" uniqueId="807f05bf-78c7-4bad-b227-6bebac45be03" />
         </orm:field>
-        <orm:field name="_socios" property="Socios" behavior="readwrite" uniqueId="bdf1c40b-484a-4120-b3ad-bd77c2738772" type="DataLayer.Socio">
-          <orm:collection element-class="DataLayer.Socio" inverse-field="_azienda" order-by="" uniqueId="1f64b11a-c165-4b02-b1d7-ee8c2ff9eca5" />
+        <orm:field name="_socios" property="Socios" behavior="readwrite" uniqueId="0e241507-2b80-4e73-b169-6a9e5f0a6099" type="DataLayer.Socio">
+          <orm:collection element-class="DataLayer.Socio" inverse-field="_studioProfessionale" order-by="" uniqueId="7e4d9110-a4cf-4e51-a066-671dc635670d" />
         </orm:field>
-        <orm:field name="_anagraficaClientes" property="AnagraficaClientes" behavior="readwrite" uniqueId="2c3536c6-127b-459d-952c-2086b54b1550" type="DataLayer.AnagraficaCliente">
-          <orm:collection element-class="DataLayer.AnagraficaCliente" inverse-field="_azienda" order-by="" uniqueId="ed55aabe-4b5c-43d2-ba18-2cce269713c7" />
+        <orm:field name="_trasmissiones" property="Trasmissiones" behavior="readwrite" uniqueId="90f3a2b9-f87a-423c-9e37-aca4e9b82370" type="DataLayer.Trasmissione">
+          <orm:collection element-class="DataLayer.Trasmissione" inverse-field="_studioProfessionale" order-by="" uniqueId="97c03782-2918-49e6-88cd-2d741484acff" />
         </orm:field>
-        <orm:field name="_accounts" property="Accounts" behavior="readwrite" uniqueId="39c9c088-56e7-43ed-8fad-3e625788ab22" type="DataLayer.Account">
-          <orm:collection element-class="DataLayer.Account" inverse-field="_azienda" order-by="" uniqueId="46881157-f7f3-4bdd-befc-f64ccb41e995" />
+        <orm:field name="_anagraficaClientes" property="AnagraficaClientes" behavior="readwrite" uniqueId="fb53a258-dbd3-4fa3-bee6-58c6f158f6ed" type="DataLayer.AnagraficaCliente">
+          <orm:collection element-class="DataLayer.AnagraficaCliente" inverse-field="_studioProfessionale" order-by="" uniqueId="7b7394ce-b914-4949-86f1-610b01c2f598" />
         </orm:field>
-        <orm:field name="_trasmissiones" property="Trasmissiones" behavior="readwrite" uniqueId="6df76819-d570-4720-8ae7-510c639a0c11" type="DataLayer.Trasmissione">
-          <orm:collection element-class="DataLayer.Trasmissione" inverse-field="_azienda" order-by="" uniqueId="d14900a3-76ea-4d83-96a1-dce9de992cde" />
+        <orm:field name="_clientes" property="Clientes" behavior="readwrite" uniqueId="3a837546-1a87-4f03-8c2a-0cc05af7a3e9" type="DataLayer.Cliente">
+          <orm:collection element-class="DataLayer.Cliente" inverse-field="_studioProfessionale" order-by="" uniqueId="692fca6e-c185-43f1-b86a-e02947080333" />
         </orm:field>
       </orm:class>
       <orm:class name="Cliente" uniqueId="d3ba65a0-55a6-4600-846c-86f5e642ad07">
@@ -85,7 +85,7 @@
         <orm:field name="_id" property="Id" uniqueId="a5bd1298-8a92-46e6-a6d9-71df7ae8b197" type="System.Int32">
           <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
-        <orm:field name="_aziendaId" property="AziendaId" uniqueId="8c56747b-b3de-4c6d-8c2c-bda2f9354192" type="System.Int32">
+        <orm:field name="_studioProfessionaleId" property="StudioProfessionaleId" uniqueId="8c56747b-b3de-4c6d-8c2c-bda2f9354192" type="System.Int32">
           <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="_anagraficaClienteId" property="AnagraficaClienteId" uniqueId="a9f9e8ba-f305-4c22-b573-5cff440117fe" type="System.Int32">
@@ -107,13 +107,13 @@
             <orm:sharedfield name="_anagraficaPAId" target-class="DataLayer.AnagraficaPA" target-field="_id" />
           </orm:reference>
         </orm:field>
-        <orm:field name="_azienda" property="Azienda" behavior="readwrite" uniqueId="04ef7329-8f6b-43a9-8d92-6a5f9c527cfd" type="DataLayer.Azienda">
-          <orm:reference uniqueId="6b5de2f6-570d-49ce-9fda-5b11da9d6bc6" association-name="ClienteHasAzienda">
-            <orm:sharedfield name="_aziendaId" target-class="DataLayer.Azienda" target-field="_id" />
-          </orm:reference>
-        </orm:field>
         <orm:field name="_fatturas" property="Fatturas" behavior="readwrite" uniqueId="65875a10-6574-4f3a-863f-924a230d9dc6" type="DataLayer.Fattura">
           <orm:collection element-class="DataLayer.Fattura" inverse-field="_cliente" order-by="" uniqueId="a8dd6cbd-2a28-4c50-965f-5565ab80a725" />
+        </orm:field>
+        <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="808be8fa-e2f9-4a2b-8ff9-1b19b3d772cd" type="DataLayer.StudioProfessionale">
+          <orm:reference uniqueId="692fca6e-c185-43f1-b86a-e02947080333" association-name="ClienteHasStudioProfessionale">
+            <orm:sharedfield name="_studioProfessionaleId" target-class="DataLayer.StudioProfessionale" target-field="_id" />
+          </orm:reference>
         </orm:field>
         <orm:index name="idx_Clente_AnagraficaClienteId">
           <orm:columnMapping>
@@ -188,7 +188,7 @@
         <orm:field name="_fatturaId" property="FatturaId" uniqueId="fba08473-89a1-40a0-b0aa-1c4dee320fe4" type="System.Int32">
           <orm:column name="FatturaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
-        <orm:field name="_aziendaId" property="AziendaId" uniqueId="6df1abcf-0070-4aef-8805-7a26e2da96d8" type="System.Int32">
+        <orm:field name="_studioProfessionaleId" property="StudioProfessionaleId" uniqueId="6df1abcf-0070-4aef-8805-7a26e2da96d8" type="System.Int32">
           <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="_stato" property="Stato" uniqueId="7b4a6a9e-ef76-43d1-9f7a-58b6a53330ef" type="System.String">
@@ -205,9 +205,9 @@
             <orm:sharedfield name="_fatturaId" target-class="DataLayer.Fattura" target-field="_id" />
           </orm:reference>
         </orm:field>
-        <orm:field name="_azienda" property="Azienda" behavior="readwrite" uniqueId="e090e308-0541-4c6c-8d16-f4ddb85ff187" type="DataLayer.Azienda">
-          <orm:reference uniqueId="d14900a3-76ea-4d83-96a1-dce9de992cde" association-name="TrasmissioneHasAzienda">
-            <orm:sharedfield name="_aziendaId" target-class="DataLayer.Azienda" target-field="_id" />
+        <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="99a1c4af-b7df-4eca-9f1e-9adaf0bd0611" type="DataLayer.StudioProfessionale">
+          <orm:reference uniqueId="97c03782-2918-49e6-88cd-2d741484acff" association-name="TrasmissioneHasStudioProfessionale">
+            <orm:sharedfield name="_studioProfessionaleId" target-class="DataLayer.StudioProfessionale" target-field="_id" />
           </orm:reference>
         </orm:field>
         <orm:index name="idx_Trasmissione_AziendaId">
@@ -232,7 +232,7 @@
         <orm:field name="_id" property="Id" uniqueId="d9ceb32e-1b5b-4b80-9545-7f040430e538" type="System.Int32">
           <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
-        <orm:field name="_aziendaId" property="AziendaId" uniqueId="3e281b41-98c5-4bdf-9848-933688524253" type="System.Int32">
+        <orm:field name="_studioProfessionaleId" property="StudioProfessionaleId" uniqueId="3e281b41-98c5-4bdf-9848-933688524253" type="System.Int32">
           <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="_ragioneSociale" property="RagioneSociale" uniqueId="32ab9cda-2db7-4bb4-a3fe-b5a4438ecf76" type="System.String">
@@ -244,13 +244,13 @@
         <orm:field name="_codice" property="Codice" uniqueId="3e08d174-69b4-45dc-81e1-1f20086e4960" type="System.String">
           <orm:column name="Codice" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
-        <orm:field name="_azienda" property="Azienda" behavior="readwrite" uniqueId="cd5266f7-e0ca-4469-b368-9e829bc00150" type="DataLayer.Azienda">
-          <orm:reference uniqueId="ed55aabe-4b5c-43d2-ba18-2cce269713c7" association-name="AnagraficaClienteHasAzienda">
-            <orm:sharedfield name="_aziendaId" target-class="DataLayer.Azienda" target-field="_id" />
-          </orm:reference>
-        </orm:field>
         <orm:field name="_clientes" property="Clientes" behavior="readwrite" uniqueId="511e2cef-72d0-4b79-a3d3-4c549316dfda" type="DataLayer.Cliente">
           <orm:collection element-class="DataLayer.Cliente" inverse-field="_anagraficaCliente" order-by="" uniqueId="8b39b619-deb9-4b76-8134-bda01dd4643e" />
+        </orm:field>
+        <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="d8dad8b1-4e85-4716-bf62-5d2258a5f1cb" type="DataLayer.StudioProfessionale">
+          <orm:reference uniqueId="7b7394ce-b914-4949-86f1-610b01c2f598" association-name="AnagraficaClienteHasStudioProfessionale">
+            <orm:sharedfield name="_studioProfessionaleId" target-class="DataLayer.StudioProfessionale" target-field="_id" />
+          </orm:reference>
         </orm:field>
         <orm:index name="idx_AngraficaCliente_AziendaId">
           <orm:columnMapping>
@@ -312,7 +312,7 @@
         <orm:field name="_id" property="Id" uniqueId="c71ced46-76a2-400d-8965-1a0337fa336b" type="System.Int32">
           <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
-        <orm:field name="_aziendaId" property="AziendaId" uniqueId="32e5079a-2b04-4269-afb6-7c67815c7e4f" type="System.Int32">
+        <orm:field name="_studioProfessionaleId" property="StudioProfessionaleId" uniqueId="32e5079a-2b04-4269-afb6-7c67815c7e4f" type="System.Int32">
           <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="_cognome" property="Cognome" uniqueId="66ea504c-26a4-456e-819b-d4a646ee23d9" type="System.String">
@@ -324,9 +324,9 @@
         <orm:field name="_tipoCarica" property="TipoCarica" uniqueId="42d3f649-d81b-4df0-b3ee-ae4835bc0e77" type="System.String">
           <orm:column name="TipoCarica" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
-        <orm:field name="_azienda" property="Azienda" behavior="readwrite" uniqueId="d69898d3-ffd6-4287-875a-77abb05925a3" type="DataLayer.Azienda">
-          <orm:reference uniqueId="1f64b11a-c165-4b02-b1d7-ee8c2ff9eca5" association-name="SocioHasAzienda">
-            <orm:sharedfield name="_aziendaId" target-class="DataLayer.Azienda" target-field="_id" />
+        <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="5b72595e-0efc-4847-95e2-612394501e85" type="DataLayer.StudioProfessionale">
+          <orm:reference uniqueId="7e4d9110-a4cf-4e51-a066-671dc635670d" association-name="SocioHasStudioProfessionale">
+            <orm:sharedfield name="_studioProfessionaleId" target-class="DataLayer.StudioProfessionale" target-field="_id" />
           </orm:reference>
         </orm:field>
         <orm:index name="idx_Socio_AziendaId">
@@ -451,6 +451,11 @@
         <orm:field name="_datiBeniServizi" property="DatiBeniServizi" behavior="readwrite" uniqueId="4c2b20c2-d08c-47a3-b16f-a5d07d69824a" type="DataLayer.DatiBeniServizi">
           <orm:inversereference inverse-field="_fatturaElettronicaBody" uniqueId="2b7c831f-113d-48ab-b192-85bd0255aacf" />
         </orm:field>
+        <orm:index name="idx_FttrElttrncaBody_FatturaId">
+          <orm:columnMapping>
+            <orm:column name="FatturaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="DatiTrasmissione" uniqueId="5ec4b2fc-e04c-44b4-a5ba-73e9922c7017">
         <orm:table name="DatiTrasmissione" />
@@ -474,8 +479,8 @@
             <orm:sharedfield name="_id" target-class="DataLayer.FatturaElettronicaHeader" target-field="_id" />
           </orm:reference>
         </orm:field>
-        <orm:field name="_idFiscales" property="IdFiscales" behavior="readwrite" uniqueId="a2552961-9e58-46a9-9044-61bde5fd22ed" type="DataLayer.IdFiscale">
-          <orm:collection element-class="DataLayer.IdFiscale" inverse-field="_datiTrasmissione" order-by="" uniqueId="91b936e9-f8e3-458e-b38f-48ae39f0ea85" />
+        <orm:field name="_idFiscales" property="IdFiscales" behavior="readwrite" uniqueId="e1d6b9b2-56f1-4447-8ad0-5610e36b014b" type="DataLayer.IdFiscale">
+          <orm:collection element-class="DataLayer.IdFiscale" inverse-field="_datiTrasmissione" order-by="" uniqueId="0b13431d-1a66-45c4-ad2a-00e383de56e5" />
         </orm:field>
       </orm:class>
       <orm:class name="IdFiscale" uniqueId="9ed85b60-7bbe-4990-b6fe-f9616bee3023">
@@ -495,7 +500,7 @@
         <orm:field name="_idCodice" property="IdCodice" uniqueId="96aa7948-bfa3-460d-8462-d85ab125ca65" type="System.String">
           <orm:column name="IdCodice" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
-        <orm:field name="_idTrasmittente" property="IdTrasmittente" uniqueId="3a8a1a03-369f-4bc4-85f0-214d1e34f7a2" type="System.Int32">
+        <orm:field name="_datiTrasmissioneId" property="DatiTrasmissioneId" uniqueId="3a8a1a03-369f-4bc4-85f0-214d1e34f7a2" type="System.Int32">
           <orm:column name="IdTrasmittente" sql-type="int" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="_datiAnagraficiCedenteId" property="DatiAnagraficiCedenteId" uniqueId="d1e5d1dd-21ab-4cda-8acf-afc98a86ee65" type="System.Int32">
@@ -503,11 +508,6 @@
         </orm:field>
         <orm:field name="_datiAnagraficiCessionarioId" property="DatiAnagraficiCessionarioId" uniqueId="954cd481-18e4-46cc-a608-d2da4c37dcd4" type="System.Int32">
           <orm:column name="DatiAnagraficiCessionarioId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:field>
-        <orm:field name="_datiTrasmissione" property="DatiTrasmissione" behavior="readwrite" uniqueId="6a3cee22-4392-41a7-98bc-6d77ee993150" type="DataLayer.DatiTrasmissione">
-          <orm:reference uniqueId="91b936e9-f8e3-458e-b38f-48ae39f0ea85" association-name="IdFiscaleHasDatiTrasmissione">
-            <orm:sharedfield name="_idTrasmittente" target-class="DataLayer.DatiTrasmissione" target-field="_id" />
-          </orm:reference>
         </orm:field>
         <orm:field name="_datiAnagraficiCedente" property="DatiAnagraficiCedente" behavior="readwrite" uniqueId="1da377b2-d43c-4561-8ac3-b7270d72df59" type="DataLayer.DatiAnagraficiCedente">
           <orm:reference uniqueId="6fd03060-47aa-4252-9537-0c9becb5387d" association-name="IdFiscaleHasDatiAnagraficiCedente">
@@ -517,6 +517,11 @@
         <orm:field name="_datiAnagraficiCessionario" property="DatiAnagraficiCessionario" behavior="readwrite" uniqueId="3bad50e6-4bf9-4cd9-bc24-802cfc273273" type="DataLayer.DatiAnagraficiCessionario">
           <orm:reference uniqueId="0ecdee30-8b29-44ee-88d3-b9c5d88f02f1" association-name="IdFiscaleHasDatiAnagraficiCessionario">
             <orm:sharedfield name="_datiAnagraficiCessionarioId" target-class="DataLayer.DatiAnagraficiCessionario" target-field="_id" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_datiTrasmissione" property="DatiTrasmissione" behavior="readwrite" uniqueId="fdf3abc1-c5fe-4680-b7ac-d6dcd03ead7c" type="DataLayer.DatiTrasmissione">
+          <orm:reference uniqueId="0b13431d-1a66-45c4-ad2a-00e383de56e5" association-name="IdFiscaleHasDatiTrasmissione">
+            <orm:sharedfield name="_datiTrasmissioneId" target-class="DataLayer.DatiTrasmissione" target-field="_id" />
           </orm:reference>
         </orm:field>
         <orm:index name="idx_IdFiscale_IdTrasmittente">
@@ -660,7 +665,7 @@
         <orm:field name="_id" property="Id" uniqueId="4ea73dba-25db-42e6-a0c1-ec9bbee6d3fa" type="System.Int32">
           <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
-        <orm:field name="_aziendaId" property="AziendaId" uniqueId="72e97dfa-3124-4772-8d3e-ecdea43303fc" type="System.Int32">
+        <orm:field name="_studioProfessionaleId" property="StudioProfessionaleId" uniqueId="72e97dfa-3124-4772-8d3e-ecdea43303fc" type="System.Int32">
           <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="_username" property="Username" uniqueId="6efa98b5-d267-4f7e-b257-01a32af850f7" type="System.String">
@@ -684,9 +689,9 @@
         <orm:field name="_abilitato" property="Abilitato" uniqueId="1083e924-e4cb-47fa-9a3a-de4c1f173e5c" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="Abilitato" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
         </orm:field>
-        <orm:field name="_azienda" property="Azienda" behavior="readwrite" uniqueId="6aa4eb51-5d35-46fd-9fc3-7fed7914ba7d" type="DataLayer.Azienda">
-          <orm:reference uniqueId="46881157-f7f3-4bdd-befc-f64ccb41e995" association-name="AccountHasAzienda">
-            <orm:sharedfield name="_aziendaId" target-class="DataLayer.Azienda" target-field="_id" />
+        <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="0d3cbef6-f1ad-48d7-b218-a426715b708f" type="DataLayer.StudioProfessionale">
+          <orm:reference uniqueId="807f05bf-78c7-4bad-b227-6bebac45be03" association-name="AccountHasStudioProfessionale">
+            <orm:sharedfield name="_studioProfessionaleId" target-class="DataLayer.StudioProfessionale" target-field="_id" />
           </orm:reference>
         </orm:field>
         <orm:index name="idx_Account_AziendaId">
@@ -1533,7 +1538,7 @@
     </BackendConfigurationSettings>
   </ModelSettings>
   <Types>
-    <DomainClass Id="039a05e9-ed33-4e26-8108-d5ed9513953a" name="Azienda" namespace="DataLayer" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="Id">
+    <DomainClass Id="039a05e9-ed33-4e26-8108-d5ed9513953a" name="StudioProfessionale" namespace="DataLayer" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="Id">
       <Property Id="afa9dfeb-ec29-4d90-8882-0bac93960213" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
       <Property Id="4b18ffa8-8569-4258-8721-a52ca5835633" name="RagioneSociale" label="RagioneSociale : String" fieldName="_ragioneSociale" />
       <Property Id="47f06888-d6f5-49be-a99e-8cc2ee9a1ef8" name="Indirizzo" label="Indirizzo : String" fieldName="_indirizzo" />
@@ -1551,26 +1556,26 @@
       <Property Id="c5c6c480-4ab8-418b-b022-38489f599932" name="Note" label="Note : String" kind="Persistent" fieldName="_note" />
       <Property Id="8e38c325-9c4f-4b16-9a5c-a4eb4823a34b" name="Dipendenti" type="Int32" label="Dipendenti : Int32" nullable="true" kind="Persistent" fieldName="_dipendenti" />
       <navigationalProperties>
-        <classHasNavigationalProperties Id="599950bd-2039-4b6f-b848-11fa1f909e90">
-          <NavigationalProperty Id="99d19aab-3c55-4545-a80b-7b5ec0479639" name="Clientes" type="IList&lt;Cliente&gt;" label="Clientes : IList&lt;Cliente&gt;" nullable="true" kind="Persistent" fieldName="_clientes" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="5f6055ea-457b-4953-b1de-90f4adc0b803">
+          <NavigationalProperty Id="e6daa91b-c106-43a0-88e4-5370589d208a" name="Accounts" type="IList&lt;Account&gt;" label="Accounts : IList&lt;Account&gt;" nullable="true" kind="Persistent" fieldName="_accounts" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="292855e7-6252-4302-9c40-0d2a8e9157e8">
-          <NavigationalProperty Id="bdf1c40b-484a-4120-b3ad-bd77c2738772" name="Socios" type="IList&lt;Socio&gt;" label="Socios : IList&lt;Socio&gt;" nullable="true" kind="Persistent" fieldName="_socios" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="ff74fef3-1c63-44e0-8ef6-7039312deb35">
+          <NavigationalProperty Id="0e241507-2b80-4e73-b169-6a9e5f0a6099" name="Socios" type="IList&lt;Socio&gt;" label="Socios : IList&lt;Socio&gt;" nullable="true" kind="Persistent" fieldName="_socios" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="f4bb19a4-63b2-4bda-a31c-39c931ae57f0">
-          <NavigationalProperty Id="2c3536c6-127b-459d-952c-2086b54b1550" name="AnagraficaClientes" type="IList&lt;AnagraficaCliente&gt;" label="AnagraficaClientes : IList&lt;AnagraficaCliente&gt;" nullable="true" kind="Persistent" fieldName="_anagraficaClientes" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="c67c1d55-8e10-4dd0-89d4-502c12a7f913">
+          <NavigationalProperty Id="90f3a2b9-f87a-423c-9e37-aca4e9b82370" name="Trasmissiones" type="IList&lt;Trasmissione&gt;" label="Trasmissiones : IList&lt;Trasmissione&gt;" nullable="true" kind="Persistent" fieldName="_trasmissiones" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="ea24ee68-7924-4038-91d7-ea2a9a8f94e2">
-          <NavigationalProperty Id="39c9c088-56e7-43ed-8fad-3e625788ab22" name="Accounts" type="IList&lt;Account&gt;" label="Accounts : IList&lt;Account&gt;" nullable="true" kind="Persistent" fieldName="_accounts" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="c60f9269-94b7-4a47-adf8-9b0e3e3d9dea">
+          <NavigationalProperty Id="fb53a258-dbd3-4fa3-bee6-58c6f158f6ed" name="AnagraficaClientes" type="IList&lt;AnagraficaCliente&gt;" label="AnagraficaClientes : IList&lt;AnagraficaCliente&gt;" nullable="true" kind="Persistent" fieldName="_anagraficaClientes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="1e7ba70f-a0bd-4170-bf6c-066f0f9b0da7">
-          <NavigationalProperty Id="6df76819-d570-4720-8ae7-510c639a0c11" name="Trasmissiones" type="IList&lt;Trasmissione&gt;" label="Trasmissiones : IList&lt;Trasmissione&gt;" nullable="true" kind="Persistent" fieldName="_trasmissiones" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="b6dbe7b9-3100-4c07-b58d-579e6e97db61">
+          <NavigationalProperty Id="3a837546-1a87-4f03-8c2a-0cc05af7a3e9" name="Clientes" type="IList&lt;Cliente&gt;" label="Clientes : IList&lt;Cliente&gt;" nullable="true" kind="Persistent" fieldName="_clientes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="d3ba65a0-55a6-4600-846c-86f5e642ad07" name="Cliente" namespace="DataLayer" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="Id">
       <Property Id="a5bd1298-8a92-46e6-a6d9-71df7ae8b197" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
-      <Property Id="8c56747b-b3de-4c6d-8c2c-bda2f9354192" name="AziendaId" type="Int32" label="AziendaId : Int32" fieldName="_aziendaId" />
+      <Property Id="8c56747b-b3de-4c6d-8c2c-bda2f9354192" name="StudioProfessionaleId" type="Int32" label="StudioProfessionaleId : Int32" fieldName="_studioProfessionaleId" />
       <Property Id="a9f9e8ba-f305-4c22-b573-5cff440117fe" name="AnagraficaClienteId" type="Int32" label="AnagraficaClienteId : Int32" fieldName="_anagraficaClienteId" />
       <Property Id="00385b1b-02b4-4c3f-b224-87d1cbaa210d" name="AnagraficaPAId" type="Int32" label="AnagraficaPAId : Int32" fieldName="_anagraficaPAId" />
       <Property Id="1bc591e3-0a9b-4488-a40c-53512cda5c21" name="Tipo" label="Tipo : String" fieldName="_tipo" />
@@ -1601,16 +1606,16 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-        <Association Id="6b5de2f6-570d-49ce-9fda-5b11da9d6bc6" SourceMultiplicity="ZeroOne" name="ClienteHasAzienda">
-          <DomainClassMoniker name="/EntitiesModel/Azienda" />
+        <Association Id="692fca6e-c185-43f1-b86a-e02947080333" SourceMultiplicity="ZeroOne" name="ClienteHasStudioProfessionale">
+          <DomainClassMoniker name="/EntitiesModel/StudioProfessionale" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="b2c80522-b90a-4f1e-b88f-d3b428265813">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Azienda/Clientes" />
+            <associationDefinesTargetProperty Id="f55aeea2-1574-42fd-86e7-c257459d69a5">
+              <NavigationalPropertyMoniker name="/EntitiesModel/StudioProfessionale/Clientes" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="62fce355-2ab3-4afa-ad35-8a8a875366e8">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Cliente/Azienda" />
+            <associationDefinesSourceProperty Id="f6c76140-1234-4fec-a932-6bac32b7a774">
+              <NavigationalPropertyMoniker name="/EntitiesModel/Cliente/StudioProfessionale" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -1625,8 +1630,8 @@
         <classHasNavigationalProperties Id="53733007-670c-441b-8107-e57edbe8d43a">
           <NavigationalProperty Id="e3e4ea29-62b1-4a69-bc60-73a2ecc5c858" name="AnagraficaPA" type="AnagraficaPA" label="AnagraficaPA : AnagraficaPA" nullable="true" kind="Persistent" fieldName="_anagraficaPA" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="6895cb46-f38f-44b6-8c90-cfcdebd32e1f">
-          <NavigationalProperty Id="04ef7329-8f6b-43a9-8d92-6a5f9c527cfd" name="Azienda" type="Azienda" label="Azienda : Azienda" nullable="true" kind="Persistent" fieldName="_azienda" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="28917d4d-b0cb-4090-aa09-cc81dcc28f32">
+          <NavigationalProperty Id="808be8fa-e2f9-4a2b-8ff9-1b19b3d772cd" name="StudioProfessionale" type="StudioProfessionale" label="StudioProfessionale : StudioProfessionale" nullable="true" kind="Persistent" fieldName="_studioProfessionale" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1671,7 +1676,7 @@
     <DomainClass Id="6e9305c5-18a5-4363-a27b-f7ea77f67f31" name="Trasmissione" namespace="DataLayer" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="Id">
       <Property Id="d94a7878-b196-4a70-931d-01035ac93c45" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
       <Property Id="fba08473-89a1-40a0-b0aa-1c4dee320fe4" name="FatturaId" type="Int32" label="FatturaId : Int32" fieldName="_fatturaId" />
-      <Property Id="6df1abcf-0070-4aef-8805-7a26e2da96d8" name="AziendaId" type="Int32" label="AziendaId : Int32" fieldName="_aziendaId" />
+      <Property Id="6df1abcf-0070-4aef-8805-7a26e2da96d8" name="StudioProfessionaleId" type="Int32" label="StudioProfessionaleId : Int32" fieldName="_studioProfessionaleId" />
       <Property Id="7b4a6a9e-ef76-43d1-9f7a-58b6a53330ef" name="Stato" label="Stato : String" fieldName="_stato" />
       <Property Id="74af13d4-9c21-4880-b1dd-faa395ed7308" name="Trasmessa" type="DateTime" label="Trasmessa : DateTime" fieldName="_trasmessa" />
       <Property Id="9eeb27a9-cddd-40de-af33-d80c42913ad0" name="XmlFile" label="XmlFile : String" fieldName="_xmlFile" />
@@ -1689,16 +1694,16 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-        <Association Id="d14900a3-76ea-4d83-96a1-dce9de992cde" SourceMultiplicity="ZeroOne" name="TrasmissioneHasAzienda">
-          <DomainClassMoniker name="/EntitiesModel/Azienda" />
+        <Association Id="97c03782-2918-49e6-88cd-2d741484acff" SourceMultiplicity="ZeroOne" name="TrasmissioneHasStudioProfessionale">
+          <DomainClassMoniker name="/EntitiesModel/StudioProfessionale" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="b7eb6b24-95d6-4446-87d9-aae782da3d7b">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Azienda/Trasmissiones" />
+            <associationDefinesTargetProperty Id="539fe053-4a9a-4bbf-8ee3-4f81ed18250c">
+              <NavigationalPropertyMoniker name="/EntitiesModel/StudioProfessionale/Trasmissiones" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="739e4aa9-b9b1-46ed-bbe2-aece68f2d255">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Trasmissione/Azienda" />
+            <associationDefinesSourceProperty Id="a30ee6d9-0192-46f3-bbc1-19e5a699c1d5">
+              <NavigationalPropertyMoniker name="/EntitiesModel/Trasmissione/StudioProfessionale" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -1707,28 +1712,28 @@
         <classHasNavigationalProperties Id="dd327b05-41c7-4d67-a134-a3db3c6397df">
           <NavigationalProperty Id="3d8e691d-7fee-4881-96b7-894a0435486a" name="Fattura" type="Fattura" label="Fattura : Fattura" nullable="true" kind="Persistent" fieldName="_fattura" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="9e0cf46d-d53d-49be-ace8-c835f925b754">
-          <NavigationalProperty Id="e090e308-0541-4c6c-8d16-f4ddb85ff187" name="Azienda" type="Azienda" label="Azienda : Azienda" nullable="true" kind="Persistent" fieldName="_azienda" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="75a85753-c24f-4e02-97e9-58fb7278eb9c">
+          <NavigationalProperty Id="99a1c4af-b7df-4eca-9f1e-9adaf0bd0611" name="StudioProfessionale" type="StudioProfessionale" label="StudioProfessionale : StudioProfessionale" nullable="true" kind="Persistent" fieldName="_studioProfessionale" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="2d4f1d2a-f06f-4719-b3f3-83a1ee5b4438" name="AnagraficaCliente" namespace="DataLayer" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="Id">
       <Property Id="d9ceb32e-1b5b-4b80-9545-7f040430e538" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
-      <Property Id="3e281b41-98c5-4bdf-9848-933688524253" name="AziendaId" type="Int32" label="AziendaId : Int32" fieldName="_aziendaId" />
+      <Property Id="3e281b41-98c5-4bdf-9848-933688524253" name="StudioProfessionaleId" type="Int32" label="StudioProfessionaleId : Int32" fieldName="_studioProfessionaleId" />
       <Property Id="32ab9cda-2db7-4bb4-a3fe-b5a4438ecf76" name="RagioneSociale" label="RagioneSociale : String" fieldName="_ragioneSociale" />
       <Property Id="4416bfed-1592-43dc-be0b-ca4cc8eb4eaa" name="Cognome" label="Cognome : String" fieldName="_cognome" />
       <Property Id="3e08d174-69b4-45dc-81e1-1f20086e4960" name="Codice" label="Codice : String" fieldName="_codice" />
       <AssociationTargets>
-        <Association Id="ed55aabe-4b5c-43d2-ba18-2cce269713c7" SourceMultiplicity="ZeroOne" name="AnagraficaClienteHasAzienda">
-          <DomainClassMoniker name="/EntitiesModel/Azienda" />
+        <Association Id="7b7394ce-b914-4949-86f1-610b01c2f598" SourceMultiplicity="ZeroOne" name="AnagraficaClienteHasStudioProfessionale">
+          <DomainClassMoniker name="/EntitiesModel/StudioProfessionale" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="ca49f5ce-3d90-4058-98a7-6dd55a0e23a0">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Azienda/AnagraficaClientes" />
+            <associationDefinesTargetProperty Id="0df8142b-412c-40d8-9f5d-d3b39c778a1a">
+              <NavigationalPropertyMoniker name="/EntitiesModel/StudioProfessionale/AnagraficaClientes" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="f72a6743-ffd9-4ee0-be89-0074c8063b70">
-              <NavigationalPropertyMoniker name="/EntitiesModel/AnagraficaCliente/Azienda" />
+            <associationDefinesSourceProperty Id="e25d0288-b906-4bba-9910-7c4f11ff31a6">
+              <NavigationalPropertyMoniker name="/EntitiesModel/AnagraficaCliente/StudioProfessionale" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -1737,8 +1742,8 @@
         <classHasNavigationalProperties Id="e2cc34f1-29e6-4f8f-9bda-8a4253f92bd9">
           <NavigationalProperty Id="511e2cef-72d0-4b79-a3d3-4c549316dfda" name="Clientes" type="IList&lt;Cliente&gt;" label="Clientes : IList&lt;Cliente&gt;" nullable="true" kind="Persistent" fieldName="_clientes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="8b1a2dd0-a59d-453a-816d-9c79aee70ae7">
-          <NavigationalProperty Id="cd5266f7-e0ca-4469-b368-9e829bc00150" name="Azienda" type="Azienda" label="Azienda : Azienda" nullable="true" kind="Persistent" fieldName="_azienda" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="f9281155-3008-41e9-9ec0-c846377beac4">
+          <NavigationalProperty Id="d8dad8b1-4e85-4716-bf62-5d2258a5f1cb" name="StudioProfessionale" type="StudioProfessionale" label="StudioProfessionale : StudioProfessionale" nullable="true" kind="Persistent" fieldName="_studioProfessionale" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1774,28 +1779,28 @@
     </DomainClass>
     <DomainClass Id="1c6df36a-e5d7-41c8-af62-98dd3e5173c7" name="Socio" namespace="DataLayer" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="Id">
       <Property Id="c71ced46-76a2-400d-8965-1a0337fa336b" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
-      <Property Id="32e5079a-2b04-4269-afb6-7c67815c7e4f" name="AziendaId" type="Int32" label="AziendaId : Int32" fieldName="_aziendaId" />
+      <Property Id="32e5079a-2b04-4269-afb6-7c67815c7e4f" name="StudioProfessionaleId" type="Int32" label="StudioProfessionaleId : Int32" fieldName="_studioProfessionaleId" />
       <Property Id="66ea504c-26a4-456e-819b-d4a646ee23d9" name="Cognome" label="Cognome : String" fieldName="_cognome" />
       <Property Id="edc5582e-cd17-4e8e-a2c7-dffc2631dcea" name="Nome" label="Nome : String" fieldName="_nome" />
       <Property Id="42d3f649-d81b-4df0-b3ee-ae4835bc0e77" name="TipoCarica" label="TipoCarica : String" fieldName="_tipoCarica" />
       <AssociationTargets>
-        <Association Id="1f64b11a-c165-4b02-b1d7-ee8c2ff9eca5" SourceMultiplicity="ZeroOne" name="SocioHasAzienda">
-          <DomainClassMoniker name="/EntitiesModel/Azienda" />
+        <Association Id="7e4d9110-a4cf-4e51-a066-671dc635670d" SourceMultiplicity="ZeroOne" name="SocioHasStudioProfessionale">
+          <DomainClassMoniker name="/EntitiesModel/StudioProfessionale" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="758eb6e7-9b23-42bd-bfaf-4a16050db303">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Azienda/Socios" />
+            <associationDefinesTargetProperty Id="b1662fee-904d-40dc-984d-0cd03dd50d26">
+              <NavigationalPropertyMoniker name="/EntitiesModel/StudioProfessionale/Socios" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="b9f7a636-e778-4ee8-955f-f9da23306eec">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Socio/Azienda" />
+            <associationDefinesSourceProperty Id="564d20ac-3015-4969-a124-ccfc0e3a2382">
+              <NavigationalPropertyMoniker name="/EntitiesModel/Socio/StudioProfessionale" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
       </AssociationTargets>
       <navigationalProperties>
-        <classHasNavigationalProperties Id="85601c93-faa5-4d1a-bae4-c93e32ff79ad">
-          <NavigationalProperty Id="d69898d3-ffd6-4287-875a-77abb05925a3" name="Azienda" type="Azienda" label="Azienda : Azienda" nullable="true" kind="Persistent" fieldName="_azienda" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="12e6c4fe-06bc-48a4-ac01-3cb5e176df5c">
+          <NavigationalProperty Id="5b72595e-0efc-4847-95e2-612394501e85" name="StudioProfessionale" type="StudioProfessionale" label="StudioProfessionale : StudioProfessionale" nullable="true" kind="Persistent" fieldName="_studioProfessionale" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1914,8 +1919,8 @@
         <classHasNavigationalProperties Id="a7a4be21-9a10-4451-a90e-7a008311f68b">
           <NavigationalProperty Id="f6df4d3e-bbcd-4f04-b38b-1f2bf0f96880" name="FatturaElettronicaHeader" type="FatturaElettronicaHeader" label="FatturaElettronicaHeader : FatturaElettronicaHeader" nullable="true" kind="Persistent" fieldName="_fatturaElettronicaHeader" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="0631f9bf-fa5a-468e-ac39-620d09dee965">
-          <NavigationalProperty Id="a2552961-9e58-46a9-9044-61bde5fd22ed" name="IdFiscales" type="IList&lt;IdFiscale&gt;" label="IdFiscales : IList&lt;IdFiscale&gt;" nullable="true" kind="Persistent" fieldName="_idFiscales" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="6f33f2ad-248e-43bb-ab18-015ea2e6c4eb">
+          <NavigationalProperty Id="e1d6b9b2-56f1-4447-8ad0-5610e36b014b" name="IdFiscales" type="IList&lt;IdFiscale&gt;" label="IdFiscales : IList&lt;IdFiscale&gt;" nullable="true" kind="Persistent" fieldName="_idFiscales" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1923,23 +1928,10 @@
       <Property Id="01869e94-4702-4f25-bf26-74dcd7bcb269" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
       <Property Id="117d5a1b-f4d9-42e7-8520-cb45bdf1ebf1" name="IdPaese" label="IdPaese : String" fieldName="_idPaese" />
       <Property Id="96aa7948-bfa3-460d-8462-d85ab125ca65" name="IdCodice" label="IdCodice : String" fieldName="_idCodice" />
-      <Property Id="3a8a1a03-369f-4bc4-85f0-214d1e34f7a2" name="IdTrasmittente" type="Int32" label="IdTrasmittente : Int32" fieldName="_idTrasmittente" />
+      <Property Id="3a8a1a03-369f-4bc4-85f0-214d1e34f7a2" name="DatiTrasmissioneId" type="Int32" label="DatiTrasmissioneId : Int32" fieldName="_datiTrasmissioneId" />
       <Property Id="d1e5d1dd-21ab-4cda-8acf-afc98a86ee65" name="DatiAnagraficiCedenteId" type="Int32" label="DatiAnagraficiCedenteId : Int32" fieldName="_datiAnagraficiCedenteId" />
       <Property Id="954cd481-18e4-46cc-a608-d2da4c37dcd4" name="DatiAnagraficiCessionarioId" type="Int32" label="DatiAnagraficiCessionarioId : Int32" fieldName="_datiAnagraficiCessionarioId" />
       <AssociationTargets>
-        <Association Id="91b936e9-f8e3-458e-b38f-48ae39f0ea85" SourceMultiplicity="ZeroOne" name="IdFiscaleHasDatiTrasmissione">
-          <DomainClassMoniker name="/EntitiesModel/DatiTrasmissione" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="ced88708-3e27-4e28-91b9-5c27c39787e7">
-              <NavigationalPropertyMoniker name="/EntitiesModel/DatiTrasmissione/IdFiscales" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="e16213e9-0903-40db-a49b-7d650bc53ee2">
-              <NavigationalPropertyMoniker name="/EntitiesModel/IdFiscale/DatiTrasmissione" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
         <Association Id="6fd03060-47aa-4252-9537-0c9becb5387d" SourceMultiplicity="ZeroOne" name="IdFiscaleHasDatiAnagraficiCedente">
           <DomainClassMoniker name="/EntitiesModel/DatiAnagraficiCedente" />
           <targetNavigationalProperty>
@@ -1966,16 +1958,29 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="0b13431d-1a66-45c4-ad2a-00e383de56e5" SourceMultiplicity="ZeroOne" name="IdFiscaleHasDatiTrasmissione">
+          <DomainClassMoniker name="/EntitiesModel/DatiTrasmissione" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="cf075e05-6ce0-46d4-86d4-7a930b7f09b5">
+              <NavigationalPropertyMoniker name="/EntitiesModel/DatiTrasmissione/IdFiscales" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="64bd605e-3d3b-4748-95bc-9dee7d6081df">
+              <NavigationalPropertyMoniker name="/EntitiesModel/IdFiscale/DatiTrasmissione" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
-        <classHasNavigationalProperties Id="fbf24596-05e5-4bd3-a426-1250f9f3f7bf">
-          <NavigationalProperty Id="6a3cee22-4392-41a7-98bc-6d77ee993150" name="DatiTrasmissione" type="DatiTrasmissione" label="DatiTrasmissione : DatiTrasmissione" nullable="true" kind="Persistent" fieldName="_datiTrasmissione" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b01843dd-f675-4beb-8f87-70957202ba1a">
           <NavigationalProperty Id="1da377b2-d43c-4561-8ac3-b7270d72df59" name="DatiAnagraficiCedente" type="DatiAnagraficiCedente" label="DatiAnagraficiCedente : DatiAnagraficiCedente" nullable="true" kind="Persistent" fieldName="_datiAnagraficiCedente" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="c3935085-28d2-4bb3-9385-54a3ccf74012">
           <NavigationalProperty Id="3bad50e6-4bf9-4cd9-bc24-802cfc273273" name="DatiAnagraficiCessionario" type="DatiAnagraficiCessionario" label="DatiAnagraficiCessionario : DatiAnagraficiCessionario" nullable="true" kind="Persistent" fieldName="_datiAnagraficiCessionario" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="adb8a5af-7c5f-4152-94df-d445277ee35d">
+          <NavigationalProperty Id="fdf3abc1-c5fe-4680-b7ac-d6dcd03ead7c" name="DatiTrasmissione" type="DatiTrasmissione" label="DatiTrasmissione : DatiTrasmissione" nullable="true" kind="Persistent" fieldName="_datiTrasmissione" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -2092,7 +2097,7 @@
     </DomainClass>
     <DomainClass Id="df93d478-dff6-4bfb-ab6d-42780fd8b33f" name="Account" namespace="DataLayer" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="Id">
       <Property Id="4ea73dba-25db-42e6-a0c1-ec9bbee6d3fa" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
-      <Property Id="72e97dfa-3124-4772-8d3e-ecdea43303fc" name="AziendaId" type="Int32" label="AziendaId : Int32" fieldName="_aziendaId" />
+      <Property Id="72e97dfa-3124-4772-8d3e-ecdea43303fc" name="StudioProfessionaleId" type="Int32" label="StudioProfessionaleId : Int32" fieldName="_studioProfessionaleId" />
       <Property Id="6efa98b5-d267-4f7e-b257-01a32af850f7" name="Username" label="Username : String" fieldName="_username" />
       <Property Id="9d552404-6cc3-4df0-97fc-68a281e9221f" name="Password" label="Password : String" fieldName="_password" />
       <Property Id="d64e2352-0ad2-437f-aa9e-3bc37cc5a8ed" name="Nickname" label="Nickname : String" fieldName="_nickname" />
@@ -2101,23 +2106,23 @@
       <Property Id="f412c598-163b-4625-b698-163c2a54c0dd" name="Creazione" type="DateTime" label="Creazione : DateTime" nullable="true" fieldName="_creazione" />
       <Property Id="1083e924-e4cb-47fa-9a3a-de4c1f173e5c" name="Abilitato" type="Boolean" label="Abilitato : Boolean" nullable="true" fieldName="_abilitato" />
       <AssociationTargets>
-        <Association Id="46881157-f7f3-4bdd-befc-f64ccb41e995" SourceMultiplicity="ZeroOne" name="AccountHasAzienda">
-          <DomainClassMoniker name="/EntitiesModel/Azienda" />
+        <Association Id="807f05bf-78c7-4bad-b227-6bebac45be03" SourceMultiplicity="ZeroOne" name="AccountHasStudioProfessionale">
+          <DomainClassMoniker name="/EntitiesModel/StudioProfessionale" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="4ec61520-c7c3-450d-995c-6371d9832d3a">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Azienda/Accounts" />
+            <associationDefinesTargetProperty Id="adae83d6-e672-4573-a8bc-08123c657b85">
+              <NavigationalPropertyMoniker name="/EntitiesModel/StudioProfessionale/Accounts" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="0a2d75ac-785b-4208-b204-85574e4580e2">
-              <NavigationalPropertyMoniker name="/EntitiesModel/Account/Azienda" />
+            <associationDefinesSourceProperty Id="a6a33448-cf62-4adb-b239-898c5308283e">
+              <NavigationalPropertyMoniker name="/EntitiesModel/Account/StudioProfessionale" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
       </AssociationTargets>
       <navigationalProperties>
-        <classHasNavigationalProperties Id="50ec2257-46ab-4e86-b9b3-392f75cfe8e9">
-          <NavigationalProperty Id="6aa4eb51-5d35-46fd-9fc3-7fed7914ba7d" name="Azienda" type="Azienda" label="Azienda : Azienda" nullable="true" kind="Persistent" fieldName="_azienda" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="75982837-d26f-4c2a-993e-0c8ac4df9fa6">
+          <NavigationalProperty Id="0d3cbef6-f1ad-48d7-b218-a426715b708f" name="StudioProfessionale" type="StudioProfessionale" label="StudioProfessionale : StudioProfessionale" nullable="true" kind="Persistent" fieldName="_studioProfessionale" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -2555,7 +2560,7 @@
   <domainContext>
     <domainModelHasDomainContext Id="11c55413-37d1-400c-bfdf-67304997ec7f">
       <domainContainer name="EntitiesModel" namespace="DataLayer" showPropertiesCompartment="true">
-        <entitySetProperty name="Aziendas" namespace="DataLayer" type="Azienda" label="Aziendas : IQueryable&lt;DataLayer.Azienda&gt;" />
+        <entitySetProperty name="StudioProfessionales" namespace="DataLayer" type="StudioProfessionale" label="StudioProfessionales : IQueryable&lt;DataLayer.StudioProfessionale&gt;" />
         <entitySetProperty name="Clientes" namespace="DataLayer" type="Cliente" label="Clientes : IQueryable&lt;DataLayer.Cliente&gt;" />
         <entitySetProperty name="Fatturas" namespace="DataLayer" type="Fattura" label="Fatturas : IQueryable&lt;DataLayer.Fattura&gt;" />
         <entitySetProperty name="Trasmissiones" namespace="DataLayer" type="Trasmissione" label="Trasmissiones : IQueryable&lt;DataLayer.Trasmissione&gt;" />

@@ -32,7 +32,7 @@ namespace Web.GUI.Account
 		{
             this.editUsername = new Library.Template.Controls.TemplateEditText();
             this.editNote = new Library.Template.Controls.TemplateEditText();
-            this.editAzienda = new Library.Template.Controls.TemplateEditCombo();
+            this.editStudioProfessionale = new Library.Template.Controls.TemplateEditCombo();
             this.editCreazione = new Library.Template.Controls.TemplateEditDate();
             this.editRuolo = new Library.Template.Controls.TemplateEditDropDown();
             this.editNickname = new Library.Template.Controls.TemplateEditText();
@@ -50,14 +50,14 @@ namespace Web.GUI.Account
             this.container.Controls.Add(this.editNickname);
             this.container.Controls.Add(this.editRuolo);
             this.container.Controls.Add(this.editCreazione);
-            this.container.Controls.Add(this.editAzienda);
+            this.container.Controls.Add(this.editStudioProfessionale);
             this.container.Controls.Add(this.editNote);
             this.container.Controls.Add(this.editUsername);
             this.container.Controls.SetChildIndex(this.infoSubtitleImage, 0);
             this.container.Controls.SetChildIndex(this.infoSubtitle, 0);
             this.container.Controls.SetChildIndex(this.editUsername, 0);
             this.container.Controls.SetChildIndex(this.editNote, 0);
-            this.container.Controls.SetChildIndex(this.editAzienda, 0);
+            this.container.Controls.SetChildIndex(this.editStudioProfessionale, 0);
             this.container.Controls.SetChildIndex(this.editCreazione, 0);
             this.container.Controls.SetChildIndex(this.editRuolo, 0);
             this.container.Controls.SetChildIndex(this.editNickname, 0);
@@ -116,30 +116,30 @@ namespace Web.GUI.Account
             this.editNote.Text = "EditControl";
             this.editNote.Value = null;
             // 
-            // editAzienda
+            // editStudioProfessionale
             // 
-            this.editAzienda.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            this.editStudioProfessionale.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editAzienda.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
-            this.editAzienda.BackColor = System.Drawing.Color.Transparent;
-            this.editAzienda.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224))))));
-            this.editAzienda.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
-            this.editAzienda.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0, 0, 0, 1);
-            this.editAzienda.Changed = true;
-            this.editAzienda.Editing = false;
-            this.editAzienda.Label = "Azienda";
-            this.editAzienda.LabelWidth = 175;
-            this.editAzienda.Location = new System.Drawing.Point(25, 75);
-            this.editAzienda.Model = null;
-            this.editAzienda.Name = "editAzienda";
-            this.editAzienda.ReadOnly = false;
-            this.editAzienda.Required = true;
-            this.editAzienda.Size = new System.Drawing.Size(794, 30);
-            this.editAzienda.TabIndex = 0;
-            this.editAzienda.Text = "EditControl";
-            this.editAzienda.Value = null;
-            this.editAzienda.ComboConfirm += new Library.Template.Controls.TemplateEditCombo.ComboConfirmHanlder(this.editAzienda_ComboConfirm);
-            this.editAzienda.ComboClick += new Library.Template.Controls.TemplateEditCombo.ComboClickHandler(this.editAzienda_ComboClick);
+            this.editStudioProfessionale.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
+            this.editStudioProfessionale.BackColor = System.Drawing.Color.Transparent;
+            this.editStudioProfessionale.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224))))));
+            this.editStudioProfessionale.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
+            this.editStudioProfessionale.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0, 0, 0, 1);
+            this.editStudioProfessionale.Changed = true;
+            this.editStudioProfessionale.Editing = false;
+            this.editStudioProfessionale.Label = "Studio professionale";
+            this.editStudioProfessionale.LabelWidth = 175;
+            this.editStudioProfessionale.Location = new System.Drawing.Point(25, 75);
+            this.editStudioProfessionale.Model = null;
+            this.editStudioProfessionale.Name = "editStudioProfessionale";
+            this.editStudioProfessionale.ReadOnly = false;
+            this.editStudioProfessionale.Required = true;
+            this.editStudioProfessionale.Size = new System.Drawing.Size(794, 30);
+            this.editStudioProfessionale.TabIndex = 0;
+            this.editStudioProfessionale.Text = "EditControl";
+            this.editStudioProfessionale.Value = null;
+            this.editStudioProfessionale.ComboConfirm += new Library.Template.Controls.TemplateEditCombo.ComboConfirmHanlder(this.editStudioProfessionale_ComboConfirm);
+            this.editStudioProfessionale.ComboClick += new Library.Template.Controls.TemplateEditCombo.ComboClickHandler(this.editStudioProfessionale_ComboClick);
             // 
             // editCreazione
             // 
@@ -249,9 +249,6 @@ namespace Web.GUI.Account
             this.editAbilitato.Size = new System.Drawing.Size(792, 30);
             this.editAbilitato.TabIndex = 7;
             this.editAbilitato.Value = false;
-            // 
-            // AccountModel
-            // 
             this.container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.infoSubtitleImage)).EndInit();
             this.panelCommands.ResumeLayout(false);
@@ -263,7 +260,7 @@ namespace Web.GUI.Account
 
         private Library.Template.Controls.TemplateEditText editUsername;
         private Library.Template.Controls.TemplateEditText editNote;
-        private Library.Template.Controls.TemplateEditCombo editAzienda;
+        private Library.Template.Controls.TemplateEditCombo editStudioProfessionale;
         private Library.Template.Controls.TemplateEditDate editCreazione;
         private Library.Template.Controls.TemplateEditDropDown editRuolo;
         private Library.Template.Controls.TemplateEditText editNickname;

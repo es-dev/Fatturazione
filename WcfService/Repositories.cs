@@ -67,14 +67,14 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface IAziendaRepository : IRepository<Azienda>
+	public partial interface IStudioProfessionaleRepository : IRepository<StudioProfessionale>
 	{ 
 	
 	}
 	
-	public partial class AziendaRepository : Repository<Azienda>, IAziendaRepository
+	public partial class StudioProfessionaleRepository : Repository<StudioProfessionale>, IStudioProfessionaleRepository
 	{
-	    public AziendaRepository(IEntitiesModelUnitOfWork unitOfWork)
+	    public StudioProfessionaleRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }

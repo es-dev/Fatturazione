@@ -1,8 +1,8 @@
 using System.Drawing;
 
-namespace Web.GUI.Azienda
+namespace Web.GUI.StudioProfessionale
 {
-    partial class AziendaView
+    partial class StudioProfessionaleView
 	{
 	        /// <summary>
 	        /// Required designer variable.

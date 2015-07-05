@@ -10,11 +10,11 @@ using System.Text;
 using WcfService.Dto;
 using Web.Code;
 
-namespace Web.GUI.Azienda
+namespace Web.GUI.StudioProfessionale
 {
-	public partial class AziendaModel : TemplateModel
+	public partial class StudioProfessionaleModel : TemplateModel
 	{
-        public AziendaModel()
+        public StudioProfessionaleModel()
 		{
 			InitializeComponent();
 		}
@@ -25,10 +25,10 @@ namespace Web.GUI.Azienda
             {
                 if (model != null)
                 {
-                    var obj = (AziendaDto)model;
-                    infoSubtitle.Text = BusinessLogic.Azienda.GetCodifica(obj);
+                    var obj = (StudioProfessionaleDto)model;
+                    infoSubtitle.Text = BusinessLogic.StudioProfessionale.GetCodifica(obj);
                     infoSubtitleImage.Image = "Images.dashboard.azienda.png";
-                    infoTitle.Text = (obj.Id != 0 ? "AZIENDA " + BusinessLogic.Azienda.GetCodifica(obj) : "NUOVA AZIENDA");
+                    infoTitle.Text = (obj.Id != 0 ? "STUDIO PROFESSIONALE " + BusinessLogic.StudioProfessionale.GetCodifica(obj) : "NUOVO STUDIO PROFESSIONALE");
                 }
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace Web.GUI.Azienda
             {
                 if (model != null)
                 {
-                    var obj = (AziendaDto)model;
+                    var obj = (StudioProfessionaleDto)model;
                     editCodice.Value = obj.Codice;
                     editRagioneSociale.Value = obj.RagioneSociale;
                     editCAP.Value = obj.CAP;
@@ -70,7 +70,7 @@ namespace Web.GUI.Azienda
             {
                 if (model != null)
                 {
-                    var obj = (WcfService.Dto.AziendaDto)model;
+                    var obj = (WcfService.Dto.StudioProfessionaleDto)model;
                     obj.Codice = editCodice.Value;
                     obj.RagioneSociale = editRagioneSociale.Value;
                     obj.CAP = editCAP.Value;

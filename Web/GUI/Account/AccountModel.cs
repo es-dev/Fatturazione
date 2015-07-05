@@ -73,7 +73,7 @@ namespace Web.GUI.Account
                     editNote.Value = obj.Note;
                     editCreazione.Value = obj.Creazione;
 
-                    BindViewAzienda(obj.Azienda);
+                    BindViewStudioProfessionale(obj.StudioProfessionale);
                 }
             }
             catch (Exception ex)
@@ -82,12 +82,12 @@ namespace Web.GUI.Account
             }
         }
 
-        private void BindViewAzienda(AziendaDto azienda)
+        private void BindViewStudioProfessionale(StudioProfessionaleDto studioProfessionale)
         {
             try
             {
-                editAzienda.Model = azienda;
-                editAzienda.Value = BusinessLogic.Azienda.GetCodifica(azienda);
+                editStudioProfessionale.Model = studioProfessionale;
+                editStudioProfessionale.Value = BusinessLogic.StudioProfessionale.GetCodifica(studioProfessionale);
             }
             catch (Exception ex)
             {
@@ -112,9 +112,9 @@ namespace Web.GUI.Account
                     if(obj.Creazione==null)
                         obj.Creazione = editCreazione.Value;
 
-                    var azienda = (WcfService.Dto.AziendaDto)editAzienda.Model;
-                    if (azienda != null)
-                        obj.AziendaId = azienda.Id;
+                    var studioProfessionale = (WcfService.Dto.StudioProfessionaleDto)editStudioProfessionale.Model;
+                    if (studioProfessionale != null)
+                        obj.StudioProfessionaleId = studioProfessionale.Id;
                 }
             }
             catch (Exception ex)
@@ -123,13 +123,13 @@ namespace Web.GUI.Account
             }
         }
 
-        private void editAzienda_ComboClick()
+        private void editStudioProfessionale_ComboClick()
         {
             try
             {
-                var view = new Azienda.AziendaView();
-                view.Title = "SELEZIONA UN'AZIENDA";
-                editAzienda.Show(view);
+                var view = new StudioProfessionale.StudioProfessionaleView();
+                view.Title = "SELEZIONA UNO STUDIO PROFESSIONALE";
+                editStudioProfessionale.Show(view);
             }
             catch (Exception ex)
             {
@@ -137,12 +137,12 @@ namespace Web.GUI.Account
             }
         }
 
-        private void editAzienda_ComboConfirm(object model)
+        private void editStudioProfessionale_ComboConfirm(object model)
         {
             try
             {
-                var azienda = (WcfService.Dto.AziendaDto)model;
-                BindViewAzienda(azienda);
+                var StudioProfessionale = (WcfService.Dto.StudioProfessionaleDto)model;
+                BindViewStudioProfessionale(StudioProfessionale);
             }
             catch (Exception ex)
             {

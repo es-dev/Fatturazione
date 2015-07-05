@@ -50,11 +50,11 @@ namespace DataLayer
 			:base(connection, backendConfiguration, metadataSource)
 		{ }
 			
-		public IQueryable<Azienda> Aziendas 
+		public IQueryable<StudioProfessionale> StudioProfessionales 
 		{
 			get
 			{
-				return this.GetAll<Azienda>();
+				return this.GetAll<StudioProfessionale>();
 			}
 		}
 		
@@ -311,7 +311,7 @@ namespace DataLayer
 	
 	public interface IEntitiesModelUnitOfWork : IUnitOfWork
 	{
-		IQueryable<Azienda> Aziendas
+		IQueryable<StudioProfessionale> StudioProfessionales
 		{
 			get;
 		}

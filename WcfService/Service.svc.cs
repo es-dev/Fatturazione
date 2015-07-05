@@ -14,16 +14,16 @@ namespace WcfService
     public class Service : IService
     {
 
-        #region Azienda
+        #region StudioProfessionale
         #region CRUD
-        public Dto.AziendaDto CreateAzienda(Dto.AziendaDto azienda)
+        public Dto.StudioProfessionaleDto CreateStudioProfessionale(Dto.StudioProfessionaleDto studioProfessionale)
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                var dtoKey = wcf.CreateAzienda(azienda);
-                var newAzienda = wcf.ReadAzienda(dtoKey);
-                return newAzienda;
+                var dtoKey = wcf.CreateStudioProfessionale(studioProfessionale);
+                var newAStudioProfessionale = wcf.ReadStudioProfessionale(dtoKey);
+                return newAStudioProfessionale;
             }
             catch (Exception ex)
             {
@@ -32,13 +32,13 @@ namespace WcfService
             return null;
         }
 
-        public IEnumerable<Dto.AziendaDto> ReadAziende()
+        public IEnumerable<Dto.StudioProfessionaleDto> ReadStudiProfessionali()
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                var aziende = wcf.ReadAziendas();
-                return aziende;
+                var studiProfessionali = wcf.ReadStudioProfessionales();
+                return studiProfessionali;
             }
             catch (Exception ex)
             {
@@ -47,12 +47,12 @@ namespace WcfService
             return null;
         }
 
-        public bool UpdateAzienda(Dto.AziendaDto azienda)
+        public bool UpdateStudioProfessionale(Dto.StudioProfessionaleDto studioProfessionale)
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                wcf.UpdateAzienda(azienda);
+                wcf.UpdateStudioProfessionale(studioProfessionale);
                 return true;
             }
             catch (Exception ex)
@@ -62,12 +62,12 @@ namespace WcfService
             return false;
         }
 
-        public bool DeleteAzienda(Dto.AziendaDto azienda)
+        public bool DeleteStudioProfessionale(Dto.StudioProfessionaleDto studioProfessionale)
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                wcf.DeleteAzienda(azienda);
+                wcf.DeleteStudioProfessionale(studioProfessionale);
                 return true;
             }
             catch (Exception ex)
@@ -77,12 +77,12 @@ namespace WcfService
             return false;
         }
 
-        public int CountAziende()
+        public int CountStudiProfessionali()
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                var count = wcf.AziendasCount();
+                var count = wcf.StudioProfessionalesCount();
                 return count;
             }
             catch (Exception ex)
@@ -93,15 +93,15 @@ namespace WcfService
         }
         #endregion
         #region Custom
-        public IEnumerable<Dto.AziendaDto> LoadAziende(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        public IEnumerable<Dto.StudioProfessionaleDto> LoadStudiProfessionali(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
         {
             try
             {
-                var aziende = QueryAziende(search, advancedSearch, orderBy);
-                aziende = (from q in aziende select q).Skip(skip).Take(take);
+                var studiProfessionali = QueryStudiProfessionali(search, advancedSearch, orderBy);
+                studiProfessionali = (from q in studiProfessionali select q).Skip(skip).Take(take);
 
-                var aziendeDto = UtilityPOCO.Assemble<Dto.AziendaDto>(aziende);
-                return aziendeDto;
+                var studiProfessionaliDto = UtilityPOCO.Assemble<Dto.StudioProfessionaleDto>(studiProfessionali);
+                return studiProfessionaliDto;
             }
             catch (Exception ex)
             {
@@ -110,12 +110,12 @@ namespace WcfService
             return null;
         }
 
-        public int CountAziende(string search = null, object advancedSearch = null)
+        public int CountStudiProfessionali(string search = null, object advancedSearch = null)
         {
             try
             {
-                var aziende = QueryAziende(search, advancedSearch);
-                var count = aziende.Count();
+                var studiProfessionali = QueryStudiProfessionali(search, advancedSearch);
+                var count = studiProfessionali.Count();
                 return count;
             }
             catch (Exception ex)
@@ -125,14 +125,14 @@ namespace WcfService
             return 0;
         }
 
-        public Dto.AziendaDto ReadAzienda(object id)
+        public Dto.StudioProfessionaleDto ReadStudioProfessionale(object id)
         {
             try
             {
                 var wcf = new EntitiesModelService();
                 var dtoKey = UtilityPOCO.GetDtoKey((int)id);
-                var azienda = wcf.ReadAzienda(dtoKey);
-                return azienda;
+                var studioProfessionale = wcf.ReadStudioProfessionale(dtoKey);
+                return studioProfessionale;
             }
             catch (Exception ex)
             {
@@ -141,31 +141,31 @@ namespace WcfService
             return null;
         }
 
-        private IQueryable<DataLayer.Azienda> QueryAziende(string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        private IQueryable<DataLayer.StudioProfessionale> QueryStudiProfessionali(string search = null, object advancedSearch = null, OrderBy orderBy = null)
         {
             try
             {
                 var ef = new DataLayer.EntitiesModel();
-                var aziende = (from q in ef.Aziendas select q);
+                var studiProfessionali = (from q in ef.StudioProfessionales select q);
 
                 if (search != null && search.Length > 0)
-                    aziende = (from q in aziende
+                    studiProfessionali = (from q in studiProfessionali
                                where q.Codice.StartsWith(search) || q.RagioneSociale.Contains(search) || q.Comune.StartsWith(search) || q.Indirizzo.Contains(search) ||
                                    q.Provincia.StartsWith(search)
                                select q);
 
                 if (advancedSearch != null)
-                    aziende = aziende.Where((Func<DataLayer.Azienda, bool>)advancedSearch).AsQueryable();
+                    studiProfessionali = studiProfessionali.Where((Func<DataLayer.StudioProfessionale, bool>)advancedSearch).AsQueryable();
 
-                aziende = (from q in aziende orderby q.RagioneSociale select q);
+                studiProfessionali = (from q in studiProfessionali orderby q.RagioneSociale select q);
                 if (orderBy != null)
                 {
                     if (orderBy.Direction == TypeOrder.Ascending)
-                        aziende = aziende.OrderBy((Func<DataLayer.Azienda, object>)orderBy.Value).AsQueryable();
+                        studiProfessionali = studiProfessionali.OrderBy((Func<DataLayer.StudioProfessionale, object>)orderBy.Value).AsQueryable();
                     else if (orderBy.Direction == TypeOrder.Descending)
-                        aziende = aziende.OrderByDescending((Func<DataLayer.Azienda, object>)orderBy.Value).AsQueryable();
+                        studiProfessionali = studiProfessionali.OrderByDescending((Func<DataLayer.StudioProfessionale, object>)orderBy.Value).AsQueryable();
                 }
-                return aziende;
+                return studiProfessionali;
             }
             catch (Exception ex)
             {

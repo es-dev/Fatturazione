@@ -174,14 +174,14 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IAziendaService : IService<AziendaDto, Azienda>
+	public partial interface IStudioProfessionaleService : IService<StudioProfessionaleDto, StudioProfessionale>
 	{
 	
 	}
 	
-	public partial class AziendaService : Service<AziendaDto, Azienda>, IAziendaService
+	public partial class StudioProfessionaleService : Service<StudioProfessionaleDto, StudioProfessionale>, IStudioProfessionaleService
 	{
-	    public AziendaService(IAziendaAssembler assembler, IAziendaRepository repository)
+	    public StudioProfessionaleService(IStudioProfessionaleAssembler assembler, IStudioProfessionaleRepository repository)
 	        : base(assembler, repository)
 	    {
 	

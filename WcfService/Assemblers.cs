@@ -68,30 +68,30 @@ namespace WcfService.Assemblers
 	    }
 	}
 	
-	public partial interface IAziendaAssembler : IAssembler<AziendaDto, Azienda>
+	public partial interface IStudioProfessionaleAssembler : IAssembler<StudioProfessionaleDto, StudioProfessionale>
 	{ 
 	
 	}
 	
-	public partial class AziendaAssemblerBase : Assembler<AziendaDto, Azienda>
+	public partial class StudioProfessionaleAssemblerBase : Assembler<StudioProfessionaleDto, StudioProfessionale>
 	{
 		/// <summary>
-	    /// Invoked after the AziendaDto instance is assembled.
+	    /// Invoked after the StudioProfessionaleDto instance is assembled.
 	    /// </summary>
-	    /// <param name="dto"><see cref="AziendaDto"/> The Dto instance.</param>
-		partial void OnDTOAssembled(AziendaDto dto);
+	    /// <param name="dto"><see cref="StudioProfessionaleDto"/> The Dto instance.</param>
+		partial void OnDTOAssembled(StudioProfessionaleDto dto);
 	
 		/// <summary>
-	    /// Invoked after the Azienda instance is assembled.
+	    /// Invoked after the StudioProfessionale instance is assembled.
 	    /// </summary>
-	    /// <param name="entity">The <see cref="Azienda"/> instance.</param>
-		partial void OnEntityAssembled(Azienda entity);
+	    /// <param name="entity">The <see cref="StudioProfessionale"/> instance.</param>
+		partial void OnEntityAssembled(StudioProfessionale entity);
 		
-	    public override Azienda Assemble(Azienda entity, AziendaDto dto)
+	    public override StudioProfessionale Assemble(StudioProfessionale entity, StudioProfessionaleDto dto)
 	    {
 	        if (entity == null)
 	        {
-	            entity = new Azienda();
+	            entity = new StudioProfessionale();
 	        }
 			
 			entity.Id = dto.Id;
@@ -114,9 +114,9 @@ namespace WcfService.Assemblers
 	        return entity;
 	    }
 	
-	    public override AziendaDto Assemble(Azienda entity)
+	    public override StudioProfessionaleDto Assemble(StudioProfessionale entity)
 	    {
-	        AziendaDto dto = new AziendaDto();
+	        StudioProfessionaleDto dto = new StudioProfessionaleDto();
 	        
 			ObjectKey key = KeyUtility.Instance.Create(entity);
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
@@ -140,20 +140,20 @@ namespace WcfService.Assemblers
 	        return dto;
 	    }
 	
-	    public override void AssembleReferences(Azienda entity, AziendaDto dto)
+	    public override void AssembleReferences(StudioProfessionale entity, StudioProfessionaleDto dto)
 	    {
 	    }
 	
-	    public override void AssembleCollections(Azienda entity, AziendaDto dto)
+	    public override void AssembleCollections(StudioProfessionale entity, StudioProfessionaleDto dto)
 	    {
-			ClienteAssembler clienteAssembler = new ClienteAssembler();
+			AccountAssembler accountAssembler = new AccountAssembler();
 
-			dto.Clientes = new List<ClienteDto>();
-			foreach (Cliente item in entity.Clientes)
+			dto.Accounts = new List<AccountDto>();
+			foreach (Account item in entity.Accounts)
 			{
-				var dtoItem = clienteAssembler.Assemble(item);
-				dtoItem.Azienda = dto;
-				dto.Clientes.Add(dtoItem);
+				var dtoItem = accountAssembler.Assemble(item);
+				dtoItem.StudioProfessionale = dto;
+				dto.Accounts.Add(dtoItem);
 			}
 
 			SocioAssembler socioAssembler = new SocioAssembler();
@@ -162,28 +162,8 @@ namespace WcfService.Assemblers
 			foreach (Socio item in entity.Socios)
 			{
 				var dtoItem = socioAssembler.Assemble(item);
-				dtoItem.Azienda = dto;
+				dtoItem.StudioProfessionale = dto;
 				dto.Socios.Add(dtoItem);
-			}
-
-			AnagraficaClienteAssembler anagraficaClienteAssembler = new AnagraficaClienteAssembler();
-
-			dto.AnagraficaClientes = new List<AnagraficaClienteDto>();
-			foreach (AnagraficaCliente item in entity.AnagraficaClientes)
-			{
-				var dtoItem = anagraficaClienteAssembler.Assemble(item);
-				dtoItem.Azienda = dto;
-				dto.AnagraficaClientes.Add(dtoItem);
-			}
-
-			AccountAssembler accountAssembler = new AccountAssembler();
-
-			dto.Accounts = new List<AccountDto>();
-			foreach (Account item in entity.Accounts)
-			{
-				var dtoItem = accountAssembler.Assemble(item);
-				dtoItem.Azienda = dto;
-				dto.Accounts.Add(dtoItem);
 			}
 
 			TrasmissioneAssembler trasmissioneAssembler = new TrasmissioneAssembler();
@@ -192,8 +172,28 @@ namespace WcfService.Assemblers
 			foreach (Trasmissione item in entity.Trasmissiones)
 			{
 				var dtoItem = trasmissioneAssembler.Assemble(item);
-				dtoItem.Azienda = dto;
+				dtoItem.StudioProfessionale = dto;
 				dto.Trasmissiones.Add(dtoItem);
+			}
+
+			AnagraficaClienteAssembler anagraficaClienteAssembler = new AnagraficaClienteAssembler();
+
+			dto.AnagraficaClientes = new List<AnagraficaClienteDto>();
+			foreach (AnagraficaCliente item in entity.AnagraficaClientes)
+			{
+				var dtoItem = anagraficaClienteAssembler.Assemble(item);
+				dtoItem.StudioProfessionale = dto;
+				dto.AnagraficaClientes.Add(dtoItem);
+			}
+
+			ClienteAssembler clienteAssembler = new ClienteAssembler();
+
+			dto.Clientes = new List<ClienteDto>();
+			foreach (Cliente item in entity.Clientes)
+			{
+				var dtoItem = clienteAssembler.Assemble(item);
+				dtoItem.StudioProfessionale = dto;
+				dto.Clientes.Add(dtoItem);
 			}
 
 	    }
@@ -201,7 +201,7 @@ namespace WcfService.Assemblers
 	}
 	
 	
-	public partial class AziendaAssembler : AziendaAssemblerBase, IAziendaAssembler
+	public partial class StudioProfessionaleAssembler : StudioProfessionaleAssemblerBase, IStudioProfessionaleAssembler
 	{
 	    
 	}
@@ -233,7 +233,7 @@ namespace WcfService.Assemblers
 	        }
 			
 			entity.Id = dto.Id;
-			entity.AziendaId = dto.AziendaId;
+			entity.StudioProfessionaleId = dto.StudioProfessionaleId;
 			entity.AnagraficaClienteId = dto.AnagraficaClienteId;
 			entity.AnagraficaPAId = dto.AnagraficaPAId;
 			entity.Tipo = dto.Tipo;
@@ -248,7 +248,7 @@ namespace WcfService.Assemblers
 			ObjectKey key = KeyUtility.Instance.Create(entity);
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
-			dto.AziendaId = entity.AziendaId;
+			dto.StudioProfessionaleId = entity.StudioProfessionaleId;
 			dto.AnagraficaClienteId = entity.AnagraficaClienteId;
 			dto.AnagraficaPAId = entity.AnagraficaPAId;
 			dto.Tipo = entity.Tipo;
@@ -264,8 +264,8 @@ namespace WcfService.Assemblers
 			AnagraficaPAAssembler anagraficaPAAssembler = new AnagraficaPAAssembler();
 			dto.AnagraficaPA = anagraficaPAAssembler.Assemble(entity.AnagraficaPA);
 
-			AziendaAssembler aziendaAssembler = new AziendaAssembler();
-			dto.Azienda = aziendaAssembler.Assemble(entity.Azienda);
+			StudioProfessionaleAssembler studioProfessionaleAssembler = new StudioProfessionaleAssembler();
+			dto.StudioProfessionale = studioProfessionaleAssembler.Assemble(entity.StudioProfessionale);
 
 	    }
 	
@@ -419,7 +419,7 @@ namespace WcfService.Assemblers
 			
 			entity.Id = dto.Id;
 			entity.FatturaId = dto.FatturaId;
-			entity.AziendaId = dto.AziendaId;
+			entity.StudioProfessionaleId = dto.StudioProfessionaleId;
 			entity.Stato = dto.Stato;
 			entity.Trasmessa = dto.Trasmessa;
 			entity.XmlFile = dto.XmlFile;
@@ -435,7 +435,7 @@ namespace WcfService.Assemblers
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
 			dto.FatturaId = entity.FatturaId;
-			dto.AziendaId = entity.AziendaId;
+			dto.StudioProfessionaleId = entity.StudioProfessionaleId;
 			dto.Stato = entity.Stato;
 			dto.Trasmessa = entity.Trasmessa;
 			dto.XmlFile = entity.XmlFile;
@@ -448,8 +448,8 @@ namespace WcfService.Assemblers
 			FatturaAssembler fatturaAssembler = new FatturaAssembler();
 			dto.Fattura = fatturaAssembler.Assemble(entity.Fattura);
 
-			AziendaAssembler aziendaAssembler = new AziendaAssembler();
-			dto.Azienda = aziendaAssembler.Assemble(entity.Azienda);
+			StudioProfessionaleAssembler studioProfessionaleAssembler = new StudioProfessionaleAssembler();
+			dto.StudioProfessionale = studioProfessionaleAssembler.Assemble(entity.StudioProfessionale);
 
 	    }
 	
@@ -492,7 +492,7 @@ namespace WcfService.Assemblers
 	        }
 			
 			entity.Id = dto.Id;
-			entity.AziendaId = dto.AziendaId;
+			entity.StudioProfessionaleId = dto.StudioProfessionaleId;
 			entity.RagioneSociale = dto.RagioneSociale;
 			entity.Cognome = dto.Cognome;
 			entity.Codice = dto.Codice;
@@ -507,7 +507,7 @@ namespace WcfService.Assemblers
 			ObjectKey key = KeyUtility.Instance.Create(entity);
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
-			dto.AziendaId = entity.AziendaId;
+			dto.StudioProfessionaleId = entity.StudioProfessionaleId;
 			dto.RagioneSociale = entity.RagioneSociale;
 			dto.Cognome = entity.Cognome;
 			dto.Codice = entity.Codice;
@@ -517,8 +517,8 @@ namespace WcfService.Assemblers
 	
 	    public override void AssembleReferences(AnagraficaCliente entity, AnagraficaClienteDto dto)
 	    {
-			AziendaAssembler aziendaAssembler = new AziendaAssembler();
-			dto.Azienda = aziendaAssembler.Assemble(entity.Azienda);
+			StudioProfessionaleAssembler studioProfessionaleAssembler = new StudioProfessionaleAssembler();
+			dto.StudioProfessionale = studioProfessionaleAssembler.Assemble(entity.StudioProfessionale);
 
 	    }
 	
@@ -572,6 +572,12 @@ namespace WcfService.Assemblers
 			
 			entity.Id = dto.Id;
 			entity.FatturaId = dto.FatturaId;
+			entity.Data = dto.Data;
+			entity.Importo = dto.Importo;
+			entity.TipoPagamento = dto.TipoPagamento;
+			entity.Descrizione = dto.Descrizione;
+			entity.TransazionePagamento = dto.TransazionePagamento;
+			entity.Codice = dto.Codice;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -584,6 +590,12 @@ namespace WcfService.Assemblers
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
 			dto.FatturaId = entity.FatturaId;
+			dto.Data = entity.Data;
+			dto.Importo = entity.Importo;
+			dto.TipoPagamento = entity.TipoPagamento;
+			dto.Descrizione = entity.Descrizione;
+			dto.TransazionePagamento = entity.TransazionePagamento;
+			dto.Codice = entity.Codice;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
@@ -634,7 +646,7 @@ namespace WcfService.Assemblers
 	        }
 			
 			entity.Id = dto.Id;
-			entity.AziendaId = dto.AziendaId;
+			entity.StudioProfessionaleId = dto.StudioProfessionaleId;
 			entity.Cognome = dto.Cognome;
 			entity.Nome = dto.Nome;
 			entity.TipoCarica = dto.TipoCarica;
@@ -649,7 +661,7 @@ namespace WcfService.Assemblers
 			ObjectKey key = KeyUtility.Instance.Create(entity);
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
-			dto.AziendaId = entity.AziendaId;
+			dto.StudioProfessionaleId = entity.StudioProfessionaleId;
 			dto.Cognome = entity.Cognome;
 			dto.Nome = entity.Nome;
 			dto.TipoCarica = entity.TipoCarica;
@@ -659,8 +671,8 @@ namespace WcfService.Assemblers
 	
 	    public override void AssembleReferences(Socio entity, SocioDto dto)
 	    {
-			AziendaAssembler aziendaAssembler = new AziendaAssembler();
-			dto.Azienda = aziendaAssembler.Assemble(entity.Azienda);
+			StudioProfessionaleAssembler studioProfessionaleAssembler = new StudioProfessionaleAssembler();
+			dto.StudioProfessionale = studioProfessionaleAssembler.Assemble(entity.StudioProfessionale);
 
 	    }
 	
@@ -1035,8 +1047,7 @@ namespace WcfService.Assemblers
 			entity.Id = dto.Id;
 			entity.IdPaese = dto.IdPaese;
 			entity.IdCodice = dto.IdCodice;
-			entity.IdTrasmittente = dto.IdTrasmittente;
-			entity.IdFiscaleIVA = dto.IdFiscaleIVA;
+			entity.DatiTrasmissioneId = dto.DatiTrasmissioneId;
 			entity.DatiAnagraficiCedenteId = dto.DatiAnagraficiCedenteId;
 			entity.DatiAnagraficiCessionarioId = dto.DatiAnagraficiCessionarioId;
 	        this.OnEntityAssembled(entity);
@@ -1052,8 +1063,7 @@ namespace WcfService.Assemblers
 			dto.Id = entity.Id;
 			dto.IdPaese = entity.IdPaese;
 			dto.IdCodice = entity.IdCodice;
-			dto.IdTrasmittente = entity.IdTrasmittente;
-			dto.IdFiscaleIVA = entity.IdFiscaleIVA;
+			dto.DatiTrasmissioneId = entity.DatiTrasmissioneId;
 			dto.DatiAnagraficiCedenteId = entity.DatiAnagraficiCedenteId;
 			dto.DatiAnagraficiCessionarioId = entity.DatiAnagraficiCessionarioId;
 			this.OnDTOAssembled(dto); 
@@ -1062,14 +1072,14 @@ namespace WcfService.Assemblers
 	
 	    public override void AssembleReferences(IdFiscale entity, IdFiscaleDto dto)
 	    {
-			DatiTrasmissioneAssembler datiTrasmissioneAssembler = new DatiTrasmissioneAssembler();
-			dto.DatiTrasmissione = datiTrasmissioneAssembler.Assemble(entity.DatiTrasmissione);
-
 			DatiAnagraficiCedenteAssembler datiAnagraficiCedenteAssembler = new DatiAnagraficiCedenteAssembler();
 			dto.DatiAnagraficiCedente = datiAnagraficiCedenteAssembler.Assemble(entity.DatiAnagraficiCedente);
 
 			DatiAnagraficiCessionarioAssembler datiAnagraficiCessionarioAssembler = new DatiAnagraficiCessionarioAssembler();
 			dto.DatiAnagraficiCessionario = datiAnagraficiCessionarioAssembler.Assemble(entity.DatiAnagraficiCessionario);
+
+			DatiTrasmissioneAssembler datiTrasmissioneAssembler = new DatiTrasmissioneAssembler();
+			dto.DatiTrasmissione = datiTrasmissioneAssembler.Assemble(entity.DatiTrasmissione);
 
 	    }
 	
@@ -1359,7 +1369,7 @@ namespace WcfService.Assemblers
 	        }
 			
 			entity.Id = dto.Id;
-			entity.AziendaId = dto.AziendaId;
+			entity.StudioProfessionaleId = dto.StudioProfessionaleId;
 			entity.Username = dto.Username;
 			entity.Password = dto.Password;
 			entity.Nickname = dto.Nickname;
@@ -1378,7 +1388,7 @@ namespace WcfService.Assemblers
 			ObjectKey key = KeyUtility.Instance.Create(entity);
 			dto.DtoKey = KeyUtility.Instance.Convert(key);
 			dto.Id = entity.Id;
-			dto.AziendaId = entity.AziendaId;
+			dto.StudioProfessionaleId = entity.StudioProfessionaleId;
 			dto.Username = entity.Username;
 			dto.Password = entity.Password;
 			dto.Nickname = entity.Nickname;
@@ -1392,8 +1402,8 @@ namespace WcfService.Assemblers
 	
 	    public override void AssembleReferences(Account entity, AccountDto dto)
 	    {
-			AziendaAssembler aziendaAssembler = new AziendaAssembler();
-			dto.Azienda = aziendaAssembler.Assemble(entity.Azienda);
+			StudioProfessionaleAssembler studioProfessionaleAssembler = new StudioProfessionaleAssembler();
+			dto.StudioProfessionale = studioProfessionaleAssembler.Assemble(entity.StudioProfessionale);
 
 	    }
 	
@@ -1578,7 +1588,7 @@ namespace WcfService.Assemblers
 			entity.Divisa = dto.Divisa;
 			entity.Data = dto.Data;
 			entity.Numero = dto.Numero;
-			entity.ImportotTotaleDocumento = dto.ImportotTotaleDocumento;
+			entity.ImportoTotaleDocumento = dto.ImportoTotaleDocumento;
 			entity.Arrotondamento = dto.Arrotondamento;
 			entity.Causale = dto.Causale;
 	        this.OnEntityAssembled(entity);
@@ -1596,7 +1606,7 @@ namespace WcfService.Assemblers
 			dto.Divisa = entity.Divisa;
 			dto.Data = entity.Data;
 			dto.Numero = entity.Numero;
-			dto.ImportotTotaleDocumento = entity.ImportotTotaleDocumento;
+			dto.ImportoTotaleDocumento = entity.ImportoTotaleDocumento;
 			dto.Arrotondamento = entity.Arrotondamento;
 			dto.Causale = entity.Causale;
 			this.OnDTOAssembled(dto); 
@@ -1678,7 +1688,7 @@ namespace WcfService.Assemblers
 			entity.TipoRitenuta = dto.TipoRitenuta;
 			entity.ImportoRitenuta = dto.ImportoRitenuta;
 			entity.AliquotaRitenuta = dto.AliquotaRitenuta;
-			entity.CausalePAgamento = dto.CausalePAgamento;
+			entity.CausalePagamento = dto.CausalePagamento;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -1693,7 +1703,7 @@ namespace WcfService.Assemblers
 			dto.TipoRitenuta = entity.TipoRitenuta;
 			dto.ImportoRitenuta = entity.ImportoRitenuta;
 			dto.AliquotaRitenuta = entity.AliquotaRitenuta;
-			dto.CausalePAgamento = entity.CausalePAgamento;
+			dto.CausalePagamento = entity.CausalePagamento;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }

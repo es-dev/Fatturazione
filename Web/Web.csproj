@@ -584,25 +584,25 @@
       <DependentUpon>AccountView.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Account\AccountViewModel.cs" />
-    <Compile Include="GUI\Azienda\AziendaItem.cs">
+    <Compile Include="GUI\StudioProfessionale\StudioProfessionaleItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Azienda\AziendaItem.designer.cs">
-      <DependentUpon>AziendaItem.cs</DependentUpon>
+    <Compile Include="GUI\StudioProfessionale\StudioProfessionaleItem.designer.cs">
+      <DependentUpon>StudioProfessionaleItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Azienda\AziendaModel.cs">
+    <Compile Include="GUI\StudioProfessionale\StudioProfessionaleModel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Azienda\AziendaModel.designer.cs">
-      <DependentUpon>AziendaModel.cs</DependentUpon>
+    <Compile Include="GUI\StudioProfessionale\StudioProfessionaleModel.designer.cs">
+      <DependentUpon>StudioProfessionaleModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Azienda\AziendaView.cs">
+    <Compile Include="GUI\StudioProfessionale\StudioProfessionaleView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Azienda\AziendaView.designer.cs">
-      <DependentUpon>AziendaView.cs</DependentUpon>
+    <Compile Include="GUI\StudioProfessionale\StudioProfessionaleView.designer.cs">
+      <DependentUpon>StudioProfessionaleView.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Azienda\AziendaViewModel.cs" />
+    <Compile Include="GUI\StudioProfessionale\StudioProfessionaleViewModel.cs" />
     <Compile Include="GUI\Dashboard\DashboardItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -656,14 +656,14 @@
     <EmbeddedResource Include="GUI\Account\AccountView.resx">
       <DependentUpon>AccountView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Azienda\AziendaItem.resx">
-      <DependentUpon>AziendaItem.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\StudioProfessionale\StudioProfessionaleItem.resx">
+      <DependentUpon>StudioProfessionaleItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Azienda\AziendaModel.resx">
-      <DependentUpon>AziendaModel.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\StudioProfessionale\StudioProfessionaleModel.resx">
+      <DependentUpon>StudioProfessionaleModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Azienda\AziendaView.resx">
-      <DependentUpon>AziendaView.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\StudioProfessionale\StudioProfessionaleView.resx">
+      <DependentUpon>StudioProfessionaleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Dashboard\DashboardItem.resx">
       <DependentUpon>DashboardItem.cs</DependentUpon>
