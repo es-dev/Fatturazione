@@ -584,6 +584,25 @@
       <DependentUpon>AccountView.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Account\AccountViewModel.cs" />
+    <Compile Include="GUI\Socio\SocioItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Socio\SocioItem.designer.cs">
+      <DependentUpon>SocioItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Socio\SocioModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Socio\SocioModel.designer.cs">
+      <DependentUpon>SocioModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Socio\SocioView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Socio\SocioView.designer.cs">
+      <DependentUpon>SocioView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Socio\SocioViewModel.cs" />
     <Compile Include="GUI\StudioProfessionale\StudioProfessionaleItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -655,6 +674,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Account\AccountView.resx">
       <DependentUpon>AccountView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Socio\SocioItem.resx">
+      <DependentUpon>SocioItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Socio\SocioModel.resx">
+      <DependentUpon>SocioModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Socio\SocioView.resx">
+      <DependentUpon>SocioView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\StudioProfessionale\StudioProfessionaleItem.resx">
       <DependentUpon>StudioProfessionaleItem.cs</DependentUpon>
