@@ -107,13 +107,13 @@
             <orm:sharedfield name="_anagraficaPAId" target-class="DataLayer.AnagraficaPA" target-field="_id" />
           </orm:reference>
         </orm:field>
-        <orm:field name="_fatturas" property="Fatturas" behavior="readwrite" uniqueId="65875a10-6574-4f3a-863f-924a230d9dc6" type="DataLayer.Fattura">
-          <orm:collection element-class="DataLayer.Fattura" inverse-field="_cliente" order-by="" uniqueId="a8dd6cbd-2a28-4c50-965f-5565ab80a725" />
-        </orm:field>
         <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="808be8fa-e2f9-4a2b-8ff9-1b19b3d772cd" type="DataLayer.StudioProfessionale">
           <orm:reference uniqueId="692fca6e-c185-43f1-b86a-e02947080333" association-name="ClienteHasStudioProfessionale">
             <orm:sharedfield name="_studioProfessionaleId" target-class="DataLayer.StudioProfessionale" target-field="_id" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="_fatturas" property="Fatturas" behavior="readwrite" uniqueId="65875a10-6574-4f3a-863f-924a230d9dc6" type="DataLayer.Fattura">
+          <orm:collection element-class="DataLayer.Fattura" inverse-field="_cliente" order-by="" uniqueId="a8dd6cbd-2a28-4c50-965f-5565ab80a725" />
         </orm:field>
         <orm:index name="idx_Clente_AnagraficaClienteId">
           <orm:columnMapping>
@@ -244,13 +244,13 @@
         <orm:field name="_codice" property="Codice" uniqueId="3e08d174-69b4-45dc-81e1-1f20086e4960" type="System.String">
           <orm:column name="Codice" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
-        <orm:field name="_clientes" property="Clientes" behavior="readwrite" uniqueId="511e2cef-72d0-4b79-a3d3-4c549316dfda" type="DataLayer.Cliente">
-          <orm:collection element-class="DataLayer.Cliente" inverse-field="_anagraficaCliente" order-by="" uniqueId="8b39b619-deb9-4b76-8134-bda01dd4643e" />
-        </orm:field>
         <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="d8dad8b1-4e85-4716-bf62-5d2258a5f1cb" type="DataLayer.StudioProfessionale">
           <orm:reference uniqueId="7b7394ce-b914-4949-86f1-610b01c2f598" association-name="AnagraficaClienteHasStudioProfessionale">
             <orm:sharedfield name="_studioProfessionaleId" target-class="DataLayer.StudioProfessionale" target-field="_id" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="_clientes" property="Clientes" behavior="readwrite" uniqueId="511e2cef-72d0-4b79-a3d3-4c549316dfda" type="DataLayer.Cliente">
+          <orm:collection element-class="DataLayer.Cliente" inverse-field="_anagraficaCliente" order-by="" uniqueId="8b39b619-deb9-4b76-8134-bda01dd4643e" />
         </orm:field>
         <orm:index name="idx_AngraficaCliente_AziendaId">
           <orm:columnMapping>
