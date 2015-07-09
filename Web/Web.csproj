@@ -584,6 +584,25 @@
       <DependentUpon>AccountView.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Account\AccountViewModel.cs" />
+    <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteItem.designer.cs">
+      <DependentUpon>AnagraficaClienteItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteModel.designer.cs">
+      <DependentUpon>AnagraficaClienteModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteView.designer.cs">
+      <DependentUpon>AnagraficaClienteView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteViewModel.cs" />
     <Compile Include="GUI\Socio\SocioItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -674,6 +693,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Account\AccountView.resx">
       <DependentUpon>AccountView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AnagraficaCliente\AnagraficaClienteItem.resx">
+      <DependentUpon>AnagraficaClienteItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AnagraficaCliente\AnagraficaClienteModel.resx">
+      <DependentUpon>AnagraficaClienteModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AnagraficaCliente\AnagraficaClienteView.resx">
+      <DependentUpon>AnagraficaClienteView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Socio\SocioItem.resx">
       <DependentUpon>SocioItem.cs</DependentUpon>

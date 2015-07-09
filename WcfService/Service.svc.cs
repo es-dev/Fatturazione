@@ -653,7 +653,7 @@ namespace WcfService
 
                 if (search != null && search.Length > 0)
                     anagraficheClienti = (from q in anagraficheClienti
-                            where q.Cognome.StartsWith(search) || q.RagioneSociale.Contains(search)
+                            where q.Codice.StartsWith(search) || q.RagioneSociale.Contains(search)
                             select q);
 
                 if (advancedSearch != null)

@@ -299,13 +299,22 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public AnagraficaClienteDto(int _id, int _studioProfessionaleId, string _ragioneSociale, string _cognome, string _codice, StudioProfessionaleDto _studioProfessionale, IList<ClienteDto> _clientes)
+		public AnagraficaClienteDto(int _id, int _studioProfessionaleId, string _ragioneSociale, string _indirizzo, string _codice, string _cAP, string _comune, string _provincia, string _telefono, string _mobile, string _fax, string _email, string _partitaIva, string _codiceCatastale, StudioProfessionaleDto _studioProfessionale, IList<ClienteDto> _clientes)
 		{
 			this.Id = _id;
 			this.StudioProfessionaleId = _studioProfessionaleId;
 			this.RagioneSociale = _ragioneSociale;
-			this.Cognome = _cognome;
+			this.Indirizzo = _indirizzo;
 			this.Codice = _codice;
+			this.CAP = _cAP;
+			this.Comune = _comune;
+			this.Provincia = _provincia;
+			this.Telefono = _telefono;
+			this.Mobile = _mobile;
+			this.Fax = _fax;
+			this.Email = _email;
+			this.PartitaIva = _partitaIva;
+			this.CodiceCatastale = _codiceCatastale;
 			this.StudioProfessionale = _studioProfessionale;
 			this.Clientes = _clientes;
 		}
@@ -323,10 +332,37 @@ namespace WcfService.Dto
 		public virtual string RagioneSociale { get;set; }
 
 		[DataMember]
-		public virtual string Cognome { get;set; }
+		public virtual string Indirizzo { get;set; }
 
 		[DataMember]
 		public virtual string Codice { get;set; }
+
+		[DataMember]
+		public virtual string CAP { get;set; }
+
+		[DataMember]
+		public virtual string Comune { get;set; }
+
+		[DataMember]
+		public virtual string Provincia { get;set; }
+
+		[DataMember]
+		public virtual string Telefono { get;set; }
+
+		[DataMember]
+		public virtual string Mobile { get;set; }
+
+		[DataMember]
+		public virtual string Fax { get;set; }
+
+		[DataMember]
+		public virtual string Email { get;set; }
+
+		[DataMember]
+		public virtual string PartitaIva { get;set; }
+
+		[DataMember]
+		public virtual string CodiceCatastale { get;set; }
 
 		[DataMember]
 		public virtual StudioProfessionaleDto StudioProfessionale { get;set; }

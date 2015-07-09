@@ -233,16 +233,43 @@
           <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="_studioProfessionaleId" property="StudioProfessionaleId" uniqueId="3e281b41-98c5-4bdf-9848-933688524253" type="System.Int32">
-          <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="StudioProfessionaleId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="_ragioneSociale" property="RagioneSociale" uniqueId="32ab9cda-2db7-4bb4-a3fe-b5a4438ecf76" type="System.String">
           <orm:column name="RagioneSociale" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
-        <orm:field name="_cognome" property="Cognome" uniqueId="4416bfed-1592-43dc-be0b-ca4cc8eb4eaa" type="System.String">
-          <orm:column name="Cognome" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:field name="_indirizzo" property="Indirizzo" uniqueId="4416bfed-1592-43dc-be0b-ca4cc8eb4eaa" type="System.String">
+          <orm:column name="Indirizzo" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
         <orm:field name="_codice" property="Codice" uniqueId="3e08d174-69b4-45dc-81e1-1f20086e4960" type="System.String">
           <orm:column name="Codice" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_cAP" property="CAP" uniqueId="f6b61516-f031-421c-839b-db5c041dd8d7" type="System.String">
+          <orm:column name="CAP" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_comune" property="Comune" uniqueId="bc9d3549-9bc7-4212-81c4-ec4e73c3b166" type="System.String">
+          <orm:column name="Comune" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_provincia" property="Provincia" uniqueId="c1bc39b4-a45b-4599-9163-a1d9656ec8ae" type="System.String">
+          <orm:column name="Provincia" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_telefono" property="Telefono" uniqueId="02e7c784-fbd3-4263-81e9-9bf674f3bfb3" type="System.String">
+          <orm:column name="Telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_mobile" property="Mobile" uniqueId="be79be45-e041-4199-89ac-c2635534f3af" type="System.String">
+          <orm:column name="Mobile" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_fax" property="Fax" uniqueId="f9364907-7c7a-4e6a-87a9-18f4a9323dec" type="System.String">
+          <orm:column name="Fax" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_email" property="Email" uniqueId="6e2b9d46-7389-4a36-a4f9-2e1ca17ccd4d" type="System.String">
+          <orm:column name="Email" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_partitaIva" property="PartitaIva" uniqueId="efadca65-29d8-4de5-b48c-556a9aef039a" type="System.String">
+          <orm:column name="PartitaIva" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_codiceCatastale" property="CodiceCatastale" uniqueId="e38e831a-15db-4bd5-a91c-d8d7aea54718" type="System.String">
+          <orm:column name="CodiceCatastale" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
         <orm:field name="_studioProfessionale" property="StudioProfessionale" behavior="readwrite" uniqueId="d8dad8b1-4e85-4716-bf62-5d2258a5f1cb" type="DataLayer.StudioProfessionale">
           <orm:reference uniqueId="7b7394ce-b914-4949-86f1-610b01c2f598" association-name="AnagraficaClienteHasStudioProfessionale">
@@ -252,9 +279,9 @@
         <orm:field name="_clientes" property="Clientes" behavior="readwrite" uniqueId="511e2cef-72d0-4b79-a3d3-4c549316dfda" type="DataLayer.Cliente">
           <orm:collection element-class="DataLayer.Cliente" inverse-field="_anagraficaCliente" order-by="" uniqueId="8b39b619-deb9-4b76-8134-bda01dd4643e" />
         </orm:field>
-        <orm:index name="idx_AngraficaCliente_AziendaId">
+        <orm:index name="idx_AngrfcClnt_StdPrfssonaleId">
           <orm:columnMapping>
-            <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+            <orm:column name="StudioProfessionaleId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
       </orm:class>
@@ -1211,18 +1238,6 @@
           </orm:columnMapping>
         </orm:index>
       </orm:table>
-      <orm:table name="AnagraficaCliente">
-        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
-        <orm:column name="RagioneSociale" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
-        <orm:column name="Cognome" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
-        <orm:column name="Codice" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
-        <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:index name="idx_AngraficaCliente_AziendaId">
-          <orm:columnMapping>
-            <orm:column name="AziendaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
-      </orm:table>
       <orm:table name="Cliente">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:column name="Tipo" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
@@ -1504,6 +1519,27 @@
           </orm:columnMapping>
         </orm:index>
       </orm:table>
+      <orm:table name="AnagraficaCliente">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="RagioneSociale" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Indirizzo" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Codice" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="StudioProfessionaleId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="CAP" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Comune" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Provincia" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Mobile" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Fax" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Email" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="PartitaIva" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="CodiceCatastale" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
+        <orm:index name="idx_AngrfcClnt_StdPrfssonaleId">
+          <orm:columnMapping>
+            <orm:column name="StudioProfessionaleId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
     </orm:schema>
     <orm:relational-naming-settings>
       <orm:source-strategy>Property</orm:source-strategy>
@@ -1721,8 +1757,17 @@
       <Property Id="d9ceb32e-1b5b-4b80-9545-7f040430e538" name="Id" type="Int32" label="Id : Int32" identity="true" fieldName="_id" />
       <Property Id="3e281b41-98c5-4bdf-9848-933688524253" name="StudioProfessionaleId" type="Int32" label="StudioProfessionaleId : Int32" fieldName="_studioProfessionaleId" />
       <Property Id="32ab9cda-2db7-4bb4-a3fe-b5a4438ecf76" name="RagioneSociale" label="RagioneSociale : String" fieldName="_ragioneSociale" />
-      <Property Id="4416bfed-1592-43dc-be0b-ca4cc8eb4eaa" name="Cognome" label="Cognome : String" fieldName="_cognome" />
+      <Property Id="4416bfed-1592-43dc-be0b-ca4cc8eb4eaa" name="Indirizzo" label="Indirizzo : String" fieldName="_indirizzo" />
       <Property Id="3e08d174-69b4-45dc-81e1-1f20086e4960" name="Codice" label="Codice : String" fieldName="_codice" />
+      <Property Id="f6b61516-f031-421c-839b-db5c041dd8d7" name="CAP" label="CAP : String" fieldName="_cAP" />
+      <Property Id="bc9d3549-9bc7-4212-81c4-ec4e73c3b166" name="Comune" label="Comune : String" fieldName="_comune" />
+      <Property Id="c1bc39b4-a45b-4599-9163-a1d9656ec8ae" name="Provincia" label="Provincia : String" fieldName="_provincia" />
+      <Property Id="02e7c784-fbd3-4263-81e9-9bf674f3bfb3" name="Telefono" label="Telefono : String" fieldName="_telefono" />
+      <Property Id="be79be45-e041-4199-89ac-c2635534f3af" name="Mobile" label="Mobile : String" fieldName="_mobile" />
+      <Property Id="f9364907-7c7a-4e6a-87a9-18f4a9323dec" name="Fax" label="Fax : String" fieldName="_fax" />
+      <Property Id="6e2b9d46-7389-4a36-a4f9-2e1ca17ccd4d" name="Email" label="Email : String" fieldName="_email" />
+      <Property Id="efadca65-29d8-4de5-b48c-556a9aef039a" name="PartitaIva" label="PartitaIva : String" fieldName="_partitaIva" />
+      <Property Id="e38e831a-15db-4bd5-a91c-d8d7aea54718" name="CodiceCatastale" label="CodiceCatastale : String" fieldName="_codiceCatastale" />
       <AssociationTargets>
         <Association Id="7b7394ce-b914-4949-86f1-610b01c2f598" SourceMultiplicity="ZeroOne" name="AnagraficaClienteHasStudioProfessionale">
           <DomainClassMoniker name="/EntitiesModel/StudioProfessionale" />

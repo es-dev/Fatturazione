@@ -494,8 +494,17 @@ namespace WcfService.Assemblers
 			entity.Id = dto.Id;
 			entity.StudioProfessionaleId = dto.StudioProfessionaleId;
 			entity.RagioneSociale = dto.RagioneSociale;
-			entity.Cognome = dto.Cognome;
+			entity.Indirizzo = dto.Indirizzo;
 			entity.Codice = dto.Codice;
+			entity.CAP = dto.CAP;
+			entity.Comune = dto.Comune;
+			entity.Provincia = dto.Provincia;
+			entity.Telefono = dto.Telefono;
+			entity.Mobile = dto.Mobile;
+			entity.Fax = dto.Fax;
+			entity.Email = dto.Email;
+			entity.PartitaIva = dto.PartitaIva;
+			entity.CodiceCatastale = dto.CodiceCatastale;
 	        this.OnEntityAssembled(entity);
 	        return entity;
 	    }
@@ -509,8 +518,17 @@ namespace WcfService.Assemblers
 			dto.Id = entity.Id;
 			dto.StudioProfessionaleId = entity.StudioProfessionaleId;
 			dto.RagioneSociale = entity.RagioneSociale;
-			dto.Cognome = entity.Cognome;
+			dto.Indirizzo = entity.Indirizzo;
 			dto.Codice = entity.Codice;
+			dto.CAP = entity.CAP;
+			dto.Comune = entity.Comune;
+			dto.Provincia = entity.Provincia;
+			dto.Telefono = entity.Telefono;
+			dto.Mobile = entity.Mobile;
+			dto.Fax = entity.Fax;
+			dto.Email = entity.Email;
+			dto.PartitaIva = entity.PartitaIva;
+			dto.CodiceCatastale = entity.CodiceCatastale;
 			this.OnDTOAssembled(dto); 
 	        return dto;
 	    }
