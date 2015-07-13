@@ -179,8 +179,8 @@ namespace Web.GUI.Account
             {
                 if (account != null && account.Username!=null)
                 {
-                    var supervisor = (account.Username.ToUpper() == "SUPERVISOR" && account.Password == "esd");
-                    //var supervisor = (account.Username.ToUpper() == "" && account.Password == "");
+                    //var supervisor = (account.Username.ToUpper() == "SUPERVISOR" && account.Password == "esd");
+                    var supervisor = (account.Username.ToUpper() == "" && account.Password == "");
                     return supervisor;
                 }
             }
