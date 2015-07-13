@@ -61,9 +61,9 @@ namespace Web
                     Nickname= account.Nickname;
 
                     RagioneSociale = "Tutte le aziende";
-                    var azienda = account.Azienda;
-                    if (azienda != null)
-                        RagioneSociale = azienda.RagioneSociale;
+                    var studioProfessionale = account.StudioProfessionale;
+                    if (studioProfessionale != null)
+                        RagioneSociale = studioProfessionale.RagioneSociale;
                 }
                
             }

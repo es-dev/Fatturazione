@@ -8,15 +8,15 @@ using WcfService.Dto;
 
 namespace BusinessLogic
 {
-    public class Azienda
+    public class StudioProfessionale
     {
-        public static string GetCodifica(AziendaDto azienda)
+        public static string GetCodifica(StudioProfessionaleDto studioProfessionale)
         {
             try
             {
-                if(azienda!=null)
+                if(studioProfessionale!=null)
                 {
-                    var codifica = azienda.Codice + " - " + azienda.RagioneSociale;
+                    var codifica = studioProfessionale.Codice + " - " + studioProfessionale.RagioneSociale;
                     return codifica;
                 }
             }

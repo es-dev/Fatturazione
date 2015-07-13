@@ -50,11 +50,11 @@ namespace DataLayer
 			:base(connection, backendConfiguration, metadataSource)
 		{ }
 			
-		public IQueryable<Azienda> Aziendas 
+		public IQueryable<StudioProfessionale> StudioProfessionales 
 		{
 			get
 			{
-				return this.GetAll<Azienda>();
+				return this.GetAll<StudioProfessionale>();
 			}
 		}
 		
@@ -146,14 +146,6 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<Contatti> Contattis 
-		{
-			get
-			{
-				return this.GetAll<Contatti>();
-			}
-		}
-		
 		public IQueryable<CedentePrestatore> CedentePrestatores 
 		{
 			get
@@ -175,14 +167,6 @@ namespace DataLayer
 			get
 			{
 				return this.GetAll<Anagrafica>();
-			}
-		}
-		
-		public IQueryable<Indirizzo> Indirizzos 
-		{
-			get
-			{
-				return this.GetAll<Indirizzo>();
 			}
 		}
 		
@@ -266,14 +250,6 @@ namespace DataLayer
 			}
 		}
 		
-		public IQueryable<Allegati> Allegatis 
-		{
-			get
-			{
-				return this.GetAll<Allegati>();
-			}
-		}
-		
 		public IQueryable<Sede> Sedes 
 		{
 			get
@@ -287,6 +263,30 @@ namespace DataLayer
 			get
 			{
 				return this.GetAll<DatiAnagraficiCessionario>();
+			}
+		}
+		
+		public IQueryable<DatiBollo> DatiBollos 
+		{
+			get
+			{
+				return this.GetAll<DatiBollo>();
+			}
+		}
+		
+		public IQueryable<DatiCassaPrevidenziale> DatiCassaPrevidenziales 
+		{
+			get
+			{
+				return this.GetAll<DatiCassaPrevidenziale>();
+			}
+		}
+		
+		public IQueryable<ScontoMaggiorazione> ScontoMaggioraziones 
+		{
+			get
+			{
+				return this.GetAll<ScontoMaggiorazione>();
 			}
 		}
 		
@@ -311,7 +311,7 @@ namespace DataLayer
 	
 	public interface IEntitiesModelUnitOfWork : IUnitOfWork
 	{
-		IQueryable<Azienda> Aziendas
+		IQueryable<StudioProfessionale> StudioProfessionales
 		{
 			get;
 		}
@@ -359,10 +359,6 @@ namespace DataLayer
 		{
 			get;
 		}
-		IQueryable<Contatti> Contattis
-		{
-			get;
-		}
 		IQueryable<CedentePrestatore> CedentePrestatores
 		{
 			get;
@@ -372,10 +368,6 @@ namespace DataLayer
 			get;
 		}
 		IQueryable<Anagrafica> Anagraficas
-		{
-			get;
-		}
-		IQueryable<Indirizzo> Indirizzos
 		{
 			get;
 		}
@@ -419,15 +411,23 @@ namespace DataLayer
 		{
 			get;
 		}
-		IQueryable<Allegati> Allegatis
-		{
-			get;
-		}
 		IQueryable<Sede> Sedes
 		{
 			get;
 		}
 		IQueryable<DatiAnagraficiCessionario> DatiAnagraficiCessionarios
+		{
+			get;
+		}
+		IQueryable<DatiBollo> DatiBollos
+		{
+			get;
+		}
+		IQueryable<DatiCassaPrevidenziale> DatiCassaPrevidenziales
+		{
+			get;
+		}
+		IQueryable<ScontoMaggiorazione> ScontoMaggioraziones
 		{
 			get;
 		}

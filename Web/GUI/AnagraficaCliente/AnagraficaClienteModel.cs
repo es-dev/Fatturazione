@@ -11,28 +11,15 @@ using System.Text;
 using Web.Code;
 using WcfService.Dto;
 
-namespace Web.GUI.Account
+namespace Web.GUI.AnagraficaCliente
 {
-	public partial class AccountModel : TemplateModel
-	{
-        public AccountModel()
-		{
-			InitializeComponent();
-            try
-            {
-                InitCombo();
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-		}
-
-        private void InitCombo()
+    public partial class AnagraficaClienteModel : TemplateModel
+    {
+        public AnagraficaClienteModel()
         {
+            InitializeComponent();
             try
             {
-                editRuolo.DisplayValues = UtilityEnum.GetDisplayValues<Tipi.TipoAccount>(); 
             }
             catch (Exception ex)
             {
@@ -46,10 +33,10 @@ namespace Web.GUI.Account
             {
                 if (model != null)
                 {
-                    var obj = (AccountDto)model;
-                    infoSubtitle.Text = BusinessLogic.Account.GetCodifica(obj);
-                    infoSubtitleImage.Image = "Images.dashboard.account.png";
-                    infoTitle.Text = (obj.Id!=0? "ACCOUNT " + BusinessLogic.Account.GetCodifica(obj): "NUOVO ACCOUNT");
+                    var obj = (AnagraficaClienteDto)model;
+                    //infoSubtitle.Text = BusinessLogic.Account.GetCodifica(obj);
+                    //infoSubtitleImage.Image = "Images.dashboard.account.png";
+                    //infoTitle.Text = (obj.Id!=0? "ACCOUNT " + BusinessLogic.Account.GetCodifica(obj): "NUOVO ACCOUNT");
                 }
             }
             catch (Exception ex)
@@ -58,20 +45,15 @@ namespace Web.GUI.Account
             }
         }
 
-        public override void BindView(object model)  
+        public override void BindView(object model)
         {
             try
             {
                 if (model != null)
                 {
-                    var obj = (AccountDto)model;
-                    editUsername.Value = obj.Username;
-                    editNickname.Value = obj.Nickname;
-                    editRuolo.Value = obj.Ruolo;
-                    editPassword.Value = obj.Password;
-                    editAbilitato.Value = obj.Abilitato;
-                    editNote.Value = obj.Note;
-                    editCreazione.Value = obj.Creazione;
+                    var obj = (AnagraficaClienteDto)model;
+                    editRagioneSociale.Value = obj.RagioneSociale;
+                    editCodice.Value = obj.Codice;
 
                     BindViewStudioProfessionale(obj.StudioProfessionale);
                 }
@@ -93,7 +75,7 @@ namespace Web.GUI.Account
             {
                 UtilityError.Write(ex);
             }
-            
+
         }
 
         public override void BindModel(object model)
@@ -102,15 +84,9 @@ namespace Web.GUI.Account
             {
                 if (model != null)
                 {
-                    var obj = (WcfService.Dto.AccountDto)model;
-                    obj.Username = editUsername.Value;
-                    obj.Nickname = editNickname.Value;
-                    obj.Ruolo = editRuolo.Value;
-                    obj.Password = editPassword.Value;
-                    obj.Abilitato = editAbilitato.Value;
-                    obj.Note = editNote.Value;
-                    if(obj.Creazione==null)
-                        obj.Creazione = editCreazione.Value;
+                    var obj = (WcfService.Dto.AnagraficaClienteDto)model;
+                    obj.RagioneSociale = editRagioneSociale.Value;
+                    obj.Codice = editCodice.Value;
 
                     var studioProfessionale = (WcfService.Dto.StudioProfessionaleDto)editStudioProfessionale.Model;
                     if (studioProfessionale != null)
@@ -149,19 +125,5 @@ namespace Web.GUI.Account
                 UtilityError.Write(ex);
             }
         }
-
-        public override void SetNewValue(object model)
-        {
-            try
-            {
-                editCreazione.Value = DateTime.Now;
-                editAbilitato.Value = true;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-   
-	}
+    }
 }

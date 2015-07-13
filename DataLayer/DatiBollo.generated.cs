@@ -18,10 +18,11 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class Indirizzo
+	public partial class DatiBollo
 	{
 		private int _id;
 		public virtual int Id
@@ -36,81 +37,42 @@ namespace DataLayer
 			}
 		}
 		
-		private string __indirizzo;
-		public virtual string _Indirizzo
+		private string _bolloVirtuale;
+		public virtual string BolloVirtuale
 		{
 			get
 			{
-				return this.__indirizzo;
+				return this._bolloVirtuale;
 			}
 			set
 			{
-				this.__indirizzo = value;
+				this._bolloVirtuale = value;
 			}
 		}
 		
-		private string _numeroCivico;
-		public virtual string NumeroCivico
+		private decimal _importoBollo;
+		public virtual decimal ImportoBollo
 		{
 			get
 			{
-				return this._numeroCivico;
+				return this._importoBollo;
 			}
 			set
 			{
-				this._numeroCivico = value;
+				this._importoBollo = value;
 			}
 		}
 		
-		private string _cAP;
-		public virtual string CAP
+		private DatiGeneraliDocumento _datiGeneraliDocumento;
+		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
 		{
 			get
 			{
-				return this._cAP;
+				return this._datiGeneraliDocumento;
 			}
 			set
 			{
-				this._cAP = value;
-			}
-		}
-		
-		private string _comune;
-		public virtual string Comune
-		{
-			get
-			{
-				return this._comune;
-			}
-			set
-			{
-				this._comune = value;
-			}
-		}
-		
-		private string _provincia;
-		public virtual string Provincia
-		{
-			get
-			{
-				return this._provincia;
-			}
-			set
-			{
-				this._provincia = value;
-			}
-		}
-		
-		private string _nazione;
-		public virtual string Nazione
-		{
-			get
-			{
-				return this._nazione;
-			}
-			set
-			{
-				this._nazione = value;
+				this._datiGeneraliDocumento = value;
 			}
 		}
 		

@@ -425,7 +425,7 @@
     <xs:restriction base="xs:string">
       <xs:length value="4" />
       <xs:enumeration value="RT01">
-        <xs:annotation>
+        <xs:annotation>natu
           <xs:documentation>Ritenuta di acconto persone fisiche</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
@@ -1228,7 +1228,7 @@
       <xs:pattern value="(\p{IsBasicLatin}{1,8})" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="BolloVirtualeType">
+  <xs:simpleType name="t">
     <xs:restriction base="xs:string">
       <xs:enumeration value="SI" />
     </xs:restriction>

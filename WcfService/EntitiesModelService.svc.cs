@@ -234,176 +234,5104 @@ namespace WcfService
 	    #endregion
 	    
 	    /// <summary>
-	    /// A general purpose generated service used for all CRUD operations against Azienda entity.
+	    /// A general purpose generated service used for all CRUD operations against Anagrafica entity.
 	    /// </summary>
-	    private IAziendaService aziendaservice;
+	    private IAnagraficaService anagraficaservice;
 	    
 	    /// <summary>
-	    /// Gets or sets the general purpose generated service used for all CRUD operations against Azienda entity.
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against Anagrafica entity.
 	    /// </summary>
-	    public virtual IAziendaService AziendaService
+	    public virtual IAnagraficaService AnagraficaService
 	    {
 	        get
 	        {
-	            if (this.aziendaservice == null)
+	            if (this.anagraficaservice == null)
 	            {
-	                IAziendaAssembler assembler = new AziendaAssembler();
-	                IAziendaRepository repository = new AziendaRepository(this.UnitOfWork);
+	                IAnagraficaAssembler assembler = new AnagraficaAssembler();
+	                IAnagraficaRepository repository = new AnagraficaRepository(this.UnitOfWork);
 	
-	                this.aziendaservice = new AziendaService(assembler, repository);
+	                this.anagraficaservice = new AnagraficaService(assembler, repository);
 	            }
-	            return this.aziendaservice;
+	            return this.anagraficaservice;
 	        }
 	    }
 	        
-	    #region Aziendas CRUD Operations
+	    #region Anagraficas CRUD Operations
 	
 	    /// <summary>
-	    /// Returns all aziendas.
+	    /// Returns all anagraficas.
 	    /// </summary>
 	    /// <returns></returns>
-	    public IEnumerable<AziendaDto> ReadAziendas()	
+	    public IEnumerable<AnagraficaDto> ReadAnagraficas()	
 	    {
-	        return this.AziendaService.GetAll();
+	        return this.AnagraficaService.GetAll();
 	    }
 	
 	    /// <summary>
-	    /// Returns a specified amount of aziendas from the given start index.
+	    /// Returns a specified amount of anagraficas from the given start index.
 	    /// </summary>
 	    /// <param name="startIndex">The start index.</param>
 	    /// <param name="pageSize">The returned entities count.</param>
 	    /// <returns></returns>
-	    public IEnumerable<AziendaDto> ReadAziendasPaged(int startIndex, int pageSize)
+	    public IEnumerable<AnagraficaDto> ReadAnagraficasPaged(int startIndex, int pageSize)
 	    {
-	        return this.AziendaService.Find(startIndex, pageSize);
+	        return this.AnagraficaService.Find(startIndex, pageSize);
 	    }
 	
 	    /// <summary>
-	    /// Returns all aziendas filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// Returns all anagraficas filtered by the specified filter expression and sorted by the specified sort expression.
 	    /// </summary>
 	    /// <param name="sortExpression">The sort expression.</param>
 	    /// <param name="filterExpression">The filter expression.</param>
 	    /// <returns></returns>
-	    public IEnumerable<AziendaDto> ReadAziendasFiltered(string sortExpression, string filterExpression)
+	    public IEnumerable<AnagraficaDto> ReadAnagraficasFiltered(string sortExpression, string filterExpression)
 	    {
-	        return this.AziendaService.Find(sortExpression, filterExpression);
+	        return this.AnagraficaService.Find(sortExpression, filterExpression);
 	    }
 	
 	    /// <summary>
-	    /// Returns a specified amount of aziendas from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// Returns a specified amount of anagraficas from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
 	    /// </summary>
 	    /// <param name="startIndex">The start index.</param>
 	    /// <param name="pageSize">The returned entities count.</param>
 	    /// <param name="sortExpression">The sort expression.</param>
 	    /// <param name="filterExpression">The filter expression.</param>
 	    /// <returns></returns>
-	    public IEnumerable<AziendaDto> ReadAziendasPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    public IEnumerable<AnagraficaDto> ReadAnagraficasPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
 	    {
-	        return this.AziendaService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	        return this.AnagraficaService.Find(startIndex, pageSize, sortExpression, filterExpression);
 	    }
 	
 	    /// <summary>
-	    /// Returns a azienda with the specified dto key.
+	    /// Returns a anagrafica with the specified dto key.
 	    /// </summary>
 	    /// <param name="dtoKey">The specified dto key value.</param>
 	    /// <returns></returns>
-	    public AziendaDto ReadAzienda(string dtoKey)
+	    public AnagraficaDto ReadAnagrafica(string dtoKey)
 	    {
-	        return this.AziendaService.GetByKey(dtoKey);
+	        return this.AnagraficaService.GetByKey(dtoKey);
 	    }
 	    
 	    /// <summary>
-	    /// Returns all aziendas count.
+	    /// Returns all anagraficas count.
 	    /// </summary>
 	    /// <returns></returns>
-	    public int AziendasCount()
+	    public int AnagraficasCount()
 	    {
-	        return this.AziendaService.Count();
+	        return this.AnagraficaService.Count();
 	    }
 	    
 	    /// <summary>
-	    /// Returns all aziendas count filtered by the specified filter expression.
+	    /// Returns all anagraficas count filtered by the specified filter expression.
 	    /// </summary>
 	    /// <param name="filterExpression">The filter expression.</param>
 	    /// <returns></returns>
-	    public int AziendasCountFiltered(string filterExpression)
+	    public int AnagraficasCountFiltered(string filterExpression)
 	    {
-	        return this.AziendaService.Count(filterExpression);
+	        return this.AnagraficaService.Count(filterExpression);
 	    }
 	
 	    /// <summary>
-	    /// Adds a new azienda from the given dto object into the database.
+	    /// Adds a new anagrafica from the given dto object into the database.
 	    /// </summary>
-	    /// <param name="azienda">The dto object.</param>
-	    /// <returns>The dto key of the newly created azienda.</returns>
-	    public string CreateAzienda(AziendaDto azienda)
+	    /// <param name="anagrafica">The dto object.</param>
+	    /// <returns>The dto key of the newly created anagrafica.</returns>
+	    public string CreateAnagrafica(AnagraficaDto anagrafica)
 	    {
-	        string key = this.AziendaService.Add(azienda);
+	        string key = this.AnagraficaService.Add(anagrafica);
 	        this.UnitOfWork.SaveChanges();
 	        return key;
 	    }
 	
 	    /// <summary>
-	    /// Updates an existing azienda in the database from the given dto object.
+	    /// Updates an existing anagrafica in the database from the given dto object.
 	    /// </summary>
-	    /// <param name="azienda">The dto object.</param>
-	    public void UpdateAzienda(AziendaDto azienda)
+	    /// <param name="anagrafica">The dto object.</param>
+	    public void UpdateAnagrafica(AnagraficaDto anagrafica)
 	    {
-	        this.AziendaService.Update(azienda);
+	        this.AnagraficaService.Update(anagrafica);
 	        this.UnitOfWork.SaveChanges();
 	    }
 	
 	    /// <summary>
-	    /// Update aziendas in the database from the given dto object list.
+	    /// Update anagraficas in the database from the given dto object list.
 	    /// </summary>
-	    /// <param name="aziendas">The dto object list.</param>
-	    public void UpdateAziendas(IEnumerable<AziendaDto> aziendas)
+	    /// <param name="anagraficas">The dto object list.</param>
+	    public void UpdateAnagraficas(IEnumerable<AnagraficaDto> anagraficas)
 	    {
-	        if (aziendas == null)
+	        if (anagraficas == null)
 	        {
 	            return;
 	        }
 	
-	        foreach (AziendaDto azienda in aziendas)
+	        foreach (AnagraficaDto anagrafica in anagraficas)
 	        {
-	            if (azienda == null)
+	            if (anagrafica == null)
 	            {
 	                continue;
 	            }
 	            
-	            this.UpdateAzienda(azienda);
+	            this.UpdateAnagrafica(anagrafica);
 	        }
 	    }
 	
 	    /// <summary>
-	    /// Deletes azienda from the database by the given dto object.
+	    /// Deletes anagrafica from the database by the given dto object.
 	    /// </summary>
-	    /// <param name="azienda">The dto object.</param>
-	    public void DeleteAzienda(AziendaDto azienda)
+	    /// <param name="anagrafica">The dto object.</param>
+	    public void DeleteAnagrafica(AnagraficaDto anagrafica)
 	    {
-	        this.AziendaService.Delete(azienda);
+	        this.AnagraficaService.Delete(anagrafica);
 	        this.UnitOfWork.SaveChanges();		
 	    }
 	
 	    /// <summary>
-	    /// Delete aziendas from the database by the given dto object list.
+	    /// Delete anagraficas from the database by the given dto object list.
 	    /// </summary>
-	    /// <param name="aziendas">The dto object list.</param>
-	    public void DeleteAziendas(IEnumerable<AziendaDto> aziendas)
+	    /// <param name="anagraficas">The dto object list.</param>
+	    public void DeleteAnagraficas(IEnumerable<AnagraficaDto> anagraficas)
 	    {
-	        if (aziendas == null)
+	        if (anagraficas == null)
 	        {
 	            return;
 	        }
 	
-	        foreach (AziendaDto azienda in aziendas)
+	        foreach (AnagraficaDto anagrafica in anagraficas)
 	        {
-	            if (azienda == null)
+	            if (anagrafica == null)
 	            {
 	                continue;
 	            }
 	            
-	            this.DeleteAzienda(azienda);
+	            this.DeleteAnagrafica(anagrafica);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against AnagraficaCliente entity.
+	    /// </summary>
+	    private IAnagraficaClienteService anagraficaclienteservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against AnagraficaCliente entity.
+	    /// </summary>
+	    public virtual IAnagraficaClienteService AnagraficaClienteService
+	    {
+	        get
+	        {
+	            if (this.anagraficaclienteservice == null)
+	            {
+	                IAnagraficaClienteAssembler assembler = new AnagraficaClienteAssembler();
+	                IAnagraficaClienteRepository repository = new AnagraficaClienteRepository(this.UnitOfWork);
+	
+	                this.anagraficaclienteservice = new AnagraficaClienteService(assembler, repository);
+	            }
+	            return this.anagraficaclienteservice;
+	        }
+	    }
+	        
+	    #region AnagraficaClientes CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all anagraficaclientes.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaClienteDto> ReadAnagraficaClientes()	
+	    {
+	        return this.AnagraficaClienteService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of anagraficaclientes from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaClienteDto> ReadAnagraficaClientesPaged(int startIndex, int pageSize)
+	    {
+	        return this.AnagraficaClienteService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all anagraficaclientes filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaClienteDto> ReadAnagraficaClientesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.AnagraficaClienteService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of anagraficaclientes from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaClienteDto> ReadAnagraficaClientesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.AnagraficaClienteService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a anagraficacliente with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public AnagraficaClienteDto ReadAnagraficaCliente(string dtoKey)
+	    {
+	        return this.AnagraficaClienteService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all anagraficaclientes count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int AnagraficaClientesCount()
+	    {
+	        return this.AnagraficaClienteService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all anagraficaclientes count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int AnagraficaClientesCountFiltered(string filterExpression)
+	    {
+	        return this.AnagraficaClienteService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new anagraficacliente from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="anagraficacliente">The dto object.</param>
+	    /// <returns>The dto key of the newly created anagraficacliente.</returns>
+	    public string CreateAnagraficaCliente(AnagraficaClienteDto anagraficacliente)
+	    {
+	        string key = this.AnagraficaClienteService.Add(anagraficacliente);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing anagraficacliente in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="anagraficacliente">The dto object.</param>
+	    public void UpdateAnagraficaCliente(AnagraficaClienteDto anagraficacliente)
+	    {
+	        this.AnagraficaClienteService.Update(anagraficacliente);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update anagraficaclientes in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="anagraficaclientes">The dto object list.</param>
+	    public void UpdateAnagraficaClientes(IEnumerable<AnagraficaClienteDto> anagraficaclientes)
+	    {
+	        if (anagraficaclientes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (AnagraficaClienteDto anagraficacliente in anagraficaclientes)
+	        {
+	            if (anagraficacliente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateAnagraficaCliente(anagraficacliente);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes anagraficacliente from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="anagraficacliente">The dto object.</param>
+	    public void DeleteAnagraficaCliente(AnagraficaClienteDto anagraficacliente)
+	    {
+	        this.AnagraficaClienteService.Delete(anagraficacliente);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete anagraficaclientes from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="anagraficaclientes">The dto object list.</param>
+	    public void DeleteAnagraficaClientes(IEnumerable<AnagraficaClienteDto> anagraficaclientes)
+	    {
+	        if (anagraficaclientes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (AnagraficaClienteDto anagraficacliente in anagraficaclientes)
+	        {
+	            if (anagraficacliente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteAnagraficaCliente(anagraficacliente);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against AnagraficaPA entity.
+	    /// </summary>
+	    private IAnagraficaPAService anagraficapaservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against AnagraficaPA entity.
+	    /// </summary>
+	    public virtual IAnagraficaPAService AnagraficaPAService
+	    {
+	        get
+	        {
+	            if (this.anagraficapaservice == null)
+	            {
+	                IAnagraficaPAAssembler assembler = new AnagraficaPAAssembler();
+	                IAnagraficaPARepository repository = new AnagraficaPARepository(this.UnitOfWork);
+	
+	                this.anagraficapaservice = new AnagraficaPAService(assembler, repository);
+	            }
+	            return this.anagraficapaservice;
+	        }
+	    }
+	        
+	    #region AnagraficaPAs CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all anagraficapas.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaPADto> ReadAnagraficaPAs()	
+	    {
+	        return this.AnagraficaPAService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of anagraficapas from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaPADto> ReadAnagraficaPAsPaged(int startIndex, int pageSize)
+	    {
+	        return this.AnagraficaPAService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all anagraficapas filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaPADto> ReadAnagraficaPAsFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.AnagraficaPAService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of anagraficapas from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<AnagraficaPADto> ReadAnagraficaPAsPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.AnagraficaPAService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a anagraficapa with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public AnagraficaPADto ReadAnagraficaPA(string dtoKey)
+	    {
+	        return this.AnagraficaPAService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all anagraficapas count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int AnagraficaPAsCount()
+	    {
+	        return this.AnagraficaPAService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all anagraficapas count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int AnagraficaPAsCountFiltered(string filterExpression)
+	    {
+	        return this.AnagraficaPAService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new anagraficapa from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="anagraficapa">The dto object.</param>
+	    /// <returns>The dto key of the newly created anagraficapa.</returns>
+	    public string CreateAnagraficaPA(AnagraficaPADto anagraficapa)
+	    {
+	        string key = this.AnagraficaPAService.Add(anagraficapa);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing anagraficapa in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="anagraficapa">The dto object.</param>
+	    public void UpdateAnagraficaPA(AnagraficaPADto anagraficapa)
+	    {
+	        this.AnagraficaPAService.Update(anagraficapa);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update anagraficapas in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="anagraficapas">The dto object list.</param>
+	    public void UpdateAnagraficaPAs(IEnumerable<AnagraficaPADto> anagraficapas)
+	    {
+	        if (anagraficapas == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (AnagraficaPADto anagraficapa in anagraficapas)
+	        {
+	            if (anagraficapa == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateAnagraficaPA(anagraficapa);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes anagraficapa from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="anagraficapa">The dto object.</param>
+	    public void DeleteAnagraficaPA(AnagraficaPADto anagraficapa)
+	    {
+	        this.AnagraficaPAService.Delete(anagraficapa);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete anagraficapas from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="anagraficapas">The dto object list.</param>
+	    public void DeleteAnagraficaPAs(IEnumerable<AnagraficaPADto> anagraficapas)
+	    {
+	        if (anagraficapas == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (AnagraficaPADto anagraficapa in anagraficapas)
+	        {
+	            if (anagraficapa == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteAnagraficaPA(anagraficapa);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against CedentePrestatore entity.
+	    /// </summary>
+	    private ICedentePrestatoreService cedenteprestatoreservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against CedentePrestatore entity.
+	    /// </summary>
+	    public virtual ICedentePrestatoreService CedentePrestatoreService
+	    {
+	        get
+	        {
+	            if (this.cedenteprestatoreservice == null)
+	            {
+	                ICedentePrestatoreAssembler assembler = new CedentePrestatoreAssembler();
+	                ICedentePrestatoreRepository repository = new CedentePrestatoreRepository(this.UnitOfWork);
+	
+	                this.cedenteprestatoreservice = new CedentePrestatoreService(assembler, repository);
+	            }
+	            return this.cedenteprestatoreservice;
+	        }
+	    }
+	        
+	    #region CedentePrestatores CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all cedenteprestatores.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<CedentePrestatoreDto> ReadCedentePrestatores()	
+	    {
+	        return this.CedentePrestatoreService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of cedenteprestatores from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<CedentePrestatoreDto> ReadCedentePrestatoresPaged(int startIndex, int pageSize)
+	    {
+	        return this.CedentePrestatoreService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all cedenteprestatores filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<CedentePrestatoreDto> ReadCedentePrestatoresFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.CedentePrestatoreService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of cedenteprestatores from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<CedentePrestatoreDto> ReadCedentePrestatoresPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.CedentePrestatoreService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a cedenteprestatore with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public CedentePrestatoreDto ReadCedentePrestatore(string dtoKey)
+	    {
+	        return this.CedentePrestatoreService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all cedenteprestatores count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int CedentePrestatoresCount()
+	    {
+	        return this.CedentePrestatoreService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all cedenteprestatores count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int CedentePrestatoresCountFiltered(string filterExpression)
+	    {
+	        return this.CedentePrestatoreService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new cedenteprestatore from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="cedenteprestatore">The dto object.</param>
+	    /// <returns>The dto key of the newly created cedenteprestatore.</returns>
+	    public string CreateCedentePrestatore(CedentePrestatoreDto cedenteprestatore)
+	    {
+	        string key = this.CedentePrestatoreService.Add(cedenteprestatore);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing cedenteprestatore in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="cedenteprestatore">The dto object.</param>
+	    public void UpdateCedentePrestatore(CedentePrestatoreDto cedenteprestatore)
+	    {
+	        this.CedentePrestatoreService.Update(cedenteprestatore);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update cedenteprestatores in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="cedenteprestatores">The dto object list.</param>
+	    public void UpdateCedentePrestatores(IEnumerable<CedentePrestatoreDto> cedenteprestatores)
+	    {
+	        if (cedenteprestatores == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (CedentePrestatoreDto cedenteprestatore in cedenteprestatores)
+	        {
+	            if (cedenteprestatore == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateCedentePrestatore(cedenteprestatore);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes cedenteprestatore from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="cedenteprestatore">The dto object.</param>
+	    public void DeleteCedentePrestatore(CedentePrestatoreDto cedenteprestatore)
+	    {
+	        this.CedentePrestatoreService.Delete(cedenteprestatore);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete cedenteprestatores from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="cedenteprestatores">The dto object list.</param>
+	    public void DeleteCedentePrestatores(IEnumerable<CedentePrestatoreDto> cedenteprestatores)
+	    {
+	        if (cedenteprestatores == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (CedentePrestatoreDto cedenteprestatore in cedenteprestatores)
+	        {
+	            if (cedenteprestatore == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteCedentePrestatore(cedenteprestatore);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against CessionarioCommittente entity.
+	    /// </summary>
+	    private ICessionarioCommittenteService cessionariocommittenteservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against CessionarioCommittente entity.
+	    /// </summary>
+	    public virtual ICessionarioCommittenteService CessionarioCommittenteService
+	    {
+	        get
+	        {
+	            if (this.cessionariocommittenteservice == null)
+	            {
+	                ICessionarioCommittenteAssembler assembler = new CessionarioCommittenteAssembler();
+	                ICessionarioCommittenteRepository repository = new CessionarioCommittenteRepository(this.UnitOfWork);
+	
+	                this.cessionariocommittenteservice = new CessionarioCommittenteService(assembler, repository);
+	            }
+	            return this.cessionariocommittenteservice;
+	        }
+	    }
+	        
+	    #region CessionarioCommittentes CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all cessionariocommittentes.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<CessionarioCommittenteDto> ReadCessionarioCommittentes()	
+	    {
+	        return this.CessionarioCommittenteService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of cessionariocommittentes from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<CessionarioCommittenteDto> ReadCessionarioCommittentesPaged(int startIndex, int pageSize)
+	    {
+	        return this.CessionarioCommittenteService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all cessionariocommittentes filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<CessionarioCommittenteDto> ReadCessionarioCommittentesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.CessionarioCommittenteService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of cessionariocommittentes from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<CessionarioCommittenteDto> ReadCessionarioCommittentesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.CessionarioCommittenteService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a cessionariocommittente with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public CessionarioCommittenteDto ReadCessionarioCommittente(string dtoKey)
+	    {
+	        return this.CessionarioCommittenteService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all cessionariocommittentes count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int CessionarioCommittentesCount()
+	    {
+	        return this.CessionarioCommittenteService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all cessionariocommittentes count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int CessionarioCommittentesCountFiltered(string filterExpression)
+	    {
+	        return this.CessionarioCommittenteService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new cessionariocommittente from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="cessionariocommittente">The dto object.</param>
+	    /// <returns>The dto key of the newly created cessionariocommittente.</returns>
+	    public string CreateCessionarioCommittente(CessionarioCommittenteDto cessionariocommittente)
+	    {
+	        string key = this.CessionarioCommittenteService.Add(cessionariocommittente);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing cessionariocommittente in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="cessionariocommittente">The dto object.</param>
+	    public void UpdateCessionarioCommittente(CessionarioCommittenteDto cessionariocommittente)
+	    {
+	        this.CessionarioCommittenteService.Update(cessionariocommittente);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update cessionariocommittentes in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="cessionariocommittentes">The dto object list.</param>
+	    public void UpdateCessionarioCommittentes(IEnumerable<CessionarioCommittenteDto> cessionariocommittentes)
+	    {
+	        if (cessionariocommittentes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (CessionarioCommittenteDto cessionariocommittente in cessionariocommittentes)
+	        {
+	            if (cessionariocommittente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateCessionarioCommittente(cessionariocommittente);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes cessionariocommittente from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="cessionariocommittente">The dto object.</param>
+	    public void DeleteCessionarioCommittente(CessionarioCommittenteDto cessionariocommittente)
+	    {
+	        this.CessionarioCommittenteService.Delete(cessionariocommittente);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete cessionariocommittentes from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="cessionariocommittentes">The dto object list.</param>
+	    public void DeleteCessionarioCommittentes(IEnumerable<CessionarioCommittenteDto> cessionariocommittentes)
+	    {
+	        if (cessionariocommittentes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (CessionarioCommittenteDto cessionariocommittente in cessionariocommittentes)
+	        {
+	            if (cessionariocommittente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteCessionarioCommittente(cessionariocommittente);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against Cliente entity.
+	    /// </summary>
+	    private IClienteService clienteservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against Cliente entity.
+	    /// </summary>
+	    public virtual IClienteService ClienteService
+	    {
+	        get
+	        {
+	            if (this.clienteservice == null)
+	            {
+	                IClienteAssembler assembler = new ClienteAssembler();
+	                IClienteRepository repository = new ClienteRepository(this.UnitOfWork);
+	
+	                this.clienteservice = new ClienteService(assembler, repository);
+	            }
+	            return this.clienteservice;
+	        }
+	    }
+	        
+	    #region Clientes CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all clientes.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<ClienteDto> ReadClientes()	
+	    {
+	        return this.ClienteService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of clientes from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<ClienteDto> ReadClientesPaged(int startIndex, int pageSize)
+	    {
+	        return this.ClienteService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all clientes filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<ClienteDto> ReadClientesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.ClienteService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of clientes from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<ClienteDto> ReadClientesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.ClienteService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a cliente with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public ClienteDto ReadCliente(string dtoKey)
+	    {
+	        return this.ClienteService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all clientes count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int ClientesCount()
+	    {
+	        return this.ClienteService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all clientes count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int ClientesCountFiltered(string filterExpression)
+	    {
+	        return this.ClienteService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new cliente from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="cliente">The dto object.</param>
+	    /// <returns>The dto key of the newly created cliente.</returns>
+	    public string CreateCliente(ClienteDto cliente)
+	    {
+	        string key = this.ClienteService.Add(cliente);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing cliente in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="cliente">The dto object.</param>
+	    public void UpdateCliente(ClienteDto cliente)
+	    {
+	        this.ClienteService.Update(cliente);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update clientes in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="clientes">The dto object list.</param>
+	    public void UpdateClientes(IEnumerable<ClienteDto> clientes)
+	    {
+	        if (clientes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (ClienteDto cliente in clientes)
+	        {
+	            if (cliente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateCliente(cliente);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes cliente from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="cliente">The dto object.</param>
+	    public void DeleteCliente(ClienteDto cliente)
+	    {
+	        this.ClienteService.Delete(cliente);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete clientes from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="clientes">The dto object list.</param>
+	    public void DeleteClientes(IEnumerable<ClienteDto> clientes)
+	    {
+	        if (clientes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (ClienteDto cliente in clientes)
+	        {
+	            if (cliente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteCliente(cliente);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiAnagraficiCedente entity.
+	    /// </summary>
+	    private IDatiAnagraficiCedenteService datianagraficicedenteservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiAnagraficiCedente entity.
+	    /// </summary>
+	    public virtual IDatiAnagraficiCedenteService DatiAnagraficiCedenteService
+	    {
+	        get
+	        {
+	            if (this.datianagraficicedenteservice == null)
+	            {
+	                IDatiAnagraficiCedenteAssembler assembler = new DatiAnagraficiCedenteAssembler();
+	                IDatiAnagraficiCedenteRepository repository = new DatiAnagraficiCedenteRepository(this.UnitOfWork);
+	
+	                this.datianagraficicedenteservice = new DatiAnagraficiCedenteService(assembler, repository);
+	            }
+	            return this.datianagraficicedenteservice;
+	        }
+	    }
+	        
+	    #region DatiAnagraficiCedentes CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datianagraficicedentes.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCedenteDto> ReadDatiAnagraficiCedentes()	
+	    {
+	        return this.DatiAnagraficiCedenteService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datianagraficicedentes from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCedenteDto> ReadDatiAnagraficiCedentesPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiAnagraficiCedenteService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datianagraficicedentes filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCedenteDto> ReadDatiAnagraficiCedentesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiAnagraficiCedenteService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datianagraficicedentes from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCedenteDto> ReadDatiAnagraficiCedentesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiAnagraficiCedenteService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datianagraficicedente with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiAnagraficiCedenteDto ReadDatiAnagraficiCedente(string dtoKey)
+	    {
+	        return this.DatiAnagraficiCedenteService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datianagraficicedentes count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiAnagraficiCedentesCount()
+	    {
+	        return this.DatiAnagraficiCedenteService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datianagraficicedentes count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiAnagraficiCedentesCountFiltered(string filterExpression)
+	    {
+	        return this.DatiAnagraficiCedenteService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datianagraficicedente from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datianagraficicedente">The dto object.</param>
+	    /// <returns>The dto key of the newly created datianagraficicedente.</returns>
+	    public string CreateDatiAnagraficiCedente(DatiAnagraficiCedenteDto datianagraficicedente)
+	    {
+	        string key = this.DatiAnagraficiCedenteService.Add(datianagraficicedente);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datianagraficicedente in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datianagraficicedente">The dto object.</param>
+	    public void UpdateDatiAnagraficiCedente(DatiAnagraficiCedenteDto datianagraficicedente)
+	    {
+	        this.DatiAnagraficiCedenteService.Update(datianagraficicedente);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datianagraficicedentes in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datianagraficicedentes">The dto object list.</param>
+	    public void UpdateDatiAnagraficiCedentes(IEnumerable<DatiAnagraficiCedenteDto> datianagraficicedentes)
+	    {
+	        if (datianagraficicedentes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiAnagraficiCedenteDto datianagraficicedente in datianagraficicedentes)
+	        {
+	            if (datianagraficicedente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiAnagraficiCedente(datianagraficicedente);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datianagraficicedente from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datianagraficicedente">The dto object.</param>
+	    public void DeleteDatiAnagraficiCedente(DatiAnagraficiCedenteDto datianagraficicedente)
+	    {
+	        this.DatiAnagraficiCedenteService.Delete(datianagraficicedente);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datianagraficicedentes from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datianagraficicedentes">The dto object list.</param>
+	    public void DeleteDatiAnagraficiCedentes(IEnumerable<DatiAnagraficiCedenteDto> datianagraficicedentes)
+	    {
+	        if (datianagraficicedentes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiAnagraficiCedenteDto datianagraficicedente in datianagraficicedentes)
+	        {
+	            if (datianagraficicedente == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiAnagraficiCedente(datianagraficicedente);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiAnagraficiCessionario entity.
+	    /// </summary>
+	    private IDatiAnagraficiCessionarioService datianagraficicessionarioservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiAnagraficiCessionario entity.
+	    /// </summary>
+	    public virtual IDatiAnagraficiCessionarioService DatiAnagraficiCessionarioService
+	    {
+	        get
+	        {
+	            if (this.datianagraficicessionarioservice == null)
+	            {
+	                IDatiAnagraficiCessionarioAssembler assembler = new DatiAnagraficiCessionarioAssembler();
+	                IDatiAnagraficiCessionarioRepository repository = new DatiAnagraficiCessionarioRepository(this.UnitOfWork);
+	
+	                this.datianagraficicessionarioservice = new DatiAnagraficiCessionarioService(assembler, repository);
+	            }
+	            return this.datianagraficicessionarioservice;
+	        }
+	    }
+	        
+	    #region DatiAnagraficiCessionarios CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datianagraficicessionarios.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCessionarioDto> ReadDatiAnagraficiCessionarios()	
+	    {
+	        return this.DatiAnagraficiCessionarioService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datianagraficicessionarios from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCessionarioDto> ReadDatiAnagraficiCessionariosPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiAnagraficiCessionarioService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datianagraficicessionarios filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCessionarioDto> ReadDatiAnagraficiCessionariosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiAnagraficiCessionarioService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datianagraficicessionarios from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiAnagraficiCessionarioDto> ReadDatiAnagraficiCessionariosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiAnagraficiCessionarioService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datianagraficicessionario with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiAnagraficiCessionarioDto ReadDatiAnagraficiCessionario(string dtoKey)
+	    {
+	        return this.DatiAnagraficiCessionarioService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datianagraficicessionarios count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiAnagraficiCessionariosCount()
+	    {
+	        return this.DatiAnagraficiCessionarioService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datianagraficicessionarios count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiAnagraficiCessionariosCountFiltered(string filterExpression)
+	    {
+	        return this.DatiAnagraficiCessionarioService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datianagraficicessionario from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datianagraficicessionario">The dto object.</param>
+	    /// <returns>The dto key of the newly created datianagraficicessionario.</returns>
+	    public string CreateDatiAnagraficiCessionario(DatiAnagraficiCessionarioDto datianagraficicessionario)
+	    {
+	        string key = this.DatiAnagraficiCessionarioService.Add(datianagraficicessionario);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datianagraficicessionario in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datianagraficicessionario">The dto object.</param>
+	    public void UpdateDatiAnagraficiCessionario(DatiAnagraficiCessionarioDto datianagraficicessionario)
+	    {
+	        this.DatiAnagraficiCessionarioService.Update(datianagraficicessionario);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datianagraficicessionarios in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datianagraficicessionarios">The dto object list.</param>
+	    public void UpdateDatiAnagraficiCessionarios(IEnumerable<DatiAnagraficiCessionarioDto> datianagraficicessionarios)
+	    {
+	        if (datianagraficicessionarios == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiAnagraficiCessionarioDto datianagraficicessionario in datianagraficicessionarios)
+	        {
+	            if (datianagraficicessionario == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiAnagraficiCessionario(datianagraficicessionario);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datianagraficicessionario from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datianagraficicessionario">The dto object.</param>
+	    public void DeleteDatiAnagraficiCessionario(DatiAnagraficiCessionarioDto datianagraficicessionario)
+	    {
+	        this.DatiAnagraficiCessionarioService.Delete(datianagraficicessionario);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datianagraficicessionarios from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datianagraficicessionarios">The dto object list.</param>
+	    public void DeleteDatiAnagraficiCessionarios(IEnumerable<DatiAnagraficiCessionarioDto> datianagraficicessionarios)
+	    {
+	        if (datianagraficicessionarios == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiAnagraficiCessionarioDto datianagraficicessionario in datianagraficicessionarios)
+	        {
+	            if (datianagraficicessionario == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiAnagraficiCessionario(datianagraficicessionario);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiBeniServizi entity.
+	    /// </summary>
+	    private IDatiBeniServiziService datibeniserviziservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiBeniServizi entity.
+	    /// </summary>
+	    public virtual IDatiBeniServiziService DatiBeniServiziService
+	    {
+	        get
+	        {
+	            if (this.datibeniserviziservice == null)
+	            {
+	                IDatiBeniServiziAssembler assembler = new DatiBeniServiziAssembler();
+	                IDatiBeniServiziRepository repository = new DatiBeniServiziRepository(this.UnitOfWork);
+	
+	                this.datibeniserviziservice = new DatiBeniServiziService(assembler, repository);
+	            }
+	            return this.datibeniserviziservice;
+	        }
+	    }
+	        
+	    #region DatiBeniServizis CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datibeniservizis.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBeniServiziDto> ReadDatiBeniServizis()	
+	    {
+	        return this.DatiBeniServiziService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datibeniservizis from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBeniServiziDto> ReadDatiBeniServizisPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiBeniServiziService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datibeniservizis filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBeniServiziDto> ReadDatiBeniServizisFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiBeniServiziService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datibeniservizis from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBeniServiziDto> ReadDatiBeniServizisPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiBeniServiziService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datibeniservizi with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiBeniServiziDto ReadDatiBeniServizi(string dtoKey)
+	    {
+	        return this.DatiBeniServiziService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datibeniservizis count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiBeniServizisCount()
+	    {
+	        return this.DatiBeniServiziService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datibeniservizis count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiBeniServizisCountFiltered(string filterExpression)
+	    {
+	        return this.DatiBeniServiziService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datibeniservizi from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datibeniservizi">The dto object.</param>
+	    /// <returns>The dto key of the newly created datibeniservizi.</returns>
+	    public string CreateDatiBeniServizi(DatiBeniServiziDto datibeniservizi)
+	    {
+	        string key = this.DatiBeniServiziService.Add(datibeniservizi);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datibeniservizi in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datibeniservizi">The dto object.</param>
+	    public void UpdateDatiBeniServizi(DatiBeniServiziDto datibeniservizi)
+	    {
+	        this.DatiBeniServiziService.Update(datibeniservizi);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datibeniservizis in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datibeniservizis">The dto object list.</param>
+	    public void UpdateDatiBeniServizis(IEnumerable<DatiBeniServiziDto> datibeniservizis)
+	    {
+	        if (datibeniservizis == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiBeniServiziDto datibeniservizi in datibeniservizis)
+	        {
+	            if (datibeniservizi == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiBeniServizi(datibeniservizi);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datibeniservizi from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datibeniservizi">The dto object.</param>
+	    public void DeleteDatiBeniServizi(DatiBeniServiziDto datibeniservizi)
+	    {
+	        this.DatiBeniServiziService.Delete(datibeniservizi);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datibeniservizis from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datibeniservizis">The dto object list.</param>
+	    public void DeleteDatiBeniServizis(IEnumerable<DatiBeniServiziDto> datibeniservizis)
+	    {
+	        if (datibeniservizis == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiBeniServiziDto datibeniservizi in datibeniservizis)
+	        {
+	            if (datibeniservizi == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiBeniServizi(datibeniservizi);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiBollo entity.
+	    /// </summary>
+	    private IDatiBolloService datibolloservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiBollo entity.
+	    /// </summary>
+	    public virtual IDatiBolloService DatiBolloService
+	    {
+	        get
+	        {
+	            if (this.datibolloservice == null)
+	            {
+	                IDatiBolloAssembler assembler = new DatiBolloAssembler();
+	                IDatiBolloRepository repository = new DatiBolloRepository(this.UnitOfWork);
+	
+	                this.datibolloservice = new DatiBolloService(assembler, repository);
+	            }
+	            return this.datibolloservice;
+	        }
+	    }
+	        
+	    #region DatiBollos CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datibollos.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBolloDto> ReadDatiBollos()	
+	    {
+	        return this.DatiBolloService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datibollos from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBolloDto> ReadDatiBollosPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiBolloService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datibollos filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBolloDto> ReadDatiBollosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiBolloService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datibollos from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiBolloDto> ReadDatiBollosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiBolloService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datibollo with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiBolloDto ReadDatiBollo(string dtoKey)
+	    {
+	        return this.DatiBolloService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datibollos count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiBollosCount()
+	    {
+	        return this.DatiBolloService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datibollos count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiBollosCountFiltered(string filterExpression)
+	    {
+	        return this.DatiBolloService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datibollo from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datibollo">The dto object.</param>
+	    /// <returns>The dto key of the newly created datibollo.</returns>
+	    public string CreateDatiBollo(DatiBolloDto datibollo)
+	    {
+	        string key = this.DatiBolloService.Add(datibollo);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datibollo in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datibollo">The dto object.</param>
+	    public void UpdateDatiBollo(DatiBolloDto datibollo)
+	    {
+	        this.DatiBolloService.Update(datibollo);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datibollos in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datibollos">The dto object list.</param>
+	    public void UpdateDatiBollos(IEnumerable<DatiBolloDto> datibollos)
+	    {
+	        if (datibollos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiBolloDto datibollo in datibollos)
+	        {
+	            if (datibollo == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiBollo(datibollo);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datibollo from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datibollo">The dto object.</param>
+	    public void DeleteDatiBollo(DatiBolloDto datibollo)
+	    {
+	        this.DatiBolloService.Delete(datibollo);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datibollos from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datibollos">The dto object list.</param>
+	    public void DeleteDatiBollos(IEnumerable<DatiBolloDto> datibollos)
+	    {
+	        if (datibollos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiBolloDto datibollo in datibollos)
+	        {
+	            if (datibollo == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiBollo(datibollo);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiCassaPrevidenziale entity.
+	    /// </summary>
+	    private IDatiCassaPrevidenzialeService daticassaprevidenzialeservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiCassaPrevidenziale entity.
+	    /// </summary>
+	    public virtual IDatiCassaPrevidenzialeService DatiCassaPrevidenzialeService
+	    {
+	        get
+	        {
+	            if (this.daticassaprevidenzialeservice == null)
+	            {
+	                IDatiCassaPrevidenzialeAssembler assembler = new DatiCassaPrevidenzialeAssembler();
+	                IDatiCassaPrevidenzialeRepository repository = new DatiCassaPrevidenzialeRepository(this.UnitOfWork);
+	
+	                this.daticassaprevidenzialeservice = new DatiCassaPrevidenzialeService(assembler, repository);
+	            }
+	            return this.daticassaprevidenzialeservice;
+	        }
+	    }
+	        
+	    #region DatiCassaPrevidenziales CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all daticassaprevidenziales.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiCassaPrevidenzialeDto> ReadDatiCassaPrevidenziales()	
+	    {
+	        return this.DatiCassaPrevidenzialeService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of daticassaprevidenziales from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiCassaPrevidenzialeDto> ReadDatiCassaPrevidenzialesPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiCassaPrevidenzialeService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all daticassaprevidenziales filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiCassaPrevidenzialeDto> ReadDatiCassaPrevidenzialesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiCassaPrevidenzialeService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of daticassaprevidenziales from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiCassaPrevidenzialeDto> ReadDatiCassaPrevidenzialesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiCassaPrevidenzialeService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a daticassaprevidenziale with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiCassaPrevidenzialeDto ReadDatiCassaPrevidenziale(string dtoKey)
+	    {
+	        return this.DatiCassaPrevidenzialeService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all daticassaprevidenziales count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiCassaPrevidenzialesCount()
+	    {
+	        return this.DatiCassaPrevidenzialeService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all daticassaprevidenziales count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiCassaPrevidenzialesCountFiltered(string filterExpression)
+	    {
+	        return this.DatiCassaPrevidenzialeService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new daticassaprevidenziale from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="daticassaprevidenziale">The dto object.</param>
+	    /// <returns>The dto key of the newly created daticassaprevidenziale.</returns>
+	    public string CreateDatiCassaPrevidenziale(DatiCassaPrevidenzialeDto daticassaprevidenziale)
+	    {
+	        string key = this.DatiCassaPrevidenzialeService.Add(daticassaprevidenziale);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing daticassaprevidenziale in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="daticassaprevidenziale">The dto object.</param>
+	    public void UpdateDatiCassaPrevidenziale(DatiCassaPrevidenzialeDto daticassaprevidenziale)
+	    {
+	        this.DatiCassaPrevidenzialeService.Update(daticassaprevidenziale);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update daticassaprevidenziales in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="daticassaprevidenziales">The dto object list.</param>
+	    public void UpdateDatiCassaPrevidenziales(IEnumerable<DatiCassaPrevidenzialeDto> daticassaprevidenziales)
+	    {
+	        if (daticassaprevidenziales == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiCassaPrevidenzialeDto daticassaprevidenziale in daticassaprevidenziales)
+	        {
+	            if (daticassaprevidenziale == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiCassaPrevidenziale(daticassaprevidenziale);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes daticassaprevidenziale from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="daticassaprevidenziale">The dto object.</param>
+	    public void DeleteDatiCassaPrevidenziale(DatiCassaPrevidenzialeDto daticassaprevidenziale)
+	    {
+	        this.DatiCassaPrevidenzialeService.Delete(daticassaprevidenziale);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete daticassaprevidenziales from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="daticassaprevidenziales">The dto object list.</param>
+	    public void DeleteDatiCassaPrevidenziales(IEnumerable<DatiCassaPrevidenzialeDto> daticassaprevidenziales)
+	    {
+	        if (daticassaprevidenziales == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiCassaPrevidenzialeDto daticassaprevidenziale in daticassaprevidenziales)
+	        {
+	            if (daticassaprevidenziale == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiCassaPrevidenziale(daticassaprevidenziale);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiGenerali entity.
+	    /// </summary>
+	    private IDatiGeneraliService datigeneraliservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiGenerali entity.
+	    /// </summary>
+	    public virtual IDatiGeneraliService DatiGeneraliService
+	    {
+	        get
+	        {
+	            if (this.datigeneraliservice == null)
+	            {
+	                IDatiGeneraliAssembler assembler = new DatiGeneraliAssembler();
+	                IDatiGeneraliRepository repository = new DatiGeneraliRepository(this.UnitOfWork);
+	
+	                this.datigeneraliservice = new DatiGeneraliService(assembler, repository);
+	            }
+	            return this.datigeneraliservice;
+	        }
+	    }
+	        
+	    #region DatiGeneralis CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datigeneralis.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDto> ReadDatiGeneralis()	
+	    {
+	        return this.DatiGeneraliService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datigeneralis from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDto> ReadDatiGeneralisPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiGeneraliService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datigeneralis filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDto> ReadDatiGeneralisFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiGeneraliService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datigeneralis from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDto> ReadDatiGeneralisPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiGeneraliService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datigenerali with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiGeneraliDto ReadDatiGenerali(string dtoKey)
+	    {
+	        return this.DatiGeneraliService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datigeneralis count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiGeneralisCount()
+	    {
+	        return this.DatiGeneraliService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datigeneralis count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiGeneralisCountFiltered(string filterExpression)
+	    {
+	        return this.DatiGeneraliService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datigenerali from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datigenerali">The dto object.</param>
+	    /// <returns>The dto key of the newly created datigenerali.</returns>
+	    public string CreateDatiGenerali(DatiGeneraliDto datigenerali)
+	    {
+	        string key = this.DatiGeneraliService.Add(datigenerali);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datigenerali in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datigenerali">The dto object.</param>
+	    public void UpdateDatiGenerali(DatiGeneraliDto datigenerali)
+	    {
+	        this.DatiGeneraliService.Update(datigenerali);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datigeneralis in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datigeneralis">The dto object list.</param>
+	    public void UpdateDatiGeneralis(IEnumerable<DatiGeneraliDto> datigeneralis)
+	    {
+	        if (datigeneralis == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiGeneraliDto datigenerali in datigeneralis)
+	        {
+	            if (datigenerali == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiGenerali(datigenerali);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datigenerali from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datigenerali">The dto object.</param>
+	    public void DeleteDatiGenerali(DatiGeneraliDto datigenerali)
+	    {
+	        this.DatiGeneraliService.Delete(datigenerali);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datigeneralis from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datigeneralis">The dto object list.</param>
+	    public void DeleteDatiGeneralis(IEnumerable<DatiGeneraliDto> datigeneralis)
+	    {
+	        if (datigeneralis == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiGeneraliDto datigenerali in datigeneralis)
+	        {
+	            if (datigenerali == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiGenerali(datigenerali);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiGeneraliDocumento entity.
+	    /// </summary>
+	    private IDatiGeneraliDocumentoService datigeneralidocumentoservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiGeneraliDocumento entity.
+	    /// </summary>
+	    public virtual IDatiGeneraliDocumentoService DatiGeneraliDocumentoService
+	    {
+	        get
+	        {
+	            if (this.datigeneralidocumentoservice == null)
+	            {
+	                IDatiGeneraliDocumentoAssembler assembler = new DatiGeneraliDocumentoAssembler();
+	                IDatiGeneraliDocumentoRepository repository = new DatiGeneraliDocumentoRepository(this.UnitOfWork);
+	
+	                this.datigeneralidocumentoservice = new DatiGeneraliDocumentoService(assembler, repository);
+	            }
+	            return this.datigeneralidocumentoservice;
+	        }
+	    }
+	        
+	    #region DatiGeneraliDocumentos CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datigeneralidocumentos.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDocumentoDto> ReadDatiGeneraliDocumentos()	
+	    {
+	        return this.DatiGeneraliDocumentoService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datigeneralidocumentos from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDocumentoDto> ReadDatiGeneraliDocumentosPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiGeneraliDocumentoService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datigeneralidocumentos filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDocumentoDto> ReadDatiGeneraliDocumentosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiGeneraliDocumentoService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datigeneralidocumentos from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiGeneraliDocumentoDto> ReadDatiGeneraliDocumentosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiGeneraliDocumentoService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datigeneralidocumento with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiGeneraliDocumentoDto ReadDatiGeneraliDocumento(string dtoKey)
+	    {
+	        return this.DatiGeneraliDocumentoService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datigeneralidocumentos count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiGeneraliDocumentosCount()
+	    {
+	        return this.DatiGeneraliDocumentoService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datigeneralidocumentos count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiGeneraliDocumentosCountFiltered(string filterExpression)
+	    {
+	        return this.DatiGeneraliDocumentoService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datigeneralidocumento from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datigeneralidocumento">The dto object.</param>
+	    /// <returns>The dto key of the newly created datigeneralidocumento.</returns>
+	    public string CreateDatiGeneraliDocumento(DatiGeneraliDocumentoDto datigeneralidocumento)
+	    {
+	        string key = this.DatiGeneraliDocumentoService.Add(datigeneralidocumento);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datigeneralidocumento in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datigeneralidocumento">The dto object.</param>
+	    public void UpdateDatiGeneraliDocumento(DatiGeneraliDocumentoDto datigeneralidocumento)
+	    {
+	        this.DatiGeneraliDocumentoService.Update(datigeneralidocumento);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datigeneralidocumentos in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datigeneralidocumentos">The dto object list.</param>
+	    public void UpdateDatiGeneraliDocumentos(IEnumerable<DatiGeneraliDocumentoDto> datigeneralidocumentos)
+	    {
+	        if (datigeneralidocumentos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiGeneraliDocumentoDto datigeneralidocumento in datigeneralidocumentos)
+	        {
+	            if (datigeneralidocumento == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiGeneraliDocumento(datigeneralidocumento);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datigeneralidocumento from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datigeneralidocumento">The dto object.</param>
+	    public void DeleteDatiGeneraliDocumento(DatiGeneraliDocumentoDto datigeneralidocumento)
+	    {
+	        this.DatiGeneraliDocumentoService.Delete(datigeneralidocumento);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datigeneralidocumentos from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datigeneralidocumentos">The dto object list.</param>
+	    public void DeleteDatiGeneraliDocumentos(IEnumerable<DatiGeneraliDocumentoDto> datigeneralidocumentos)
+	    {
+	        if (datigeneralidocumentos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiGeneraliDocumentoDto datigeneralidocumento in datigeneralidocumentos)
+	        {
+	            if (datigeneralidocumento == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiGeneraliDocumento(datigeneralidocumento);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiPagamento entity.
+	    /// </summary>
+	    private IDatiPagamentoService datipagamentoservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiPagamento entity.
+	    /// </summary>
+	    public virtual IDatiPagamentoService DatiPagamentoService
+	    {
+	        get
+	        {
+	            if (this.datipagamentoservice == null)
+	            {
+	                IDatiPagamentoAssembler assembler = new DatiPagamentoAssembler();
+	                IDatiPagamentoRepository repository = new DatiPagamentoRepository(this.UnitOfWork);
+	
+	                this.datipagamentoservice = new DatiPagamentoService(assembler, repository);
+	            }
+	            return this.datipagamentoservice;
+	        }
+	    }
+	        
+	    #region DatiPagamentos CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datipagamentos.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiPagamentoDto> ReadDatiPagamentos()	
+	    {
+	        return this.DatiPagamentoService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datipagamentos from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiPagamentoDto> ReadDatiPagamentosPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiPagamentoService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datipagamentos filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiPagamentoDto> ReadDatiPagamentosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiPagamentoService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datipagamentos from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiPagamentoDto> ReadDatiPagamentosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiPagamentoService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datipagamento with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiPagamentoDto ReadDatiPagamento(string dtoKey)
+	    {
+	        return this.DatiPagamentoService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datipagamentos count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiPagamentosCount()
+	    {
+	        return this.DatiPagamentoService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datipagamentos count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiPagamentosCountFiltered(string filterExpression)
+	    {
+	        return this.DatiPagamentoService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datipagamento from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datipagamento">The dto object.</param>
+	    /// <returns>The dto key of the newly created datipagamento.</returns>
+	    public string CreateDatiPagamento(DatiPagamentoDto datipagamento)
+	    {
+	        string key = this.DatiPagamentoService.Add(datipagamento);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datipagamento in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datipagamento">The dto object.</param>
+	    public void UpdateDatiPagamento(DatiPagamentoDto datipagamento)
+	    {
+	        this.DatiPagamentoService.Update(datipagamento);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datipagamentos in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datipagamentos">The dto object list.</param>
+	    public void UpdateDatiPagamentos(IEnumerable<DatiPagamentoDto> datipagamentos)
+	    {
+	        if (datipagamentos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiPagamentoDto datipagamento in datipagamentos)
+	        {
+	            if (datipagamento == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiPagamento(datipagamento);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datipagamento from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datipagamento">The dto object.</param>
+	    public void DeleteDatiPagamento(DatiPagamentoDto datipagamento)
+	    {
+	        this.DatiPagamentoService.Delete(datipagamento);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datipagamentos from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datipagamentos">The dto object list.</param>
+	    public void DeleteDatiPagamentos(IEnumerable<DatiPagamentoDto> datipagamentos)
+	    {
+	        if (datipagamentos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiPagamentoDto datipagamento in datipagamentos)
+	        {
+	            if (datipagamento == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiPagamento(datipagamento);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiRiepilogo entity.
+	    /// </summary>
+	    private IDatiRiepilogoService datiriepilogoservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiRiepilogo entity.
+	    /// </summary>
+	    public virtual IDatiRiepilogoService DatiRiepilogoService
+	    {
+	        get
+	        {
+	            if (this.datiriepilogoservice == null)
+	            {
+	                IDatiRiepilogoAssembler assembler = new DatiRiepilogoAssembler();
+	                IDatiRiepilogoRepository repository = new DatiRiepilogoRepository(this.UnitOfWork);
+	
+	                this.datiriepilogoservice = new DatiRiepilogoService(assembler, repository);
+	            }
+	            return this.datiriepilogoservice;
+	        }
+	    }
+	        
+	    #region DatiRiepilogos CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datiriepilogos.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRiepilogoDto> ReadDatiRiepilogos()	
+	    {
+	        return this.DatiRiepilogoService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datiriepilogos from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRiepilogoDto> ReadDatiRiepilogosPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiRiepilogoService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datiriepilogos filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRiepilogoDto> ReadDatiRiepilogosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiRiepilogoService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datiriepilogos from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRiepilogoDto> ReadDatiRiepilogosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiRiepilogoService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datiriepilogo with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiRiepilogoDto ReadDatiRiepilogo(string dtoKey)
+	    {
+	        return this.DatiRiepilogoService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datiriepilogos count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiRiepilogosCount()
+	    {
+	        return this.DatiRiepilogoService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datiriepilogos count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiRiepilogosCountFiltered(string filterExpression)
+	    {
+	        return this.DatiRiepilogoService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datiriepilogo from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datiriepilogo">The dto object.</param>
+	    /// <returns>The dto key of the newly created datiriepilogo.</returns>
+	    public string CreateDatiRiepilogo(DatiRiepilogoDto datiriepilogo)
+	    {
+	        string key = this.DatiRiepilogoService.Add(datiriepilogo);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datiriepilogo in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datiriepilogo">The dto object.</param>
+	    public void UpdateDatiRiepilogo(DatiRiepilogoDto datiriepilogo)
+	    {
+	        this.DatiRiepilogoService.Update(datiriepilogo);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datiriepilogos in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datiriepilogos">The dto object list.</param>
+	    public void UpdateDatiRiepilogos(IEnumerable<DatiRiepilogoDto> datiriepilogos)
+	    {
+	        if (datiriepilogos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiRiepilogoDto datiriepilogo in datiriepilogos)
+	        {
+	            if (datiriepilogo == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiRiepilogo(datiriepilogo);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datiriepilogo from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datiriepilogo">The dto object.</param>
+	    public void DeleteDatiRiepilogo(DatiRiepilogoDto datiriepilogo)
+	    {
+	        this.DatiRiepilogoService.Delete(datiriepilogo);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datiriepilogos from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datiriepilogos">The dto object list.</param>
+	    public void DeleteDatiRiepilogos(IEnumerable<DatiRiepilogoDto> datiriepilogos)
+	    {
+	        if (datiriepilogos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiRiepilogoDto datiriepilogo in datiriepilogos)
+	        {
+	            if (datiriepilogo == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiRiepilogo(datiriepilogo);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiRitenuta entity.
+	    /// </summary>
+	    private IDatiRitenutaService datiritenutaservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiRitenuta entity.
+	    /// </summary>
+	    public virtual IDatiRitenutaService DatiRitenutaService
+	    {
+	        get
+	        {
+	            if (this.datiritenutaservice == null)
+	            {
+	                IDatiRitenutaAssembler assembler = new DatiRitenutaAssembler();
+	                IDatiRitenutaRepository repository = new DatiRitenutaRepository(this.UnitOfWork);
+	
+	                this.datiritenutaservice = new DatiRitenutaService(assembler, repository);
+	            }
+	            return this.datiritenutaservice;
+	        }
+	    }
+	        
+	    #region DatiRitenutas CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datiritenutas.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRitenutaDto> ReadDatiRitenutas()	
+	    {
+	        return this.DatiRitenutaService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datiritenutas from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRitenutaDto> ReadDatiRitenutasPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiRitenutaService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datiritenutas filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRitenutaDto> ReadDatiRitenutasFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiRitenutaService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datiritenutas from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiRitenutaDto> ReadDatiRitenutasPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiRitenutaService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datiritenuta with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiRitenutaDto ReadDatiRitenuta(string dtoKey)
+	    {
+	        return this.DatiRitenutaService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datiritenutas count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiRitenutasCount()
+	    {
+	        return this.DatiRitenutaService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datiritenutas count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiRitenutasCountFiltered(string filterExpression)
+	    {
+	        return this.DatiRitenutaService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datiritenuta from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datiritenuta">The dto object.</param>
+	    /// <returns>The dto key of the newly created datiritenuta.</returns>
+	    public string CreateDatiRitenuta(DatiRitenutaDto datiritenuta)
+	    {
+	        string key = this.DatiRitenutaService.Add(datiritenuta);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datiritenuta in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datiritenuta">The dto object.</param>
+	    public void UpdateDatiRitenuta(DatiRitenutaDto datiritenuta)
+	    {
+	        this.DatiRitenutaService.Update(datiritenuta);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datiritenutas in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datiritenutas">The dto object list.</param>
+	    public void UpdateDatiRitenutas(IEnumerable<DatiRitenutaDto> datiritenutas)
+	    {
+	        if (datiritenutas == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiRitenutaDto datiritenuta in datiritenutas)
+	        {
+	            if (datiritenuta == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiRitenuta(datiritenuta);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datiritenuta from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datiritenuta">The dto object.</param>
+	    public void DeleteDatiRitenuta(DatiRitenutaDto datiritenuta)
+	    {
+	        this.DatiRitenutaService.Delete(datiritenuta);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datiritenutas from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datiritenutas">The dto object list.</param>
+	    public void DeleteDatiRitenutas(IEnumerable<DatiRitenutaDto> datiritenutas)
+	    {
+	        if (datiritenutas == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiRitenutaDto datiritenuta in datiritenutas)
+	        {
+	            if (datiritenuta == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiRitenuta(datiritenuta);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DatiTrasmissione entity.
+	    /// </summary>
+	    private IDatiTrasmissioneService datitrasmissioneservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DatiTrasmissione entity.
+	    /// </summary>
+	    public virtual IDatiTrasmissioneService DatiTrasmissioneService
+	    {
+	        get
+	        {
+	            if (this.datitrasmissioneservice == null)
+	            {
+	                IDatiTrasmissioneAssembler assembler = new DatiTrasmissioneAssembler();
+	                IDatiTrasmissioneRepository repository = new DatiTrasmissioneRepository(this.UnitOfWork);
+	
+	                this.datitrasmissioneservice = new DatiTrasmissioneService(assembler, repository);
+	            }
+	            return this.datitrasmissioneservice;
+	        }
+	    }
+	        
+	    #region DatiTrasmissiones CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all datitrasmissiones.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DatiTrasmissioneDto> ReadDatiTrasmissiones()	
+	    {
+	        return this.DatiTrasmissioneService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datitrasmissiones from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiTrasmissioneDto> ReadDatiTrasmissionesPaged(int startIndex, int pageSize)
+	    {
+	        return this.DatiTrasmissioneService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all datitrasmissiones filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiTrasmissioneDto> ReadDatiTrasmissionesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DatiTrasmissioneService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of datitrasmissiones from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DatiTrasmissioneDto> ReadDatiTrasmissionesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DatiTrasmissioneService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a datitrasmissione with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DatiTrasmissioneDto ReadDatiTrasmissione(string dtoKey)
+	    {
+	        return this.DatiTrasmissioneService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datitrasmissiones count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DatiTrasmissionesCount()
+	    {
+	        return this.DatiTrasmissioneService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all datitrasmissiones count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DatiTrasmissionesCountFiltered(string filterExpression)
+	    {
+	        return this.DatiTrasmissioneService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new datitrasmissione from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="datitrasmissione">The dto object.</param>
+	    /// <returns>The dto key of the newly created datitrasmissione.</returns>
+	    public string CreateDatiTrasmissione(DatiTrasmissioneDto datitrasmissione)
+	    {
+	        string key = this.DatiTrasmissioneService.Add(datitrasmissione);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing datitrasmissione in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="datitrasmissione">The dto object.</param>
+	    public void UpdateDatiTrasmissione(DatiTrasmissioneDto datitrasmissione)
+	    {
+	        this.DatiTrasmissioneService.Update(datitrasmissione);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update datitrasmissiones in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="datitrasmissiones">The dto object list.</param>
+	    public void UpdateDatiTrasmissiones(IEnumerable<DatiTrasmissioneDto> datitrasmissiones)
+	    {
+	        if (datitrasmissiones == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiTrasmissioneDto datitrasmissione in datitrasmissiones)
+	        {
+	            if (datitrasmissione == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDatiTrasmissione(datitrasmissione);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes datitrasmissione from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="datitrasmissione">The dto object.</param>
+	    public void DeleteDatiTrasmissione(DatiTrasmissioneDto datitrasmissione)
+	    {
+	        this.DatiTrasmissioneService.Delete(datitrasmissione);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete datitrasmissiones from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="datitrasmissiones">The dto object list.</param>
+	    public void DeleteDatiTrasmissiones(IEnumerable<DatiTrasmissioneDto> datitrasmissiones)
+	    {
+	        if (datitrasmissiones == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DatiTrasmissioneDto datitrasmissione in datitrasmissiones)
+	        {
+	            if (datitrasmissione == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDatiTrasmissione(datitrasmissione);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DettaglioLinee entity.
+	    /// </summary>
+	    private IDettaglioLineeService dettagliolineeservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DettaglioLinee entity.
+	    /// </summary>
+	    public virtual IDettaglioLineeService DettaglioLineeService
+	    {
+	        get
+	        {
+	            if (this.dettagliolineeservice == null)
+	            {
+	                IDettaglioLineeAssembler assembler = new DettaglioLineeAssembler();
+	                IDettaglioLineeRepository repository = new DettaglioLineeRepository(this.UnitOfWork);
+	
+	                this.dettagliolineeservice = new DettaglioLineeService(assembler, repository);
+	            }
+	            return this.dettagliolineeservice;
+	        }
+	    }
+	        
+	    #region DettaglioLinees CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all dettagliolinees.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioLineeDto> ReadDettaglioLinees()	
+	    {
+	        return this.DettaglioLineeService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of dettagliolinees from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioLineeDto> ReadDettaglioLineesPaged(int startIndex, int pageSize)
+	    {
+	        return this.DettaglioLineeService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all dettagliolinees filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioLineeDto> ReadDettaglioLineesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DettaglioLineeService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of dettagliolinees from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioLineeDto> ReadDettaglioLineesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DettaglioLineeService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a dettagliolinee with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DettaglioLineeDto ReadDettaglioLinee(string dtoKey)
+	    {
+	        return this.DettaglioLineeService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all dettagliolinees count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DettaglioLineesCount()
+	    {
+	        return this.DettaglioLineeService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all dettagliolinees count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DettaglioLineesCountFiltered(string filterExpression)
+	    {
+	        return this.DettaglioLineeService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new dettagliolinee from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="dettagliolinee">The dto object.</param>
+	    /// <returns>The dto key of the newly created dettagliolinee.</returns>
+	    public string CreateDettaglioLinee(DettaglioLineeDto dettagliolinee)
+	    {
+	        string key = this.DettaglioLineeService.Add(dettagliolinee);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing dettagliolinee in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="dettagliolinee">The dto object.</param>
+	    public void UpdateDettaglioLinee(DettaglioLineeDto dettagliolinee)
+	    {
+	        this.DettaglioLineeService.Update(dettagliolinee);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update dettagliolinees in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="dettagliolinees">The dto object list.</param>
+	    public void UpdateDettaglioLinees(IEnumerable<DettaglioLineeDto> dettagliolinees)
+	    {
+	        if (dettagliolinees == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DettaglioLineeDto dettagliolinee in dettagliolinees)
+	        {
+	            if (dettagliolinee == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDettaglioLinee(dettagliolinee);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes dettagliolinee from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="dettagliolinee">The dto object.</param>
+	    public void DeleteDettaglioLinee(DettaglioLineeDto dettagliolinee)
+	    {
+	        this.DettaglioLineeService.Delete(dettagliolinee);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete dettagliolinees from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="dettagliolinees">The dto object list.</param>
+	    public void DeleteDettaglioLinees(IEnumerable<DettaglioLineeDto> dettagliolinees)
+	    {
+	        if (dettagliolinees == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DettaglioLineeDto dettagliolinee in dettagliolinees)
+	        {
+	            if (dettagliolinee == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDettaglioLinee(dettagliolinee);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against DettaglioPagamento entity.
+	    /// </summary>
+	    private IDettaglioPagamentoService dettagliopagamentoservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against DettaglioPagamento entity.
+	    /// </summary>
+	    public virtual IDettaglioPagamentoService DettaglioPagamentoService
+	    {
+	        get
+	        {
+	            if (this.dettagliopagamentoservice == null)
+	            {
+	                IDettaglioPagamentoAssembler assembler = new DettaglioPagamentoAssembler();
+	                IDettaglioPagamentoRepository repository = new DettaglioPagamentoRepository(this.UnitOfWork);
+	
+	                this.dettagliopagamentoservice = new DettaglioPagamentoService(assembler, repository);
+	            }
+	            return this.dettagliopagamentoservice;
+	        }
+	    }
+	        
+	    #region DettaglioPagamentos CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all dettagliopagamentos.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioPagamentoDto> ReadDettaglioPagamentos()	
+	    {
+	        return this.DettaglioPagamentoService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of dettagliopagamentos from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioPagamentoDto> ReadDettaglioPagamentosPaged(int startIndex, int pageSize)
+	    {
+	        return this.DettaglioPagamentoService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all dettagliopagamentos filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioPagamentoDto> ReadDettaglioPagamentosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.DettaglioPagamentoService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of dettagliopagamentos from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<DettaglioPagamentoDto> ReadDettaglioPagamentosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.DettaglioPagamentoService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a dettagliopagamento with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public DettaglioPagamentoDto ReadDettaglioPagamento(string dtoKey)
+	    {
+	        return this.DettaglioPagamentoService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all dettagliopagamentos count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int DettaglioPagamentosCount()
+	    {
+	        return this.DettaglioPagamentoService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all dettagliopagamentos count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int DettaglioPagamentosCountFiltered(string filterExpression)
+	    {
+	        return this.DettaglioPagamentoService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new dettagliopagamento from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="dettagliopagamento">The dto object.</param>
+	    /// <returns>The dto key of the newly created dettagliopagamento.</returns>
+	    public string CreateDettaglioPagamento(DettaglioPagamentoDto dettagliopagamento)
+	    {
+	        string key = this.DettaglioPagamentoService.Add(dettagliopagamento);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing dettagliopagamento in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="dettagliopagamento">The dto object.</param>
+	    public void UpdateDettaglioPagamento(DettaglioPagamentoDto dettagliopagamento)
+	    {
+	        this.DettaglioPagamentoService.Update(dettagliopagamento);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update dettagliopagamentos in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="dettagliopagamentos">The dto object list.</param>
+	    public void UpdateDettaglioPagamentos(IEnumerable<DettaglioPagamentoDto> dettagliopagamentos)
+	    {
+	        if (dettagliopagamentos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DettaglioPagamentoDto dettagliopagamento in dettagliopagamentos)
+	        {
+	            if (dettagliopagamento == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateDettaglioPagamento(dettagliopagamento);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes dettagliopagamento from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="dettagliopagamento">The dto object.</param>
+	    public void DeleteDettaglioPagamento(DettaglioPagamentoDto dettagliopagamento)
+	    {
+	        this.DettaglioPagamentoService.Delete(dettagliopagamento);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete dettagliopagamentos from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="dettagliopagamentos">The dto object list.</param>
+	    public void DeleteDettaglioPagamentos(IEnumerable<DettaglioPagamentoDto> dettagliopagamentos)
+	    {
+	        if (dettagliopagamentos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (DettaglioPagamentoDto dettagliopagamento in dettagliopagamentos)
+	        {
+	            if (dettagliopagamento == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteDettaglioPagamento(dettagliopagamento);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against Fattura entity.
+	    /// </summary>
+	    private IFatturaService fatturaservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against Fattura entity.
+	    /// </summary>
+	    public virtual IFatturaService FatturaService
+	    {
+	        get
+	        {
+	            if (this.fatturaservice == null)
+	            {
+	                IFatturaAssembler assembler = new FatturaAssembler();
+	                IFatturaRepository repository = new FatturaRepository(this.UnitOfWork);
+	
+	                this.fatturaservice = new FatturaService(assembler, repository);
+	            }
+	            return this.fatturaservice;
+	        }
+	    }
+	        
+	    #region Fatturas CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all fatturas.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaDto> ReadFatturas()	
+	    {
+	        return this.FatturaService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of fatturas from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaDto> ReadFatturasPaged(int startIndex, int pageSize)
+	    {
+	        return this.FatturaService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all fatturas filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaDto> ReadFatturasFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.FatturaService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of fatturas from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaDto> ReadFatturasPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.FatturaService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a fattura with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public FatturaDto ReadFattura(string dtoKey)
+	    {
+	        return this.FatturaService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all fatturas count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int FatturasCount()
+	    {
+	        return this.FatturaService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all fatturas count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int FatturasCountFiltered(string filterExpression)
+	    {
+	        return this.FatturaService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new fattura from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="fattura">The dto object.</param>
+	    /// <returns>The dto key of the newly created fattura.</returns>
+	    public string CreateFattura(FatturaDto fattura)
+	    {
+	        string key = this.FatturaService.Add(fattura);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing fattura in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="fattura">The dto object.</param>
+	    public void UpdateFattura(FatturaDto fattura)
+	    {
+	        this.FatturaService.Update(fattura);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update fatturas in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="fatturas">The dto object list.</param>
+	    public void UpdateFatturas(IEnumerable<FatturaDto> fatturas)
+	    {
+	        if (fatturas == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (FatturaDto fattura in fatturas)
+	        {
+	            if (fattura == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateFattura(fattura);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes fattura from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="fattura">The dto object.</param>
+	    public void DeleteFattura(FatturaDto fattura)
+	    {
+	        this.FatturaService.Delete(fattura);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete fatturas from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="fatturas">The dto object list.</param>
+	    public void DeleteFatturas(IEnumerable<FatturaDto> fatturas)
+	    {
+	        if (fatturas == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (FatturaDto fattura in fatturas)
+	        {
+	            if (fattura == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteFattura(fattura);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against FatturaElettronicaBody entity.
+	    /// </summary>
+	    private IFatturaElettronicaBodyService fatturaelettronicabodyservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against FatturaElettronicaBody entity.
+	    /// </summary>
+	    public virtual IFatturaElettronicaBodyService FatturaElettronicaBodyService
+	    {
+	        get
+	        {
+	            if (this.fatturaelettronicabodyservice == null)
+	            {
+	                IFatturaElettronicaBodyAssembler assembler = new FatturaElettronicaBodyAssembler();
+	                IFatturaElettronicaBodyRepository repository = new FatturaElettronicaBodyRepository(this.UnitOfWork);
+	
+	                this.fatturaelettronicabodyservice = new FatturaElettronicaBodyService(assembler, repository);
+	            }
+	            return this.fatturaelettronicabodyservice;
+	        }
+	    }
+	        
+	    #region FatturaElettronicaBodies CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all fatturaelettronicabodies.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaBodyDto> ReadFatturaElettronicaBodies()	
+	    {
+	        return this.FatturaElettronicaBodyService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of fatturaelettronicabodies from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaBodyDto> ReadFatturaElettronicaBodiesPaged(int startIndex, int pageSize)
+	    {
+	        return this.FatturaElettronicaBodyService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all fatturaelettronicabodies filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaBodyDto> ReadFatturaElettronicaBodiesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.FatturaElettronicaBodyService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of fatturaelettronicabodies from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaBodyDto> ReadFatturaElettronicaBodiesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.FatturaElettronicaBodyService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a fatturaelettronicabody with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public FatturaElettronicaBodyDto ReadFatturaElettronicaBody(string dtoKey)
+	    {
+	        return this.FatturaElettronicaBodyService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all fatturaelettronicabodies count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int FatturaElettronicaBodiesCount()
+	    {
+	        return this.FatturaElettronicaBodyService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all fatturaelettronicabodies count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int FatturaElettronicaBodiesCountFiltered(string filterExpression)
+	    {
+	        return this.FatturaElettronicaBodyService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new fatturaelettronicabody from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="fatturaelettronicabody">The dto object.</param>
+	    /// <returns>The dto key of the newly created fatturaelettronicabody.</returns>
+	    public string CreateFatturaElettronicaBody(FatturaElettronicaBodyDto fatturaelettronicabody)
+	    {
+	        string key = this.FatturaElettronicaBodyService.Add(fatturaelettronicabody);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing fatturaelettronicabody in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="fatturaelettronicabody">The dto object.</param>
+	    public void UpdateFatturaElettronicaBody(FatturaElettronicaBodyDto fatturaelettronicabody)
+	    {
+	        this.FatturaElettronicaBodyService.Update(fatturaelettronicabody);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update fatturaelettronicabodies in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="fatturaelettronicabodies">The dto object list.</param>
+	    public void UpdateFatturaElettronicaBodies(IEnumerable<FatturaElettronicaBodyDto> fatturaelettronicabodies)
+	    {
+	        if (fatturaelettronicabodies == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (FatturaElettronicaBodyDto fatturaelettronicabody in fatturaelettronicabodies)
+	        {
+	            if (fatturaelettronicabody == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateFatturaElettronicaBody(fatturaelettronicabody);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes fatturaelettronicabody from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="fatturaelettronicabody">The dto object.</param>
+	    public void DeleteFatturaElettronicaBody(FatturaElettronicaBodyDto fatturaelettronicabody)
+	    {
+	        this.FatturaElettronicaBodyService.Delete(fatturaelettronicabody);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete fatturaelettronicabodies from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="fatturaelettronicabodies">The dto object list.</param>
+	    public void DeleteFatturaElettronicaBodies(IEnumerable<FatturaElettronicaBodyDto> fatturaelettronicabodies)
+	    {
+	        if (fatturaelettronicabodies == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (FatturaElettronicaBodyDto fatturaelettronicabody in fatturaelettronicabodies)
+	        {
+	            if (fatturaelettronicabody == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteFatturaElettronicaBody(fatturaelettronicabody);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against FatturaElettronicaHeader entity.
+	    /// </summary>
+	    private IFatturaElettronicaHeaderService fatturaelettronicaheaderservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against FatturaElettronicaHeader entity.
+	    /// </summary>
+	    public virtual IFatturaElettronicaHeaderService FatturaElettronicaHeaderService
+	    {
+	        get
+	        {
+	            if (this.fatturaelettronicaheaderservice == null)
+	            {
+	                IFatturaElettronicaHeaderAssembler assembler = new FatturaElettronicaHeaderAssembler();
+	                IFatturaElettronicaHeaderRepository repository = new FatturaElettronicaHeaderRepository(this.UnitOfWork);
+	
+	                this.fatturaelettronicaheaderservice = new FatturaElettronicaHeaderService(assembler, repository);
+	            }
+	            return this.fatturaelettronicaheaderservice;
+	        }
+	    }
+	        
+	    #region FatturaElettronicaHeaders CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all fatturaelettronicaheaders.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaHeaderDto> ReadFatturaElettronicaHeaders()	
+	    {
+	        return this.FatturaElettronicaHeaderService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of fatturaelettronicaheaders from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaHeaderDto> ReadFatturaElettronicaHeadersPaged(int startIndex, int pageSize)
+	    {
+	        return this.FatturaElettronicaHeaderService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all fatturaelettronicaheaders filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaHeaderDto> ReadFatturaElettronicaHeadersFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.FatturaElettronicaHeaderService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of fatturaelettronicaheaders from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<FatturaElettronicaHeaderDto> ReadFatturaElettronicaHeadersPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.FatturaElettronicaHeaderService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a fatturaelettronicaheader with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public FatturaElettronicaHeaderDto ReadFatturaElettronicaHeader(string dtoKey)
+	    {
+	        return this.FatturaElettronicaHeaderService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all fatturaelettronicaheaders count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int FatturaElettronicaHeadersCount()
+	    {
+	        return this.FatturaElettronicaHeaderService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all fatturaelettronicaheaders count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int FatturaElettronicaHeadersCountFiltered(string filterExpression)
+	    {
+	        return this.FatturaElettronicaHeaderService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new fatturaelettronicaheader from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="fatturaelettronicaheader">The dto object.</param>
+	    /// <returns>The dto key of the newly created fatturaelettronicaheader.</returns>
+	    public string CreateFatturaElettronicaHeader(FatturaElettronicaHeaderDto fatturaelettronicaheader)
+	    {
+	        string key = this.FatturaElettronicaHeaderService.Add(fatturaelettronicaheader);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing fatturaelettronicaheader in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="fatturaelettronicaheader">The dto object.</param>
+	    public void UpdateFatturaElettronicaHeader(FatturaElettronicaHeaderDto fatturaelettronicaheader)
+	    {
+	        this.FatturaElettronicaHeaderService.Update(fatturaelettronicaheader);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update fatturaelettronicaheaders in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="fatturaelettronicaheaders">The dto object list.</param>
+	    public void UpdateFatturaElettronicaHeaders(IEnumerable<FatturaElettronicaHeaderDto> fatturaelettronicaheaders)
+	    {
+	        if (fatturaelettronicaheaders == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (FatturaElettronicaHeaderDto fatturaelettronicaheader in fatturaelettronicaheaders)
+	        {
+	            if (fatturaelettronicaheader == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateFatturaElettronicaHeader(fatturaelettronicaheader);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes fatturaelettronicaheader from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="fatturaelettronicaheader">The dto object.</param>
+	    public void DeleteFatturaElettronicaHeader(FatturaElettronicaHeaderDto fatturaelettronicaheader)
+	    {
+	        this.FatturaElettronicaHeaderService.Delete(fatturaelettronicaheader);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete fatturaelettronicaheaders from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="fatturaelettronicaheaders">The dto object list.</param>
+	    public void DeleteFatturaElettronicaHeaders(IEnumerable<FatturaElettronicaHeaderDto> fatturaelettronicaheaders)
+	    {
+	        if (fatturaelettronicaheaders == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (FatturaElettronicaHeaderDto fatturaelettronicaheader in fatturaelettronicaheaders)
+	        {
+	            if (fatturaelettronicaheader == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteFatturaElettronicaHeader(fatturaelettronicaheader);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against IdFiscale entity.
+	    /// </summary>
+	    private IIdFiscaleService idfiscaleservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against IdFiscale entity.
+	    /// </summary>
+	    public virtual IIdFiscaleService IdFiscaleService
+	    {
+	        get
+	        {
+	            if (this.idfiscaleservice == null)
+	            {
+	                IIdFiscaleAssembler assembler = new IdFiscaleAssembler();
+	                IIdFiscaleRepository repository = new IdFiscaleRepository(this.UnitOfWork);
+	
+	                this.idfiscaleservice = new IdFiscaleService(assembler, repository);
+	            }
+	            return this.idfiscaleservice;
+	        }
+	    }
+	        
+	    #region IdFiscales CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all idfiscales.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<IdFiscaleDto> ReadIdFiscales()	
+	    {
+	        return this.IdFiscaleService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of idfiscales from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<IdFiscaleDto> ReadIdFiscalesPaged(int startIndex, int pageSize)
+	    {
+	        return this.IdFiscaleService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all idfiscales filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<IdFiscaleDto> ReadIdFiscalesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.IdFiscaleService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of idfiscales from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<IdFiscaleDto> ReadIdFiscalesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.IdFiscaleService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a idfiscale with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public IdFiscaleDto ReadIdFiscale(string dtoKey)
+	    {
+	        return this.IdFiscaleService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all idfiscales count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int IdFiscalesCount()
+	    {
+	        return this.IdFiscaleService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all idfiscales count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int IdFiscalesCountFiltered(string filterExpression)
+	    {
+	        return this.IdFiscaleService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new idfiscale from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="idfiscale">The dto object.</param>
+	    /// <returns>The dto key of the newly created idfiscale.</returns>
+	    public string CreateIdFiscale(IdFiscaleDto idfiscale)
+	    {
+	        string key = this.IdFiscaleService.Add(idfiscale);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing idfiscale in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="idfiscale">The dto object.</param>
+	    public void UpdateIdFiscale(IdFiscaleDto idfiscale)
+	    {
+	        this.IdFiscaleService.Update(idfiscale);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update idfiscales in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="idfiscales">The dto object list.</param>
+	    public void UpdateIdFiscales(IEnumerable<IdFiscaleDto> idfiscales)
+	    {
+	        if (idfiscales == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (IdFiscaleDto idfiscale in idfiscales)
+	        {
+	            if (idfiscale == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateIdFiscale(idfiscale);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes idfiscale from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="idfiscale">The dto object.</param>
+	    public void DeleteIdFiscale(IdFiscaleDto idfiscale)
+	    {
+	        this.IdFiscaleService.Delete(idfiscale);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete idfiscales from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="idfiscales">The dto object list.</param>
+	    public void DeleteIdFiscales(IEnumerable<IdFiscaleDto> idfiscales)
+	    {
+	        if (idfiscales == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (IdFiscaleDto idfiscale in idfiscales)
+	        {
+	            if (idfiscale == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteIdFiscale(idfiscale);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against Incasso entity.
+	    /// </summary>
+	    private IIncassoService incassoservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against Incasso entity.
+	    /// </summary>
+	    public virtual IIncassoService IncassoService
+	    {
+	        get
+	        {
+	            if (this.incassoservice == null)
+	            {
+	                IIncassoAssembler assembler = new IncassoAssembler();
+	                IIncassoRepository repository = new IncassoRepository(this.UnitOfWork);
+	
+	                this.incassoservice = new IncassoService(assembler, repository);
+	            }
+	            return this.incassoservice;
+	        }
+	    }
+	        
+	    #region Incassos CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all incassos.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<IncassoDto> ReadIncassos()	
+	    {
+	        return this.IncassoService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of incassos from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<IncassoDto> ReadIncassosPaged(int startIndex, int pageSize)
+	    {
+	        return this.IncassoService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all incassos filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<IncassoDto> ReadIncassosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.IncassoService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of incassos from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<IncassoDto> ReadIncassosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.IncassoService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a incasso with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public IncassoDto ReadIncasso(string dtoKey)
+	    {
+	        return this.IncassoService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all incassos count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int IncassosCount()
+	    {
+	        return this.IncassoService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all incassos count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int IncassosCountFiltered(string filterExpression)
+	    {
+	        return this.IncassoService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new incasso from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="incasso">The dto object.</param>
+	    /// <returns>The dto key of the newly created incasso.</returns>
+	    public string CreateIncasso(IncassoDto incasso)
+	    {
+	        string key = this.IncassoService.Add(incasso);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing incasso in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="incasso">The dto object.</param>
+	    public void UpdateIncasso(IncassoDto incasso)
+	    {
+	        this.IncassoService.Update(incasso);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update incassos in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="incassos">The dto object list.</param>
+	    public void UpdateIncassos(IEnumerable<IncassoDto> incassos)
+	    {
+	        if (incassos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (IncassoDto incasso in incassos)
+	        {
+	            if (incasso == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateIncasso(incasso);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes incasso from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="incasso">The dto object.</param>
+	    public void DeleteIncasso(IncassoDto incasso)
+	    {
+	        this.IncassoService.Delete(incasso);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete incassos from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="incassos">The dto object list.</param>
+	    public void DeleteIncassos(IEnumerable<IncassoDto> incassos)
+	    {
+	        if (incassos == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (IncassoDto incasso in incassos)
+	        {
+	            if (incasso == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteIncasso(incasso);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against ScontoMaggiorazione entity.
+	    /// </summary>
+	    private IScontoMaggiorazioneService scontomaggiorazioneservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against ScontoMaggiorazione entity.
+	    /// </summary>
+	    public virtual IScontoMaggiorazioneService ScontoMaggiorazioneService
+	    {
+	        get
+	        {
+	            if (this.scontomaggiorazioneservice == null)
+	            {
+	                IScontoMaggiorazioneAssembler assembler = new ScontoMaggiorazioneAssembler();
+	                IScontoMaggiorazioneRepository repository = new ScontoMaggiorazioneRepository(this.UnitOfWork);
+	
+	                this.scontomaggiorazioneservice = new ScontoMaggiorazioneService(assembler, repository);
+	            }
+	            return this.scontomaggiorazioneservice;
+	        }
+	    }
+	        
+	    #region ScontoMaggioraziones CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all scontomaggioraziones.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<ScontoMaggiorazioneDto> ReadScontoMaggioraziones()	
+	    {
+	        return this.ScontoMaggiorazioneService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of scontomaggioraziones from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<ScontoMaggiorazioneDto> ReadScontoMaggiorazionesPaged(int startIndex, int pageSize)
+	    {
+	        return this.ScontoMaggiorazioneService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all scontomaggioraziones filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<ScontoMaggiorazioneDto> ReadScontoMaggiorazionesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.ScontoMaggiorazioneService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of scontomaggioraziones from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<ScontoMaggiorazioneDto> ReadScontoMaggiorazionesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.ScontoMaggiorazioneService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a scontomaggiorazione with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public ScontoMaggiorazioneDto ReadScontoMaggiorazione(string dtoKey)
+	    {
+	        return this.ScontoMaggiorazioneService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all scontomaggioraziones count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int ScontoMaggiorazionesCount()
+	    {
+	        return this.ScontoMaggiorazioneService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all scontomaggioraziones count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int ScontoMaggiorazionesCountFiltered(string filterExpression)
+	    {
+	        return this.ScontoMaggiorazioneService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new scontomaggiorazione from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="scontomaggiorazione">The dto object.</param>
+	    /// <returns>The dto key of the newly created scontomaggiorazione.</returns>
+	    public string CreateScontoMaggiorazione(ScontoMaggiorazioneDto scontomaggiorazione)
+	    {
+	        string key = this.ScontoMaggiorazioneService.Add(scontomaggiorazione);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing scontomaggiorazione in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="scontomaggiorazione">The dto object.</param>
+	    public void UpdateScontoMaggiorazione(ScontoMaggiorazioneDto scontomaggiorazione)
+	    {
+	        this.ScontoMaggiorazioneService.Update(scontomaggiorazione);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update scontomaggioraziones in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="scontomaggioraziones">The dto object list.</param>
+	    public void UpdateScontoMaggioraziones(IEnumerable<ScontoMaggiorazioneDto> scontomaggioraziones)
+	    {
+	        if (scontomaggioraziones == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (ScontoMaggiorazioneDto scontomaggiorazione in scontomaggioraziones)
+	        {
+	            if (scontomaggiorazione == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateScontoMaggiorazione(scontomaggiorazione);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes scontomaggiorazione from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="scontomaggiorazione">The dto object.</param>
+	    public void DeleteScontoMaggiorazione(ScontoMaggiorazioneDto scontomaggiorazione)
+	    {
+	        this.ScontoMaggiorazioneService.Delete(scontomaggiorazione);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete scontomaggioraziones from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="scontomaggioraziones">The dto object list.</param>
+	    public void DeleteScontoMaggioraziones(IEnumerable<ScontoMaggiorazioneDto> scontomaggioraziones)
+	    {
+	        if (scontomaggioraziones == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (ScontoMaggiorazioneDto scontomaggiorazione in scontomaggioraziones)
+	        {
+	            if (scontomaggiorazione == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteScontoMaggiorazione(scontomaggiorazione);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against Sede entity.
+	    /// </summary>
+	    private ISedeService sedeservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against Sede entity.
+	    /// </summary>
+	    public virtual ISedeService SedeService
+	    {
+	        get
+	        {
+	            if (this.sedeservice == null)
+	            {
+	                ISedeAssembler assembler = new SedeAssembler();
+	                ISedeRepository repository = new SedeRepository(this.UnitOfWork);
+	
+	                this.sedeservice = new SedeService(assembler, repository);
+	            }
+	            return this.sedeservice;
+	        }
+	    }
+	        
+	    #region Sedes CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all sedes.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<SedeDto> ReadSedes()	
+	    {
+	        return this.SedeService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of sedes from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<SedeDto> ReadSedesPaged(int startIndex, int pageSize)
+	    {
+	        return this.SedeService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all sedes filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<SedeDto> ReadSedesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.SedeService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of sedes from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<SedeDto> ReadSedesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.SedeService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a sede with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public SedeDto ReadSede(string dtoKey)
+	    {
+	        return this.SedeService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all sedes count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int SedesCount()
+	    {
+	        return this.SedeService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all sedes count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int SedesCountFiltered(string filterExpression)
+	    {
+	        return this.SedeService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new sede from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="sede">The dto object.</param>
+	    /// <returns>The dto key of the newly created sede.</returns>
+	    public string CreateSede(SedeDto sede)
+	    {
+	        string key = this.SedeService.Add(sede);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing sede in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="sede">The dto object.</param>
+	    public void UpdateSede(SedeDto sede)
+	    {
+	        this.SedeService.Update(sede);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update sedes in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="sedes">The dto object list.</param>
+	    public void UpdateSedes(IEnumerable<SedeDto> sedes)
+	    {
+	        if (sedes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (SedeDto sede in sedes)
+	        {
+	            if (sede == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateSede(sede);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes sede from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="sede">The dto object.</param>
+	    public void DeleteSede(SedeDto sede)
+	    {
+	        this.SedeService.Delete(sede);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete sedes from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="sedes">The dto object list.</param>
+	    public void DeleteSedes(IEnumerable<SedeDto> sedes)
+	    {
+	        if (sedes == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (SedeDto sede in sedes)
+	        {
+	            if (sede == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteSede(sede);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against Socio entity.
+	    /// </summary>
+	    private ISocioService socioservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against Socio entity.
+	    /// </summary>
+	    public virtual ISocioService SocioService
+	    {
+	        get
+	        {
+	            if (this.socioservice == null)
+	            {
+	                ISocioAssembler assembler = new SocioAssembler();
+	                ISocioRepository repository = new SocioRepository(this.UnitOfWork);
+	
+	                this.socioservice = new SocioService(assembler, repository);
+	            }
+	            return this.socioservice;
+	        }
+	    }
+	        
+	    #region Socios CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all socios.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<SocioDto> ReadSocios()	
+	    {
+	        return this.SocioService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of socios from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<SocioDto> ReadSociosPaged(int startIndex, int pageSize)
+	    {
+	        return this.SocioService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all socios filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<SocioDto> ReadSociosFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.SocioService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of socios from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<SocioDto> ReadSociosPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.SocioService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a socio with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public SocioDto ReadSocio(string dtoKey)
+	    {
+	        return this.SocioService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all socios count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int SociosCount()
+	    {
+	        return this.SocioService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all socios count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int SociosCountFiltered(string filterExpression)
+	    {
+	        return this.SocioService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new socio from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="socio">The dto object.</param>
+	    /// <returns>The dto key of the newly created socio.</returns>
+	    public string CreateSocio(SocioDto socio)
+	    {
+	        string key = this.SocioService.Add(socio);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing socio in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="socio">The dto object.</param>
+	    public void UpdateSocio(SocioDto socio)
+	    {
+	        this.SocioService.Update(socio);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update socios in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="socios">The dto object list.</param>
+	    public void UpdateSocios(IEnumerable<SocioDto> socios)
+	    {
+	        if (socios == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (SocioDto socio in socios)
+	        {
+	            if (socio == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateSocio(socio);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes socio from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="socio">The dto object.</param>
+	    public void DeleteSocio(SocioDto socio)
+	    {
+	        this.SocioService.Delete(socio);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete socios from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="socios">The dto object list.</param>
+	    public void DeleteSocios(IEnumerable<SocioDto> socios)
+	    {
+	        if (socios == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (SocioDto socio in socios)
+	        {
+	            if (socio == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteSocio(socio);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against StudioProfessionale entity.
+	    /// </summary>
+	    private IStudioProfessionaleService studioprofessionaleservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against StudioProfessionale entity.
+	    /// </summary>
+	    public virtual IStudioProfessionaleService StudioProfessionaleService
+	    {
+	        get
+	        {
+	            if (this.studioprofessionaleservice == null)
+	            {
+	                IStudioProfessionaleAssembler assembler = new StudioProfessionaleAssembler();
+	                IStudioProfessionaleRepository repository = new StudioProfessionaleRepository(this.UnitOfWork);
+	
+	                this.studioprofessionaleservice = new StudioProfessionaleService(assembler, repository);
+	            }
+	            return this.studioprofessionaleservice;
+	        }
+	    }
+	        
+	    #region StudioProfessionales CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all studioprofessionales.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<StudioProfessionaleDto> ReadStudioProfessionales()	
+	    {
+	        return this.StudioProfessionaleService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of studioprofessionales from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<StudioProfessionaleDto> ReadStudioProfessionalesPaged(int startIndex, int pageSize)
+	    {
+	        return this.StudioProfessionaleService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all studioprofessionales filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<StudioProfessionaleDto> ReadStudioProfessionalesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.StudioProfessionaleService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of studioprofessionales from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<StudioProfessionaleDto> ReadStudioProfessionalesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.StudioProfessionaleService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a studioprofessionale with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public StudioProfessionaleDto ReadStudioProfessionale(string dtoKey)
+	    {
+	        return this.StudioProfessionaleService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all studioprofessionales count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int StudioProfessionalesCount()
+	    {
+	        return this.StudioProfessionaleService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all studioprofessionales count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int StudioProfessionalesCountFiltered(string filterExpression)
+	    {
+	        return this.StudioProfessionaleService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new studioprofessionale from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="studioprofessionale">The dto object.</param>
+	    /// <returns>The dto key of the newly created studioprofessionale.</returns>
+	    public string CreateStudioProfessionale(StudioProfessionaleDto studioprofessionale)
+	    {
+	        string key = this.StudioProfessionaleService.Add(studioprofessionale);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing studioprofessionale in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="studioprofessionale">The dto object.</param>
+	    public void UpdateStudioProfessionale(StudioProfessionaleDto studioprofessionale)
+	    {
+	        this.StudioProfessionaleService.Update(studioprofessionale);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update studioprofessionales in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="studioprofessionales">The dto object list.</param>
+	    public void UpdateStudioProfessionales(IEnumerable<StudioProfessionaleDto> studioprofessionales)
+	    {
+	        if (studioprofessionales == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (StudioProfessionaleDto studioprofessionale in studioprofessionales)
+	        {
+	            if (studioprofessionale == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateStudioProfessionale(studioprofessionale);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes studioprofessionale from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="studioprofessionale">The dto object.</param>
+	    public void DeleteStudioProfessionale(StudioProfessionaleDto studioprofessionale)
+	    {
+	        this.StudioProfessionaleService.Delete(studioprofessionale);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete studioprofessionales from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="studioprofessionales">The dto object list.</param>
+	    public void DeleteStudioProfessionales(IEnumerable<StudioProfessionaleDto> studioprofessionales)
+	    {
+	        if (studioprofessionales == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (StudioProfessionaleDto studioprofessionale in studioprofessionales)
+	        {
+	            if (studioprofessionale == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteStudioProfessionale(studioprofessionale);
+	        }
+	    }
+	    
+	    #endregion
+	    
+	    /// <summary>
+	    /// A general purpose generated service used for all CRUD operations against Trasmissione entity.
+	    /// </summary>
+	    private ITrasmissioneService trasmissioneservice;
+	    
+	    /// <summary>
+	    /// Gets or sets the general purpose generated service used for all CRUD operations against Trasmissione entity.
+	    /// </summary>
+	    public virtual ITrasmissioneService TrasmissioneService
+	    {
+	        get
+	        {
+	            if (this.trasmissioneservice == null)
+	            {
+	                ITrasmissioneAssembler assembler = new TrasmissioneAssembler();
+	                ITrasmissioneRepository repository = new TrasmissioneRepository(this.UnitOfWork);
+	
+	                this.trasmissioneservice = new TrasmissioneService(assembler, repository);
+	            }
+	            return this.trasmissioneservice;
+	        }
+	    }
+	        
+	    #region Trasmissiones CRUD Operations
+	
+	    /// <summary>
+	    /// Returns all trasmissiones.
+	    /// </summary>
+	    /// <returns></returns>
+	    public IEnumerable<TrasmissioneDto> ReadTrasmissiones()	
+	    {
+	        return this.TrasmissioneService.GetAll();
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of trasmissiones from the given start index.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <returns></returns>
+	    public IEnumerable<TrasmissioneDto> ReadTrasmissionesPaged(int startIndex, int pageSize)
+	    {
+	        return this.TrasmissioneService.Find(startIndex, pageSize);
+	    }
+	
+	    /// <summary>
+	    /// Returns all trasmissiones filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<TrasmissioneDto> ReadTrasmissionesFiltered(string sortExpression, string filterExpression)
+	    {
+	        return this.TrasmissioneService.Find(sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a specified amount of trasmissiones from the given start index filtered by the specified filter expression and sorted by the specified sort expression.
+	    /// </summary>
+	    /// <param name="startIndex">The start index.</param>
+	    /// <param name="pageSize">The returned entities count.</param>
+	    /// <param name="sortExpression">The sort expression.</param>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public IEnumerable<TrasmissioneDto> ReadTrasmissionesPagedAndFiltered(int startIndex, int pageSize, string sortExpression, string filterExpression)
+	    {
+	        return this.TrasmissioneService.Find(startIndex, pageSize, sortExpression, filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Returns a trasmissione with the specified dto key.
+	    /// </summary>
+	    /// <param name="dtoKey">The specified dto key value.</param>
+	    /// <returns></returns>
+	    public TrasmissioneDto ReadTrasmissione(string dtoKey)
+	    {
+	        return this.TrasmissioneService.GetByKey(dtoKey);
+	    }
+	    
+	    /// <summary>
+	    /// Returns all trasmissiones count.
+	    /// </summary>
+	    /// <returns></returns>
+	    public int TrasmissionesCount()
+	    {
+	        return this.TrasmissioneService.Count();
+	    }
+	    
+	    /// <summary>
+	    /// Returns all trasmissiones count filtered by the specified filter expression.
+	    /// </summary>
+	    /// <param name="filterExpression">The filter expression.</param>
+	    /// <returns></returns>
+	    public int TrasmissionesCountFiltered(string filterExpression)
+	    {
+	        return this.TrasmissioneService.Count(filterExpression);
+	    }
+	
+	    /// <summary>
+	    /// Adds a new trasmissione from the given dto object into the database.
+	    /// </summary>
+	    /// <param name="trasmissione">The dto object.</param>
+	    /// <returns>The dto key of the newly created trasmissione.</returns>
+	    public string CreateTrasmissione(TrasmissioneDto trasmissione)
+	    {
+	        string key = this.TrasmissioneService.Add(trasmissione);
+	        this.UnitOfWork.SaveChanges();
+	        return key;
+	    }
+	
+	    /// <summary>
+	    /// Updates an existing trasmissione in the database from the given dto object.
+	    /// </summary>
+	    /// <param name="trasmissione">The dto object.</param>
+	    public void UpdateTrasmissione(TrasmissioneDto trasmissione)
+	    {
+	        this.TrasmissioneService.Update(trasmissione);
+	        this.UnitOfWork.SaveChanges();
+	    }
+	
+	    /// <summary>
+	    /// Update trasmissiones in the database from the given dto object list.
+	    /// </summary>
+	    /// <param name="trasmissiones">The dto object list.</param>
+	    public void UpdateTrasmissiones(IEnumerable<TrasmissioneDto> trasmissiones)
+	    {
+	        if (trasmissiones == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (TrasmissioneDto trasmissione in trasmissiones)
+	        {
+	            if (trasmissione == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.UpdateTrasmissione(trasmissione);
+	        }
+	    }
+	
+	    /// <summary>
+	    /// Deletes trasmissione from the database by the given dto object.
+	    /// </summary>
+	    /// <param name="trasmissione">The dto object.</param>
+	    public void DeleteTrasmissione(TrasmissioneDto trasmissione)
+	    {
+	        this.TrasmissioneService.Delete(trasmissione);
+	        this.UnitOfWork.SaveChanges();		
+	    }
+	
+	    /// <summary>
+	    /// Delete trasmissiones from the database by the given dto object list.
+	    /// </summary>
+	    /// <param name="trasmissiones">The dto object list.</param>
+	    public void DeleteTrasmissiones(IEnumerable<TrasmissioneDto> trasmissiones)
+	    {
+	        if (trasmissiones == null)
+	        {
+	            return;
+	        }
+	
+	        foreach (TrasmissioneDto trasmissione in trasmissiones)
+	        {
+	            if (trasmissione == null)
+	            {
+	                continue;
+	            }
+	            
+	            this.DeleteTrasmissione(trasmissione);
 	        }
 	    }
 	    

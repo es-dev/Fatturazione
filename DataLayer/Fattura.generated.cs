@@ -50,6 +50,32 @@ namespace DataLayer
 			}
 		}
 		
+		private string _versione;
+		public virtual string Versione
+		{
+			get
+			{
+				return this._versione;
+			}
+			set
+			{
+				this._versione = value;
+			}
+		}
+		
+		private string _signature;
+		public virtual string Signature
+		{
+			get
+			{
+				return this._signature;
+			}
+			set
+			{
+				this._signature = value;
+			}
+		}
+		
 		private Cliente _cliente;
 		public virtual Cliente Cliente
 		{

@@ -10,11 +10,11 @@ using System.Text;
 using WcfService.Dto;
 using Web.Code;
 
-namespace Web.GUI.Azienda
+namespace Web.GUI.StudioProfessionale
 {
-	public partial class AziendaItem : TemplateItem
+	public partial class StudioProfessionaleItem : TemplateItem
 	{
-        public AziendaItem()
+        public StudioProfessionaleItem()
 		{
 			InitializeComponent();
 		}
@@ -25,7 +25,7 @@ namespace Web.GUI.Azienda
             {
                 if (model != null)
                 {
-                    var obj = (AziendaDto)model;
+                    var obj = (StudioProfessionaleDto)model;
                     var indirizzo = UtilityValidation.GetStringND(obj.Indirizzo);
                     var cap = UtilityValidation.GetStringND(obj.CAP);
                     var comune = UtilityValidation.GetStringND(obj.Comune);

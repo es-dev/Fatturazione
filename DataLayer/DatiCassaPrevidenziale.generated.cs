@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class DettaglioLinee
+	public partial class DatiCassaPrevidenziale
 	{
 		private int _id;
 		public virtual int Id
@@ -37,68 +37,68 @@ namespace DataLayer
 			}
 		}
 		
-		private int _datiBeniServiziId;
-		public virtual int DatiBeniServiziId
+		private int _datiGeneraliDocumentoId;
+		public virtual int DatiGeneraliDocumentoId
 		{
 			get
 			{
-				return this._datiBeniServiziId;
+				return this._datiGeneraliDocumentoId;
 			}
 			set
 			{
-				this._datiBeniServiziId = value;
+				this._datiGeneraliDocumentoId = value;
 			}
 		}
 		
-		private string _numeroLinea;
-		public virtual string NumeroLinea
+		private string _tipoCassa;
+		public virtual string TipoCassa
 		{
 			get
 			{
-				return this._numeroLinea;
+				return this._tipoCassa;
 			}
 			set
 			{
-				this._numeroLinea = value;
+				this._tipoCassa = value;
 			}
 		}
 		
-		private string _descrizione;
-		public virtual string Descrizione
+		private decimal _alCassa;
+		public virtual decimal AlCassa
 		{
 			get
 			{
-				return this._descrizione;
+				return this._alCassa;
 			}
 			set
 			{
-				this._descrizione = value;
+				this._alCassa = value;
 			}
 		}
 		
-		private decimal _prezzoUnitario;
-		public virtual decimal PrezzoUnitario
+		private decimal _importoContributoCassa;
+		public virtual decimal ImportoContributoCassa
 		{
 			get
 			{
-				return this._prezzoUnitario;
+				return this._importoContributoCassa;
 			}
 			set
 			{
-				this._prezzoUnitario = value;
+				this._importoContributoCassa = value;
 			}
 		}
 		
-		private decimal _prezzoTotale;
-		public virtual decimal PrezzoTotale
+		private decimal _imponibileCassa;
+		public virtual decimal ImponibileCassa
 		{
 			get
 			{
-				return this._prezzoTotale;
+				return this._imponibileCassa;
 			}
 			set
 			{
-				this._prezzoTotale = value;
+				this._imponibileCassa = value;
 			}
 		}
 		
@@ -128,16 +128,42 @@ namespace DataLayer
 			}
 		}
 		
-		private DatiBeniServizi _datiBeniServizi;
-		public virtual DatiBeniServizi DatiBeniServizi
+		private string _natura;
+		public virtual string Natura
 		{
 			get
 			{
-				return this._datiBeniServizi;
+				return this._natura;
 			}
 			set
 			{
-				this._datiBeniServizi = value;
+				this._natura = value;
+			}
+		}
+		
+		private string _riferimentoAmministrazione;
+		public virtual string RiferimentoAmministrazione
+		{
+			get
+			{
+				return this._riferimentoAmministrazione;
+			}
+			set
+			{
+				this._riferimentoAmministrazione = value;
+			}
+		}
+		
+		private DatiGeneraliDocumento _datiGeneraliDocumento;
+		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
+		{
+			get
+			{
+				return this._datiGeneraliDocumento;
+			}
+			set
+			{
+				this._datiGeneraliDocumento = value;
 			}
 		}
 		

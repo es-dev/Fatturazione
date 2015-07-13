@@ -23,18 +23,18 @@ namespace WcfService.Dto
 	}
 	
 	[DataContract(IsReference = true)]
-	[KnownType(typeof(ClienteDto))]
-	[KnownType(typeof(SocioDto))]
-	[KnownType(typeof(AnagraficaClienteDto))]
 	[KnownType(typeof(AccountDto))]
+	[KnownType(typeof(SocioDto))]
 	[KnownType(typeof(TrasmissioneDto))]
-	public partial class AziendaDto : IDtoWithKey
+	[KnownType(typeof(AnagraficaClienteDto))]
+	[KnownType(typeof(ClienteDto))]
+	public partial class StudioProfessionaleDto : IDtoWithKey
 	{
-		public AziendaDto()
+		public StudioProfessionaleDto()
 		{
 		}
 		
-		public AziendaDto(int _id, string _ragioneSociale, string _indirizzo, string _cAP, string _comune, string _provincia, string _partitaIva, string _telefono, string _fax, string _email, string _codiceCatastale, string _pEC, string _codice, string _localita, string _note, int? _dipendenti, IList<ClienteDto> _clientes, IList<SocioDto> _socios, IList<AnagraficaClienteDto> _anagraficaClientes, IList<AccountDto> _accounts, IList<TrasmissioneDto> _trasmissiones)
+		public StudioProfessionaleDto(int _id, string _ragioneSociale, string _indirizzo, string _cAP, string _comune, string _provincia, string _partitaIva, string _telefono, string _fax, string _email, string _codiceCatastale, string _pEC, string _codice, string _localita, string _note, int? _dipendenti, IList<AccountDto> _accounts, IList<SocioDto> _socios, IList<TrasmissioneDto> _trasmissiones, IList<AnagraficaClienteDto> _anagraficaClientes, IList<ClienteDto> _clientes)
 		{
 			this.Id = _id;
 			this.RagioneSociale = _ragioneSociale;
@@ -52,11 +52,11 @@ namespace WcfService.Dto
 			this.Localita = _localita;
 			this.Note = _note;
 			this.Dipendenti = _dipendenti;
-			this.Clientes = _clientes;
-			this.Socios = _socios;
-			this.AnagraficaClientes = _anagraficaClientes;
 			this.Accounts = _accounts;
+			this.Socios = _socios;
 			this.Trasmissiones = _trasmissiones;
+			this.AnagraficaClientes = _anagraficaClientes;
+			this.Clientes = _clientes;
 		}
 		
 		[DataMember]
@@ -111,26 +111,26 @@ namespace WcfService.Dto
 		public virtual int? Dipendenti { get;set; }
 
 		[DataMember]
-		public virtual IList<ClienteDto> Clientes { get;set; }
+		public virtual IList<AccountDto> Accounts { get;set; }
 
 		[DataMember]
 		public virtual IList<SocioDto> Socios { get;set; }
 
 		[DataMember]
+		public virtual IList<TrasmissioneDto> Trasmissiones { get;set; }
+
+		[DataMember]
 		public virtual IList<AnagraficaClienteDto> AnagraficaClientes { get;set; }
 
 		[DataMember]
-		public virtual IList<AccountDto> Accounts { get;set; }
-
-		[DataMember]
-		public virtual IList<TrasmissioneDto> Trasmissiones { get;set; }
+		public virtual IList<ClienteDto> Clientes { get;set; }
 
 	}
 	
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(AnagraficaClienteDto))]
 	[KnownType(typeof(AnagraficaPADto))]
-	[KnownType(typeof(AziendaDto))]
+	[KnownType(typeof(StudioProfessionaleDto))]
 	[KnownType(typeof(FatturaDto))]
 	public partial class ClienteDto : IDtoWithKey
 	{
@@ -138,16 +138,16 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public ClienteDto(int _id, int _aziendaId, int _anagraficaClienteId, int _anagraficaPAId, string _tipo, AnagraficaClienteDto _anagraficaCliente, AnagraficaPADto _anagraficaPA, AziendaDto _azienda, IList<FatturaDto> _fatturas)
+		public ClienteDto(int _id, int _studioProfessionaleId, int _anagraficaClienteId, int _anagraficaPAId, string _tipo, AnagraficaClienteDto _anagraficaCliente, AnagraficaPADto _anagraficaPA, StudioProfessionaleDto _studioProfessionale, IList<FatturaDto> _fatturas)
 		{
 			this.Id = _id;
-			this.AziendaId = _aziendaId;
+			this.StudioProfessionaleId = _studioProfessionaleId;
 			this.AnagraficaClienteId = _anagraficaClienteId;
 			this.AnagraficaPAId = _anagraficaPAId;
 			this.Tipo = _tipo;
 			this.AnagraficaCliente = _anagraficaCliente;
 			this.AnagraficaPA = _anagraficaPA;
-			this.Azienda = _azienda;
+			this.StudioProfessionale = _studioProfessionale;
 			this.Fatturas = _fatturas;
 		}
 		
@@ -158,7 +158,7 @@ namespace WcfService.Dto
 		public virtual int Id { get;set; }
 
 		[DataMember]
-		public virtual int AziendaId { get;set; }
+		public virtual int StudioProfessionaleId { get;set; }
 
 		[DataMember]
 		public virtual int AnagraficaClienteId { get;set; }
@@ -176,7 +176,7 @@ namespace WcfService.Dto
 		public virtual AnagraficaPADto AnagraficaPA { get;set; }
 
 		[DataMember]
-		public virtual AziendaDto Azienda { get;set; }
+		public virtual StudioProfessionaleDto StudioProfessionale { get;set; }
 
 		[DataMember]
 		public virtual IList<FatturaDto> Fatturas { get;set; }
@@ -195,10 +195,12 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public FatturaDto(int _id, int _clienteId, ClienteDto _cliente, IList<TrasmissioneDto> _trasmissiones, IList<IncassoDto> _incassos, IList<FatturaElettronicaBodyDto> _fatturaElettronicaBodies, FatturaElettronicaHeaderDto _fatturaElettronicaHeader)
+		public FatturaDto(int _id, int _clienteId, string _versione, string _signature, ClienteDto _cliente, IList<TrasmissioneDto> _trasmissiones, IList<IncassoDto> _incassos, IList<FatturaElettronicaBodyDto> _fatturaElettronicaBodies, FatturaElettronicaHeaderDto _fatturaElettronicaHeader)
 		{
 			this.Id = _id;
 			this.ClienteId = _clienteId;
+			this.Versione = _versione;
+			this.Signature = _signature;
 			this.Cliente = _cliente;
 			this.Trasmissiones = _trasmissiones;
 			this.Incassos = _incassos;
@@ -214,6 +216,12 @@ namespace WcfService.Dto
 
 		[DataMember]
 		public virtual int ClienteId { get;set; }
+
+		[DataMember]
+		public virtual string Versione { get;set; }
+
+		[DataMember]
+		public virtual string Signature { get;set; }
 
 		[DataMember]
 		public virtual ClienteDto Cliente { get;set; }
@@ -234,23 +242,23 @@ namespace WcfService.Dto
 	
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(FatturaDto))]
-	[KnownType(typeof(AziendaDto))]
+	[KnownType(typeof(StudioProfessionaleDto))]
 	public partial class TrasmissioneDto : IDtoWithKey
 	{
 		public TrasmissioneDto()
 		{
 		}
 		
-		public TrasmissioneDto(int _id, int _fatturaId, int _aziendaId, string _stato, DateTime _trasmessa, string _xmlFile, FatturaDto _fattura, AziendaDto _azienda)
+		public TrasmissioneDto(int _id, int _fatturaId, int _studioProfessionaleId, string _stato, DateTime _trasmessa, string _xmlFile, FatturaDto _fattura, StudioProfessionaleDto _studioProfessionale)
 		{
 			this.Id = _id;
 			this.FatturaId = _fatturaId;
-			this.AziendaId = _aziendaId;
+			this.StudioProfessionaleId = _studioProfessionaleId;
 			this.Stato = _stato;
 			this.Trasmessa = _trasmessa;
 			this.XmlFile = _xmlFile;
 			this.Fattura = _fattura;
-			this.Azienda = _azienda;
+			this.StudioProfessionale = _studioProfessionale;
 		}
 		
 		[DataMember]
@@ -263,7 +271,7 @@ namespace WcfService.Dto
 		public virtual int FatturaId { get;set; }
 
 		[DataMember]
-		public virtual int AziendaId { get;set; }
+		public virtual int StudioProfessionaleId { get;set; }
 
 		[DataMember]
 		public virtual string Stato { get;set; }
@@ -278,12 +286,12 @@ namespace WcfService.Dto
 		public virtual FatturaDto Fattura { get;set; }
 
 		[DataMember]
-		public virtual AziendaDto Azienda { get;set; }
+		public virtual StudioProfessionaleDto StudioProfessionale { get;set; }
 
 	}
 	
 	[DataContract(IsReference = true)]
-	[KnownType(typeof(AziendaDto))]
+	[KnownType(typeof(StudioProfessionaleDto))]
 	[KnownType(typeof(ClienteDto))]
 	public partial class AnagraficaClienteDto : IDtoWithKey
 	{
@@ -291,14 +299,23 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public AnagraficaClienteDto(int _id, int _aziendaId, string _ragioneSociale, string _cognome, string _codice, AziendaDto _azienda, IList<ClienteDto> _clientes)
+		public AnagraficaClienteDto(int _id, int _studioProfessionaleId, string _ragioneSociale, string _indirizzo, string _codice, string _cAP, string _comune, string _provincia, string _telefono, string _mobile, string _fax, string _email, string _partitaIva, string _codiceCatastale, StudioProfessionaleDto _studioProfessionale, IList<ClienteDto> _clientes)
 		{
 			this.Id = _id;
-			this.AziendaId = _aziendaId;
+			this.StudioProfessionaleId = _studioProfessionaleId;
 			this.RagioneSociale = _ragioneSociale;
-			this.Cognome = _cognome;
+			this.Indirizzo = _indirizzo;
 			this.Codice = _codice;
-			this.Azienda = _azienda;
+			this.CAP = _cAP;
+			this.Comune = _comune;
+			this.Provincia = _provincia;
+			this.Telefono = _telefono;
+			this.Mobile = _mobile;
+			this.Fax = _fax;
+			this.Email = _email;
+			this.PartitaIva = _partitaIva;
+			this.CodiceCatastale = _codiceCatastale;
+			this.StudioProfessionale = _studioProfessionale;
 			this.Clientes = _clientes;
 		}
 		
@@ -309,19 +326,46 @@ namespace WcfService.Dto
 		public virtual int Id { get;set; }
 
 		[DataMember]
-		public virtual int AziendaId { get;set; }
+		public virtual int StudioProfessionaleId { get;set; }
 
 		[DataMember]
 		public virtual string RagioneSociale { get;set; }
 
 		[DataMember]
-		public virtual string Cognome { get;set; }
+		public virtual string Indirizzo { get;set; }
 
 		[DataMember]
 		public virtual string Codice { get;set; }
 
 		[DataMember]
-		public virtual AziendaDto Azienda { get;set; }
+		public virtual string CAP { get;set; }
+
+		[DataMember]
+		public virtual string Comune { get;set; }
+
+		[DataMember]
+		public virtual string Provincia { get;set; }
+
+		[DataMember]
+		public virtual string Telefono { get;set; }
+
+		[DataMember]
+		public virtual string Mobile { get;set; }
+
+		[DataMember]
+		public virtual string Fax { get;set; }
+
+		[DataMember]
+		public virtual string Email { get;set; }
+
+		[DataMember]
+		public virtual string PartitaIva { get;set; }
+
+		[DataMember]
+		public virtual string CodiceCatastale { get;set; }
+
+		[DataMember]
+		public virtual StudioProfessionaleDto StudioProfessionale { get;set; }
 
 		[DataMember]
 		public virtual IList<ClienteDto> Clientes { get;set; }
@@ -336,10 +380,16 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public IncassoDto(int _id, int _fatturaId, FatturaDto _fattura)
+		public IncassoDto(int _id, int _fatturaId, DateTime _data, decimal _importo, string _tipoPagamento, string _descrizione, string _transazionePagamento, string _codice, FatturaDto _fattura)
 		{
 			this.Id = _id;
 			this.FatturaId = _fatturaId;
+			this.Data = _data;
+			this.Importo = _importo;
+			this.TipoPagamento = _tipoPagamento;
+			this.Descrizione = _descrizione;
+			this.TransazionePagamento = _transazionePagamento;
+			this.Codice = _codice;
 			this.Fattura = _fattura;
 		}
 		
@@ -353,26 +403,44 @@ namespace WcfService.Dto
 		public virtual int FatturaId { get;set; }
 
 		[DataMember]
+		public virtual DateTime Data { get;set; }
+
+		[DataMember]
+		public virtual decimal Importo { get;set; }
+
+		[DataMember]
+		public virtual string TipoPagamento { get;set; }
+
+		[DataMember]
+		public virtual string Descrizione { get;set; }
+
+		[DataMember]
+		public virtual string TransazionePagamento { get;set; }
+
+		[DataMember]
+		public virtual string Codice { get;set; }
+
+		[DataMember]
 		public virtual FatturaDto Fattura { get;set; }
 
 	}
 	
 	[DataContract(IsReference = true)]
-	[KnownType(typeof(AziendaDto))]
+	[KnownType(typeof(StudioProfessionaleDto))]
 	public partial class SocioDto : IDtoWithKey
 	{
 		public SocioDto()
 		{
 		}
 		
-		public SocioDto(int _id, int _aziendaId, string _cognome, string _nome, string _tipoCarica, AziendaDto _azienda)
+		public SocioDto(int _id, int _studioProfessionaleId, string _cognome, string _nome, string _tipoCarica, StudioProfessionaleDto _studioProfessionale)
 		{
 			this.Id = _id;
-			this.AziendaId = _aziendaId;
+			this.StudioProfessionaleId = _studioProfessionaleId;
 			this.Cognome = _cognome;
 			this.Nome = _nome;
 			this.TipoCarica = _tipoCarica;
-			this.Azienda = _azienda;
+			this.StudioProfessionale = _studioProfessionale;
 		}
 		
 		[DataMember]
@@ -382,7 +450,7 @@ namespace WcfService.Dto
 		public virtual int Id { get;set; }
 
 		[DataMember]
-		public virtual int AziendaId { get;set; }
+		public virtual int StudioProfessionaleId { get;set; }
 
 		[DataMember]
 		public virtual string Cognome { get;set; }
@@ -394,7 +462,7 @@ namespace WcfService.Dto
 		public virtual string TipoCarica { get;set; }
 
 		[DataMember]
-		public virtual AziendaDto Azienda { get;set; }
+		public virtual StudioProfessionaleDto StudioProfessionale { get;set; }
 
 	}
 	
@@ -406,7 +474,7 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public AnagraficaPADto(int _id, string _codice, string _denominazione, string _comune, string _nomeResponsabile, string _cognomeResponsabile, int _cAP, string _provincia, string _regione, string _sitoIstituzionale, string _indirizzo, string _titoloResponsabile, string _tipologiaIstat, string _tipologiaAmministrazione, string _acronimo, bool _cfValidato, string _codiceFiscale, string _email, IList<ClienteDto> _clientes)
+		public AnagraficaPADto(int _id, string _codice, string _denominazione, string _comune, string _nomeResponsabile, string _cognomeResponsabile, string _cAP, string _provincia, string _regione, string _sitoIstituzionale, string _indirizzo, string _titoloResponsabile, string _tipologiaIstat, string _tipologiaAmministrazione, string _acronimo, bool _cfValidato, string _codiceFiscale, string _email, IList<ClienteDto> _clientes)
 		{
 			this.Id = _id;
 			this.Codice = _codice;
@@ -451,7 +519,7 @@ namespace WcfService.Dto
 		public virtual string CognomeResponsabile { get;set; }
 
 		[DataMember]
-		public virtual int CAP { get;set; }
+		public virtual string CAP { get;set; }
 
 		[DataMember]
 		public virtual string Provincia { get;set; }
@@ -502,9 +570,10 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public FatturaElettronicaHeaderDto(int _id, FatturaDto _fattura, DatiTrasmissioneDto _datiTrasmissione, CedentePrestatoreDto _cedentePrestatore, CessionarioCommittenteDto _cessionarioCommittente)
+		public FatturaElettronicaHeaderDto(int _id, string _soggettoEmittente, FatturaDto _fattura, DatiTrasmissioneDto _datiTrasmissione, CedentePrestatoreDto _cedentePrestatore, CessionarioCommittenteDto _cessionarioCommittente)
 		{
 			this.Id = _id;
+			this.SoggettoEmittente = _soggettoEmittente;
 			this.Fattura = _fattura;
 			this.DatiTrasmissione = _datiTrasmissione;
 			this.CedentePrestatore = _cedentePrestatore;
@@ -516,6 +585,9 @@ namespace WcfService.Dto
 		
 		[DataMember]
 		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual string SoggettoEmittente { get;set; }
 
 		[DataMember]
 		public virtual FatturaDto Fattura { get;set; }
@@ -534,22 +606,22 @@ namespace WcfService.Dto
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(FatturaDto))]
 	[KnownType(typeof(DatiPagamentoDto))]
-	[KnownType(typeof(AllegatiDto))]
 	[KnownType(typeof(DatiGeneraliDto))]
+	[KnownType(typeof(DatiBeniServiziDto))]
 	public partial class FatturaElettronicaBodyDto : IDtoWithKey
 	{
 		public FatturaElettronicaBodyDto()
 		{
 		}
 		
-		public FatturaElettronicaBodyDto(int _id, int _fatturaId, FatturaDto _fattura, IList<DatiPagamentoDto> _datiPagamentos, IList<AllegatiDto> _allegatis, DatiGeneraliDto _datiGenerali)
+		public FatturaElettronicaBodyDto(int _id, int _fatturaId, FatturaDto _fattura, IList<DatiPagamentoDto> _datiPagamentos, DatiGeneraliDto _datiGenerali, DatiBeniServiziDto _datiBeniServizi)
 		{
 			this.Id = _id;
 			this.FatturaId = _fatturaId;
 			this.Fattura = _fattura;
 			this.DatiPagamentos = _datiPagamentos;
-			this.Allegatis = _allegatis;
 			this.DatiGenerali = _datiGenerali;
+			this.DatiBeniServizi = _datiBeniServizi;
 		}
 		
 		[DataMember]
@@ -568,24 +640,23 @@ namespace WcfService.Dto
 		public virtual IList<DatiPagamentoDto> DatiPagamentos { get;set; }
 
 		[DataMember]
-		public virtual IList<AllegatiDto> Allegatis { get;set; }
+		public virtual DatiGeneraliDto DatiGenerali { get;set; }
 
 		[DataMember]
-		public virtual DatiGeneraliDto DatiGenerali { get;set; }
+		public virtual DatiBeniServiziDto DatiBeniServizi { get;set; }
 
 	}
 	
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(FatturaElettronicaHeaderDto))]
 	[KnownType(typeof(IdFiscaleDto))]
-	[KnownType(typeof(ContattiDto))]
 	public partial class DatiTrasmissioneDto : IDtoWithKey
 	{
 		public DatiTrasmissioneDto()
 		{
 		}
 		
-		public DatiTrasmissioneDto(int _id, string _progressivoInvio, string _formatoTrasmissione, string _codiceDestinatario, FatturaElettronicaHeaderDto _fatturaElettronicaHeader, IList<IdFiscaleDto> _idFiscales, IList<ContattiDto> _contattis)
+		public DatiTrasmissioneDto(int _id, string _progressivoInvio, string _formatoTrasmissione, string _codiceDestinatario, FatturaElettronicaHeaderDto _fatturaElettronicaHeader, IList<IdFiscaleDto> _idFiscales)
 		{
 			this.Id = _id;
 			this.ProgressivoInvio = _progressivoInvio;
@@ -593,7 +664,6 @@ namespace WcfService.Dto
 			this.CodiceDestinatario = _codiceDestinatario;
 			this.FatturaElettronicaHeader = _fatturaElettronicaHeader;
 			this.IdFiscales = _idFiscales;
-			this.Contattis = _contattis;
 		}
 		
 		[DataMember]
@@ -617,33 +687,29 @@ namespace WcfService.Dto
 		[DataMember]
 		public virtual IList<IdFiscaleDto> IdFiscales { get;set; }
 
-		[DataMember]
-		public virtual IList<ContattiDto> Contattis { get;set; }
-
 	}
 	
 	[DataContract(IsReference = true)]
-	[KnownType(typeof(DatiTrasmissioneDto))]
 	[KnownType(typeof(DatiAnagraficiCedenteDto))]
 	[KnownType(typeof(DatiAnagraficiCessionarioDto))]
+	[KnownType(typeof(DatiTrasmissioneDto))]
 	public partial class IdFiscaleDto : IDtoWithKey
 	{
 		public IdFiscaleDto()
 		{
 		}
 		
-		public IdFiscaleDto(int _id, string _idPaese, string _idCodice, int _idTrasmittente, int _idFiscaleIVA, int _datiAnagraficiCedenteId, int _datiAnagraficiCessionarioId, DatiTrasmissioneDto _datiTrasmissione, DatiAnagraficiCedenteDto _datiAnagraficiCedente, DatiAnagraficiCessionarioDto _datiAnagraficiCessionario)
+		public IdFiscaleDto(int _id, string _idPaese, string _idCodice, int _datiTrasmissioneId, int _datiAnagraficiCedenteId, int _datiAnagraficiCessionarioId, DatiAnagraficiCedenteDto _datiAnagraficiCedente, DatiAnagraficiCessionarioDto _datiAnagraficiCessionario, DatiTrasmissioneDto _datiTrasmissione)
 		{
 			this.Id = _id;
 			this.IdPaese = _idPaese;
 			this.IdCodice = _idCodice;
-			this.IdTrasmittente = _idTrasmittente;
-			this.IdFiscaleIVA = _idFiscaleIVA;
+			this.DatiTrasmissioneId = _datiTrasmissioneId;
 			this.DatiAnagraficiCedenteId = _datiAnagraficiCedenteId;
 			this.DatiAnagraficiCessionarioId = _datiAnagraficiCessionarioId;
-			this.DatiTrasmissione = _datiTrasmissione;
 			this.DatiAnagraficiCedente = _datiAnagraficiCedente;
 			this.DatiAnagraficiCessionario = _datiAnagraficiCessionario;
+			this.DatiTrasmissione = _datiTrasmissione;
 		}
 		
 		[DataMember]
@@ -659,10 +725,7 @@ namespace WcfService.Dto
 		public virtual string IdCodice { get;set; }
 
 		[DataMember]
-		public virtual int IdTrasmittente { get;set; }
-
-		[DataMember]
-		public virtual int IdFiscaleIVA { get;set; }
+		public virtual int DatiTrasmissioneId { get;set; }
 
 		[DataMember]
 		public virtual int DatiAnagraficiCedenteId { get;set; }
@@ -671,65 +734,18 @@ namespace WcfService.Dto
 		public virtual int DatiAnagraficiCessionarioId { get;set; }
 
 		[DataMember]
-		public virtual DatiTrasmissioneDto DatiTrasmissione { get;set; }
-
-		[DataMember]
 		public virtual DatiAnagraficiCedenteDto DatiAnagraficiCedente { get;set; }
 
 		[DataMember]
 		public virtual DatiAnagraficiCessionarioDto DatiAnagraficiCessionario { get;set; }
 
-	}
-	
-	[DataContract(IsReference = true)]
-	[KnownType(typeof(DatiTrasmissioneDto))]
-	[KnownType(typeof(CedentePrestatoreDto))]
-	public partial class ContattiDto : IDtoWithKey
-	{
-		public ContattiDto()
-		{
-		}
-		
-		public ContattiDto(int _id, string _telefono, string _email, int _trasmittenteId, int _cedentePrestatoreId, DatiTrasmissioneDto _datiTrasmissione, CedentePrestatoreDto _cedentePrestatore)
-		{
-			this.Id = _id;
-			this.Telefono = _telefono;
-			this.Email = _email;
-			this.TrasmittenteId = _trasmittenteId;
-			this.CedentePrestatoreId = _cedentePrestatoreId;
-			this.DatiTrasmissione = _datiTrasmissione;
-			this.CedentePrestatore = _cedentePrestatore;
-		}
-		
-		[DataMember]
-		public virtual string DtoKey { get; set; }
-		
-		[DataMember]
-		public virtual int Id { get;set; }
-
-		[DataMember]
-		public virtual string Telefono { get;set; }
-
-		[DataMember]
-		public virtual string Email { get;set; }
-
-		[DataMember]
-		public virtual int TrasmittenteId { get;set; }
-
-		[DataMember]
-		public virtual int CedentePrestatoreId { get;set; }
-
 		[DataMember]
 		public virtual DatiTrasmissioneDto DatiTrasmissione { get;set; }
-
-		[DataMember]
-		public virtual CedentePrestatoreDto CedentePrestatore { get;set; }
 
 	}
 	
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(FatturaElettronicaHeaderDto))]
-	[KnownType(typeof(ContattiDto))]
 	[KnownType(typeof(SedeDto))]
 	[KnownType(typeof(DatiAnagraficiCedenteDto))]
 	public partial class CedentePrestatoreDto : IDtoWithKey
@@ -738,12 +754,11 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public CedentePrestatoreDto(int _id, string _riferimentoAmministrazione, FatturaElettronicaHeaderDto _fatturaElettronicaHeader, IList<ContattiDto> _contattis, IList<SedeDto> _sedes, DatiAnagraficiCedenteDto _datiAnagraficiCedente)
+		public CedentePrestatoreDto(int _id, string _riferimentoAmministrazione, FatturaElettronicaHeaderDto _fatturaElettronicaHeader, IList<SedeDto> _sedes, DatiAnagraficiCedenteDto _datiAnagraficiCedente)
 		{
 			this.Id = _id;
 			this.RiferimentoAmministrazione = _riferimentoAmministrazione;
 			this.FatturaElettronicaHeader = _fatturaElettronicaHeader;
-			this.Contattis = _contattis;
 			this.Sedes = _sedes;
 			this.DatiAnagraficiCedente = _datiAnagraficiCedente;
 		}
@@ -759,9 +774,6 @@ namespace WcfService.Dto
 
 		[DataMember]
 		public virtual FatturaElettronicaHeaderDto FatturaElettronicaHeader { get;set; }
-
-		[DataMember]
-		public virtual IList<ContattiDto> Contattis { get;set; }
 
 		[DataMember]
 		public virtual IList<SedeDto> Sedes { get;set; }
@@ -889,61 +901,17 @@ namespace WcfService.Dto
 	}
 	
 	[DataContract(IsReference = true)]
-	public partial class IndirizzoDto : IDtoWithKey
-	{
-		public IndirizzoDto()
-		{
-		}
-		
-		public IndirizzoDto(int _id, string __indirizzo, string _numeroCivico, string _cAP, string _comune, string _provincia, string _nazione)
-		{
-			this.Id = _id;
-			this._Indirizzo = __indirizzo;
-			this.NumeroCivico = _numeroCivico;
-			this.CAP = _cAP;
-			this.Comune = _comune;
-			this.Provincia = _provincia;
-			this.Nazione = _nazione;
-		}
-		
-		[DataMember]
-		public virtual string DtoKey { get; set; }
-		
-		[DataMember]
-		public virtual int Id { get;set; }
-
-		[DataMember]
-		public virtual string _Indirizzo { get;set; }
-
-		[DataMember]
-		public virtual string NumeroCivico { get;set; }
-
-		[DataMember]
-		public virtual string CAP { get;set; }
-
-		[DataMember]
-		public virtual string Comune { get;set; }
-
-		[DataMember]
-		public virtual string Provincia { get;set; }
-
-		[DataMember]
-		public virtual string Nazione { get;set; }
-
-	}
-	
-	[DataContract(IsReference = true)]
-	[KnownType(typeof(AziendaDto))]
+	[KnownType(typeof(StudioProfessionaleDto))]
 	public partial class AccountDto : IDtoWithKey
 	{
 		public AccountDto()
 		{
 		}
 		
-		public AccountDto(int _id, int _aziendaId, string _username, string _password, string _nickname, string _ruolo, string _note, DateTime? _creazione, bool? _abilitato, AziendaDto _azienda)
+		public AccountDto(int _id, int _studioProfessionaleId, string _username, string _password, string _nickname, string _ruolo, string _note, DateTime? _creazione, bool? _abilitato, StudioProfessionaleDto _studioProfessionale)
 		{
 			this.Id = _id;
-			this.AziendaId = _aziendaId;
+			this.StudioProfessionaleId = _studioProfessionaleId;
 			this.Username = _username;
 			this.Password = _password;
 			this.Nickname = _nickname;
@@ -951,7 +919,7 @@ namespace WcfService.Dto
 			this.Note = _note;
 			this.Creazione = _creazione;
 			this.Abilitato = _abilitato;
-			this.Azienda = _azienda;
+			this.StudioProfessionale = _studioProfessionale;
 		}
 		
 		[DataMember]
@@ -961,7 +929,7 @@ namespace WcfService.Dto
 		public virtual int Id { get;set; }
 
 		[DataMember]
-		public virtual int AziendaId { get;set; }
+		public virtual int StudioProfessionaleId { get;set; }
 
 		[DataMember]
 		public virtual string Username { get;set; }
@@ -985,7 +953,7 @@ namespace WcfService.Dto
 		public virtual bool? Abilitato { get;set; }
 
 		[DataMember]
-		public virtual AziendaDto Azienda { get;set; }
+		public virtual StudioProfessionaleDto StudioProfessionale { get;set; }
 
 	}
 	
@@ -1027,19 +995,17 @@ namespace WcfService.Dto
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(FatturaElettronicaBodyDto))]
 	[KnownType(typeof(DatiGeneraliDocumentoDto))]
-	[KnownType(typeof(DatiBeniServiziDto))]
 	public partial class DatiGeneraliDto : IDtoWithKey
 	{
 		public DatiGeneraliDto()
 		{
 		}
 		
-		public DatiGeneraliDto(int _id, FatturaElettronicaBodyDto _fatturaElettronicaBody, DatiGeneraliDocumentoDto _datiGeneraliDocumento, DatiBeniServiziDto _datiBeniServizi)
+		public DatiGeneraliDto(int _id, FatturaElettronicaBodyDto _fatturaElettronicaBody, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
 		{
 			this.Id = _id;
 			this.FatturaElettronicaBody = _fatturaElettronicaBody;
 			this.DatiGeneraliDocumento = _datiGeneraliDocumento;
-			this.DatiBeniServizi = _datiBeniServizi;
 		}
 		
 		[DataMember]
@@ -1054,32 +1020,35 @@ namespace WcfService.Dto
 		[DataMember]
 		public virtual DatiGeneraliDocumentoDto DatiGeneraliDocumento { get;set; }
 
-		[DataMember]
-		public virtual DatiBeniServiziDto DatiBeniServizi { get;set; }
-
 	}
 	
 	[DataContract(IsReference = true)]
 	[KnownType(typeof(DatiGeneraliDto))]
+	[KnownType(typeof(DatiCassaPrevidenzialeDto))]
+	[KnownType(typeof(ScontoMaggiorazioneDto))]
 	[KnownType(typeof(DatiRitenutaDto))]
+	[KnownType(typeof(DatiBolloDto))]
 	public partial class DatiGeneraliDocumentoDto : IDtoWithKey
 	{
 		public DatiGeneraliDocumentoDto()
 		{
 		}
 		
-		public DatiGeneraliDocumentoDto(int _id, string _tipoDocumento, string _divisa, DateTime _data, string _numero, decimal _importotTotaleDocumento, decimal _arrotondamento, string _causale, DatiGeneraliDto _datiGenerali, DatiRitenutaDto _datiRitenuta)
+		public DatiGeneraliDocumentoDto(int _id, string _tipoDocumento, string _divisa, DateTime _data, string _numero, decimal _importoTotaleDocumento, decimal _arrotondamento, string _causale, DatiGeneraliDto _datiGenerali, IList<DatiCassaPrevidenzialeDto> _datiCassaPrevidenziales, IList<ScontoMaggiorazioneDto> _scontoMaggioraziones, DatiRitenutaDto _datiRitenuta, DatiBolloDto _datiBollo)
 		{
 			this.Id = _id;
 			this.TipoDocumento = _tipoDocumento;
 			this.Divisa = _divisa;
 			this.Data = _data;
 			this.Numero = _numero;
-			this.ImportotTotaleDocumento = _importotTotaleDocumento;
+			this.ImportoTotaleDocumento = _importoTotaleDocumento;
 			this.Arrotondamento = _arrotondamento;
 			this.Causale = _causale;
 			this.DatiGenerali = _datiGenerali;
+			this.DatiCassaPrevidenziales = _datiCassaPrevidenziales;
+			this.ScontoMaggioraziones = _scontoMaggioraziones;
 			this.DatiRitenuta = _datiRitenuta;
+			this.DatiBollo = _datiBollo;
 		}
 		
 		[DataMember]
@@ -1101,7 +1070,7 @@ namespace WcfService.Dto
 		public virtual string Numero { get;set; }
 
 		[DataMember]
-		public virtual decimal ImportotTotaleDocumento { get;set; }
+		public virtual decimal ImportoTotaleDocumento { get;set; }
 
 		[DataMember]
 		public virtual decimal Arrotondamento { get;set; }
@@ -1113,7 +1082,16 @@ namespace WcfService.Dto
 		public virtual DatiGeneraliDto DatiGenerali { get;set; }
 
 		[DataMember]
+		public virtual IList<DatiCassaPrevidenzialeDto> DatiCassaPrevidenziales { get;set; }
+
+		[DataMember]
+		public virtual IList<ScontoMaggiorazioneDto> ScontoMaggioraziones { get;set; }
+
+		[DataMember]
 		public virtual DatiRitenutaDto DatiRitenuta { get;set; }
+
+		[DataMember]
+		public virtual DatiBolloDto DatiBollo { get;set; }
 
 	}
 	
@@ -1125,13 +1103,13 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public DatiRitenutaDto(int _id, string _tipoRitenuta, decimal _importoRitenuta, decimal _aliquotaRitenuta, string _causalePAgamento, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
+		public DatiRitenutaDto(int _id, string _tipoRitenuta, decimal _importoRitenuta, decimal _aliquotaRitenuta, string _causalePagamento, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
 		{
 			this.Id = _id;
 			this.TipoRitenuta = _tipoRitenuta;
 			this.ImportoRitenuta = _importoRitenuta;
 			this.AliquotaRitenuta = _aliquotaRitenuta;
-			this.CausalePAgamento = _causalePAgamento;
+			this.CausalePagamento = _causalePagamento;
 			this.DatiGeneraliDocumento = _datiGeneraliDocumento;
 		}
 		
@@ -1151,7 +1129,7 @@ namespace WcfService.Dto
 		public virtual decimal AliquotaRitenuta { get;set; }
 
 		[DataMember]
-		public virtual string CausalePAgamento { get;set; }
+		public virtual string CausalePagamento { get;set; }
 
 		[DataMember]
 		public virtual DatiGeneraliDocumentoDto DatiGeneraliDocumento { get;set; }
@@ -1159,7 +1137,7 @@ namespace WcfService.Dto
 	}
 	
 	[DataContract(IsReference = true)]
-	[KnownType(typeof(DatiGeneraliDto))]
+	[KnownType(typeof(FatturaElettronicaBodyDto))]
 	[KnownType(typeof(DettaglioLineeDto))]
 	[KnownType(typeof(DatiRiepilogoDto))]
 	public partial class DatiBeniServiziDto : IDtoWithKey
@@ -1168,10 +1146,10 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public DatiBeniServiziDto(int _id, DatiGeneraliDto _datiGenerali, IList<DettaglioLineeDto> _dettaglioLinees, IList<DatiRiepilogoDto> _datiRiepilogos)
+		public DatiBeniServiziDto(int _id, FatturaElettronicaBodyDto _fatturaElettronicaBody, IList<DettaglioLineeDto> _dettaglioLinees, IList<DatiRiepilogoDto> _datiRiepilogos)
 		{
 			this.Id = _id;
-			this.DatiGenerali = _datiGenerali;
+			this.FatturaElettronicaBody = _fatturaElettronicaBody;
 			this.DettaglioLinees = _dettaglioLinees;
 			this.DatiRiepilogos = _datiRiepilogos;
 		}
@@ -1183,7 +1161,7 @@ namespace WcfService.Dto
 		public virtual int Id { get;set; }
 
 		[DataMember]
-		public virtual DatiGeneraliDto DatiGenerali { get;set; }
+		public virtual FatturaElettronicaBodyDto FatturaElettronicaBody { get;set; }
 
 		[DataMember]
 		public virtual IList<DettaglioLineeDto> DettaglioLinees { get;set; }
@@ -1201,7 +1179,7 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public DettaglioLineeDto(int _id, int _datiBeniServiziId, string _numeroLinea, string _descrizione, decimal _prezzoUnitario, decimal _prezzoTotale, decimal _aliquotaIVA, string _ritenuta, DateTime _dataInizioPeriodo, DateTime _dataFinePeriodo, DatiBeniServiziDto _datiBeniServizi)
+		public DettaglioLineeDto(int _id, int _datiBeniServiziId, string _numeroLinea, string _descrizione, decimal _prezzoUnitario, decimal _prezzoTotale, decimal _aliquotaIVA, string _ritenuta, DatiBeniServiziDto _datiBeniServizi)
 		{
 			this.Id = _id;
 			this.DatiBeniServiziId = _datiBeniServiziId;
@@ -1211,8 +1189,6 @@ namespace WcfService.Dto
 			this.PrezzoTotale = _prezzoTotale;
 			this.AliquotaIVA = _aliquotaIVA;
 			this.Ritenuta = _ritenuta;
-			this.DataInizioPeriodo = _dataInizioPeriodo;
-			this.DataFinePeriodo = _dataFinePeriodo;
 			this.DatiBeniServizi = _datiBeniServizi;
 		}
 		
@@ -1242,12 +1218,6 @@ namespace WcfService.Dto
 
 		[DataMember]
 		public virtual string Ritenuta { get;set; }
-
-		[DataMember]
-		public virtual DateTime DataInizioPeriodo { get;set; }
-
-		[DataMember]
-		public virtual DateTime DataFinePeriodo { get;set; }
 
 		[DataMember]
 		public virtual DatiBeniServiziDto DatiBeniServizi { get;set; }
@@ -1341,7 +1311,7 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public DettaglioPagamentoDto(int _id, int _datiPagamentoId, string _beneficiario, string _modalitaPagamento, DateTime _dataRiferimentoTerminiPagamento, int _giorniTerminiPagamento, decimal _dataScadenzaPagamento, string _importoPagamento, string _istitutoFinanziario, string _iBAN, string _aBI, string _cAB, string _bIC, DateTime _dataDecorrenzaPenale, string _codUfficioPostale, string _cognomeQuietanzante, string _nomeQuietanzante, string _cFQuietanzante, string _titoloQuietanzante, decimal _scontoPagamentoAnticipato, DateTime _dataLimitePagamentoAnticipato, decimal _penalitaPagamentiRitardati, string _codicePagamento, DatiPagamentoDto _datiPagamento)
+		public DettaglioPagamentoDto(int _id, int _datiPagamentoId, string _beneficiario, string _modalitaPagamento, DateTime _dataRiferimentoTerminiPagamento, int _giorniTerminiPagamento, decimal _dataScadenzaPagamento, string _importoPagamento, string _iBAN, DatiPagamentoDto _datiPagamento)
 		{
 			this.Id = _id;
 			this.DatiPagamentoId = _datiPagamentoId;
@@ -1351,21 +1321,7 @@ namespace WcfService.Dto
 			this.GiorniTerminiPagamento = _giorniTerminiPagamento;
 			this.DataScadenzaPagamento = _dataScadenzaPagamento;
 			this.ImportoPagamento = _importoPagamento;
-			this.IstitutoFinanziario = _istitutoFinanziario;
 			this.IBAN = _iBAN;
-			this.ABI = _aBI;
-			this.CAB = _cAB;
-			this.BIC = _bIC;
-			this.DataDecorrenzaPenale = _dataDecorrenzaPenale;
-			this.CodUfficioPostale = _codUfficioPostale;
-			this.CognomeQuietanzante = _cognomeQuietanzante;
-			this.NomeQuietanzante = _nomeQuietanzante;
-			this.CFQuietanzante = _cFQuietanzante;
-			this.TitoloQuietanzante = _titoloQuietanzante;
-			this.ScontoPagamentoAnticipato = _scontoPagamentoAnticipato;
-			this.DataLimitePagamentoAnticipato = _dataLimitePagamentoAnticipato;
-			this.PenalitaPagamentiRitardati = _penalitaPagamentiRitardati;
-			this.CodicePagamento = _codicePagamento;
 			this.DatiPagamento = _datiPagamento;
 		}
 		
@@ -1397,101 +1353,10 @@ namespace WcfService.Dto
 		public virtual string ImportoPagamento { get;set; }
 
 		[DataMember]
-		public virtual string IstitutoFinanziario { get;set; }
-
-		[DataMember]
 		public virtual string IBAN { get;set; }
 
 		[DataMember]
-		public virtual string ABI { get;set; }
-
-		[DataMember]
-		public virtual string CAB { get;set; }
-
-		[DataMember]
-		public virtual string BIC { get;set; }
-
-		[DataMember]
-		public virtual DateTime DataDecorrenzaPenale { get;set; }
-
-		[DataMember]
-		public virtual string CodUfficioPostale { get;set; }
-
-		[DataMember]
-		public virtual string CognomeQuietanzante { get;set; }
-
-		[DataMember]
-		public virtual string NomeQuietanzante { get;set; }
-
-		[DataMember]
-		public virtual string CFQuietanzante { get;set; }
-
-		[DataMember]
-		public virtual string TitoloQuietanzante { get;set; }
-
-		[DataMember]
-		public virtual decimal ScontoPagamentoAnticipato { get;set; }
-
-		[DataMember]
-		public virtual DateTime DataLimitePagamentoAnticipato { get;set; }
-
-		[DataMember]
-		public virtual decimal PenalitaPagamentiRitardati { get;set; }
-
-		[DataMember]
-		public virtual string CodicePagamento { get;set; }
-
-		[DataMember]
 		public virtual DatiPagamentoDto DatiPagamento { get;set; }
-
-	}
-	
-	[DataContract(IsReference = true)]
-	[KnownType(typeof(FatturaElettronicaBodyDto))]
-	public partial class AllegatiDto : IDtoWithKey
-	{
-		public AllegatiDto()
-		{
-		}
-		
-		public AllegatiDto(int _id, string _nomeAttachment, string _algoritmoCompressione, string _formatoAttachment, string _descrizioneAttachment, Object _attachment, int _fatturaElettronicaBodyId, FatturaElettronicaBodyDto _fatturaElettronicaBody)
-		{
-			this.Id = _id;
-			this.NomeAttachment = _nomeAttachment;
-			this.AlgoritmoCompressione = _algoritmoCompressione;
-			this.FormatoAttachment = _formatoAttachment;
-			this.DescrizioneAttachment = _descrizioneAttachment;
-			this.Attachment = _attachment;
-			this.FatturaElettronicaBodyId = _fatturaElettronicaBodyId;
-			this.FatturaElettronicaBody = _fatturaElettronicaBody;
-		}
-		
-		[DataMember]
-		public virtual string DtoKey { get; set; }
-		
-		[DataMember]
-		public virtual int Id { get;set; }
-
-		[DataMember]
-		public virtual string NomeAttachment { get;set; }
-
-		[DataMember]
-		public virtual string AlgoritmoCompressione { get;set; }
-
-		[DataMember]
-		public virtual string FormatoAttachment { get;set; }
-
-		[DataMember]
-		public virtual string DescrizioneAttachment { get;set; }
-
-		[DataMember]
-		public virtual Object Attachment { get;set; }
-
-		[DataMember]
-		public virtual int FatturaElettronicaBodyId { get;set; }
-
-		[DataMember]
-		public virtual FatturaElettronicaBodyDto FatturaElettronicaBody { get;set; }
 
 	}
 	
@@ -1504,11 +1369,17 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public SedeDto(int _id, int _cedentePrestatoreId, int _cessionarioCommittenteId, CedentePrestatoreDto _cedentePrestatore, CessionarioCommittenteDto _cessionarioCommittente)
+		public SedeDto(int _id, int _cedentePrestatoreId, int _cessionarioCommittenteId, string _indirizzo, string _numeroCivico, string _cAP, string _comune, string _provincia, string _nazione, CedentePrestatoreDto _cedentePrestatore, CessionarioCommittenteDto _cessionarioCommittente)
 		{
 			this.Id = _id;
 			this.CedentePrestatoreId = _cedentePrestatoreId;
 			this.CessionarioCommittenteId = _cessionarioCommittenteId;
+			this.Indirizzo = _indirizzo;
+			this.NumeroCivico = _numeroCivico;
+			this.CAP = _cAP;
+			this.Comune = _comune;
+			this.Provincia = _provincia;
+			this.Nazione = _nazione;
 			this.CedentePrestatore = _cedentePrestatore;
 			this.CessionarioCommittente = _cessionarioCommittente;
 		}
@@ -1524,6 +1395,24 @@ namespace WcfService.Dto
 
 		[DataMember]
 		public virtual int CessionarioCommittenteId { get;set; }
+
+		[DataMember]
+		public virtual string Indirizzo { get;set; }
+
+		[DataMember]
+		public virtual string NumeroCivico { get;set; }
+
+		[DataMember]
+		public virtual string CAP { get;set; }
+
+		[DataMember]
+		public virtual string Comune { get;set; }
+
+		[DataMember]
+		public virtual string Provincia { get;set; }
+
+		[DataMember]
+		public virtual string Nazione { get;set; }
 
 		[DataMember]
 		public virtual CedentePrestatoreDto CedentePrestatore { get;set; }
@@ -1569,6 +1458,141 @@ namespace WcfService.Dto
 
 		[DataMember]
 		public virtual IList<AnagraficaDto> Anagraficas { get;set; }
+
+	}
+	
+	[DataContract(IsReference = true)]
+	[KnownType(typeof(DatiGeneraliDocumentoDto))]
+	public partial class DatiBolloDto : IDtoWithKey
+	{
+		public DatiBolloDto()
+		{
+		}
+		
+		public DatiBolloDto(int _id, string _bolloVirtuale, decimal _importoBollo, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
+		{
+			this.Id = _id;
+			this.BolloVirtuale = _bolloVirtuale;
+			this.ImportoBollo = _importoBollo;
+			this.DatiGeneraliDocumento = _datiGeneraliDocumento;
+		}
+		
+		[DataMember]
+		public virtual string DtoKey { get; set; }
+		
+		[DataMember]
+		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual string BolloVirtuale { get;set; }
+
+		[DataMember]
+		public virtual decimal ImportoBollo { get;set; }
+
+		[DataMember]
+		public virtual DatiGeneraliDocumentoDto DatiGeneraliDocumento { get;set; }
+
+	}
+	
+	[DataContract(IsReference = true)]
+	[KnownType(typeof(DatiGeneraliDocumentoDto))]
+	public partial class DatiCassaPrevidenzialeDto : IDtoWithKey
+	{
+		public DatiCassaPrevidenzialeDto()
+		{
+		}
+		
+		public DatiCassaPrevidenzialeDto(int _id, int _datiGeneraliDocumentoId, string _tipoCassa, decimal _alCassa, decimal _importoContributoCassa, decimal _imponibileCassa, decimal _aliquotaIVA, string _ritenuta, string _natura, string _riferimentoAmministrazione, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
+		{
+			this.Id = _id;
+			this.DatiGeneraliDocumentoId = _datiGeneraliDocumentoId;
+			this.TipoCassa = _tipoCassa;
+			this.AlCassa = _alCassa;
+			this.ImportoContributoCassa = _importoContributoCassa;
+			this.ImponibileCassa = _imponibileCassa;
+			this.AliquotaIVA = _aliquotaIVA;
+			this.Ritenuta = _ritenuta;
+			this.Natura = _natura;
+			this.RiferimentoAmministrazione = _riferimentoAmministrazione;
+			this.DatiGeneraliDocumento = _datiGeneraliDocumento;
+		}
+		
+		[DataMember]
+		public virtual string DtoKey { get; set; }
+		
+		[DataMember]
+		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual int DatiGeneraliDocumentoId { get;set; }
+
+		[DataMember]
+		public virtual string TipoCassa { get;set; }
+
+		[DataMember]
+		public virtual decimal AlCassa { get;set; }
+
+		[DataMember]
+		public virtual decimal ImportoContributoCassa { get;set; }
+
+		[DataMember]
+		public virtual decimal ImponibileCassa { get;set; }
+
+		[DataMember]
+		public virtual decimal AliquotaIVA { get;set; }
+
+		[DataMember]
+		public virtual string Ritenuta { get;set; }
+
+		[DataMember]
+		public virtual string Natura { get;set; }
+
+		[DataMember]
+		public virtual string RiferimentoAmministrazione { get;set; }
+
+		[DataMember]
+		public virtual DatiGeneraliDocumentoDto DatiGeneraliDocumento { get;set; }
+
+	}
+	
+	[DataContract(IsReference = true)]
+	[KnownType(typeof(DatiGeneraliDocumentoDto))]
+	public partial class ScontoMaggiorazioneDto : IDtoWithKey
+	{
+		public ScontoMaggiorazioneDto()
+		{
+		}
+		
+		public ScontoMaggiorazioneDto(int _id, int _datiGeneraliDocumentoId, string _tipo, decimal _percentuale, decimal _importo, DatiGeneraliDocumentoDto _datiGeneraliDocumento)
+		{
+			this.Id = _id;
+			this.DatiGeneraliDocumentoId = _datiGeneraliDocumentoId;
+			this.Tipo = _tipo;
+			this.Percentuale = _percentuale;
+			this.Importo = _importo;
+			this.DatiGeneraliDocumento = _datiGeneraliDocumento;
+		}
+		
+		[DataMember]
+		public virtual string DtoKey { get; set; }
+		
+		[DataMember]
+		public virtual int Id { get;set; }
+
+		[DataMember]
+		public virtual int DatiGeneraliDocumentoId { get;set; }
+
+		[DataMember]
+		public virtual string Tipo { get;set; }
+
+		[DataMember]
+		public virtual decimal Percentuale { get;set; }
+
+		[DataMember]
+		public virtual decimal Importo { get;set; }
+
+		[DataMember]
+		public virtual DatiGeneraliDocumentoDto DatiGeneraliDocumento { get;set; }
 
 	}
 	

@@ -157,7 +157,7 @@ namespace Web.GUI.Account
             {
                 var supervisorAccount = new AccountDto();
                 supervisorAccount.Abilitato = true;
-                supervisorAccount.AziendaId = -1;
+                supervisorAccount.StudioProfessionaleId = -1;
                 supervisorAccount.Creazione = DateTime.Now;
                 supervisorAccount.Id = -1;
                 supervisorAccount.Nickname = "supervisor";

@@ -72,15 +72,6 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<Allegati> _allegatis = new List<Allegati>();
-		public virtual IList<Allegati> Allegatis
-		{
-			get
-			{
-				return this._allegatis;
-			}
-		}
-		
 		private DatiGenerali _datiGenerali;
 		public virtual DatiGenerali DatiGenerali
 		{
@@ -91,6 +82,19 @@ namespace DataLayer
 			set
 			{
 				this._datiGenerali = value;
+			}
+		}
+		
+		private DatiBeniServizi _datiBeniServizi;
+		public virtual DatiBeniServizi DatiBeniServizi
+		{
+			get
+			{
+				return this._datiBeniServizi;
+			}
+			set
+			{
+				this._datiBeniServizi = value;
 			}
 		}
 		

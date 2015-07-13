@@ -1,8 +1,8 @@
 using System.Drawing;
 
-namespace Web.GUI.Azienda
+namespace Web.GUI.AnagraficaCliente
 {
-    partial class AziendaView
+    partial class AnagraficaClienteView
 	{
 	        /// <summary>
 	        /// Required designer variable.

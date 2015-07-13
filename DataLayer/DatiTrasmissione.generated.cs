@@ -98,15 +98,6 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<Contatti> _contattis = new List<Contatti>();
-		public virtual IList<Contatti> Contattis
-		{
-			get
-			{
-				return this._contattis;
-			}
-		}
-		
 	}
 }
 #pragma warning restore 1591

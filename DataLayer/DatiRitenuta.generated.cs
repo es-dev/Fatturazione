@@ -76,16 +76,16 @@ namespace DataLayer
 			}
 		}
 		
-		private string _causalePAgamento;
-		public virtual string CausalePAgamento
+		private string _causalePagamento;
+		public virtual string CausalePagamento
 		{
 			get
 			{
-				return this._causalePAgamento;
+				return this._causalePagamento;
 			}
 			set
 			{
-				this._causalePAgamento = value;
+				this._causalePagamento = value;
 			}
 		}
 		

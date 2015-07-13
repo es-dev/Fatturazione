@@ -7,11 +7,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 
-namespace Web.GUI.Azienda
+namespace Web.GUI.StudioProfessionale
 {
-	public partial class AziendaView : TemplateView
+	public partial class StudioProfessionaleView : TemplateView
 	{
-        public AziendaView()
+        public StudioProfessionaleView()
 		{ 
 			InitializeComponent();
 		}
@@ -20,7 +20,7 @@ namespace Web.GUI.Azienda
         {
             try
             {
-                ViewModel = new AziendaViewModel();
+                ViewModel = new StudioProfessionaleViewModel();
             }
             catch (Exception ex)
             {

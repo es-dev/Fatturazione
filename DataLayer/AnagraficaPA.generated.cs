@@ -102,8 +102,8 @@ namespace DataLayer
 			}
 		}
 		
-		private int _cAP;
-		public virtual int CAP
+		private string _cAP;
+		public virtual string CAP
 		{
 			get
 			{

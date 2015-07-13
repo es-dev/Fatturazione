@@ -174,14 +174,14 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IAziendaService : IService<AziendaDto, Azienda>
+	public partial interface IStudioProfessionaleService : IService<StudioProfessionaleDto, StudioProfessionale>
 	{
 	
 	}
 	
-	public partial class AziendaService : Service<AziendaDto, Azienda>, IAziendaService
+	public partial class StudioProfessionaleService : Service<StudioProfessionaleDto, StudioProfessionale>, IStudioProfessionaleService
 	{
-	    public AziendaService(IAziendaAssembler assembler, IAziendaRepository repository)
+	    public StudioProfessionaleService(IStudioProfessionaleAssembler assembler, IStudioProfessionaleRepository repository)
 	        : base(assembler, repository)
 	    {
 	
@@ -342,20 +342,6 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IContattiService : IService<ContattiDto, Contatti>
-	{
-	
-	}
-	
-	public partial class ContattiService : Service<ContattiDto, Contatti>, IContattiService
-	{
-	    public ContattiService(IContattiAssembler assembler, IContattiRepository repository)
-	        : base(assembler, repository)
-	    {
-	
-	    }
-	}
-	
 	public partial interface ICedentePrestatoreService : IService<CedentePrestatoreDto, CedentePrestatore>
 	{
 	
@@ -392,20 +378,6 @@ namespace WcfService.Services
 	public partial class AnagraficaService : Service<AnagraficaDto, Anagrafica>, IAnagraficaService
 	{
 	    public AnagraficaService(IAnagraficaAssembler assembler, IAnagraficaRepository repository)
-	        : base(assembler, repository)
-	    {
-	
-	    }
-	}
-	
-	public partial interface IIndirizzoService : IService<IndirizzoDto, Indirizzo>
-	{
-	
-	}
-	
-	public partial class IndirizzoService : Service<IndirizzoDto, Indirizzo>, IIndirizzoService
-	{
-	    public IndirizzoService(IIndirizzoAssembler assembler, IIndirizzoRepository repository)
 	        : base(assembler, repository)
 	    {
 	
@@ -552,20 +524,6 @@ namespace WcfService.Services
 	    }
 	}
 	
-	public partial interface IAllegatiService : IService<AllegatiDto, Allegati>
-	{
-	
-	}
-	
-	public partial class AllegatiService : Service<AllegatiDto, Allegati>, IAllegatiService
-	{
-	    public AllegatiService(IAllegatiAssembler assembler, IAllegatiRepository repository)
-	        : base(assembler, repository)
-	    {
-	
-	    }
-	}
-	
 	public partial interface ISedeService : IService<SedeDto, Sede>
 	{
 	
@@ -588,6 +546,48 @@ namespace WcfService.Services
 	public partial class DatiAnagraficiCessionarioService : Service<DatiAnagraficiCessionarioDto, DatiAnagraficiCessionario>, IDatiAnagraficiCessionarioService
 	{
 	    public DatiAnagraficiCessionarioService(IDatiAnagraficiCessionarioAssembler assembler, IDatiAnagraficiCessionarioRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiBolloService : IService<DatiBolloDto, DatiBollo>
+	{
+	
+	}
+	
+	public partial class DatiBolloService : Service<DatiBolloDto, DatiBollo>, IDatiBolloService
+	{
+	    public DatiBolloService(IDatiBolloAssembler assembler, IDatiBolloRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IDatiCassaPrevidenzialeService : IService<DatiCassaPrevidenzialeDto, DatiCassaPrevidenziale>
+	{
+	
+	}
+	
+	public partial class DatiCassaPrevidenzialeService : Service<DatiCassaPrevidenzialeDto, DatiCassaPrevidenziale>, IDatiCassaPrevidenzialeService
+	{
+	    public DatiCassaPrevidenzialeService(IDatiCassaPrevidenzialeAssembler assembler, IDatiCassaPrevidenzialeRepository repository)
+	        : base(assembler, repository)
+	    {
+	
+	    }
+	}
+	
+	public partial interface IScontoMaggiorazioneService : IService<ScontoMaggiorazioneDto, ScontoMaggiorazione>
+	{
+	
+	}
+	
+	public partial class ScontoMaggiorazioneService : Service<ScontoMaggiorazioneDto, ScontoMaggiorazione>, IScontoMaggiorazioneService
+	{
+	    public ScontoMaggiorazioneService(IScontoMaggiorazioneAssembler assembler, IScontoMaggiorazioneRepository repository)
 	        : base(assembler, repository)
 	    {
 	

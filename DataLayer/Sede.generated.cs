@@ -22,10 +22,10 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class Sede : Indirizzo
+	public partial class Sede
 	{
 		private int _id;
-		public override int Id
+		public virtual int Id
 		{
 			get
 			{
@@ -60,6 +60,84 @@ namespace DataLayer
 			set
 			{
 				this._cessionarioCommittenteId = value;
+			}
+		}
+		
+		private string _indirizzo;
+		public virtual string Indirizzo
+		{
+			get
+			{
+				return this._indirizzo;
+			}
+			set
+			{
+				this._indirizzo = value;
+			}
+		}
+		
+		private string _numeroCivico;
+		public virtual string NumeroCivico
+		{
+			get
+			{
+				return this._numeroCivico;
+			}
+			set
+			{
+				this._numeroCivico = value;
+			}
+		}
+		
+		private string _cAP;
+		public virtual string CAP
+		{
+			get
+			{
+				return this._cAP;
+			}
+			set
+			{
+				this._cAP = value;
+			}
+		}
+		
+		private string _comune;
+		public virtual string Comune
+		{
+			get
+			{
+				return this._comune;
+			}
+			set
+			{
+				this._comune = value;
+			}
+		}
+		
+		private string _provincia;
+		public virtual string Provincia
+		{
+			get
+			{
+				return this._provincia;
+			}
+			set
+			{
+				this._provincia = value;
+			}
+		}
+		
+		private string _nazione;
+		public virtual string Nazione
+		{
+			get
+			{
+				return this._nazione;
+			}
+			set
+			{
+				this._nazione = value;
 			}
 		}
 		

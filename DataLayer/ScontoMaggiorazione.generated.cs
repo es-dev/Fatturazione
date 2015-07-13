@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class Contatti
+	public partial class ScontoMaggiorazione
 	{
 		private int _id;
 		public virtual int Id
@@ -37,81 +37,68 @@ namespace DataLayer
 			}
 		}
 		
-		private string _telefono;
-		public virtual string Telefono
+		private int _datiGeneraliDocumentoId;
+		public virtual int DatiGeneraliDocumentoId
 		{
 			get
 			{
-				return this._telefono;
+				return this._datiGeneraliDocumentoId;
 			}
 			set
 			{
-				this._telefono = value;
+				this._datiGeneraliDocumentoId = value;
 			}
 		}
 		
-		private string _email;
-		public virtual string Email
+		private string _tipo;
+		public virtual string Tipo
 		{
 			get
 			{
-				return this._email;
+				return this._tipo;
 			}
 			set
 			{
-				this._email = value;
+				this._tipo = value;
 			}
 		}
 		
-		private int _trasmittenteId;
-		public virtual int TrasmittenteId
+		private decimal _percentuale;
+		public virtual decimal Percentuale
 		{
 			get
 			{
-				return this._trasmittenteId;
+				return this._percentuale;
 			}
 			set
 			{
-				this._trasmittenteId = value;
+				this._percentuale = value;
 			}
 		}
 		
-		private int _cedentePrestatoreId;
-		public virtual int CedentePrestatoreId
+		private decimal _importo;
+		public virtual decimal Importo
 		{
 			get
 			{
-				return this._cedentePrestatoreId;
+				return this._importo;
 			}
 			set
 			{
-				this._cedentePrestatoreId = value;
+				this._importo = value;
 			}
 		}
 		
-		private DatiTrasmissione _datiTrasmissione;
-		public virtual DatiTrasmissione DatiTrasmissione
+		private DatiGeneraliDocumento _datiGeneraliDocumento;
+		public virtual DatiGeneraliDocumento DatiGeneraliDocumento
 		{
 			get
 			{
-				return this._datiTrasmissione;
+				return this._datiGeneraliDocumento;
 			}
 			set
 			{
-				this._datiTrasmissione = value;
-			}
-		}
-		
-		private CedentePrestatore _cedentePrestatore;
-		public virtual CedentePrestatore CedentePrestatore
-		{
-			get
-			{
-				return this._cedentePrestatore;
-			}
-			set
-			{
-				this._cedentePrestatore = value;
+				this._datiGeneraliDocumento = value;
 			}
 		}
 		

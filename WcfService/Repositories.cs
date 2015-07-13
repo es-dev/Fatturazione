@@ -67,14 +67,14 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface IAziendaRepository : IRepository<Azienda>
+	public partial interface IStudioProfessionaleRepository : IRepository<StudioProfessionale>
 	{ 
 	
 	}
 	
-	public partial class AziendaRepository : Repository<Azienda>, IAziendaRepository
+	public partial class StudioProfessionaleRepository : Repository<StudioProfessionale>, IStudioProfessionaleRepository
 	{
-	    public AziendaRepository(IEntitiesModelUnitOfWork unitOfWork)
+	    public StudioProfessionaleRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }
@@ -223,19 +223,6 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface IContattiRepository : IRepository<Contatti>
-	{ 
-	
-	}
-	
-	public partial class ContattiRepository : Repository<Contatti>, IContattiRepository
-	{
-	    public ContattiRepository(IEntitiesModelUnitOfWork unitOfWork)
-	        : base(unitOfWork)
-	    {
-	    }
-	}
-	
 	public partial interface ICedentePrestatoreRepository : IRepository<CedentePrestatore>
 	{ 
 	
@@ -270,19 +257,6 @@ namespace WcfService.Repositories
 	public partial class AnagraficaRepository : Repository<Anagrafica>, IAnagraficaRepository
 	{
 	    public AnagraficaRepository(IEntitiesModelUnitOfWork unitOfWork)
-	        : base(unitOfWork)
-	    {
-	    }
-	}
-	
-	public partial interface IIndirizzoRepository : IRepository<Indirizzo>
-	{ 
-	
-	}
-	
-	public partial class IndirizzoRepository : Repository<Indirizzo>, IIndirizzoRepository
-	{
-	    public IndirizzoRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }
@@ -418,19 +392,6 @@ namespace WcfService.Repositories
 	    }
 	}
 	
-	public partial interface IAllegatiRepository : IRepository<Allegati>
-	{ 
-	
-	}
-	
-	public partial class AllegatiRepository : Repository<Allegati>, IAllegatiRepository
-	{
-	    public AllegatiRepository(IEntitiesModelUnitOfWork unitOfWork)
-	        : base(unitOfWork)
-	    {
-	    }
-	}
-	
 	public partial interface ISedeRepository : IRepository<Sede>
 	{ 
 	
@@ -452,6 +413,45 @@ namespace WcfService.Repositories
 	public partial class DatiAnagraficiCessionarioRepository : Repository<DatiAnagraficiCessionario>, IDatiAnagraficiCessionarioRepository
 	{
 	    public DatiAnagraficiCessionarioRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiBolloRepository : IRepository<DatiBollo>
+	{ 
+	
+	}
+	
+	public partial class DatiBolloRepository : Repository<DatiBollo>, IDatiBolloRepository
+	{
+	    public DatiBolloRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IDatiCassaPrevidenzialeRepository : IRepository<DatiCassaPrevidenziale>
+	{ 
+	
+	}
+	
+	public partial class DatiCassaPrevidenzialeRepository : Repository<DatiCassaPrevidenziale>, IDatiCassaPrevidenzialeRepository
+	{
+	    public DatiCassaPrevidenzialeRepository(IEntitiesModelUnitOfWork unitOfWork)
+	        : base(unitOfWork)
+	    {
+	    }
+	}
+	
+	public partial interface IScontoMaggiorazioneRepository : IRepository<ScontoMaggiorazione>
+	{ 
+	
+	}
+	
+	public partial class ScontoMaggiorazioneRepository : Repository<ScontoMaggiorazione>, IScontoMaggiorazioneRepository
+	{
+	    public ScontoMaggiorazioneRepository(IEntitiesModelUnitOfWork unitOfWork)
 	        : base(unitOfWork)
 	    {
 	    }

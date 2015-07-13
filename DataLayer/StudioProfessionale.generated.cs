@@ -22,7 +22,7 @@ using DataLayer;
 
 namespace DataLayer	
 {
-	public partial class Azienda
+	public partial class StudioProfessionale
 	{
 		private int _id;
 		public virtual int Id
@@ -232,12 +232,12 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<Cliente> _clientes = new List<Cliente>();
-		public virtual IList<Cliente> Clientes
+		private IList<Account> _accounts = new List<Account>();
+		public virtual IList<Account> Accounts
 		{
 			get
 			{
-				return this._clientes;
+				return this._accounts;
 			}
 		}
 		
@@ -250,6 +250,15 @@ namespace DataLayer
 			}
 		}
 		
+		private IList<Trasmissione> _trasmissiones = new List<Trasmissione>();
+		public virtual IList<Trasmissione> Trasmissiones
+		{
+			get
+			{
+				return this._trasmissiones;
+			}
+		}
+		
 		private IList<AnagraficaCliente> _anagraficaClientes = new List<AnagraficaCliente>();
 		public virtual IList<AnagraficaCliente> AnagraficaClientes
 		{
@@ -259,21 +268,12 @@ namespace DataLayer
 			}
 		}
 		
-		private IList<Account> _accounts = new List<Account>();
-		public virtual IList<Account> Accounts
+		private IList<Cliente> _clientes = new List<Cliente>();
+		public virtual IList<Cliente> Clientes
 		{
 			get
 			{
-				return this._accounts;
-			}
-		}
-		
-		private IList<Trasmissione> _trasmissiones = new List<Trasmissione>();
-		public virtual IList<Trasmissione> Trasmissiones
-		{
-			get
-			{
-				return this._trasmissiones;
+				return this._clientes;
 			}
 		}
 		

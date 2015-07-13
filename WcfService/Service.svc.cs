@@ -14,16 +14,16 @@ namespace WcfService
     public class Service : IService
     {
 
-        #region Azienda
+        #region StudioProfessionale
         #region CRUD
-        public Dto.AziendaDto CreateAzienda(Dto.AziendaDto azienda)
+        public Dto.StudioProfessionaleDto CreateStudioProfessionale(Dto.StudioProfessionaleDto studioProfessionale)
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                var dtoKey = wcf.CreateAzienda(azienda);
-                var newAzienda = wcf.ReadAzienda(dtoKey);
-                return newAzienda;
+                var dtoKey = wcf.CreateStudioProfessionale(studioProfessionale);
+                var newAStudioProfessionale = wcf.ReadStudioProfessionale(dtoKey);
+                return newAStudioProfessionale;
             }
             catch (Exception ex)
             {
@@ -32,13 +32,13 @@ namespace WcfService
             return null;
         }
 
-        public IEnumerable<Dto.AziendaDto> ReadAziende()
+        public IEnumerable<Dto.StudioProfessionaleDto> ReadStudiProfessionali()
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                var aziende = wcf.ReadAziendas();
-                return aziende;
+                var studiProfessionali = wcf.ReadStudioProfessionales();
+                return studiProfessionali;
             }
             catch (Exception ex)
             {
@@ -47,12 +47,12 @@ namespace WcfService
             return null;
         }
 
-        public bool UpdateAzienda(Dto.AziendaDto azienda)
+        public bool UpdateStudioProfessionale(Dto.StudioProfessionaleDto studioProfessionale)
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                wcf.UpdateAzienda(azienda);
+                wcf.UpdateStudioProfessionale(studioProfessionale);
                 return true;
             }
             catch (Exception ex)
@@ -62,12 +62,12 @@ namespace WcfService
             return false;
         }
 
-        public bool DeleteAzienda(Dto.AziendaDto azienda)
+        public bool DeleteStudioProfessionale(Dto.StudioProfessionaleDto studioProfessionale)
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                wcf.DeleteAzienda(azienda);
+                wcf.DeleteStudioProfessionale(studioProfessionale);
                 return true;
             }
             catch (Exception ex)
@@ -77,12 +77,12 @@ namespace WcfService
             return false;
         }
 
-        public int CountAziende()
+        public int CountStudiProfessionali()
         {
             try
             {
                 var wcf = new EntitiesModelService();
-                var count = wcf.AziendasCount();
+                var count = wcf.StudioProfessionalesCount();
                 return count;
             }
             catch (Exception ex)
@@ -93,15 +93,15 @@ namespace WcfService
         }
         #endregion
         #region Custom
-        public IEnumerable<Dto.AziendaDto> LoadAziende(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        public IEnumerable<Dto.StudioProfessionaleDto> LoadStudiProfessionali(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
         {
             try
             {
-                var aziende = QueryAziende(search, advancedSearch, orderBy);
-                aziende = (from q in aziende select q).Skip(skip).Take(take);
+                var studiProfessionali = QueryStudiProfessionali(search, advancedSearch, orderBy);
+                studiProfessionali = (from q in studiProfessionali select q).Skip(skip).Take(take);
 
-                var aziendeDto = UtilityPOCO.Assemble<Dto.AziendaDto>(aziende);
-                return aziendeDto;
+                var studiProfessionaliDto = UtilityPOCO.Assemble<Dto.StudioProfessionaleDto>(studiProfessionali);
+                return studiProfessionaliDto;
             }
             catch (Exception ex)
             {
@@ -110,12 +110,12 @@ namespace WcfService
             return null;
         }
 
-        public int CountAziende(string search = null, object advancedSearch = null)
+        public int CountStudiProfessionali(string search = null, object advancedSearch = null)
         {
             try
             {
-                var aziende = QueryAziende(search, advancedSearch);
-                var count = aziende.Count();
+                var studiProfessionali = QueryStudiProfessionali(search, advancedSearch);
+                var count = studiProfessionali.Count();
                 return count;
             }
             catch (Exception ex)
@@ -125,14 +125,14 @@ namespace WcfService
             return 0;
         }
 
-        public Dto.AziendaDto ReadAzienda(object id)
+        public Dto.StudioProfessionaleDto ReadStudioProfessionale(object id)
         {
             try
             {
                 var wcf = new EntitiesModelService();
                 var dtoKey = UtilityPOCO.GetDtoKey((int)id);
-                var azienda = wcf.ReadAzienda(dtoKey);
-                return azienda;
+                var studioProfessionale = wcf.ReadStudioProfessionale(dtoKey);
+                return studioProfessionale;
             }
             catch (Exception ex)
             {
@@ -141,31 +141,31 @@ namespace WcfService
             return null;
         }
 
-        private IQueryable<DataLayer.Azienda> QueryAziende(string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        private IQueryable<DataLayer.StudioProfessionale> QueryStudiProfessionali(string search = null, object advancedSearch = null, OrderBy orderBy = null)
         {
             try
             {
                 var ef = new DataLayer.EntitiesModel();
-                var aziende = (from q in ef.Aziendas select q);
+                var studiProfessionali = (from q in ef.StudioProfessionales select q);
 
                 if (search != null && search.Length > 0)
-                    aziende = (from q in aziende
+                    studiProfessionali = (from q in studiProfessionali
                                where q.Codice.StartsWith(search) || q.RagioneSociale.Contains(search) || q.Comune.StartsWith(search) || q.Indirizzo.Contains(search) ||
                                    q.Provincia.StartsWith(search)
                                select q);
 
                 if (advancedSearch != null)
-                    aziende = aziende.Where((Func<DataLayer.Azienda, bool>)advancedSearch).AsQueryable();
+                    studiProfessionali = studiProfessionali.Where((Func<DataLayer.StudioProfessionale, bool>)advancedSearch).AsQueryable();
 
-                aziende = (from q in aziende orderby q.RagioneSociale select q);
+                studiProfessionali = (from q in studiProfessionali orderby q.RagioneSociale select q);
                 if (orderBy != null)
                 {
                     if (orderBy.Direction == TypeOrder.Ascending)
-                        aziende = aziende.OrderBy((Func<DataLayer.Azienda, object>)orderBy.Value).AsQueryable();
+                        studiProfessionali = studiProfessionali.OrderBy((Func<DataLayer.StudioProfessionale, object>)orderBy.Value).AsQueryable();
                     else if (orderBy.Direction == TypeOrder.Descending)
-                        aziende = aziende.OrderByDescending((Func<DataLayer.Azienda, object>)orderBy.Value).AsQueryable();
+                        studiProfessionali = studiProfessionali.OrderByDescending((Func<DataLayer.StudioProfessionale, object>)orderBy.Value).AsQueryable();
                 }
-                return aziende;
+                return studiProfessionali;
             }
             catch (Exception ex)
             {
@@ -357,6 +357,806 @@ namespace WcfService
         }
         #endregion
         #endregion
+
+        #region Socio
+        #region CRUD
+        public Dto.SocioDto CreateSocio(Dto.SocioDto socio)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var dtoKey = wcf.CreateSocio(socio);
+                var newSocio = wcf.ReadSocio(dtoKey);
+                return newSocio;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public IEnumerable<Dto.SocioDto> ReadSoci()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var soci = wcf.ReadSocios();
+                return soci;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public bool UpdateSocio(Dto.SocioDto socio)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.UpdateSocio(socio);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public bool DeleteSocio(Dto.SocioDto socio)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.DeleteSocio(socio);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public int CountSoci()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var count = wcf.SociosCount();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+        #endregion
+        #region Custom
+        public IEnumerable<Dto.SocioDto> LoadSoci(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var soci = QuerySoci(search, advancedSearch, orderBy);
+                soci = (from q in soci select q).Skip(skip).Take(take);
+                var sociDto = UtilityPOCO.Assemble<Dto.SocioDto>(soci);
+                return sociDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public int CountSoci(string search = null, object advancedSearch = null)
+        {
+            try
+            {
+                var soci = QuerySoci(search, advancedSearch);
+                var count = soci.Count();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public Dto.SocioDto ReadSocio(object id)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var socio = (from q in ef.Accounts where q.Id == (int)id select q).FirstOrDefault();
+                var socioDto = UtilityPOCO.Assemble<Dto.SocioDto>(socio);
+                return socioDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private IQueryable<DataLayer.Socio> QuerySoci(string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var soci = (from q in ef.Socios select q);
+
+                if (search != null && search.Length > 0)
+                    soci = (from q in soci
+                                where q.Cognome.StartsWith(search) || q.Nome.Contains(search)
+                                select q);
+
+                if (advancedSearch != null)
+                    soci = soci.Where((Func<DataLayer.Socio, bool>)advancedSearch).AsQueryable();
+
+                soci = (from q in soci orderby q.Cognome select q);
+                if (orderBy != null)
+                {
+                    if (orderBy.Direction == TypeOrder.Ascending)
+                        soci = soci.OrderBy((Func<DataLayer.Socio, object>)orderBy.Value).AsQueryable();
+                    else if (orderBy.Direction == TypeOrder.Descending)
+                        soci = soci.OrderByDescending((Func<DataLayer.Socio, object>)orderBy.Value).AsQueryable();
+                }
+                return soci;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+        #endregion
+        #endregion
+
+        #region AnagraficaCliente
+        #region CRUD
+        public Dto.AnagraficaClienteDto CreateAnagraficaCliente(Dto.AnagraficaClienteDto anagraficaCliente)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var dtoKey = wcf.CreateAnagraficaCliente(anagraficaCliente);
+                var newAnagraficaCliente = wcf.ReadAnagraficaCliente(dtoKey);
+                return newAnagraficaCliente;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public IEnumerable<Dto.AnagraficaClienteDto> ReadAnagraficheClienti()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var anagraficheClienti = wcf.ReadAnagraficaClientes();
+                return anagraficheClienti;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public bool UpdateAnagraficaCliente(Dto.AnagraficaClienteDto anagraficaCliente)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.UpdateAnagraficaCliente(anagraficaCliente);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public bool DeleteAnagraficaCliente(Dto.AnagraficaClienteDto anagraficaCliente)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.DeleteAnagraficaCliente(anagraficaCliente);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public int CountAnagraficheClienti()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var count = wcf.AnagraficaClientesCount();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+        #endregion
+        #region Custom
+        public IEnumerable<Dto.AnagraficaClienteDto> LoadAnagraficheClienti(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var anagraficheClienti = QueryAnagraficheClienti(search, advancedSearch, orderBy);
+                anagraficheClienti = (from q in anagraficheClienti select q).Skip(skip).Take(take);
+                var anagraficheClientiDto = UtilityPOCO.Assemble<Dto.AnagraficaClienteDto>(anagraficheClienti);
+                return anagraficheClientiDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public int CountAnagraficheClienti(string search = null, object advancedSearch = null)
+        {
+            try
+            {
+                var anagraficheClienti = QueryAnagraficheClienti(search, advancedSearch);
+                var count = anagraficheClienti.Count();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public Dto.AnagraficaClienteDto ReadAnagraficaCliente(object id)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var anagraficaCliente = (from q in ef.AnagraficaClientes where q.Id == (int)id select q).FirstOrDefault();
+                var anagraficaClienteDto = UtilityPOCO.Assemble<Dto.AnagraficaClienteDto>(anagraficaCliente);
+                return anagraficaClienteDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private IQueryable<DataLayer.AnagraficaCliente> QueryAnagraficheClienti(string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var anagraficheClienti = (from q in ef.AnagraficaClientes select q);
+
+                if (search != null && search.Length > 0)
+                    anagraficheClienti = (from q in anagraficheClienti
+                            where q.Codice.StartsWith(search) || q.RagioneSociale.Contains(search)
+                            select q);
+
+                if (advancedSearch != null)
+                    anagraficheClienti = anagraficheClienti.Where((Func<DataLayer.AnagraficaCliente, bool>)advancedSearch).AsQueryable();
+
+                anagraficheClienti = (from q in anagraficheClienti orderby q.RagioneSociale select q);
+                if (orderBy != null)
+                {
+                    if (orderBy.Direction == TypeOrder.Ascending)
+                        anagraficheClienti = anagraficheClienti.OrderBy((Func<DataLayer.AnagraficaCliente, object>)orderBy.Value).AsQueryable();
+                    else if (orderBy.Direction == TypeOrder.Descending)
+                        anagraficheClienti = anagraficheClienti.OrderByDescending((Func<DataLayer.AnagraficaCliente, object>)orderBy.Value).AsQueryable();
+                }
+                return anagraficheClienti;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+        #endregion
+        #endregion
+
+        #region Cliente
+        #region CRUD
+        public Dto.ClienteDto CreateCliente(Dto.ClienteDto cliente)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var dtoKey = wcf.CreateCliente(cliente);
+                var newCliente = wcf.ReadCliente(dtoKey);
+                return newCliente;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public IEnumerable<Dto.ClienteDto> ReadClienti()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var clienti = wcf.ReadClientes();
+                return clienti;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public bool UpdateCliente(Dto.ClienteDto cliente)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.UpdateCliente(cliente);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public bool DeleteCliente(Dto.ClienteDto cliente)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.DeleteCliente(cliente);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public int CountClienti()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var count = wcf.ClientesCount();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+        #endregion
+        #region Custom
+        public IEnumerable<Dto.ClienteDto> LoadClienti(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var clienti = QueryClienti(search, advancedSearch, orderBy);
+                clienti = (from q in clienti select q).Skip(skip).Take(take);
+                var clientiDto = UtilityPOCO.Assemble<Dto.ClienteDto>(clienti);
+                return clientiDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public int CountClienti(string search = null, object advancedSearch = null)
+        {
+            try
+            {
+                var clienti = QueryClienti(search, advancedSearch);
+                var count = clienti.Count();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public Dto.ClienteDto ReadCliente(object id)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var cliente = (from q in ef.Clientes where q.Id == (int)id select q).FirstOrDefault();
+                var clienteDto = UtilityPOCO.Assemble<Dto.ClienteDto>(cliente);
+                return clienteDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private IQueryable<DataLayer.Cliente> QueryClienti(string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var clienti = (from q in ef.Clientes select q);
+
+                if (search != null && search.Length > 0)
+                    clienti = (from q in clienti
+                                          where q.Tipo.StartsWith(search) select q);
+
+                if (advancedSearch != null)
+                    clienti = clienti.Where((Func<DataLayer.Cliente, bool>)advancedSearch).AsQueryable();
+
+                clienti = (from q in clienti orderby q.Id select q);
+                if (orderBy != null)
+                {
+                    if (orderBy.Direction == TypeOrder.Ascending)
+                        clienti = clienti.OrderBy((Func<DataLayer.Cliente, object>)orderBy.Value).AsQueryable();
+                    else if (orderBy.Direction == TypeOrder.Descending)
+                        clienti = clienti.OrderByDescending((Func<DataLayer.Cliente, object>)orderBy.Value).AsQueryable();
+                }
+                return clienti;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+        #endregion
+        #endregion
+
+        #region Incasso
+        #region CRUD
+        public Dto.IncassoDto CreateIncasso(Dto.IncassoDto incasso)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var dtoKey = wcf.CreateIncasso(incasso);
+                var newIncasso = wcf.ReadIncasso(dtoKey);
+                return newIncasso;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public IEnumerable<Dto.IncassoDto> ReadIncassi()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var incassi = wcf.ReadIncassos();
+                return incassi;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public bool UpdateIncasso(Dto.IncassoDto incasso)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.UpdateIncasso(incasso);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public bool DeleteIncasso(Dto.IncassoDto incasso)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.DeleteIncasso(incasso);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public int CountIncassi()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var count = wcf.IncassosCount();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+        #endregion
+        #region Custom
+        public IEnumerable<Dto.IncassoDto> LoadIncassi(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var incassi = QueryIncassi(search, advancedSearch, orderBy);
+                incassi = (from q in incassi select q).Skip(skip).Take(take);
+                var incassiDto = UtilityPOCO.Assemble<Dto.IncassoDto>(incassi);
+                return incassiDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public int CountIncassi(string search = null, object advancedSearch = null)
+        {
+            try
+            {
+                var incassi = QueryIncassi(search, advancedSearch);
+                var count = incassi.Count();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public Dto.IncassoDto ReadIncasso(object id)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var incasso = (from q in ef.AnagraficaClientes where q.Id == (int)id select q).FirstOrDefault();
+                var incassiDto = UtilityPOCO.Assemble<Dto.IncassoDto>(incasso);
+                return incassiDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private IQueryable<DataLayer.Incasso> QueryIncassi(string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var incassi = (from q in ef.Incassos select q);
+
+                if (search != null && search.Length > 0)
+                    incassi = (from q in incassi
+                                          where q.Codice.StartsWith(search) || q.Descrizione.Contains(search)
+                                          select q);
+
+                if (advancedSearch != null)
+                    incassi = incassi.Where((Func<DataLayer.Incasso, bool>)advancedSearch).AsQueryable();
+
+                incassi = (from q in incassi orderby q.Codice select q);
+                if (orderBy != null)
+                {
+                    if (orderBy.Direction == TypeOrder.Ascending)
+                        incassi = incassi.OrderBy((Func<DataLayer.Incasso, object>)orderBy.Value).AsQueryable();
+                    else if (orderBy.Direction == TypeOrder.Descending)
+                        incassi = incassi.OrderByDescending((Func<DataLayer.Incasso, object>)orderBy.Value).AsQueryable();
+                }
+                return incassi;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+        #endregion
+        #endregion
+
+        #region Trasmissione
+        #region CRUD
+        public Dto.TrasmissioneDto CreateTrasmissione(Dto.TrasmissioneDto trasmissione)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var dtoKey = wcf.CreateTrasmissione(trasmissione);
+                var newTrasmissione = wcf.ReadTrasmissione(dtoKey);
+                return newTrasmissione;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public IEnumerable<Dto.TrasmissioneDto> ReadTrasmissioni()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var trasmissioni = wcf.ReadTrasmissiones();
+                return trasmissioni;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public bool UpdateTrasmissione(Dto.TrasmissioneDto trasmissione)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.UpdateTrasmissione(trasmissione);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public bool DeleteTrasmissione(Dto.TrasmissioneDto trasmissione)
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                wcf.DeleteTrasmissione(trasmissione);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public int CountTrasmissioni()
+        {
+            try
+            {
+                var wcf = new EntitiesModelService();
+                var count = wcf.TrasmissionesCount();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+        #endregion
+        #region Custom
+        public IEnumerable<Dto.TrasmissioneDto> LoadTrasmissioni(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var trasmissioni = QueryTrasmissioni(search, advancedSearch, orderBy);
+                trasmissioni = (from q in trasmissioni select q).Skip(skip).Take(take);
+                var trasmissioniDto = UtilityPOCO.Assemble<Dto.TrasmissioneDto>(trasmissioni);
+                return trasmissioniDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public int CountTrasmissioni(string search = null, object advancedSearch = null)
+        {
+            try
+            {
+                var trasmissioni = QueryTrasmissioni(search, advancedSearch);
+                var count = trasmissioni.Count();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public Dto.TrasmissioneDto ReadTrasmissione(object id)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var trasmissione = (from q in ef.Trasmissiones where q.Id == (int)id select q).FirstOrDefault();
+                var trasmissioneDto = UtilityPOCO.Assemble<Dto.TrasmissioneDto>(trasmissione);
+                return trasmissioneDto;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private IQueryable<DataLayer.Trasmissione> QueryTrasmissioni(string search = null, object advancedSearch = null, OrderBy orderBy = null)
+        {
+            try
+            {
+                var ef = new DataLayer.EntitiesModel();
+                var trasmissioni = (from q in ef.Trasmissiones select q);
+
+                if (search != null && search.Length > 0)
+                    trasmissioni = (from q in trasmissioni
+                                          where q.Stato.StartsWith(search) || q.XmlFile.Contains(search)
+                                          select q);
+
+                if (advancedSearch != null)
+                    trasmissioni = trasmissioni.Where((Func<DataLayer.Trasmissione, bool>)advancedSearch).AsQueryable();
+
+                trasmissioni = (from q in trasmissioni orderby q.Id select q);
+                if (orderBy != null)
+                {
+                    if (orderBy.Direction == TypeOrder.Ascending)
+                        trasmissioni = trasmissioni.OrderBy((Func<DataLayer.Trasmissione, object>)orderBy.Value).AsQueryable();
+                    else if (orderBy.Direction == TypeOrder.Descending)
+                        trasmissioni = trasmissioni.OrderByDescending((Func<DataLayer.Trasmissione, object>)orderBy.Value).AsQueryable();
+                }
+                return trasmissioni;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+        #endregion
+        #endregion
+
 
     }
 }

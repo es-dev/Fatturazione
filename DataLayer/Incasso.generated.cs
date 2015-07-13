@@ -50,6 +50,84 @@ namespace DataLayer
 			}
 		}
 		
+		private DateTime _data;
+		public virtual DateTime Data
+		{
+			get
+			{
+				return this._data;
+			}
+			set
+			{
+				this._data = value;
+			}
+		}
+		
+		private decimal _importo;
+		public virtual decimal Importo
+		{
+			get
+			{
+				return this._importo;
+			}
+			set
+			{
+				this._importo = value;
+			}
+		}
+		
+		private string _tipoPagamento;
+		public virtual string TipoPagamento
+		{
+			get
+			{
+				return this._tipoPagamento;
+			}
+			set
+			{
+				this._tipoPagamento = value;
+			}
+		}
+		
+		private string _descrizione;
+		public virtual string Descrizione
+		{
+			get
+			{
+				return this._descrizione;
+			}
+			set
+			{
+				this._descrizione = value;
+			}
+		}
+		
+		private string _transazionePagamento;
+		public virtual string TransazionePagamento
+		{
+			get
+			{
+				return this._transazionePagamento;
+			}
+			set
+			{
+				this._transazionePagamento = value;
+			}
+		}
+		
+		private string _codice;
+		public virtual string Codice
+		{
+			get
+			{
+				return this._codice;
+			}
+			set
+			{
+				this._codice = value;
+			}
+		}
+		
 		private Fattura _fattura;
 		public virtual Fattura Fattura
 		{
