@@ -451,7 +451,8 @@
           <orm:inversereference inverse-field="_fatturaElettronicaHeader" uniqueId="6dc184c3-1ee6-4f92-9537-c57f9b5a2b5c" />
         </orm:field>
       </orm:class>
-      <orm:class name="FatturaElettronicaBody" use-default-mapping="true" uniqueId="29ffffd5-2ed6-43e3-b76b-a5917e2ba6a7">
+      <orm:class name="FatturaElettronicaBody" uniqueId="29ffffd5-2ed6-43e3-b76b-a5917e2ba6a7">
+        <orm:table name="FatturaElettronicaBody" />
         <orm:identity>
           <orm:key-generator name="autoinc">
             <orm:key-generator-member property-name="Id" />
@@ -727,7 +728,8 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="CessionarioCommittente" use-default-mapping="true" uniqueId="2a2bfe40-87cc-4b26-97e2-9f1c0456544c">
+      <orm:class name="CessionarioCommittente" uniqueId="2a2bfe40-87cc-4b26-97e2-9f1c0456544c">
+        <orm:table name="CessionarioCommittente" />
         <orm:identity>
           <orm:single-field field-name="_id" />
         </orm:identity>
@@ -746,7 +748,8 @@
           <orm:inversereference inverse-field="_cessionarioCommittente" uniqueId="a72f3374-a64a-466f-9cb0-8f2c5e310781" />
         </orm:field>
       </orm:class>
-      <orm:class name="DatiGenerali" use-default-mapping="true" uniqueId="694fe2b4-e015-45a0-85aa-4154b0d6d756">
+      <orm:class name="DatiGenerali" uniqueId="694fe2b4-e015-45a0-85aa-4154b0d6d756">
+        <orm:table name="DatiGenerali" />
         <orm:identity>
           <orm:single-field field-name="_id" />
         </orm:identity>
@@ -835,7 +838,8 @@
           </orm:reference>
         </orm:field>
       </orm:class>
-      <orm:class name="DatiBeniServizi" use-default-mapping="true" uniqueId="281f0983-4ee0-431c-b35a-6424eb77e566">
+      <orm:class name="DatiBeniServizi" uniqueId="281f0983-4ee0-431c-b35a-6424eb77e566">
+        <orm:table name="DatiBeniServizi" />
         <orm:identity>
           <orm:single-field field-name="_id" />
         </orm:identity>
@@ -1539,6 +1543,24 @@
             <orm:column name="StudioProfessionaleId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
+      </orm:table>
+      <orm:table name="FatturaElettronicaBody">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="FatturaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_FttrElttrncaBody_FatturaId">
+          <orm:columnMapping>
+            <orm:column name="FatturaId" sql-type="int" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
+      <orm:table name="DatiGenerali">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="DatiBeniServizi">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="CessionarioCommittente">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
       </orm:table>
     </orm:schema>
     <orm:relational-naming-settings>
