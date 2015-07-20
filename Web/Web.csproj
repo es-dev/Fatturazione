@@ -603,6 +603,25 @@
       <DependentUpon>AnagraficaClienteView.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\AnagraficaCliente\AnagraficaClienteViewModel.cs" />
+    <Compile Include="GUI\Cliente\ClienteItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Cliente\ClienteItem.designer.cs">
+      <DependentUpon>ClienteItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Cliente\ClienteModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Cliente\ClienteModel.designer.cs">
+      <DependentUpon>ClienteModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Cliente\ClienteView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Cliente\ClienteView.designer.cs">
+      <DependentUpon>ClienteView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Cliente\ClienteViewModel.cs" />
     <Compile Include="GUI\Socio\SocioItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -680,6 +699,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="GUI\Trasmissione\" />
     <Folder Include="Resources\Generated\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\UserData\" />
@@ -702,6 +722,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AnagraficaCliente\AnagraficaClienteView.resx">
       <DependentUpon>AnagraficaClienteView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Cliente\ClienteItem.resx">
+      <DependentUpon>ClienteItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Cliente\ClienteModel.resx">
+      <DependentUpon>ClienteModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Cliente\ClienteView.resx">
+      <DependentUpon>ClienteView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Socio\SocioItem.resx">
       <DependentUpon>SocioItem.cs</DependentUpon>

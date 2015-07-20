@@ -11,11 +11,11 @@ using System.Text;
 using Web.Code;
 using WcfService.Dto;
 
-namespace Web.GUI.AnagraficaCliente
+namespace Web.GUI.Cliente
 {
-    public partial class AnagraficaClienteModel : TemplateModel
+    public partial class ClienteModel : TemplateModel
     {
-        public AnagraficaClienteModel()
+        public ClienteModel()
         {
             InitializeComponent();
             try
@@ -33,7 +33,7 @@ namespace Web.GUI.AnagraficaCliente
             {
                 if (model != null)
                 {
-                    var obj = (AnagraficaClienteDto)model;
+                    var obj = (ClienteDto)model;
                     //infoSubtitle.Text = BusinessLogic.Account.GetCodifica(obj);
                     //infoSubtitleImage.Image = "Images.dashboard.account.png";
                     //infoTitle.Text = (obj.Id!=0? "ACCOUNT " + BusinessLogic.Account.GetCodifica(obj): "NUOVO ACCOUNT");
@@ -51,20 +51,25 @@ namespace Web.GUI.AnagraficaCliente
             {
                 if (model != null)
                 {
-                    var obj = (AnagraficaClienteDto)model;
-                    editRagioneSociale.Value = obj.RagioneSociale;
-                    editCodice.Value = obj.Codice;
-                    editCAP.Value= obj.CAP;
-                    editComune.Value = new Countries.City(obj.Comune, obj.CodiceCatastale, obj.Provincia);
-                    editTelefono.Value = obj.Telefono;
-                    editFAX.Value = obj.Fax;
-                    editMobile.Value = obj.Mobile;
-                    editEmail.Value = obj.Email;
-                    editPartitaIVA.Value = obj.PartitaIva;
-                    editCodice.Value = obj.Codice;
-
+                    var obj = (ClienteDto)model;
+                    editTipo.Value = obj.Tipo;
+                    BindViewAnagraficaCliente(obj.AnagraficaCliente);
                     BindViewStudioProfessionale(obj.StudioProfessionale);
+
                 }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void BindViewAnagraficaCliente(AnagraficaClienteDto anagraficaCliente)
+        {
+            try
+            {
+                editAnagraficaCliente.Model = anagraficaCliente;
+                editAnagraficaCliente.Value = BusinessLogic.AnagraficaCliente.GetCodifica(anagraficaCliente);
             }
             catch (Exception ex)
             {
@@ -92,19 +97,12 @@ namespace Web.GUI.AnagraficaCliente
             {
                 if (model != null)
                 {
-                    var obj = (WcfService.Dto.AnagraficaClienteDto)model;
-                    obj.RagioneSociale = editRagioneSociale.Value;
-                    obj.Indirizzo = editIndirizzo.Value;
-                    obj.CAP = editCAP.Value;
-                    obj.Comune = editComune.Value.Description;
-                    obj.CodiceCatastale = editComune.Value.Code;
-                    obj.Provincia = editComune.Value.County;
-                    obj.Telefono = editTelefono.Value;
-                    obj.Fax = editFAX.Value;
-                    obj.Mobile = editMobile.Value;
-                    obj.Email = editEmail.Value;
-                    obj.PartitaIva = editPartitaIVA.Value;
-                    obj.Codice = editCodice.Value;
+                    var obj = (WcfService.Dto.ClienteDto)model;
+                    obj.Tipo = editTipo.Value;
+
+                    var anagraficaCliente = (WcfService.Dto.AnagraficaClienteDto)editAnagraficaCliente.Model;
+                    if (anagraficaCliente != null)
+                        obj.AnagraficaClienteId = anagraficaCliente.Id;
 
                     var studioProfessionale = (WcfService.Dto.StudioProfessionaleDto)editStudioProfessionale.Model;
                     if (studioProfessionale != null)
@@ -137,6 +135,34 @@ namespace Web.GUI.AnagraficaCliente
             {
                 var StudioProfessionale = (WcfService.Dto.StudioProfessionaleDto)model;
                 BindViewStudioProfessionale(StudioProfessionale);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void editAnagraficaCliente_ComboClick()
+        {
+            try
+            {
+                var view = new AnagraficaCliente.AnagraficaClienteView();
+                view.Title = "SELEZIONA UN CLIENTE IN ANAGRAFICA";
+                editAnagraficaCliente.Show(view);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+
+        }
+
+        private void editAnagraficaCliente_ComboConfirm(object model)
+        {
+            try
+            {
+                var anagraficaCliente = (WcfService.Dto.AnagraficaClienteDto)model;
+                BindViewAnagraficaCliente(anagraficaCliente);
             }
             catch (Exception ex)
             {
