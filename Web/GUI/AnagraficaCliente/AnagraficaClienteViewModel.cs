@@ -115,7 +115,7 @@ namespace Web.GUI.AnagraficaCliente
             return null;
         }
 
-        internal IEnumerable<AnagraficaClienteDto> ReadSoci()
+        internal IEnumerable<AnagraficaClienteDto> ReadAnagraficheClienti()
         {
             try
             {

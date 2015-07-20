@@ -194,7 +194,7 @@
         <orm:field name="_stato" property="Stato" uniqueId="7b4a6a9e-ef76-43d1-9f7a-58b6a53330ef" type="System.String">
           <orm:column name="Stato" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringVariableLength" />
         </orm:field>
-        <orm:field name="_trasmessa" property="Trasmessa" uniqueId="74af13d4-9c21-4880-b1dd-faa395ed7308" type="System.DateTime">
+        <orm:field name="_trasmessa" property="Trasmessa" uniqueId="74af13d4-9c21-4880-b1dd-faa395ed7308" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="Trasmessa" sql-type="datetime" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.MssqlMinDateConverter" ado-type="DateTime" />
         </orm:field>
         <orm:field name="_xmlFile" property="XmlFile" uniqueId="9eeb27a9-cddd-40de-af33-d80c42913ad0" type="System.String">
@@ -1736,7 +1736,7 @@
       <Property Id="fba08473-89a1-40a0-b0aa-1c4dee320fe4" name="FatturaId" type="Int32" label="FatturaId : Int32" fieldName="_fatturaId" />
       <Property Id="6df1abcf-0070-4aef-8805-7a26e2da96d8" name="StudioProfessionaleId" type="Int32" label="StudioProfessionaleId : Int32" fieldName="_studioProfessionaleId" />
       <Property Id="7b4a6a9e-ef76-43d1-9f7a-58b6a53330ef" name="Stato" label="Stato : String" fieldName="_stato" />
-      <Property Id="74af13d4-9c21-4880-b1dd-faa395ed7308" name="Trasmessa" type="DateTime" label="Trasmessa : DateTime" fieldName="_trasmessa" />
+      <Property Id="74af13d4-9c21-4880-b1dd-faa395ed7308" name="Trasmessa" type="DateTime" label="Trasmessa : DateTime" nullable="true" fieldName="_trasmessa" />
       <Property Id="9eeb27a9-cddd-40de-af33-d80c42913ad0" name="XmlFile" label="XmlFile : String" fieldName="_xmlFile" />
       <AssociationTargets>
         <Association Id="ef89ba9a-8583-4275-87af-3a9a45e6f9a6" SourceMultiplicity="ZeroOne" name="TrasmissioneHasFattura">

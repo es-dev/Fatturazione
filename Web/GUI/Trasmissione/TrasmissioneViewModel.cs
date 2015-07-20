@@ -6,12 +6,12 @@ using System.Linq;
 using System.Web;
 using WcfService.Dto;
 
-namespace Web.GUI.Cliente
+namespace Web.GUI.Trasmissione
 {
-    public class ClienteViewModel : Library.Template.MVVM.TemplateViewModel<ClienteView, ClienteItem, ClienteModel, ClienteDto>
+    public class TrasmissioneViewModel : Library.Template.MVVM.TemplateViewModel<TrasmissioneView, TrasmissioneItem, TrasmissioneModel, TrasmissioneDto>
     {
 
-        public ClienteViewModel()
+        public TrasmissioneViewModel()
             : base() 
         {
             try
@@ -29,7 +29,7 @@ namespace Web.GUI.Cliente
             try
             {
                 var wcf = new WcfService.Service();
-                var objs = wcf.LoadClienti(skip, take, search, advancedSearch, orderBy);
+                var objs = wcf.LoadTrasmissioni(skip, take, search, advancedSearch, orderBy);
                 Load(objs);
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace Web.GUI.Cliente
             try
             {
                 var wcf = new WcfService.Service();
-                var count = wcf.CountClienti(search, advancedSearch);
+                var count = wcf.CountTrasmissioni(search, advancedSearch);
                 return count;
             }
             catch (Exception ex)
@@ -60,17 +60,17 @@ namespace Web.GUI.Cliente
                 if (model != null)
                 {
                     var wcf = new WcfService.Service();
-                    var obj = (ClienteDto)model;
+                    var obj = (TrasmissioneDto)model;
                     bool performed = false;
                     if (creating)
                     {
-                        var newObj = wcf.CreateCliente(obj);
+                        var newObj = wcf.CreateTrasmissione(obj);
                         performed = (newObj != null);
                         if (performed)
                             Update(obj, newObj);
                     }
                     else //updating
-                        performed = wcf.UpdateCliente(obj);
+                        performed = wcf.UpdateTrasmissione(obj);
                     return performed;
                 }
             }
@@ -88,8 +88,8 @@ namespace Web.GUI.Cliente
                 if (model != null)
                 {
                     var wcf = new WcfService.Service();
-                    var obj = (ClienteDto)model;
-                    bool performed = wcf.DeleteCliente(obj);
+                    var obj = (TrasmissioneDto)model;
+                    bool performed = wcf.DeleteTrasmissione(obj);
                     return performed;
                 }
             }
@@ -105,7 +105,7 @@ namespace Web.GUI.Cliente
             try
             {
                 var wcf = new WcfService.Service();
-                var obj = wcf.ReadCliente(id);
+                var obj = wcf.ReadTrasmissione(id);
                 return obj;
             }
             catch (Exception ex)
@@ -115,12 +115,12 @@ namespace Web.GUI.Cliente
             return null;
         }
 
-        internal IEnumerable<ClienteDto> ReadClienti()
+        internal IEnumerable<TrasmissioneDto> ReadTrasmissioni()
         {
             try
             {
                 var wcf = new WcfService.Service();
-                var objs = wcf.ReadClienti();
+                var objs = wcf.ReadTrasmissioni();
                 return objs;
             }
             catch (Exception ex)

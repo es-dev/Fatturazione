@@ -76,8 +76,8 @@ namespace DataLayer
 			}
 		}
 		
-		private DateTime _trasmessa;
-		public virtual DateTime Trasmessa
+		private DateTime? _trasmessa;
+		public virtual DateTime? Trasmessa
 		{
 			get
 			{

@@ -249,7 +249,7 @@ namespace WcfService.Dto
 		{
 		}
 		
-		public TrasmissioneDto(int _id, int _fatturaId, int _studioProfessionaleId, string _stato, DateTime _trasmessa, string _xmlFile, FatturaDto _fattura, StudioProfessionaleDto _studioProfessionale)
+		public TrasmissioneDto(int _id, int _fatturaId, int _studioProfessionaleId, string _stato, DateTime? _trasmessa, string _xmlFile, FatturaDto _fattura, StudioProfessionaleDto _studioProfessionale)
 		{
 			this.Id = _id;
 			this.FatturaId = _fatturaId;
@@ -277,7 +277,7 @@ namespace WcfService.Dto
 		public virtual string Stato { get;set; }
 
 		[DataMember]
-		public virtual DateTime Trasmessa { get;set; }
+		public virtual DateTime? Trasmessa { get;set; }
 
 		[DataMember]
 		public virtual string XmlFile { get;set; }

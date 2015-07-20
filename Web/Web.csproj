@@ -673,6 +673,25 @@
       <DependentUpon>DashboardView.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Dashboard\DashboardViewModel.cs" />
+    <Compile Include="GUI\Trasmissione\TrasmissioneItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Trasmissione\TrasmissioneItem.designer.cs">
+      <DependentUpon>TrasmissioneItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Trasmissione\TrasmissioneModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Trasmissione\TrasmissioneModel.designer.cs">
+      <DependentUpon>TrasmissioneModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Trasmissione\TrasmissioneView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Trasmissione\TrasmissioneView.designer.cs">
+      <DependentUpon>TrasmissioneView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Trasmissione\TrasmissioneViewModel.cs" />
     <Compile Include="Homepage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -699,7 +718,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GUI\Trasmissione\" />
     <Folder Include="Resources\Generated\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\UserData\" />
@@ -755,6 +773,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Dashboard\DashboardView.resx">
       <DependentUpon>DashboardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Trasmissione\TrasmissioneItem.resx">
+      <DependentUpon>TrasmissioneItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Trasmissione\TrasmissioneModel.resx">
+      <DependentUpon>TrasmissioneModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Trasmissione\TrasmissioneView.resx">
+      <DependentUpon>TrasmissioneView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>

@@ -135,8 +135,8 @@ namespace Web.GUI.AnagraficaCliente
         {
             try
             {
-                var StudioProfessionale = (WcfService.Dto.StudioProfessionaleDto)model;
-                BindViewStudioProfessionale(StudioProfessionale);
+                var studioProfessionale = (WcfService.Dto.StudioProfessionaleDto)model;
+                BindViewStudioProfessionale(studioProfessionale);
             }
             catch (Exception ex)
             {
